@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 //auth
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    
+    //auth
 Route::post('/logout', 'AuthController@logout');
 Route::post('/pwdchange', 'AuthController@changePassword');
 Route::get('/user', 'AuthController@user');
@@ -60,10 +65,11 @@ Route::put('/usual-task/{id}', 'UsualTaskController@update');
 Route::delete('/usual-tasks/{id}', 'UsualTaskController@destroy');
 
 //Workers
-Route::get('/workers', 'UsualTaskController@index');
-Route::get('/worker/{id}', 'UsualTaskController@show');
-Route::post('/workers', 'UsualTaskController@store');
-Route::put('/usual-task/{id}', 'UsualTaskController@update');
-Route::delete('/usual-tasks/{id}', 'UsualTaskController@destroy');
+Route::get('/workers', 'WorkerController@index');
+Route::get('/worker/{id}', 'WorkerController@show');
+Route::post('/workers', 'WorkerController@store');
+Route::put('/usual-task/{id}', 'WorkerController@update');
+Route::delete('/usual-tasks/{id}', 'WorkerController@destroy');
+});
 
 
