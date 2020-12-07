@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Aw;
 use Illuminate\Http\Request;
+use App\Http\Resources\Aw as AwResource;
+
 
 class AwController extends Controller
 {
@@ -32,7 +34,7 @@ class AwController extends Controller
             $aws->where('loading_date','>',$request->finishDate);
         }
 
-        return $aws->get();
+        return AwResource::collection($aws->get());
     }
 
     /**

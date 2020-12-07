@@ -20,8 +20,7 @@ Route::post('/register', 'AuthController@register');
 
 Route::group(['middleware' => 'auth:api'], function () {
 
-    
-    //auth
+//auth
 Route::post('/logout', 'AuthController@logout');
 Route::post('/pwdchange', 'AuthController@changePassword');
 Route::get('/user', 'AuthController@user');
