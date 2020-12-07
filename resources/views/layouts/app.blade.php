@@ -15,6 +15,15 @@
 
     {{-- Style --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- css.gg -->
+    <link href='https://css.gg/css' rel='stylesheet'>
+
+    <!-- UNPKG -->
+    <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
+
+    <!-- JSDelivr -->
+    <link href='https://cdn.jsdelivr.net/npm/css.gg/icons/all.css' rel='stylesheet'>
 </head>
 <body>
     <div id="app">
