@@ -15,9 +15,9 @@ class Worker extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'initials' => substr($this->first_name, 0, 1).substr($this->last_name, 0, 1),
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'name' => $this->first_name. ' '.$this->last_name,
             'number' => $this->number,
         ];
     }

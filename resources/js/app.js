@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './components/App.vue';
 import store from "./store/index.js";
 import router from './router/index'
+import VModal from 'vue-js-modal'
 
+Vue.use(VModal)
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {

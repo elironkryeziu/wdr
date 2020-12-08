@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="">
       <Navbar />
-      <router-view></router-view>
+      <div class="max-w-7xl mx-auto">
+        <router-view></router-view>
+      </div>
       <Footer />
   </div>
 </template>

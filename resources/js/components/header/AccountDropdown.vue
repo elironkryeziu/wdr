@@ -41,7 +41,7 @@ export default {
         "Bearer " + localStorage.getItem("access_token");
   
       this.$store.dispatch("destroyToken").then(() => {
-        this.$router.push("/");
+        this.$router.push("/login").catch(()=>{});;
         // location.reload();
       });
     }

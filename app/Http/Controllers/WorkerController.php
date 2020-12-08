@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Worker;
 use Illuminate\Http\Request;
+use App\Http\Resources\Worker as WorkerResource;
 
 class WorkerController extends Controller
 {
@@ -18,7 +19,7 @@ class WorkerController extends Controller
         //
         $workers = Worker::all();
 
-        return $workers;
+        return WorkerResource::collection($workers);
     }
 
     /**

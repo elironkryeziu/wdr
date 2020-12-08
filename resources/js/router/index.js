@@ -16,7 +16,10 @@ export default new VueRouter({
         {
             path: '/',
             name: 'home',
-            component: Main
+            component: Main,
+            meta: {
+                requiresAuth: true
+            }
         },
         {
             path: '/login',
