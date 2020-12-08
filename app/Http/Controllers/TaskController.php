@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use App\Http\Resources\Task as TaskResource;
+use App\Http\Resources\SingleTask as SingleTaskResource;
+
 
 class TaskController extends Controller
 {
@@ -18,7 +21,7 @@ class TaskController extends Controller
         //
         $tasks = Task::all();
 
-        return $tasks;
+        return TaskResource::collection($tasks);
     }
 
     /**
@@ -54,7 +57,7 @@ class TaskController extends Controller
         //
         $task = Task::find($id);
 
-        return $task;
+        return new SingleTaskResource($task);
     }
 
     /**
