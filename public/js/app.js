@@ -2373,6 +2373,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2390,14 +2391,22 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.$store.dispatch('getTask', {
       id: this.taskId
-    }), this.$store.dispatch('getWorkers');
-    console.log(this.$store.state.workers.workers);
+    });
+
+    if (this.$store.state.workers.workers.length <= 0) {
+      this.$store.dispatch('getWorkers');
+      console.log(this.$store.state.workers.workers);
+    }
   },
   methods: {
     updateTask: function updateTask(id) {
       this.$store.dispatch('updateTask', {
         task: this.$store.state.aw.task
       });
+      this.$modal.hide('task-modal');
+    },
+    hide: function hide() {
+      this.$modal.hide('task-modal');
     }
   }
 });
@@ -2476,7 +2485,11 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.show(_AwTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
         id: id
       }, {
-        height: 'auto'
+        name: "task-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true,
+        focusTrap: true
       });
     },
     hide: function hide() {
@@ -8374,6 +8387,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "px-4" }, [
+    _c("button", { on: { click: _vm.hide } }, [_vm._v("Close")]),
+    _vm._v(" "),
     _c("h3", { staticClass: "py-1 text-gray-700 font-semibold" }, [
       _vm._v(_vm._s(_vm.$store.state.aw.task.aw))
     ]),
@@ -29827,6 +29842,8 @@ var actions = {
       context.commit('SET_TASK', task);
     })["catch"](function (error) {
       console.log(error);
+    })["finally"](function () {
+      context.dispatch('getAws');
     });
   }
 };

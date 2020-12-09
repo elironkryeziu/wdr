@@ -34,7 +34,8 @@ export default {
     },
     mounted() {
         this.$store.dispatch('getAws');
-    }
+    },
+    
 }
 </script>
 

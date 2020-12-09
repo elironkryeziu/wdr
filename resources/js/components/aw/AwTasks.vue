@@ -59,7 +59,19 @@ export default {
     },
     methods: {
         show(id){
-            this.$modal.show(AwTaskModal, { id: id }, { height: 'auto' },)
+            this.$modal.show(
+                AwTaskModal, 
+                {
+                    id: id 
+                }, 
+                { 
+                    name: "task-modal",
+                    height: 'auto',
+                    clickToClose: false,
+                    draggable: true,
+                    focusTrap: true 
+                },
+                )
         },
         hide() {
             this.$modal.hide("task");

@@ -1,6 +1,7 @@
 <template>
     <div class="px-4">
         <!-- <p>{{ $store.state.aw.task }}</p> -->
+            <button @click="hide">Close</button>
             <h3 class="py-1 text-gray-700 font-semibold">{{ $store.state.aw.task.aw }}</h3>
             <p class="text-xs text-gray-500 uppercase">Client: {{ $store.state.aw.task.aw_client }}</p>
             <span v-if="$store.state.aw.task.aw_tour_number" class="text-xs text-gray-500 uppercase"> 
@@ -120,15 +121,22 @@ export default {
     mounted() {
         this.$store.dispatch('getTask',{
             id: this.taskId
-        }),
+        })
+        if (this.$store.state.workers.workers.length <= 0)
+        {
         this.$store.dispatch('getWorkers')
         console.log(this.$store.state.workers.workers);
+        }
     },
     methods: {
         updateTask(id) {
             this.$store.dispatch('updateTask',{
                 task: this.$store.state.aw.task
-            })
+            });
+            this.$modal.hide('task-modal');
+        },
+        hide () {
+            this.$modal.hide('task-modal');
         }
     }
 }

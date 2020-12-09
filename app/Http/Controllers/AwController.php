@@ -19,22 +19,22 @@ class AwController extends Controller
     public function index(Request $request)
     {
         //
-        $aws = Aw::query();
+        $aws = Aw::all();
 
-        if ($request->startDate)
-        {
-            $aws->where('loading_date','>',$request->startDate);
-        } else 
-        {
-            $aws->where('loading_date','>',today()->toDateString());
-        }
+        // if ($request->startDate)
+        // {
+        //     $aws->where('loading_date','>',$request->startDate);
+        // } else 
+        // {
+        //     $aws->where('loading_date','>',today()->toDateString());
+        // }
 
-        if ($request->finishDate)
-        {
-            $aws->where('loading_date','>',$request->finishDate);
-        }
+        // if ($request->finishDate)
+        // {
+        //     $aws->where('loading_date','>',$request->finishDate);
+        // }
 
-        return AwResource::collection($aws->get());
+        return AwResource::collection($aws);
     }
 
     /**

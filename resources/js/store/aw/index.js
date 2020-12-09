@@ -49,8 +49,11 @@ const actions = {
         axios.put(`api/task/${task.task.id}`, {
             task: task            
         }).then(() => {
-            context.commit('SET_TASK', task)
-        }).catch(error => { console.log(error)} )
+            context.commit('SET_TASK', task);
+        }).catch(error => { console.log(error)
+        }).finally(()=>{
+            context.dispatch('getAws');
+        })
 
     }
 
