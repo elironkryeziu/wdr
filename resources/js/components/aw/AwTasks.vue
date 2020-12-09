@@ -28,8 +28,8 @@
                 <div>
                 <span class="text-gray-700 text-xs">{{ task.date }}</span>
                 <br />
-                <div class="py-1 inline-block" v-for="worker in task.workers" :key="worker.id">
-                    <p class="text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
+                <div class="py-1 worker inline-block" v-for="worker in task.workers" :key="worker.id">
+                    <p :data-tooltip="worker.name" class="worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
                     {{ worker.initials }} 
                     </p>
                 </div>
@@ -80,6 +80,38 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .worker {
+        position: relative;
+    }
 
+    .worker::before,
+    .worker::after {
+        --scale: 0;
+
+        position: absolute;
+        top: -.25rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+        transition: 150ms transform;
+        transform-origin: bottom center;
+    }
+
+    .worker::before {
+        content: attr(data-tooltip);
+        color: rgba(55, 65, 81, var(--tw-bg-opacity));
+        font-weight: 500;
+        padding: .3rem;
+        width: auto;
+        background: white;
+        box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);
+        border-radius: .3rem;
+        text-align: center;
+        z-index: 1;
+    }
+
+    .worker:hover::before,
+    .worker:hover::after {
+        --scale: 1;
+    }
 </style>

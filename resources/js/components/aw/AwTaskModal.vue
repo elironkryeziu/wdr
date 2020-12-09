@@ -1,7 +1,9 @@
 <template>
     <div class="px-4">
         <!-- <p>{{ $store.state.aw.task }}</p> -->
-            <button @click="hide">Close</button>
+            <button @click="hide" class="py-2 float-right">
+                <i class="fas fa-times text-gray-700 focus:outline-none text-2xl"></i>
+            </button>
             <h3 class="py-1 text-gray-700 font-semibold">{{ $store.state.aw.task.aw }}</h3>
             <p class="text-xs text-gray-500 uppercase">Client: {{ $store.state.aw.task.aw_client }}</p>
             <span v-if="$store.state.aw.task.aw_tour_number" class="text-xs text-gray-500 uppercase"> 
