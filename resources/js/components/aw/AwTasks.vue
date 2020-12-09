@@ -68,8 +68,7 @@ export default {
                     name: "task-modal",
                     height: 'auto',
                     clickToClose: false,
-                    draggable: true,
-                    focusTrap: true 
+                    draggable: true
                 },
                 )
         },

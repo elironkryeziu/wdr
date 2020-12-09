@@ -2,7 +2,7 @@
     <div class="px-4">
         <!-- <p>{{ $store.state.aw.task }}</p> -->
             <button @click="hide" class="py-2 float-right">
-                <i class="fas fa-times text-gray-700 focus:outline-none text-2xl"></i>
+                <i class="fas fa-times text-gray-700 outline-none text-2xl"></i>
             </button>
             <h3 class="py-1 text-gray-700 font-semibold">{{ $store.state.aw.task.aw }}</h3>
             <p class="text-xs text-gray-500 uppercase">Client: {{ $store.state.aw.task.aw_client }}</p>
@@ -56,6 +56,7 @@
                             <input id="finish" v-model="$store.state.aw.task.finish" type="time" name="finish" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                         </span>
                     </div>
+                    <label v-if="diffTime>0" class="float-right block mt-2 text-xs font-semibold text-gray-600 uppercase">Duration: {{ diffTime | duration('humanize') }}</label>
                     <label for="day" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date</label>
                     <input id="day" v-model="$store.state.aw.task.date" type="date" name="date" 
                             class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
@@ -98,6 +99,7 @@
                         Save
                     </button>
                 </form>
+                    <button @click="calculate">Calculate</button>
             </div>
         </div>
     </div>
@@ -105,6 +107,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
+import moment from 'vue-moment'
 
 export default {
     components: {
@@ -116,18 +119,27 @@ export default {
     data() {
         return {
             taskId: this.$props.id,
-            value: []
+            value: [],
+            diffTime: ''
         }
     },
-    
+    watch: {
+        startTime: function(newValue, oldValue) {
+            console.log(this.$store.state.aw.task.start);
+        },
+        finishTime: function(newValue, oldValue) {
+            console.log(this.$store.state.aw.task.start);
+        }    
+    },
     mounted() {
         this.$store.dispatch('getTask',{
             id: this.taskId
         })
+        // console.log('test')
+
         if (this.$store.state.workers.workers.length <= 0)
         {
-        this.$store.dispatch('getWorkers')
-        console.log(this.$store.state.workers.workers);
+            this.$store.dispatch('getWorkers')
         }
     },
     methods: {
@@ -139,6 +151,13 @@ export default {
         },
         hide () {
             this.$modal.hide('task-modal');
+        },
+        calculate()
+        {
+            var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
+            var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
+            this.diffTime = Math.abs(finish - start);
+            // this.diffTime = diffTime
         }
     }
 }

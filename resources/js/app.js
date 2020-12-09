@@ -4,7 +4,8 @@ import store from "./store/index.js";
 import router from './router/index'
 import VModal from 'vue-js-modal'
 
-Vue.use(VModal)
+Vue.use(VModal);
+Vue.use(require('vue-moment'));
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
