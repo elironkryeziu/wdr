@@ -9,7 +9,7 @@
             :first-day-of-week="2"
             :masks="{ title: 'MMMM YYYY', L: 'DD-MM-YYYY' }"
             color="gray"
-            is-dark>
+            >
           <template v-slot="{ inputValue, inputEvents }">
             <input
               class="bg-white border border-gray-300 text-gray-500 px-2 py-1 rounded"
@@ -24,7 +24,7 @@
         <vc-date-picker v-model="to" :first-day-of-week="2"
             :masks="{ title: 'MMMM YYYY', L: 'DD-MM-YYYY' }"
             color="gray"
-            is-dark>
+            >
           <template v-slot="{ inputValue, inputEvents }">
             <input
               class="bg-white border border-gray-300 text-gray-500 px-2 py-1 rounded"

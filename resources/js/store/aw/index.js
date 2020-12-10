@@ -55,7 +55,34 @@ const actions = {
             context.dispatch('getAws');
         })
 
-    }
+    },
+    createTask(context, task) {
+        console.log("check");
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
+
+        axios.post(`api/tasks`, {
+            task: task            
+        }).then(() => {
+            context.commit('SET_TASK', task);
+        }).catch(error => { console.log(error)
+        }).finally(()=>{
+            context.dispatch('getAws');
+        })
+    },
+    deleteTask(context, {id}) {
+        // console.log(id);
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
+
+        axios.delete(`api/task/${id}`).then(() => {
+            // context.commit('SET_TASK', task);
+        }).catch(error => { console.log(error)
+        }).finally(()=>{
+            context.dispatch('getAws');
+        })
+
+    },
 };
 
 

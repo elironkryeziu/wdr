@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Aw;
 use App\Task;
+use App\DefaultTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Task as TaskResource;
@@ -34,17 +36,76 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        $task = Task::create([
-            'aw_id' => $request->aw_id,
-            'name' => $request->name,
-            'start' => $request->start,
-            'finish' => $request->finish,
-            'status' => $request->status,
-            'date' => $request->date,
-            'updated_by' => $request->user()->id
-        ]);
+        if (!$request->task['task']['isDefault'])
+        {
+            //nese useri nuk e ka zgjedh default
+            $task = Task::create([
+                'aw_id' => $request->task['id'],
+                'name' => $request->task['task']['name'],
+                'start' => $request->task['task']['start'],
+                'finish' => $request->task['task']['finish'],
+                'status' => $request->task['task']['status'],
+                'date' => $request->task['task']['date'],
+                'updated_by' => $request->user()->id
+            ]);
+    
+    
+            foreach ($request->task['task']['workers'] as $worker)
+            {
+                DB::table('task_worker')->insert([
+                    'task_id' => $task->id,
+                    'worker_id' => $worker['id'],
+                    'created_at' => now()
+                ]);
+            }
+    
+            return $task;
+        } else 
+        {
+            $last_dt = DefaultTask::orderBy('id','desc')->first();
+            $default_task = DefaultTask::updateOrCreate(
+                [
+                    'name' => $request->task['task']['name'],
+                ],
+                [
+                    'name' => $request->task['task']['name'],
+                    'sort_order' => $last_dt->sort_order + 1,
+                    'status' => 'active',
+                    'created_by' => $request->user()->id
+            ]);
 
-        return $task;
+            $awObj = Aw::find($request->task['id']);
+            $aws = Aw::where('loading_date','>=',$awObj->loading_date)->get();
+
+            //tasku i sodit
+            $task = Task::create([
+                'aw_id' => $awObj->id,
+                'name' => $request->task['task']['name'],
+                'start' => $request->task['task']['start'],
+                'finish' => $request->task['task']['finish'],
+                'status' => $request->task['task']['status'],
+                'date' => $request->task['task']['date'],
+                'updated_by' => $request->user()->id
+            ]);
+    
+            //taskat per AW-te e ardhshme
+            foreach ($aws as $aw)
+            {
+                if (!$aw->isClosed)
+                {
+                    $task = Task::updateOrCreate(
+                        [
+                            'aw_id' => $aw->id,
+                            'name' => $request->task['task']['name'],
+                        ],
+                        [
+                            'aw_id' => $aw->id,
+                            'name' => $request->task['task']['name'],
+                            'updated_by' => $request->user()->id
+                    ]);
+                }
+            }
+        }
     }
 
     /**

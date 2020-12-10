@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "moment": "^2.29.1",
         "v-calendar": "^2.1.1",
         "vue-js-modal": "^2.0.0-rc.6",
         "vue-moment": "^4.1.0",
