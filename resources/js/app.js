@@ -3,9 +3,14 @@ import App from './components/App.vue';
 import store from "./store/index.js";
 import router from './router/index'
 import VModal from 'vue-js-modal'
+import VCalendar from 'v-calendar';
+
 
 Vue.use(VModal);
 Vue.use(require('vue-moment'));
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+});
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {

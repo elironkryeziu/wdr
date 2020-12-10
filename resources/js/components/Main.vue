@@ -1,5 +1,46 @@
 <template>
- <div class="container my-12 mx-auto">
+ <div class="container mx-auto">
+   <div class="py-12">
+     <form @submit.prevent="searchAw">
+       <span class="pr-4">
+        <label class="uppercase text-gray-400">From:</label>
+        <vc-date-picker 
+            v-model="from" 
+            :first-day-of-week="2"
+            :masks="{ title: 'MMMM YYYY', L: 'DD-MM-YYYY' }"
+            color="gray"
+            is-dark>
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border border-gray-300 text-gray-500 px-2 py-1 rounded"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </vc-date-picker>
+       </span>
+       <span class="">
+        <label class="uppercase text-gray-400">To:</label>
+        <vc-date-picker v-model="to" :first-day-of-week="2"
+            :masks="{ title: 'MMMM YYYY', L: 'DD-MM-YYYY' }"
+            color="gray"
+            is-dark>
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border border-gray-300 text-gray-500 px-2 py-1 rounded"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+        </vc-date-picker>
+       </span>
+       <span  class="pl-4">
+        <button class="py-1 px-4 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+          Search
+        </button>
+       </span>
+     </form>
+   </div>
    <Aw />
   </div>
 </template>
@@ -14,48 +55,17 @@ export default {
   },
   data() {
     return {
-      // users: [
-      //   {
-      //     id: 1,
-      //     name: "Collecting",
-      //     user: 'Filan',
-      //     avatar: "https://pickaface.net/gallery/avatar/unr_sample_161118_2054_ynlrg.png"
-      //   },
-      //   {
-      //     id: 2,
-      //     name: "Scanning",
-      //     user: 'Fistek',
-      //     avatar: "https://pickaface.net/gallery/avatar/freud51c8b3f65e7dc.png"
-      //   },
-      //   {
-      //     id: 3,
-      //     name: "Stretching",
-      //     user: 'Milaim',
-      //     avatar: "https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png"
-      //   },
-      //   {
-      //     id: 4,
-      //     name: "Preparing documents",
-      //     user: 'Milazim',
-      //     avatar: "https://pickaface.net/gallery/avatar/unr_yassine_191124_2012_3gngr.png"
-      //   },
-      // ]
-      aws: []
+      // change to VUEX
+      from: new Date(),
+      to: new Date(),
     }
   },
   created() {
-    this.getAws();
   },
   methods: {
-    getAws() {
-      axios.defaults.headers.common["Authorization"] =
-        "Bearer " + localStorage.getItem("access_token");
-
-      axios.get(`api/aws`).then(response => {
-        // console.log(response)
-        this.aws = response.data.data;
-      })
-      .catch(error => { console.log(error) })
+    searchAw() {
+      // console.log(this.from)
+      // console.log(this.to)
     }
   }
 }

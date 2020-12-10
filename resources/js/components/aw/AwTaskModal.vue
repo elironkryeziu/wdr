@@ -49,11 +49,11 @@
                     <div class="flex justify-between gap-3">
                         <span class="w-1/2">
                             <label for="start" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Start</label>
-                            <input id="start" v-model="$store.state.aw.task.start" type="time" name="start" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                            <input id="start" v-model="$store.state.aw.task.start" @keydown="calculate" type="time" name="start" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                         </span>
                         <span class="w-1/2">
                             <label for="finish" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Finish</label>
-                            <input id="finish" v-model="$store.state.aw.task.finish" type="time" name="finish" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                            <input id="finish" v-model="$store.state.aw.task.finish" @keydown="calculate" type="time" name="finish" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                         </span>
                     </div>
                     <label v-if="diffTime>0" class="float-right block mt-2 text-xs font-semibold text-gray-600 uppercase">Duration: {{ diffTime | duration('humanize') }}</label>
@@ -99,7 +99,7 @@
                         Save
                     </button>
                 </form>
-                    <button @click="calculate">Calculate</button>
+                    <!-- <button @click="calculate">Calculate</button> -->
             </div>
         </div>
     </div>
@@ -125,17 +125,16 @@ export default {
     },
     watch: {
         startTime: function(newValue, oldValue) {
-            console.log(this.$store.state.aw.task.start);
+            this.calculate()
         },
         finishTime: function(newValue, oldValue) {
-            console.log(this.$store.state.aw.task.start);
+            this.calculate()
         }    
     },
     mounted() {
         this.$store.dispatch('getTask',{
             id: this.taskId
         })
-        // console.log('test')
 
         if (this.$store.state.workers.workers.length <= 0)
         {
@@ -154,10 +153,12 @@ export default {
         },
         calculate()
         {
+            // console.log('test')
             var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
             var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
             this.diffTime = Math.abs(finish - start);
             // this.diffTime = diffTime
+            console.log(this.diffTime);
         }
     }
 }

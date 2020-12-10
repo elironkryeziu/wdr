@@ -3,7 +3,8 @@
     <ul class="w-full max-w-md">
         <draggable tag="ul" ghost-class="moving-card" filter=".action-button" class="w-full max-w-md" :list="tasks" :animation="200">
             <li v-for="task in tasks" :key="task.id" @click="show(task.id)"
-                class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer">
+                class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
+                :class="task.status == 'K' ? 'bg-green-100' : ''">
                 <div class="flex items-center">
                     <span v-if="task.name == 'Collecting'">
                     <i class="text-gray-700 fas fa-box-open"></i>
@@ -19,7 +20,8 @@
                     </span>
                     <p class="ml-2 text-gray-700 font-semibold font-sans tracking-wide">{{ task.name }}</p>
                     <p v-if="task.status == 'P'" class="float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold">{{ task.status }} </p>
-                <p v-else class="float-right text-right w-5 text-white font-semibold">{{ task.status }}</p>
+                    <p v-if="task.status == '0'" class="float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs">{{ task.status }}</p>
+                    <p v-if="task.status == 'K'" class="float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs">{{ task.status }}</p>
                 </div>
                 <div>
                 <span class="text-gray-700 text-xs">{{ task.start }}</span>-
