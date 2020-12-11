@@ -27,6 +27,31 @@ class TaskController extends Controller
         return TaskResource::collection($tasks);
     }
 
+    public function week_tasks()
+    {
+        $tasks = DB::table('task_worker')
+            ->join('tasks', 'tasks.id', '=', 'task_worker.task_id')
+            ->select('task_worker.worker_id','tasks.id', 'tasks.name', 'tasks.date','tasks.start','tasks.finish')
+            ->where('tasks.date','>=',now()->startOfWeek())
+            ->where('tasks.date','<=',now()->endOfWeek())
+            ->get();
+
+            // return $tasks;
+        return $tasks->map(function ($task) {
+            return [
+                'task_id' => $task->id,
+                'start' => substr($task->date . " " . $task->start, 0, -3),
+                'end' => substr($task->date . " " . $task->finish, 0, -3),
+                'title' => $task->name,
+                'class' => $task->worker_id % 2 == 0 ? 'sport' : 'health',
+                'split' => $task->worker_id,
+            ];
+        });
+
+        
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
