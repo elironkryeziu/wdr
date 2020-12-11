@@ -2758,6 +2758,340 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: Number
+  },
+  data: function data() {
+    return {
+      defaultTaskId: this.$props.id // default_task: {
+      //     name: '',
+      //     sort_order: '',
+      //     status: '',
+      //     notes: ''
+      // }
+
+    };
+  },
+  mounted: function mounted() {
+    this.getDefaultTask(this.defaultTaskId);
+  },
+  methods: {
+    hide: function hide() {
+      this.$modal.hide('default-task-modal');
+    },
+    getDefaultTask: function getDefaultTask(id) {
+      if (this.defaultTaskId) {
+        this.$store.dispatch('getDefaultTask', {
+          id: this.defaultTaskId
+        });
+      }
+    },
+    updateDefaultTask: function updateDefaultTask() {
+      this.$store.dispatch('updateDefaultTask', {
+        default_task: this.$store.state.default_tasks.default_task
+      });
+      this.$modal.hide('default-task-modal');
+    },
+    deleteDefaultTask: function deleteDefaultTask(id) {
+      if (confirm("Do you really want to delete?")) {
+        this.$store.dispatch('deleteDefaultTask', {
+          id: this.defaultTaskId
+        });
+        this.$modal.hide('default-task-modal');
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewDefaultTaskModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewDefaultTaskModal */ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue");
+/* harmony import */ var _DefaultTaskModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DefaultTaskModal */ "./resources/js/components/default_tasks/DefaultTaskModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    NewDefaultTaskModal: _NewDefaultTaskModal__WEBPACK_IMPORTED_MODULE_0__["default"],
+    DefaultTaskModal: _DefaultTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    this.getDefaultTasks();
+  },
+  methods: {
+    getDefaultTasks: function getDefaultTasks() {
+      if (this.$store.state.default_tasks.default_tasks.length <= 0) {
+        this.$store.dispatch('getDefaultTasks');
+      }
+    },
+    createDefaultTask: function createDefaultTask() {
+      this.$modal.show(_NewDefaultTaskModal__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
+        name: "add-default-task-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true
+      });
+    },
+    getDefaultTask: function getDefaultTask(id) {
+      this.$modal.show(_DefaultTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: id
+      }, {
+        name: "default-task-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      default_task: {
+        name: '',
+        sort_order: '',
+        status: '',
+        notes: ''
+      }
+    };
+  },
+  methods: {
+    hide: function hide() {
+      this.$modal.hide('add-default-task-modal');
+    },
+    createDefaultTask: function createDefaultTask() {
+      this.$store.dispatch('createDefaultTask', {
+        default_task: this.default_task
+      });
+      this.$modal.hide('add-default-task-modal');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/footer/Footer.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/footer/Footer.vue?vue&type=script&lang=js& ***!
@@ -2932,6 +3266,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2939,6 +3284,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {};
+  },
+  computed: {
+    loggedIn: function loggedIn() {
+      return this.$store.getters.loggedIn;
+    }
   }
 });
 
@@ -2963,22 +3313,134 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/partials/Test.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/partials/Test.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/Plan.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_cal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-cal */ "./node_modules/vue-cal/dist/vuecal.common.js");
+/* harmony import */ var vue_cal__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_cal__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_cal_dist_vuecal_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-cal/dist/vuecal.css */ "./node_modules/vue-cal/dist/vuecal.css");
+/* harmony import */ var vue_cal_dist_vuecal_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_cal_dist_vuecal_css__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    VueCal: vue_cal__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      stickySplitLabels: true,
+      hideTitleBar: true,
+      dragToCreateEvent: false,
+      twelveHour: true,
+      minCellWidth: 400,
+      minSplitWidth: 0,
+      workers: [{
+        id: 1,
+        label: 'Worker 1'
+      }, {
+        id: 2,
+        label: 'Worker 2'
+      }, {
+        id: 3,
+        label: 'Worker 3'
+      }, {
+        id: 4,
+        label: 'Worker 4'
+      }, {
+        id: 5,
+        label: 'Worker 5'
+      }],
+      week_tasks: [{
+        "task_id": 3,
+        "start": "2020-12-07 10:30",
+        "end": "2020-12-07 11:00",
+        "title": "Stretching",
+        "class": "sport",
+        "split": 2
+      }, {
+        "task_id": 5,
+        "start": "2020-12-09 08:00",
+        "end": "2020-12-09 10:00",
+        "title": "Collecting",
+        "class": "sport",
+        "split": 2
+      }, {
+        "task_id": 5,
+        "start": "2020-12-09 08:00",
+        "end": "2020-12-09 10:00",
+        "title": "Collecting",
+        "class": "health",
+        "split": 1
+      }, {
+        "task_id": 8,
+        "start": "2020-12-09 08:00",
+        "end": "2020-12-09 11:00",
+        "title": "Preparing documents",
+        "class": "sport",
+        "split": 2
+      }, {
+        "task_id": 1,
+        "start": "2020-12-07 08:00",
+        "end": "2020-12-07 09:30",
+        "title": "Collecting",
+        "class": "health",
+        "split": 1
+      }, {
+        "task_id": 1,
+        "start": "2020-12-07 08:00",
+        "end": "2020-12-07 09:30",
+        "title": "Collecting",
+        "class": "sport",
+        "split": 2
+      }]
+    };
+  },
+  methods: {
+    openModal: function openModal(id) {
+      console.log(id);
+    }
+  }
+});
 
 /***/ }),
 
@@ -3145,6 +3607,312 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      worker: {
+        first_name: '',
+        last_name: '',
+        number: '',
+        notes: ''
+      }
+    };
+  },
+  methods: {
+    hide: function hide() {
+      this.$modal.hide('add-worker-modal');
+    },
+    createWorker: function createWorker() {
+      this.$store.dispatch('createWorker', {
+        worker: this.worker
+      });
+      this.$modal.hide('add-worker-modal');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: Number
+  },
+  data: function data() {
+    return {
+      workerId: this.$props.id // worker: {
+      //     first_name: '',
+      //     last_name: '',
+      //     number: '',
+      //     notes: ''
+      // }
+
+    };
+  },
+  mounted: function mounted() {
+    this.getWorker(this.workerId);
+  },
+  methods: {
+    getWorker: function getWorker(id) {
+      if (this.workerId) {
+        this.$store.dispatch('getWorker', {
+          id: this.workerId
+        });
+      }
+    },
+    hide: function hide() {
+      this.$modal.hide('worker-modal');
+    },
+    updateWorker: function updateWorker() {
+      this.$store.dispatch('updateWorker', {
+        worker: this.$store.state.workers.worker
+      });
+      this.$modal.hide('worker-modal');
+    },
+    deleteWorker: function deleteWorker(id) {
+      if (confirm("Do you really want to delete?")) {
+        this.$store.dispatch('deleteWorker', {
+          id: this.workerId
+        });
+        this.$modal.hide('worker-modal');
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/Workers.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/Workers.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewWorkerModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewWorkerModal */ "./resources/js/components/workers/NewWorkerModal.vue");
+/* harmony import */ var _WorkerModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WorkerModal */ "./resources/js/components/workers/WorkerModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    NewWorkerModal: _NewWorkerModal__WEBPACK_IMPORTED_MODULE_0__["default"],
+    WorkerModal: _WorkerModal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    if (this.$store.state.workers.workers.length <= 0) {
+      this.$store.dispatch('getWorkers');
+    }
+  },
+  methods: {
+    createWorker: function createWorker() {
+      this.$modal.show(_NewWorkerModal__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
+        name: "add-worker-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true
+      });
+    },
+    getWorker: function getWorker(id) {
+      this.$modal.show(_WorkerModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: id
+      }, {
+        name: "worker-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-cal/dist/vuecal.css":
+/*!******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-cal/dist/vuecal.css ***!
+  \******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".vuecal__weekdays-headings{\n  border-bottom:1px solid #ddd;\n  margin-bottom:-1px\n}\n\n.vuecal--view-with-time .vuecal__weekdays-headings,.vuecal--week-numbers .vuecal__weekdays-headings{\n  padding-left:3em\n}\n\n.vuecal--view-with-time.vuecal--twelve-hour .vuecal__weekdays-headings{\n  font-size:.9em;\n  padding-left:4em\n}\n\n.vuecal--overflow-x.vuecal--view-with-time .vuecal__weekdays-headings{\n  padding-left:0\n}\n\n.vuecal__heading{\n  width:100%;\n  height:2.8em;\n  font-weight:400;\n  justify-content:center;\n  text-align:center;\n  align-items:center;\n  position:relative;\n  overflow:hidden\n}\n\n.vuecal__heading>.vuecal__flex{\n  width:100%;\n  height:100%;\n  align-items:normal!important\n}\n\n.vuecal--sticky-split-labels .vuecal__heading{\n  height:3.4em\n}\n\n.vuecal--day-view .vuecal__heading,.vuecal--month-view .vuecal__heading,.vuecal--week-view .vuecal__heading{\n  width:14.2857%\n}\n\n.vuecal--hide-weekends.vuecal--day-view .vuecal__heading,.vuecal--hide-weekends.vuecal--month-view .vuecal__heading,.vuecal--hide-weekends.vuecal--week-view .vuecal__heading,.vuecal--years-view .vuecal__heading{\n  width:20%\n}\n\n.vuecal--year-view .vuecal__heading{\n  width:33.33%\n}\n\n.vuecal__heading .weekday-label{\n  flex-shrink:0;\n  display:flex;\n  justify-content:center;\n  align-items:center\n}\n\n.vuecal--small .vuecal__heading .small,.vuecal--xsmall .vuecal__heading .xsmall{\n  display:block\n}\n\n.vuecal--small .vuecal__heading .full,.vuecal--small .vuecal__heading .xsmall,.vuecal--xsmall .vuecal__heading .full,.vuecal--xsmall .vuecal__heading .small,.vuecal__heading .small,.vuecal__heading .xsmall{\n  display:none\n}\n\n.vuecal .vuecal__split-days-headers{\n  align-items:center\n}\n\n@media screen and (max-width:550px){\n  .vuecal__heading{\n    line-height:1.2\n  }\n\n  .vuecal--small .vuecal__heading .small,.vuecal--xsmall .vuecal__heading .xsmall,.vuecal__heading .small{\n    display:block\n  }\n\n  .vuecal--small .vuecal__heading .full,.vuecal--small .vuecal__heading .xsmall,.vuecal--xsmall .vuecal__heading .full,.vuecal--xsmall .vuecal__heading .small,.vuecal__heading .full,.vuecal__heading .xsmall{\n    display:none\n  }\n\n  .vuecal--overflow-x .vuecal__heading .full,.vuecal--small.vuecal--overflow-x .vuecal__heading .small,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .xsmall{\n    display:block\n  }\n\n  .vuecal--overflow-x .vuecal__heading .small,.vuecal--overflow-x .vuecal__heading .xsmall,.vuecal--small.vuecal--overflow-x .vuecal__heading .full,.vuecal--small.vuecal--overflow-x .vuecal__heading .xsmall,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .full,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .small{\n    display:none\n  }\n}\n\n@media screen and (max-width:450px){\n  .vuecal--small .vuecal__heading .xsmall,.vuecal--xsmall .vuecal__heading .xsmall,.vuecal__heading .xsmall{\n    display:block\n  }\n\n  .vuecal--small .vuecal__heading .full,.vuecal--small .vuecal__heading .small,.vuecal--xsmall .vuecal__heading .full,.vuecal--xsmall .vuecal__heading .small,.vuecal__heading .full,.vuecal__heading .small{\n    display:none\n  }\n\n  .vuecal--small.vuecal--overflow-x .vuecal__heading .small,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .xsmall{\n    display:block\n  }\n\n  .vuecal--small.vuecal--overflow-x .vuecal__heading .full,.vuecal--small.vuecal--overflow-x .vuecal__heading .xsmall,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .full,.vuecal--xsmall.vuecal--overflow-x .vuecal__heading .small{\n    display:none\n  }\n}\n\n.vuecal__header button{\n  outline:none;\n  font-family:inherit\n}\n\n.vuecal__menu{\n  padding:0;\n  margin:0;\n  list-style-type:none;\n  justify-content:center;\n  background-color:rgba(0,0,0,.02)\n}\n\n.vuecal__view-btn{\n  background:none;\n  border:none;\n  padding:.3em 1em;\n  height:2.2em;\n  font-size:1.3em;\n  border-bottom:0 solid currentColor;\n  cursor:pointer;\n  color:inherit;\n  box-sizing:border-box;\n  transition:.2s\n}\n\n.vuecal__view-btn--active{\n  border-bottom-width:2px;\n  background:hsla(0,0%,100%,.15)\n}\n\n.vuecal__title-bar{\n  background-color:rgba(0,0,0,.1);\n  display:flex;\n  align-items:center;\n  text-align:center;\n  justify-content:space-between;\n  font-size:1.4em;\n  line-height:1.3;\n  min-height:2em\n}\n\n.vuecal--xsmall .vuecal__title-bar{\n  font-size:1.3em\n}\n\n.vuecal__title{\n  position:relative;\n  justify-content:center\n}\n\n.vuecal__title button{\n  cursor:pointer;\n  background:none;\n  border:none\n}\n\n.vuecal__title button.slide-fade--left-leave-active,.vuecal__title button.slide-fade--right-leave-active{\n  width:100%\n}\n\n.vuecal__today-btn{\n  position:relative;\n  align-items:center;\n  display:flex;\n  font-size:.8em;\n  background:none;\n  border:none\n}\n\n.vuecal__today-btn span.default{\n  font-size:.8em;\n  padding:3px 6px;\n  text-transform:uppercase;\n  cursor:pointer\n}\n\n.vuecal__arrow{\n  cursor:pointer;\n  position:relative;\n  z-index:1;\n  background:none;\n  border:none;\n  white-space:nowrap\n}\n\n.vuecal__arrow--prev{\n  margin-left:.6em\n}\n\n.vuecal__arrow--next{\n  margin-right:.6em\n}\n\n.vuecal__arrow i.angle{\n  display:inline-block;\n  border:solid currentColor;\n  border-width:0 2px 2px 0;\n  padding:.25em;\n  transform:rotate(-45deg)\n}\n\n.vuecal__arrow--prev i.angle{\n  border-width:2px 0 0 2px\n}\n\n.vuecal__arrow--highlighted,.vuecal__today-btn--highlighted,.vuecal__view-btn--highlighted{\n  position:relative;\n  background-color:rgba(0,0,0,.04)\n}\n\n.vuecal__arrow--highlighted *,.vuecal__today-btn--highlighted *,.vuecal__view-btn--highlighted *{\n  pointer-events:none\n}\n\n.vuecal__arrow--highlighted:after,.vuecal__arrow--highlighted:before,.vuecal__today-btn--highlighted:after,.vuecal__today-btn--highlighted:before,.vuecal__view-btn--highlighted:after,.vuecal__view-btn--highlighted:before{\n  content:\"\";\n  background-color:inherit;\n  -webkit-animation:sonar .8s ease-out infinite;\n  animation:sonar .8s ease-out infinite;\n  position:absolute;\n  top:50%;\n  left:50%;\n  pointer-events:none\n}\n\n.vuecal__arrow--highlighted:before,.vuecal__today-btn--highlighted:before,.vuecal__view-btn--highlighted:before{\n  width:3em;\n  height:3em;\n  border-radius:3em;\n  margin-top:-1.5em;\n  margin-left:-1.5em\n}\n\n.vuecal__arrow--highlighted:after,.vuecal__today-btn--highlighted:after,.vuecal__view-btn--highlighted:after{\n  -webkit-animation-duration:1.5s;\n  animation-duration:1.5s;\n  -webkit-animation-delay:.1s;\n  animation-delay:.1s;\n  width:2.6em;\n  height:2.6em;\n  border-radius:2.6em;\n  margin-top:-1.3em;\n  margin-left:-1.3em\n}\n\n@-webkit-keyframes sonar{\n  0%,20%{\n    opacity:1\n  }\n\n  to{\n    transform:scale(2.5);\n    opacity:0\n  }\n}\n\n@keyframes sonar{\n  0%,20%{\n    opacity:1\n  }\n\n  to{\n    transform:scale(2.5);\n    opacity:0\n  }\n}\n\n@media screen and (max-width:450px){\n  .vuecal__title{\n    font-size:.9em\n  }\n\n  .vuecal__view-btn{\n    padding-left:.6em;\n    padding-right:.6em\n  }\n}\n\n@media screen and (max-width:350px){\n  .vuecal__view-btn{\n    font-size:1.1em\n  }\n}\n\n.vuecal__event{\n  color:#666;\n  background-color:hsla(0,0%,97.3%,.8);\n  position:relative;\n  box-sizing:border-box;\n  left:0;\n  width:100%;\n  z-index:1;\n  transition:box-shadow .3s,left .3s,width .3s;\n  overflow:hidden\n}\n\n.vuecal--no-time .vuecal__event{\n  min-height:8px\n}\n\n.vuecal:not(.vuecal--dragging-event) .vuecal__event:hover{\n  z-index:2\n}\n\n.vuecal__cell .vuecal__event *{\n  -webkit-user-select:text;\n  -moz-user-select:text;\n  -ms-user-select:text;\n  user-select:text\n}\n\n.vuecal--view-with-time .vuecal__event:not(.vuecal__event--all-day){\n  position:absolute\n}\n\n.vuecal--view-with-time .vuecal__bg .vuecal__event--all-day{\n  position:absolute;\n  top:0;\n  bottom:0;\n  z-index:0;\n  opacity:.6;\n  width:auto;\n  right:0\n}\n\n.vuecal--view-with-time .vuecal__all-day .vuecal__event--all-day{\n  position:relative;\n  left:0\n}\n\n.vuecal__event--background{\n  z-index:0\n}\n\n.vuecal__event--focus,.vuecal__event:focus{\n  box-shadow:1px 1px 6px rgba(0,0,0,.2);\n  z-index:3;\n  outline:none\n}\n\n.vuecal__event.vuecal__event--dragging{\n  opacity:.7\n}\n\n.vuecal__event.vuecal__event--static{\n  opacity:0;\n  transition:opacity .1s\n}\n\n@-moz-document url-prefix(){\n  .vuecal__event.vuecal__event--dragging{\n    opacity:1\n  }\n}\n\n.vuecal__event-resize-handle{\n  position:absolute;\n  bottom:0;\n  left:0;\n  right:0;\n  height:1em;\n  background-color:hsla(0,0%,100%,.3);\n  opacity:0;\n  transform:translateY(110%);\n  transition:.3s;\n  cursor:ns-resize\n}\n\n.vuecal__event--focus .vuecal__event-resize-handle,.vuecal__event--resizing .vuecal__event-resize-handle,.vuecal__event:focus .vuecal__event-resize-handle,.vuecal__event:hover .vuecal__event-resize-handle{\n  opacity:1;\n  transform:translateY(0)\n}\n\n.vuecal__event--dragging .vuecal__event-resize-handle{\n  display:none\n}\n\n.vuecal__event-delete{\n  position:absolute;\n  top:0;\n  left:0;\n  right:0;\n  display:flex;\n  flex-direction:column;\n  align-items:center;\n  justify-content:center;\n  height:1.4em;\n  line-height:1.4em;\n  background-color:rgba(221,51,51,.85);\n  color:#fff;\n  z-index:0;\n  cursor:pointer;\n  transform:translateY(-110%);\n  transition:.3s\n}\n\n.vuecal__event .vuecal__event-delete{\n  -webkit-user-select:none;\n  -moz-user-select:none;\n  -ms-user-select:none;\n  user-select:none\n}\n\n.vuecal--full-height-delete .vuecal__event-delete{\n  height:auto;\n  bottom:0\n}\n\n.vuecal--full-height-delete .vuecal__event-delete:before{\n  content:\"\";\n  width:1.7em;\n  height:1.8em;\n  display:block;\n  background-image:url('data:image/svg+xml;utf8,<svg width=\"512\" height=\"512\" viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 1.5a10.5 10.5 0 100 21 10.5 10.5 0 000-21zm5 14.1c.2 0 .2.2.2.2l-.1.3-1 1-.3.1h-.2L12 13.5l-3.5 3.6h-.3-.3l-1-1v-.4-.2l3.6-3.6-3.6-3.5A.4.4 0 017 8l1-1 .3-.2c.1 0 .2 0 .2.2l3.6 3.5L15.6 7l.2-.2c.1 0 .2 0 .3.2l1 1v.5L13.5 12z\" fill=\"%23fff\" opacity=\".9\"/></svg>')\n}\n\n.vuecal__event--deletable .vuecal__event-delete{\n  transform:translateY(0);\n  z-index:1\n}\n\n.vuecal__event--deletable.vuecal__event--dragging .vuecal__event-delete{\n  opacity:0;\n  transition:none\n}\n\n.vuecal--month-view .vuecal__event-title{\n  font-size:.85em\n}\n\n.vuecal--short-events .vuecal__event-title{\n  text-align:left;\n  overflow:hidden;\n  white-space:nowrap;\n  text-overflow:ellipsis;\n  padding:0 3px\n}\n\n.vuecal__event-content,.vuecal__event-title{\n  -webkit-hyphens:auto;\n  -ms-hyphens:auto;\n  hyphens:auto\n}\n\n.vuecal__event-title--edit{\n  border-bottom:1px solid transparent;\n  text-align:center;\n  transition:.3s;\n  color:inherit;\n  background-image:url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 512 512\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M442 150l-39 39-80-80 39-39q6-6 15-6t15 6l50 50q6 6 6 15t-6 15zM64 368l236-236 80 80-236 236H64v-80z\" fill=\"%23000\" opacity=\".4\"/></svg>');\n  background-repeat:no-repeat;\n  background-position:120% .15em;\n  background-size:.4em;\n  outline:none;\n  width:100%\n}\n\n.vuecal__event-title--edit:focus,.vuecal__event-title--edit:hover{\n  border-color:rgba(0,0,0,.4);\n  background-position:99% .15em;\n  background-size:1.2em\n}\n\n.vuecal__cell{\n  position:relative;\n  width:100%;\n  display:flex;\n  justify-content:center;\n  align-items:center;\n  text-align:center;\n  transition:background-color .15s ease-in-out\n}\n\n.vuecal__cells.month-view .vuecal__cell,.vuecal__cells.week-view .vuecal__cell{\n  width:14.2857%\n}\n\n.vuecal--hide-weekends .vuecal__cells.month-view .vuecal__cell,.vuecal--hide-weekends .vuecal__cells.week-view .vuecal__cell,.vuecal__cells.years-view .vuecal__cell{\n  width:20%\n}\n\n.vuecal__cells.year-view .vuecal__cell{\n  width:33.33%\n}\n\n.vuecal__cells.day-view .vuecal__cell{\n  flex:1\n}\n\n.vuecal--overflow-x.vuecal--day-view .vuecal__cell{\n  width:auto\n}\n\n.vuecal--click-to-navigate .vuecal__cell:not(.vuecal__cell--disabled){\n  cursor:pointer\n}\n\n.vuecal--day-view.vuecal--no-time .vuecal__cell:not(.vuecal__cell--has-splits),.vuecal--view-with-time .vuecal__cell,.vuecal--week-view.vuecal--no-time .vuecal__cell:not(.vuecal__cell--has-splits){\n  display:block\n}\n\n.vuecal__cell.vuecal__cell--has-splits{\n  flex-direction:row;\n  display:flex\n}\n\n.vuecal__cell:before{\n  content:\"\";\n  position:absolute;\n  z-index:0;\n  top:0;\n  left:0;\n  right:-1px;\n  bottom:-1px;\n  border:1px solid hsla(0,0%,76.9%,.25)\n}\n\n.vuecal--overflow-x.vuecal--day-view .vuecal__cell:before{\n  bottom:0\n}\n\n.vuecal__cell--current,.vuecal__cell--today{\n  background-color:rgba(240,240,255,.4);\n  z-index:1\n}\n\n.vuecal__cell--selected{\n  background-color:rgba(235,255,245,.4);\n  z-index:2\n}\n\n.vuecal--day-view .vuecal__cell--selected{\n  background:none\n}\n\n.vuecal__cell--out-of-scope{\n  color:rgba(0,0,0,.25)\n}\n\n.vuecal__cell--disabled{\n  color:rgba(0,0,0,.25);\n  cursor:not-allowed\n}\n\n.vuecal__cell--highlighted:not(.vuecal__cell--has-splits),.vuecal__cell-split.vuecal__cell-split--highlighted{\n  background-color:rgba(0,0,0,.04);\n  transition-duration:5ms\n}\n\n.vuecal__cell-content{\n  position:relative;\n  width:100%;\n  height:100%;\n  outline:none\n}\n\n.vuecal--month-view .vuecal__cell-content,.vuecal--year-view .vuecal__cell-content,.vuecal--years-view .vuecal__cell-content{\n  justify-content:center\n}\n\n.vuecal__cell-split{\n  display:flex;\n  flex-grow:1;\n  flex-direction:column;\n  height:100%;\n  position:relative;\n  transition:background-color .15s ease-in-out\n}\n\n.vuecal__cell-events{\n  width:100%\n}\n\n.vuecal__cell-events-count{\n  left:50%;\n  top:65%;\n  transform:translateX(-50%);\n  min-width:12px;\n  height:12px;\n  line-height:12px;\n  padding:0 3px;\n  background:#999;\n  color:#fff;\n  border-radius:12px;\n  font-size:10px\n}\n\n.vuecal__cell-events-count,.vuecal__cell .vuecal__special-hours{\n  position:absolute;\n  box-sizing:border-box\n}\n\n.vuecal__cell .vuecal__special-hours{\n  left:0;\n  right:0\n}\n\n.vuecal--overflow-x.vuecal--week-view .vuecal__cell,.vuecal__cell-split{\n  overflow:hidden\n}\n\n.vuecal__no-event{\n  padding-top:1em;\n  color:#aaa;\n  justify-self:flex-start;\n  margin-bottom:auto\n}\n\n.vuecal__all-day .vuecal__no-event{\n  display:none\n}\n\n.vuecal__now-line{\n  position:absolute;\n  left:0;\n  width:100%;\n  height:0;\n  color:red;\n  border-top:1px solid currentColor;\n  opacity:.6;\n  z-index:1\n}\n\n.vuecal__now-line:before{\n  content:\"\";\n  position:absolute;\n  top:-6px;\n  left:0;\n  border:5px solid transparent;\n  border-left-color:currentColor\n}\n\n.vuecal{\n  height:100%;\n  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)\n}\n\n.vuecal *,.vuecal--has-touch :not(.vuecal__event-title--edit){\n  -webkit-user-select:none;\n  -moz-user-select:none;\n  -ms-user-select:none;\n  user-select:none\n}\n\n.vuecal--has-touch :not(.vuecal__event-title--edit){\n  -webkit-touch-callout:none\n}\n\n.vuecal .clickable{\n  cursor:pointer\n}\n\n.vuecal--drag-creating-event,.vuecal--resizing-event{\n  cursor:ns-resize\n}\n\n.vuecal--dragging-event{\n  cursor:move;\n  cursor:-webkit-grabbing;\n  cursor:grabbing\n}\n\n.vuecal .dragging-helper{\n  position:absolute;\n  width:60px;\n  height:40px;\n  background:rgba(138,190,230,.8);\n  border:1px solid #61a9e0;\n  z-index:10\n}\n\n.vuecal--xsmall{\n  font-size:.9em\n}\n\n.vuecal__flex{\n  display:flex;\n  flex-direction:row\n}\n\n.vuecal__flex[column]{\n  flex-direction:column\n}\n\n.vuecal__flex[column],.vuecal__flex[grow]{\n  flex:1 1 auto\n}\n\n.vuecal__flex[grow]{\n  width:100%\n}\n\n.vuecal__flex[wrap]{\n  flex-wrap:wrap\n}\n\n.vuecal__split-days-headers.slide-fade--right-leave-active{\n  display:none\n}\n\n.vuecal--week-numbers.vuecal--month-view .vuecal__split-days-headers{\n  margin-left:3em\n}\n\n.vuecal--day-view:not(.vuecal--overflow-x) .vuecal__split-days-headers{\n  margin-left:3em;\n  height:2.2em\n}\n\n.vuecal--day-view.vuecal--twelve-hour:not(.vuecal--overflow-x) .vuecal__split-days-headers{\n  margin-left:4em\n}\n\n.vuecal__split-days-headers .day-split-header{\n  display:flex;\n  flex-grow:1;\n  flex-basis:0;\n  justify-content:center;\n  align-items:center;\n  height:100%\n}\n\n.vuecal__split-days-headers .vuecal--day-view.vuecal--overflow-x.vuecal--sticky-split-labels .day-split-header{\n  height:1.5em\n}\n\n.vuecal__body{\n  position:relative;\n  overflow:hidden\n}\n\n.vuecal__all-day{\n  min-height:1.7em;\n  margin-bottom:-1px;\n  flex-shrink:0\n}\n\n.vuecal__all-day-text{\n  width:3em;\n  box-sizing:border-box;\n  color:#999;\n  padding-right:2px;\n  display:flex;\n  flex-shrink:0;\n  align-items:center;\n  justify-content:flex-end;\n  border-bottom:1px solid #ddd;\n  -webkit-hyphens:auto;\n  -ms-hyphens:auto;\n  hyphens:auto\n}\n\n.vuecal__all-day-text span{\n  font-size:.85em;\n  text-align:right;\n  line-height:1.1\n}\n\n.vuecal--twelve-hour .vuecal__all-day>span{\n  width:4em\n}\n\n.vuecal__bg{\n  overflow:auto;\n  overflow-x:hidden;\n  -webkit-overflow-scrolling:touch;\n  min-height:60px;\n  position:relative;\n  width:100%;\n  margin-bottom:1px\n}\n\n.vuecal--no-time .vuecal__bg{\n  display:flex;\n  flex:1 1 auto;\n  overflow:auto\n}\n\n.vuecal__week-numbers{\n  width:3em;\n  flex-shrink:0!important\n}\n\n.vuecal__week-numbers .vuecal__week-number-cell{\n  opacity:.4;\n  font-size:.9em;\n  align-items:center;\n  justify-items:center;\n  justify-content:center\n}\n\n.vuecal__scrollbar-check{\n  position:absolute;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  overflow:scroll;\n  visibility:hidden;\n  z-index:-1\n}\n\n.vuecal__scrollbar-check div{\n  height:120%\n}\n\n.vuecal__time-column{\n  width:3em;\n  height:100%;\n  flex-shrink:0\n}\n\n.vuecal--twelve-hour .vuecal__time-column{\n  width:4em;\n  font-size:.9em\n}\n\n.vuecal--overflow-x.vuecal--week-view .vuecal__time-column{\n  margin-top:2.8em;\n  box-shadow:0 1px 1px rgba(0,0,0,.3)\n}\n\n.vuecal--overflow-x.vuecal--week-view.vuecal--sticky-split-labels .vuecal__time-column{\n  margin-top:3.4em\n}\n\n.vuecal--overflow-x.vuecal--day-view.vuecal--sticky-split-labels .vuecal__time-column{\n  margin-top:1.5em\n}\n\n.vuecal__time-column .vuecal__time-cell{\n  color:#999;\n  text-align:right;\n  padding-right:2px;\n  font-size:.9em\n}\n\n.vuecal__time-column .vuecal__time-cell-line:before{\n  content:\"\";\n  position:absolute;\n  left:0;\n  right:0;\n  border-top:1px solid hsla(0,0%,76.9%,.3)\n}\n\n.vuecal__cells{\n  margin:0 1px 1px 0\n}\n\n.vuecal--overflow-x.vuecal--day-view .vuecal__cells{\n  margin:0\n}\n\n.vuecal--events-on-month-view.vuecal--short-events .vuecal__cells{\n  width:99.9%\n}\n\n.vuecal--overflow-x.vuecal--day-view .vuecal__cells,.vuecal--overflow-x.vuecal--week-view .vuecal__cells{\n  flex-wrap:nowrap;\n  overflow:auto\n}\n\n.slide-fade--left-enter-active,.slide-fade--left-leave-active,.slide-fade--right-enter-active,.slide-fade--right-leave-active{\n  transition:.25s ease-out\n}\n\n.slide-fade--left-enter,.slide-fade--right-leave-to{\n  transform:translateX(-15px);\n  opacity:0\n}\n\n.slide-fade--left-leave-to,.slide-fade--right-enter{\n  transform:translateX(15px);\n  opacity:0\n}\n\n.slide-fade--left-leave-active,.slide-fade--right-leave-active{\n  position:absolute!important;\n  height:100%\n}\n\n.vuecal__title-bar .slide-fade--left-leave-active,.vuecal__title-bar .slide-fade--right-leave-active{\n  left:0;\n  right:0;\n  height:auto\n}\n\n.vuecal__heading .slide-fade--left-leave-active,.vuecal__heading .slide-fade--right-leave-active{\n  display:flex;\n  align-items:center\n}\n\n.vuecal--green-theme .vuecal__cell-events-count,.vuecal--green-theme .vuecal__menu{\n  background-color:#42b983;\n  color:#fff\n}\n\n.vuecal--green-theme .vuecal__title-bar{\n  background-color:#e4f5ef\n}\n\n.vuecal--green-theme .vuecal__cell--current,.vuecal--green-theme .vuecal__cell--today{\n  background-color:rgba(240,240,255,.4)\n}\n\n.vuecal--green-theme:not(.vuecal--day-view) .vuecal__cell--selected{\n  background-color:rgba(235,255,245,.4)\n}\n\n.vuecal--green-theme .vuecal__cell--selected:before{\n  border-color:rgba(66,185,131,.5)\n}\n\n.vuecal--green-theme .vuecal__cell--highlighted:not(.vuecal__cell--has-splits),.vuecal--green-theme .vuecal__cell-split--highlighted{\n  background-color:rgba(195,255,225,.5)\n}\n\n.vuecal--green-theme .vuecal__arrow--highlighted,.vuecal--green-theme .vuecal__today-btn--highlighted,.vuecal--green-theme .vuecal__view-btn--highlighted{\n  background-color:rgba(136,236,191,.25)\n}\n\n.vuecal--blue-theme .vuecal__cell-events-count,.vuecal--blue-theme .vuecal__menu{\n  background-color:rgba(66,163,185,.8);\n  color:#fff\n}\n\n.vuecal--blue-theme .vuecal__title-bar{\n  background-color:rgba(0,165,188,.3)\n}\n\n.vuecal--blue-theme .vuecal__cell--current,.vuecal--blue-theme .vuecal__cell--today{\n  background-color:rgba(240,240,255,.4)\n}\n\n.vuecal--blue-theme:not(.vuecal--day-view) .vuecal__cell--selected{\n  background-color:rgba(235,253,255,.4)\n}\n\n.vuecal--blue-theme .vuecal__cell--selected:before{\n  border-color:rgba(115,191,204,.5)\n}\n\n.vuecal--blue-theme .vuecal__cell--highlighted:not(.vuecal__cell--has-splits),.vuecal--blue-theme .vuecal__cell-split--highlighted{\n  background-color:rgba(0,165,188,.06)\n}\n\n.vuecal--blue-theme .vuecal__arrow--highlighted,.vuecal--blue-theme .vuecal__today-btn--highlighted,.vuecal--blue-theme .vuecal__view-btn--highlighted{\n  background-color:rgba(66,163,185,.2)\n}\n\n.vuecal--rounded-theme .vuecal__weekdays-headings{\n  border:none\n}\n\n.vuecal--rounded-theme .vuecal__cell,.vuecal--rounded-theme .vuecal__cell:before{\n  background:none;\n  border:none\n}\n\n.vuecal--rounded-theme .vuecal__cell--out-of-scope{\n  opacity:.4\n}\n\n.vuecal--rounded-theme .vuecal__cell-content{\n  width:30px;\n  height:30px;\n  flex-grow:0;\n  border:1px solid transparent;\n  border-radius:30px;\n  color:#333\n}\n\n.vuecal--rounded-theme.vuecal--day-view .vuecal__cell-content{\n  width:auto;\n  background:none\n}\n\n.vuecal--rounded-theme.vuecal--year-view .vuecal__cell{\n  width:33.33%\n}\n\n.vuecal--rounded-theme.vuecal--year-view .vuecal__cell-content{\n  width:85px\n}\n\n.vuecal--rounded-theme.vuecal--years-view .vuecal__cell-content{\n  width:52px\n}\n\n.vuecal--rounded-theme .vuecal__cell{\n  background-color:transparent!important\n}\n\n.vuecal--rounded-theme.vuecal--green-theme:not(.vuecal--day-view) .vuecal__cell-content{\n  background-color:#f1faf7\n}\n\n.vuecal--rounded-theme.vuecal--green-theme:not(.vuecal--day-view) .vuecal__cell--today .vuecal__cell-content{\n  background-color:#42b983;\n  color:#fff\n}\n\n.vuecal--rounded-theme.vuecal--green-theme .vuecal--day-view .vuecal__cell--today:before{\n  background-color:rgba(66,185,131,.05)\n}\n\n.vuecal--rounded-theme.vuecal--green-theme:not(.vuecal--day-view) .vuecal__cell--selected .vuecal__cell-content{\n  border-color:#42b983\n}\n\n.vuecal--rounded-theme.vuecal--green-theme .vuecal__cell--highlighted:not(.vuecal__cell--has-splits),.vuecal--rounded-theme.vuecal--green-theme .vuecal__cell-split--highlighted{\n  background-color:rgba(195,255,225,.5)\n}\n\n.vuecal--rounded-theme.vuecal--blue-theme:not(.vuecal--day-view) .vuecal__cell-content{\n  background-color:rgba(100,182,255,.2)\n}\n\n.vuecal--rounded-theme.vuecal--blue-theme:not(.vuecal--day-view) .vuecal__cell--today .vuecal__cell-content{\n  background-color:#8fb7e4;\n  color:#fff\n}\n\n.vuecal--rounded-theme.vuecal--blue-theme .vuecal--day-view .vuecal__cell--today:before{\n  background-color:rgba(143,183,228,.1)\n}\n\n.vuecal--rounded-theme.vuecal--blue-theme:not(.vuecal--day-view) .vuecal__cell--selected .vuecal__cell-content{\n  border-color:#61a9e0\n}\n\n.vuecal--rounded-theme.vuecal--blue-theme .vuecal__cell--highlighted:not(.vuecal__cell--has-splits),.vuecal--rounded-theme.vuecal--blue-theme .vuecal__cell-split--highlighted{\n  background-color:rgba(0,165,188,.06)\n}\n\n.vuecal--date-picker .vuecal__title-bar{\n  font-size:1.2em\n}\n\n.vuecal--date-picker .vuecal__heading{\n  height:2.2em;\n  font-weight:500;\n  opacity:.4\n}\n\n.vuecal--date-picker .vuecal__weekdays-headings{\n  border:none\n}\n\n.vuecal--date-picker .vuecal__body{\n  margin-left:1px\n}\n\n.vuecal--date-picker .vuecal__cell,.vuecal--date-picker .vuecal__cell:before{\n  background:none;\n  border:none\n}\n\n.vuecal--date-picker .vuecal__cell-content{\n  height:26px;\n  flex-grow:0;\n  border:1px solid transparent;\n  border-radius:25px;\n  transition:background-color .2s cubic-bezier(.39,.58,.57,1)\n}\n\n.vuecal--date-picker.vuecal--years-view .vuecal__cell-content{\n  flex:0;\n  padding:0 4px;\n  height:24px\n}\n\n.vuecal--date-picker.vuecal--year-view .vuecal__cell-content{\n  flex:0;\n  padding:0 15px\n}\n\n.vuecal--date-picker.vuecal--month-view .vuecal__cell-content{\n  width:26px\n}\n\n.vuecal--date-picker:not(.vuecal--day-view) .vuecal__cell-content:hover{\n  background-color:rgba(0,0,0,.1)\n}\n\n.vuecal--date-picker:not(.vuecal--day-view) .vuecal__cell--selected .vuecal__cell-content{\n  background-color:#42b982;\n  color:#fff\n}\n\n.vuecal--date-picker:not(.vuecal--day-view) .vuecal__cell--current .vuecal__cell-content,.vuecal--date-picker:not(.vuecal--day-view) .vuecal__cell--today .vuecal__cell-content{\n  border-color:#42b982\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/aw/AwNewTaskModal.vue?vue&type=style&index=0&id=62ba529c&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/aw/AwNewTaskModal.vue?vue&type=style&index=0&id=62ba529c&scoped=true&lang=css& ***!
@@ -3196,6 +3964,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".worker[data-v-f73675ec] {\n  position: relative;\n}\n.worker[data-v-f73675ec]::before,\n.worker[data-v-f73675ec]::after {\n  --scale: 0;\n  position: absolute;\n  top: -.25rem;\n  left: 50%;\n  transform: translateX(-50%) translateY(-100%) scale(var(--scale));\n  transition: 150ms transform;\n  transform-origin: bottom center;\n}\n.worker[data-v-f73675ec]::before {\n  content: attr(data-tooltip);\n  color: rgba(55, 65, 81, var(--tw-bg-opacity));\n  font-weight: 500;\n  padding: .3rem;\n  width: auto;\n  background: white;\n  box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3);\n  border-radius: .3rem;\n  text-align: center;\n  z-index: 1;\n}\n.worker[data-v-f73675ec]:hover::before,\n.worker[data-v-f73675ec]:hover::after {\n  --scale: 1;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* You can easily set a different style for each split of your days. */\n.vuecal__cell-split.dad {\n  background-color: rgba(221, 238, 255, 0.5);\n}\n.vuecal__cell-split.mom {\n  background-color: rgba(255, 232, 251, 0.5);\n}\n.vuecal__cell-split.kid1 {\n  background-color: rgba(221, 255, 239, 0.5);\n}\n.vuecal__cell-split.kid2 {\n  background-color: rgba(255, 250, 196, 0.5);\n}\n.vuecal__cell-split.kid3 {\n  background-color: rgba(255, 206, 178, 0.5);\n}\n.vuecal__cell-split .split-label {\n  color: rgba(0, 0, 0, 0.1);\n  font-size: 26px;\n}\n\n/* Different color for different event types. */\n.vuecal__event.leisure {\n  background-color: rgba(253, 156, 66, 0.9);\n  border: 1px solid rgb(233, 136, 46);\n  color: #fff;\n}\n.vuecal__event.health {\n  background-color: rgba(164, 230, 210, 0.9);\n  border: 1px solid rgb(144, 210, 190);\n}\n.vuecal__event.sport {\n  background-color: rgba(255, 102, 102, 0.9);\n  border: 1px solid rgb(235, 82, 82);\n  color: #fff;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -29058,6 +29845,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Plan.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -29651,6 +30468,10561 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 (function(t,e){ true?module.exports=e(__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js")):undefined})("undefined"!==typeof self?self:this,(function(t){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var a=e[r]={i:r,l:!1,exports:{}};return t[r].call(a.exports,a,a.exports,n),a.l=!0,a.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"===typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var a in t)n.d(r,a,function(e){return t[e]}.bind(null,a));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t["default"]}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s="fb15")}({"00fd":function(t,e,n){var r=n("9e69"),a=Object.prototype,o=a.hasOwnProperty,i=a.toString,s=r?r.toStringTag:void 0;function c(t){var e=o.call(t,s),n=t[s];try{t[s]=void 0;var r=!0}catch(c){}var a=i.call(t);return r&&(e?t[s]=n:delete t[s]),a}t.exports=c},"03dd":function(t,e,n){var r=n("eac5"),a=n("57a5"),o=Object.prototype,i=o.hasOwnProperty;function s(t){if(!r(t))return a(t);var e=[];for(var n in Object(t))i.call(t,n)&&"constructor"!=n&&e.push(n);return e}t.exports=s},"0621":function(t,e,n){var r=n("9e69"),a=n("d370"),o=n("6747"),i=r?r.isConcatSpreadable:void 0;function s(t){return o(t)||a(t)||!!(i&&t&&t[i])}t.exports=s},"06cf":function(t,e,n){var r=n("83ab"),a=n("d1e7"),o=n("5c6c"),i=n("fc6a"),s=n("c04e"),c=n("5135"),u=n("0cfb"),l=Object.getOwnPropertyDescriptor;e.f=r?l:function(t,e){if(t=i(t),e=s(e,!0),u)try{return l(t,e)}catch(n){}if(c(t,e))return o(!a.f.call(t,e),t[e])}},"0733":function(t,e,n){"use strict";n.d(e,"b",(function(){return o})),n.d(e,"a",(function(){return i}));var r=n("2fa3"),a=n("9404");const o=function(t,e){if(!t||!t.addEventListener||!Object(a["j"])(e))return null;let n=!1,o=!1;const i=function(){return n=!0},s=function(){return n=!1},c=function(t){if(n)return n=!1,o=!0,void e(t);"click"!==t.type||o||e(t),o=!1};return Object(r["o"])(t,"touchstart",i,{passive:!0}),Object(r["o"])(t,"touchmove",s,{passive:!0}),Object(r["o"])(t,"click",c,{passive:!0}),Object(r["o"])(t,"touchend",c,{passive:!0}),function(){Object(r["n"])(t,"touchstart",i),Object(r["n"])(t,"touchmove",s),Object(r["n"])(t,"click",c),Object(r["n"])(t,"touchend",c)}},i=function(t,e,{maxSwipeTime:n,minHorizontalSwipeDistance:o,maxVerticalSwipeDistance:i}){if(!t||!t.addEventListener||!Object(a["j"])(e))return null;let s=0,c=0,u=null,l=!1;function d(t){const e=t.changedTouches[0];s=e.screenX,c=e.screenY,u=(new Date).getTime(),l=!0}function f(t){if(!l)return;l=!1;const r=t.changedTouches[0],a=r.screenX-s,d=r.screenY-c,f=(new Date).getTime()-u;if(f<n&&Math.abs(a)>=o&&Math.abs(d)<=i){const t={toLeft:!1,toRight:!1};a<0?t.toLeft=!0:t.toRight=!0,e(t)}}return Object(r["o"])(t,"touchstart",d,{passive:!0}),Object(r["o"])(t,"touchend",f,{passive:!0}),function(){Object(r["n"])(t,"touchstart",d),Object(r["n"])(t,"touchend",f)}}},"07c7":function(t,e){function n(){return!1}t.exports=n},"087d":function(t,e){function n(t,e){var n=-1,r=e.length,a=t.length;while(++n<r)t[a+n]=e[n];return t}t.exports=n},"08cc":function(t,e,n){var r=n("1a8c");function a(t){return t===t&&!r(t)}t.exports=a},"0b07":function(t,e,n){var r=n("34ac"),a=n("3698");function o(t,e){var n=a(t,e);return r(n)?n:void 0}t.exports=o},"0cfb":function(t,e,n){var r=n("83ab"),a=n("d039"),o=n("cc12");t.exports=!r&&!a((function(){return 7!=Object.defineProperty(o("div"),"a",{get:function(){return 7}}).a}))},"0d24":function(t,e,n){(function(t){var r=n("2b3e"),a=n("07c7"),o=e&&!e.nodeType&&e,i=o&&"object"==typeof t&&t&&!t.nodeType&&t,s=i&&i.exports===o,c=s?r.Buffer:void 0,u=c?c.isBuffer:void 0,l=u||a;t.exports=l}).call(this,n("62e4")(t))},"0da5":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-nav-arrow{display:flex;justify-content:center;align-items:center;line-height:var(--leading-snug);border-width:2px;border-style:solid;border-color:transparent;border-radius:var(--rounded)}.vc-nav-arrow.is-left{margin-right:auto}.vc-nav-arrow.is-right{margin-left:auto}.vc-nav-arrow:hover{background-color:var(--gray-900)}.vc-nav-arrow:focus{border-color:var(--accent-600)}.vc-nav-title{color:var(--accent-100);font-weight:var(--font-bold);line-height:var(--leading-snug);padding:4px 8px;border-radius:var(--rounded);border-width:2px;border-style:solid;border-color:transparent}.vc-nav-title:hover{background-color:var(--gray-900)}.vc-nav-title:focus{border-color:var(--accent-600)}.vc-nav-item{width:48px;text-align:center;line-height:var(--leading-snug);font-weight:var(--font-semibold);padding:4px 0;cursor:pointer;border-color:transparent;border-width:2px;border-style:solid;border-radius:var(--rounded)}.vc-nav-item:hover{color:var(--white);background-color:var(--gray-900);box-shadow:var(--shadow-inner)}.vc-nav-item:focus{border-color:var(--accent-600)}.vc-nav-item.is-active{color:var(--accent-900);background:var(--accent-100);font-weight:var(--font-bold);box-shadow:var(--shadow)}.vc-nav-item.is-active,.vc-nav-item.is-inactive{border-color:transparent}.vc-nav-item:is-inactive-current{color:var(--accent-100);font-weight:var(--bold);border-color:var(--accent-100)}.vc-nav-item.is-disabled{opacity:.25;pointer-events:none}.vc-is-dark .vc-nav-title{color:var(--gray-900)}.vc-is-dark .vc-nav-title:hover{background-color:var(--gray-200)}.vc-is-dark .vc-nav-title:focus{border-color:var(--accent-400)}.vc-is-dark .vc-nav-arrow:hover{background-color:var(--gray-200)}.vc-is-dark .vc-nav-arrow:focus{border-color:var(--accent-400)}.vc-is-dark .vc-nav-item:hover{color:var(--gray-900);background-color:var(--gray-200);box-shadow:none}.vc-is-dark .vc-nav-item:focus{border-color:var(--accent-400)}.vc-is-dark .vc-nav-item.is-active{color:var(--white);background:var(--accent-500)}.vc-is-dark .vc-nav-item.is-inactive-current{color:var(--accent-600);border-color:var(--accent-500)}",""]),t.exports=e},"0f0f":function(t,e,n){var r=n("8eeb"),a=n("9934");function o(t,e){return t&&r(e,a(e),t)}t.exports=o},"0f5c":function(t,e,n){var r=n("159a");function a(t,e,n){return null==t?t:r(t,e,n)}t.exports=a},"100e":function(t,e,n){var r=n("cd9d"),a=n("2286"),o=n("c1c9");function i(t,e){return o(a(t,e,r),t+"")}t.exports=i},1041:function(t,e,n){var r=n("8eeb"),a=n("a029");function o(t,e){return r(t,a(t),e)}t.exports=o},1290:function(t,e){function n(t){var e=typeof t;return"string"==e||"number"==e||"symbol"==e||"boolean"==e?"__proto__"!==t:null===t}t.exports=n},1310:function(t,e){function n(t){return null!=t&&"object"==typeof t}t.exports=n},1315:function(t,e,n){"use strict";n.d(e,"a",(function(){return d}));var r=n("8bbf"),a=n.n(r),o=n("9404");function i(t){return Object(o["m"])(t)&&(t={min:t}),Object(o["h"])(t)||(t=[t]),t.map((function(t){return Object(o["e"])(t,"raw")?t.raw:Object(o["p"])(t,(function(t,e){return e=Object(o["d"])({min:"min-width",max:"max-width"},e,e),`(${e}: ${t})`})).join(" and ")})).join(", ")}var s=n("85a9");let c=!1,u=!1,l=null;function d(t=s,e){l&&!e||c||(c=!0,u=!0,l=new a.a({data(){return{matches:[],queries:[]}},methods:{refreshQueries(){var e=this;window&&window.matchMedia&&(this.queries=Object(o["q"])(t,(function(t){const n=window.matchMedia(i(t));return n.addEventListener("change",e.refreshMatches),n})),this.refreshMatches())},refreshMatches(){this.matches=Object(o["v"])(this.queries).filter((function(t){return t[1].matches})).map((function(t){return t[0]}))}}}),c=!1)}a.a.mixin({beforeCreate(){c||d()},mounted(){u&&l&&(l.refreshQueries(),u=!1)},computed:{$screens(){return function(t,e){return l.matches.reduce((function(e,n){return Object(o["e"])(t,n)?t[n]:e}),Object(o["n"])(e)?t.default:e)}}}})},1368:function(t,e,n){var r=n("da03"),a=function(){var t=/[^.]+$/.exec(r&&r.keys&&r.keys.IE_PROTO||"");return t?"Symbol(src)_1."+t:""}();function o(t){return!!a&&a in t}t.exports=o},"14c3":function(t,e,n){var r=n("c6b6"),a=n("9263");t.exports=function(t,e){var n=t.exec;if("function"===typeof n){var o=n.call(t,e);if("object"!==typeof o)throw TypeError("RegExp exec method returned something other than an Object or null");return o}if("RegExp"!==r(t))throw TypeError("RegExp#exec called on incompatible receiver");return a.call(t,e)}},"159a":function(t,e,n){var r=n("32b3"),a=n("e2e4"),o=n("c098"),i=n("1a8c"),s=n("f4d6");function c(t,e,n,c){if(!i(t))return t;e=a(e,t);var u=-1,l=e.length,d=l-1,f=t;while(null!=f&&++u<l){var p=s(e[u]),h=n;if("__proto__"===p||"constructor"===p||"prototype"===p)return t;if(u!=d){var v=f[p];h=c?c(v,p,f):void 0,void 0===h&&(h=i(v)?v:o(e[u+1])?[]:{})}r(f,p,h),f=f[p]}return t}t.exports=c},"15f3":function(t,e,n){var r=n("89d9"),a=n("8604");function o(t,e){return r(t,e,(function(e,n){return a(t,n)}))}t.exports=o},1838:function(t,e,n){var r=n("c05f"),a=n("9b02"),o=n("8604"),i=n("f608"),s=n("08cc"),c=n("20ec"),u=n("f4d6"),l=1,d=2;function f(t,e){return i(t)&&s(e)?c(u(t),e):function(n){var i=a(n,t);return void 0===i&&i===e?o(n,t):r(e,i,l|d)}}t.exports=f},"18d8":function(t,e,n){var r=n("234d"),a=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,o=/\\(\\)?/g,i=r((function(t){var e=[];return 46===t.charCodeAt(0)&&e.push(""),t.replace(a,(function(t,n,r,a){e.push(r?a.replace(o,"$1"):n||t)})),e}));t.exports=i},"1a0a":function(t,e,n){var r=n("6edb");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("6a9461e6",r,!0,{sourceMap:!1,shadowMode:!1})},"1a2d":function(t,e,n){var r=n("42a2"),a=n("1310"),o="[object Map]";function i(t){return a(t)&&r(t)==o}t.exports=i},"1a8c":function(t,e){function n(t){var e=typeof t;return null!=t&&("object"==e||"function"==e)}t.exports=n},"1bac":function(t,e,n){var r=n("7d1f"),a=n("a029"),o=n("9934");function i(t){return r(t,o,a)}t.exports=i},"1be4":function(t,e,n){var r=n("d066");t.exports=r("document","documentElement")},"1c3c":function(t,e,n){var r=n("9e69"),a=n("2474"),o=n("9638"),i=n("a2be"),s=n("edfa"),c=n("ac41"),u=1,l=2,d="[object Boolean]",f="[object Date]",p="[object Error]",h="[object Map]",v="[object Number]",b="[object RegExp]",g="[object Set]",m="[object String]",y="[object Symbol]",w="[object ArrayBuffer]",x="[object DataView]",D=r?r.prototype:void 0,j=D?D.valueOf:void 0;function O(t,e,n,r,D,O,k){switch(n){case x:if(t.byteLength!=e.byteLength||t.byteOffset!=e.byteOffset)return!1;t=t.buffer,e=e.buffer;case w:return!(t.byteLength!=e.byteLength||!O(new a(t),new a(e)));case d:case f:case v:return o(+t,+e);case p:return t.name==e.name&&t.message==e.message;case b:case m:return t==e+"";case h:var M=s;case g:var P=r&u;if(M||(M=c),t.size!=e.size&&!P)return!1;var S=k.get(t);if(S)return S==e;r|=l,k.set(t,e);var Y=i(M(t),M(e),r,D,O,k);return k["delete"](t),Y;case y:if(j)return j.call(t)==j.call(e)}return!1}t.exports=O},"1cec":function(t,e,n){var r=n("0b07"),a=n("2b3e"),o=r(a,"Promise");t.exports=o},"1d80":function(t,e){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on "+t);return t}},"1efc":function(t,e){function n(t){var e=this.has(t)&&delete this.__data__[t];return this.size-=e?1:0,e}t.exports=n},"1fc8":function(t,e,n){var r=n("4245");function a(t,e){var n=r(this,t),a=n.size;return n.set(t,e),this.size+=n.size==a?0:1,this}t.exports=a},"20ec":function(t,e){function n(t,e){return function(n){return null!=n&&(n[t]===e&&(void 0!==e||t in Object(n)))}}t.exports=n},2285:function(t,e,n){"use strict";var r=n("2a4d"),a=n.n(r);a.a},2286:function(t,e,n){var r=n("85e3"),a=Math.max;function o(t,e,n){return e=a(void 0===e?t.length-1:e,0),function(){var o=arguments,i=-1,s=a(o.length-e,0),c=Array(s);while(++i<s)c[i]=o[e+i];i=-1;var u=Array(e+1);while(++i<e)u[i]=o[i];return u[e]=n(c),r(t,this,u)}}t.exports=o},"22f3":function(t,e,n){"use strict";n.d(e,"a",(function(){return i}));var r=n("cfe5"),a=n("2fa3"),o=n("9404");class i{constructor({key:t,hashcode:e,highlight:n,content:i,dot:s,bar:c,popover:u,dates:l,excludeDates:d,excludeMode:f,customData:p,order:h,pinPage:v},b,g){var m=this;this.key=Object(o["n"])(t)?Object(a["c"])():t,this.hashcode=e,this.customData=p,this.order=h||0,this.dateOpts={order:h,locale:g},this.pinPage=v,n&&(this.highlight=b.normalizeHighlight(n)),i&&(this.content=b.normalizeContent(i)),s&&(this.dot=b.normalizeDot(s)),c&&(this.bar=b.normalizeBar(c)),u&&(this.popover=u),l&&(this.dates=Object(o["h"])(l)?l:[l]),this.hasDates=Object(a["b"])(this.dates),d&&(this.excludeDates=Object(o["h"])(d)?d:[d]),this.hasExcludeDates=Object(a["b"])(this.excludeDates),this.excludeMode=f||"intersects",this.dates=(this.hasDates&&this.dates||this.hasExcludeDates&&[{}]||[]).map((function(t){return t&&(t instanceof r["a"]?t:new r["a"](t,m.dateOpts))})).filter((function(t){return t})),this.excludeDates=(this.hasExcludeDates&&this.excludeDates||[]).map((function(t){return t&&(t instanceof r["a"]?t:new r["a"](t,m.dateOpts))})).filter((function(t){return t})),this.isComplex=Object(o["u"])(this.dates,(function(t){return t.isComplex}))}intersectsDate(t){return!this.excludesDate(t)&&(this.dates.find((function(e){return e.intersectsDate(t)}))||!1)}includesDate(t){return t=t instanceof r["a"]?t:new r["a"](t,this.dateOpts),!this.excludesDate(t)&&(this.dates.find((function(e){return e.includesDate(t)}))||!1)}excludesDate(t){var e=this;return t=t instanceof r["a"]?t:new r["a"](t,this.dateOpts),this.hasExcludeDates&&this.excludeDates.find((function(n){return"intersects"===e.excludeMode&&n.intersectsDate(t)||"includes"===e.excludeMode&&n.includesDate(t)}))}intersectsDay(t){return!this.excludesDay(t)&&(this.dates.find((function(e){return e.intersectsDay(t)}))||!1)}excludesDay(t){return this.hasExcludeDates&&this.excludeDates.find((function(e){return e.intersectsDay(t)}))}}},"234d":function(t,e,n){var r=n("e380"),a=500;function o(t){var e=r(t,(function(t){return n.size===a&&n.clear(),t})),n=e.cache;return e}t.exports=o},"23a5":function(t){t.exports=JSON.parse('{"maxSwipeTime":300,"minHorizontalSwipeDistance":60,"maxVerticalSwipeDistance":80}')},"23cb":function(t,e,n){var r=n("a691"),a=Math.max,o=Math.min;t.exports=function(t,e){var n=r(t);return n<0?a(n+e,0):o(n,e)}},"23e7":function(t,e,n){var r=n("da84"),a=n("06cf").f,o=n("9112"),i=n("6eeb"),s=n("ce4e"),c=n("e893"),u=n("94ca");t.exports=function(t,e){var n,l,d,f,p,h,v=t.target,b=t.global,g=t.stat;if(l=b?r:g?r[v]||s(v,{}):(r[v]||{}).prototype,l)for(d in e){if(p=e[d],t.noTargetGet?(h=a(l,d),f=h&&h.value):f=l[d],n=u(b?d:v+(g?".":"#")+d,t.forced),!n&&void 0!==f){if(typeof p===typeof f)continue;c(p,f)}(t.sham||f&&f.sham)&&o(p,"sham",!0),i(l,d,p,t)}}},2411:function(t,e,n){var r=n("f909"),a=n("2ec1"),o=a((function(t,e,n,a){r(t,e,n,a)}));t.exports=o},"241c":function(t,e,n){var r=n("ca84"),a=n("7839"),o=a.concat("length","prototype");e.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},"242e":function(t,e,n){var r=n("72af"),a=n("ec69");function o(t,e){return t&&r(t,e,a)}t.exports=o},2474:function(t,e,n){var r=n("2b3e"),a=r.Uint8Array;t.exports=a},2478:function(t,e,n){var r=n("4245");function a(t){return r(this,t).get(t)}t.exports=a},"24fb":function(t,e,n){"use strict";function r(t,e){var n=t[1]||"",r=t[3];if(!r)return n;if(e&&"function"===typeof btoa){var o=a(r),i=r.sources.map((function(t){return"/*# sourceURL=".concat(r.sourceRoot||"").concat(t," */")}));return[n].concat(i).concat([o]).join("\n")}return[n].join("\n")}function a(t){var e=btoa(unescape(encodeURIComponent(JSON.stringify(t)))),n="sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(e);return"/*# ".concat(n," */")}t.exports=function(t){var e=[];return e.toString=function(){return this.map((function(e){var n=r(e,t);return e[2]?"@media ".concat(e[2]," {").concat(n,"}"):n})).join("")},e.i=function(t,n,r){"string"===typeof t&&(t=[[null,t,""]]);var a={};if(r)for(var o=0;o<this.length;o++){var i=this[o][0];null!=i&&(a[i]=!0)}for(var s=0;s<t.length;s++){var c=[].concat(t[s]);r&&a[c[0]]||(n&&(c[2]?c[2]="".concat(n," and ").concat(c[2]):c[2]=n),e.push(c))}},e}},2524:function(t,e,n){var r=n("6044"),a="__lodash_hash_undefined__";function o(t,e){var n=this.__data__;return this.size+=this.has(t)?0:1,n[t]=r&&void 0===e?a:e,this}t.exports=o},"253c":function(t,e,n){var r=n("3729"),a=n("1310"),o="[object Arguments]";function i(t){return a(t)&&r(t)==o}t.exports=i},2593:function(t,e,n){var r=n("15f3"),a=n("c6cf"),o=a((function(t,e){return null==t?{}:r(t,e)}));t.exports=o},"26e8":function(t,e){function n(t,e){return null!=t&&e in Object(t)}t.exports=n},2809:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-time-picker[data-v-c4600cf4]{display:flex;align-items:center;padding:8px}.vc-time-picker.vc-invalid[data-v-c4600cf4]{pointer-events:none;opacity:.5}.vc-time-picker.vc-bordered[data-v-c4600cf4]{border-top:1px solid var(--gray-400)}.vc-date-time[data-v-c4600cf4]{margin-left:8px}.vc-time-icon[data-v-c4600cf4]{width:16px;height:16px;color:var(--gray-600)}.vc-date[data-v-c4600cf4]{display:flex;align-items:center;font-size:var(--text-sm);font-weight:var(--font-semibold);text-transform:uppercase;padding:0 0 4px 4px;margin-top:-4px}.vc-date .vc-weekday[data-v-c4600cf4]{color:var(--gray-700);letter-spacing:var(--tracking-wide)}.vc-date .vc-month[data-v-c4600cf4]{color:var(--accent-600);margin-left:8px}.vc-date .vc-day[data-v-c4600cf4]{color:var(--accent-600);margin-left:4px}.vc-date .vc-year[data-v-c4600cf4]{color:var(--gray-500);margin-left:8px}.vc-am-pm[data-v-c4600cf4],.vc-time[data-v-c4600cf4]{display:flex;align-items:center}.vc-am-pm[data-v-c4600cf4]{background:var(--gray-200);color:var(--gray-800);margin-left:8px;padding:4px;border-radius:var(--rounded);height:30px}.vc-am-pm button[data-v-c4600cf4]{font-size:var(--text-sm);font-weight:var(--font-medium);padding:0 4px;background:transparent;border:2px solid transparent;border-radius:var(--rounded);line-height:var(--leading-snug)}.vc-am-pm button[data-v-c4600cf4]:hover{color:var(--gray-600)}.vc-am-pm button[data-v-c4600cf4]:focus{border-color:var(--accent-400)}.vc-am-pm button.active[data-v-c4600cf4]{background:var(--accent-600);color:var(--white)}.vc-am-pm button.active[data-v-c4600cf4]:hover{background:var(--accent-500)}.vc-am-pm button.active[data-v-c4600cf4]:focus{border-color:var(--accent-400)}.vc-is-dark .vc-time-picker[data-v-c4600cf4]{border-color:var(--gray-700)}.vc-is-dark .vc-time-icon[data-v-c4600cf4],.vc-is-dark .vc-weekday[data-v-c4600cf4]{color:var(--gray-400)}.vc-is-dark .vc-day[data-v-c4600cf4],.vc-is-dark .vc-month[data-v-c4600cf4]{color:var(--accent-400)}.vc-is-dark .vc-year[data-v-c4600cf4]{color:var(--gray-500)}.vc-is-dark .vc-am-pm[data-v-c4600cf4]{background:var(--gray-700);color:var(--gray-100)}.vc-is-dark .vc-am-pm[data-v-c4600cf4]:focus{border-color:var(--accent-500)}.vc-is-dark .vc-am-pm button[data-v-c4600cf4]:hover{color:var(--gray-400)}.vc-is-dark .vc-am-pm button[data-v-c4600cf4]:focus{border-color:var(--accent-500)}.vc-is-dark .vc-am-pm button.active[data-v-c4600cf4]{background:var(--accent-500);color:var(--white)}.vc-is-dark .vc-am-pm button.active[data-v-c4600cf4]:hover{background:var(--accent-600)}.vc-is-dark .vc-am-pm button.active[data-v-c4600cf4]:focus{border-color:var(--accent-500)}",""]),t.exports=e},"28c9":function(t,e){function n(){this.__data__=[],this.size=0}t.exports=n},"29ae":function(t,e,n){"use strict";n.d(e,"a",(function(){return J}));n("5319");var r=n("fe1f"),a=6e4;function o(t){return t.getTime()%a}function i(t){var e=new Date(t.getTime()),n=Math.ceil(e.getTimezoneOffset());e.setSeconds(0,0);var r=n>0,i=r?(a+o(e))%a:o(e);return n*a+i}function s(t,e){var n=f(e);return n.formatToParts?u(n,t):l(n,t)}var c={year:0,month:1,day:2,hour:3,minute:4,second:5};function u(t,e){for(var n=t.formatToParts(e),r=[],a=0;a<n.length;a++){var o=c[n[a].type];o>=0&&(r[o]=parseInt(n[a].value,10))}return r}function l(t,e){var n=t.format(e).replace(/\u200E/g,""),r=/(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(n);return[r[3],r[1],r[2],r[4],r[5],r[6]]}var d={};function f(t){if(!d[t]){var e=new Intl.DateTimeFormat("en-US",{hour12:!1,timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}).format(new Date("2014-06-25T04:00:00.123Z")),n="06/25/2014, 00:00:00"===e||"‎06‎/‎25‎/‎2014‎ ‎00‎:‎00‎:‎00"===e;d[t]=n?new Intl.DateTimeFormat("en-US",{hour12:!1,timeZone:t,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"}):new Intl.DateTimeFormat("en-US",{hourCycle:"h23",timeZone:t,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"})}return d[t]}var p=36e5,h=6e4,v={timezone:/([Z+-].*)$/,timezoneZ:/^(Z)$/,timezoneHH:/^([+-])(\d{2})$/,timezoneHHMM:/^([+-])(\d{2}):?(\d{2})$/,timezoneIANA:/(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/};function b(t,e){var n,r,a;if(n=v.timezoneZ.exec(t),n)return 0;if(n=v.timezoneHH.exec(t),n)return a=parseInt(n[2],10),g(a)?(r=a*p,"+"===n[1]?-r:r):NaN;if(n=v.timezoneHHMM.exec(t),n){a=parseInt(n[2],10);var o=parseInt(n[3],10);return g(a,o)?(r=a*p+o*h,"+"===n[1]?-r:r):NaN}if(n=v.timezoneIANA.exec(t),n){var i=s(e,t),c=Date.UTC(i[0],i[1]-1,i[2],i[3],i[4],i[5]),u=e.getTime()-e.getTime()%1e3;return-(c-u)}return 0}function g(t,e){return null==e||!(e<0||e>59)}var m=36e5,y=6e4,w=2,x={dateTimeDelimeter:/[T ]/,plainTime:/:/,timeZoneDelimeter:/[Z ]/i,YY:/^(\d{2})$/,YYY:[/^([+-]\d{2})$/,/^([+-]\d{3})$/,/^([+-]\d{4})$/],YYYY:/^(\d{4})/,YYYYY:[/^([+-]\d{4})/,/^([+-]\d{5})/,/^([+-]\d{6})/],MM:/^-(\d{2})$/,DDD:/^-?(\d{3})$/,MMDD:/^-?(\d{2})-?(\d{2})$/,Www:/^-?W(\d{2})$/,WwwD:/^-?W(\d{2})-?(\d{1})$/,HH:/^(\d{2}([.,]\d*)?)$/,HHMM:/^(\d{2}):?(\d{2}([.,]\d*)?)$/,HHMMSS:/^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,timezone:/([Z+-].*| UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/};function D(t,e){if(arguments.length<1)throw new TypeError("1 argument required, but only "+arguments.length+" present");if(null===t)return new Date(NaN);var n=e||{},a=null==n.additionalDigits?w:Object(r["a"])(n.additionalDigits);if(2!==a&&1!==a&&0!==a)throw new RangeError("additionalDigits must be 0, 1 or 2");if(t instanceof Date||"object"===typeof t&&"[object Date]"===Object.prototype.toString.call(t))return new Date(t.getTime());if("number"===typeof t||"[object Number]"===Object.prototype.toString.call(t))return new Date(t);if("string"!==typeof t&&"[object String]"!==Object.prototype.toString.call(t))return new Date(NaN);var o=j(t),s=O(o.date,a),c=s.year,u=s.restDateString,l=k(u,c);if(isNaN(l))return new Date(NaN);if(l){var d,f=l.getTime(),p=0;if(o.time&&(p=M(o.time),isNaN(p)))return new Date(NaN);if(o.timezone||n.timeZone){if(d=b(o.timezone||n.timeZone,new Date(f+p)),isNaN(d))return new Date(NaN);if(d=b(o.timezone||n.timeZone,new Date(f+p+d)),isNaN(d))return new Date(NaN)}else d=i(new Date(f+p)),d=i(new Date(f+p+d));return new Date(f+p+d)}return new Date(NaN)}function j(t){var e,n={},r=t.split(x.dateTimeDelimeter);if(x.plainTime.test(r[0])?(n.date=null,e=r[0]):(n.date=r[0],e=r[1],n.timezone=r[2],x.timeZoneDelimeter.test(n.date)&&(n.date=t.split(x.timeZoneDelimeter)[0],e=t.substr(n.date.length,t.length))),e){var a=x.timezone.exec(e);a?(n.time=e.replace(a[1],""),n.timezone=a[1]):n.time=e}return n}function O(t,e){var n,r=x.YYY[e],a=x.YYYYY[e];if(n=x.YYYY.exec(t)||a.exec(t),n){var o=n[1];return{year:parseInt(o,10),restDateString:t.slice(o.length)}}if(n=x.YY.exec(t)||r.exec(t),n){var i=n[1];return{year:100*parseInt(i,10),restDateString:t.slice(i.length)}}return{year:null}}function k(t,e){if(null===e)return null;var n,r,a,o;if(0===t.length)return r=new Date(0),r.setUTCFullYear(e),r;if(n=x.MM.exec(t),n)return r=new Date(0),a=parseInt(n[1],10)-1,E(e,a)?(r.setUTCFullYear(e,a),r):new Date(NaN);if(n=x.DDD.exec(t),n){r=new Date(0);var i=parseInt(n[1],10);return I(e,i)?(r.setUTCFullYear(e,0,i),r):new Date(NaN)}if(n=x.MMDD.exec(t),n){r=new Date(0),a=parseInt(n[1],10)-1;var s=parseInt(n[2],10);return E(e,a,s)?(r.setUTCFullYear(e,a,s),r):new Date(NaN)}if(n=x.Www.exec(t),n)return o=parseInt(n[1],10)-1,T(e,o)?P(e,o):new Date(NaN);if(n=x.WwwD.exec(t),n){o=parseInt(n[1],10)-1;var c=parseInt(n[2],10)-1;return T(e,o,c)?P(e,o,c):new Date(NaN)}return null}function M(t){var e,n,r;if(e=x.HH.exec(t),e)return n=parseFloat(e[1].replace(",",".")),$(n)?n%24*m:NaN;if(e=x.HHMM.exec(t),e)return n=parseInt(e[1],10),r=parseFloat(e[2].replace(",",".")),$(n,r)?n%24*m+r*y:NaN;if(e=x.HHMMSS.exec(t),e){n=parseInt(e[1],10),r=parseInt(e[2],10);var a=parseFloat(e[3].replace(",","."));return $(n,r,a)?n%24*m+r*y+1e3*a:NaN}return null}function P(t,e,n){e=e||0,n=n||0;var r=new Date(0);r.setUTCFullYear(t,0,4);var a=r.getUTCDay()||7,o=7*e+n+1-a;return r.setUTCDate(r.getUTCDate()+o),r}var S=[31,28,31,30,31,30,31,31,30,31,30,31],Y=[31,29,31,30,31,30,31,31,30,31,30,31];function _(t){return t%400===0||t%4===0&&t%100!==0}function E(t,e,n){if(e<0||e>11)return!1;if(null!=n){if(n<1)return!1;var r=_(t);if(r&&n>Y[e])return!1;if(!r&&n>S[e])return!1}return!0}function I(t,e){if(e<1)return!1;var n=_(t);return!(n&&e>366)&&!(!n&&e>365)}function T(t,e,n){return!(e<0||e>52)&&(null==n||!(n<0||n>6))}function $(t,e,n){return(null==t||!(t<0||t>=25))&&((null==e||!(e<0||e>=60))&&(null==n||!(n<0||n>=60)))}var C=n("f15d"),A=n("2fa3"),N=n("9404");const z=/d{1,2}|W{1,4}|M{1,4}|YY(?:YY)?|S{1,3}|Do|X{1,3}|([HhMsDm])\1?|[aA]|"[^"]*"|'[^']*'/g,L=/\d\d?/,F=/\d{3}/,R=/\d{4}/,H=/[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF/]+(\s*?[\u0600-\u06FF]+){1,2}/i,V=/\[([^]*?)\]/gm,W=function(){},U=function(t){return function(e,n,r){const a=r[t].indexOf(n.charAt(0).toUpperCase()+n.substr(1).toLowerCase());~a&&(e.month=a)}},B=["L","iso"],q=7,G=[31,28,31,30,31,30,31,31,30,31,30,31],X={D(t){return t.day},DD(t){return Object(A["q"])(t.day)},Do(t,e){return e.DoFn(t.day)},d(t){return t.weekday-1},dd(t){return Object(A["q"])(t.weekday-1)},W(t,e){return e.dayNamesNarrow[t.weekday-1]},WW(t,e){return e.dayNamesShorter[t.weekday-1]},WWW(t,e){return e.dayNamesShort[t.weekday-1]},WWWW(t,e){return e.dayNames[t.weekday-1]},M(t){return t.month},MM(t){return Object(A["q"])(t.month)},MMM(t,e){return e.monthNamesShort[t.month-1]},MMMM(t,e){return e.monthNames[t.month-1]},YY(t){return String(t.year).substr(2)},YYYY(t){return Object(A["q"])(t.year,4)},h(t){return t.hours%12||12},hh(t){return Object(A["q"])(t.hours%12||12)},H(t){return t.hours},HH(t){return Object(A["q"])(t.hours)},m(t){return t.minutes},mm(t){return Object(A["q"])(t.minutes)},s(t){return t.seconds},ss(t){return Object(A["q"])(t.seconds)},S(t){return Math.round(t.milliseconds/100)},SS(t){return Object(A["q"])(Math.round(t.milliseconds/10),2)},SSS(t){return Object(A["q"])(t.milliseconds,3)},a(t,e){return t.hours<12?e.amPm[0]:e.amPm[1]},A(t,e){return t.hours<12?e.amPm[0].toUpperCase():e.amPm[1].toUpperCase()},X(t){const e=t.timezoneOffset;return`${e>0?"-":"+"}${Object(A["q"])(Math.floor(Math.abs(e)/60),2)}`},XX(t){const e=t.timezoneOffset;return`${e>0?"-":"+"}${Object(A["q"])(100*Math.floor(Math.abs(e)/60)+Math.abs(e)%60,4)}`},XXX(t){const e=t.timezoneOffset;return`${e>0?"-":"+"}${Object(A["q"])(Math.floor(Math.abs(e)/60),2)}:${Object(A["q"])(Math.abs(e)%60,2)}`}},Z={D:[L,function(t,e){t.day=e}],Do:[new RegExp(L.source+H.source),function(t,e){t.day=parseInt(e,10)}],d:[L,W],W:[H,W],M:[L,function(t,e){t.month=e-1}],MMM:[H,U("monthNamesShort")],MMMM:[H,U("monthNames")],YY:[L,function(t,e){const n=new Date,r=+n.getFullYear().toString().substr(0,2);t.year=`${e>68?r-1:r}${e}`}],YYYY:[R,function(t,e){t.year=e}],S:[/\d/,function(t,e){t.millisecond=100*e}],SS:[/\d{2}/,function(t,e){t.millisecond=10*e}],SSS:[F,function(t,e){t.millisecond=e}],h:[L,function(t,e){t.hour=e}],m:[L,function(t,e){t.minute=e}],s:[L,function(t,e){t.second=e}],a:[H,function(t,e,n){const r=e.toLowerCase();r===n.amPm[0]?t.isPm=!1:r===n.amPm[1]&&(t.isPm=!0)}],X:[/[^\s]*?[+-]\d\d:?\d\d|[^\s]*?Z?/,function(t,e){"Z"===e&&(e="+00:00");const n=(""+e).match(/([+-]|\d\d)/gi);if(n){const e=60*n[1]+parseInt(n[2],10);t.timezoneOffset="+"===n[0]?e:-e}}]};function K(t,e){const n=(new Intl.DateTimeFormat).resolvedOptions().locale;let r;Object(N["m"])(t)?r=t:Object(N["e"])(t,"id")&&(r=t.id),r=(r||n).toLowerCase();const a=Object.keys(e),o=function(t){return a.find((function(e){return e.toLowerCase()===t}))};r=o(r)||o(r.substring(0,2))||n;const i={...e["en-IE"],...e[r],id:r};return t=Object(N["l"])(t)?Object(N["c"])(t,i):i,t}Z.DD=Z.D,Z.dd=Z.d,Z.WWWW=Z.WWW=Z.WW=Z.W,Z.MM=Z.M,Z.mm=Z.m,Z.hh=Z.H=Z.HH=Z.h,Z.ss=Z.s,Z.A=Z.a,Z.XXX=Z.XX=Z.X;class J{constructor(t,e=C["a"]){const{id:n,firstDayOfWeek:r,masks:a}=K(t,e);this.id=n,this.firstDayOfWeek=Object(N["a"])(r,1,q),this.masks=a,this.dayNames=this.getDayNames("long"),this.dayNamesShort=this.getDayNames("short"),this.dayNamesShorter=this.dayNamesShort.map((function(t){return t.substring(0,2)})),this.dayNamesNarrow=this.getDayNames("narrow"),this.monthNames=this.getMonthNames("long"),this.monthNamesShort=this.getMonthNames("short"),this.amPm=["am","pm"],this.monthData={},this.getMonthComps=this.getMonthComps.bind(this),this.parse=this.parse.bind(this),this.format=this.format.bind(this),this.toPage=this.toPage.bind(this)}format(t,e,n){var r=this;if(t=this.normalizeDate(t),!t)return"";e=this.normalizeMasks(e)[0];const a=[];return e=e.replace(V,(function(t,e){return a.push(e),"??"})),e=e.replace(z,(function(e){return e in X?X[e](r.getDateParts(t,n),r):e.slice(1,e.length-1)})),e.replace(/\?\?/g,(function(){return a.shift()}))}parse(t,e,n){var r=this;const a=this.normalizeMasks(e);return a.map((function(e){if("string"!==typeof e)throw new Error("Invalid mask in fecha.parse");let a=t;if(a.length>1e3)return!1;let o=!0;const i={};if(e.replace(z,(function(t){if(Z[t]){const e=Z[t],n=a.search(e[0]);~n?a.replace(e[0],(function(t){return e[1](i,t,r),a=a.substr(n+t.length),t})):o=!1}return Z[t]?"":t.slice(1,t.length-1)})),!o)return!1;const s=new Date;let c;return!0===i.isPm&&null!=i.hour&&12!==+i.hour?i.hour=+i.hour+12:!1===i.isPm&&12===+i.hour&&(i.hour=0),null!=i.timezoneOffset?(i.minute=+(i.minute||0)-+i.timezoneOffset,c=new Date(Date.UTC(i.year||s.getFullYear(),i.month||0,i.day||1,i.hour||0,i.minute||0,i.second||0,i.millisecond||0))):c=r.getDateFromParts({year:i.year||s.getFullYear(),month:(i.month||0)+1,day:i.day||1,hours:i.hour||0,minutes:i.minute||0,seconds:i.second||0,milliseconds:i.millisecond||0},n),c})).find((function(t){return t}))||new Date(t)}normalizeMasks(t){var e=this;return(Object(A["b"])(t)&&t||[Object(N["m"])(t)&&t||"YYYY-MM-DD"]).map((function(t){return B.reduce((function(t,n){return t.replace(n,e.masks[n]||"")}),t)}))}normalizeDate(t,e={}){let n=null,r=e.type;const a="auto"===r||!r;if(Object(N["k"])(t))r="number",n=new Date(+t);else if(Object(N["m"])(t)){r="string";const a=e.mask||"iso";n=t?this.parse(t,a,e.timezone):null}else Object(N["l"])(t)?(r="object",n=this.getDateFromParts(t,e.timezone)):(r="date",n=Object(N["i"])(t)?new Date(t.getTime()):null);return a&&(e.type=r),n&&!isNaN(n.getTime())?n:null}denormalizeDate(t,{type:e,mask:n,timezone:r}={}){switch(e){case"number":return t?t.getTime():NaN;case"string":return t?this.format(t,n||"iso",r):"";default:return t?new Date(t):null}}adjustTimeForDate(t,{timeAdjust:e,timezone:n}){if(e){const r=this.getDateParts(t,n);if("now"===e){const t=this.getDateParts(new Date,n);r.hours=t.hours,r.minutes=t.minutes,r.seconds=t.seconds}else{const t=e.split(":");r.hours=+t[0],r.minutes=+t[1],r.seconds=+t[2]}t=this.getDateFromParts(r,n)}return t}getDateParts(t,e){if(!t)return null;let n=t;if(e){const r=new Date(t.toLocaleString("en-US",{timeZone:e})),a=r.getTime()-t.getTime();n=new Date(t.getTime()+a)}const r=n.getSeconds(),a=n.getMinutes(),o=n.getHours(),i=n.getMonth()+1,s=n.getFullYear(),c=this.getMonthComps(i,s),u=n.getDate(),l=c.days-u+1,d=n.getDay()+1,f=Math.floor((u-1)/7+1),p=Math.floor((c.days-u)/7+1),h=Math.ceil((u+Math.abs(c.firstWeekday-c.firstDayOfWeek))/7),v=c.weeks-h+1,b={seconds:r,minutes:a,hours:o,day:u,dayFromEnd:l,weekday:d,weekdayOrdinal:f,weekdayOrdinalFromEnd:p,week:h,weekFromEnd:v,month:i,year:s,date:t,isValid:!0};return b.timezoneOffset=this.getTimezoneOffset(b,e)/6e4,b}getDateFromParts(t,e){if(!t)return null;const{year:n,month:r,day:a,hours:o=0,minutes:i=0,seconds:s=0,milliseconds:c=0}=t;if(void 0===n||void 0===r||void 0===a)return null;if(e){const t=`${Object(A["q"])(n,4)}-${Object(A["q"])(r,2)}-${Object(A["q"])(a,2)}T${Object(A["q"])(o,2)}:${Object(A["q"])(i,2)}:${Object(A["q"])(s,2)}.${Object(A["q"])(c,3)}`;return D(t,{timeZone:e})}return new Date(n,r-1,a,o,i,s,c)}getTimezoneOffset(t,e){const{year:n,month:r,day:a,hours:o=0,minutes:i=0,seconds:s=0,milliseconds:c=0}=t;let u;const l=new Date(Date.UTC(n,r-1,a,o,i,s,c));if(e){const t=`${Object(A["q"])(n,4)}-${Object(A["q"])(r,2)}-${Object(A["q"])(a,2)}T${Object(A["q"])(o,2)}:${Object(A["q"])(i,2)}:${Object(A["q"])(s,2)}.${Object(A["q"])(c,3)}`;u=D(t,{timeZone:e})}else u=new Date(n,r-1,a,o,i,s,c);return l-u}toPage(t,e){return Object(N["k"])(t)?Object(A["a"])(e,t):Object(N["m"])(t)?Object(A["r"])(this.normalizeDate(t)):Object(N["i"])(t)?Object(A["r"])(t):Object(N["l"])(t)?t:null}getMonthDates(t=2e3){const e=[];for(let n=0;n<12;n++)e.push(new Date(t,n,15));return e}getMonthNames(t){const e=new Intl.DateTimeFormat(this.id,{month:t,timezome:"UTC"});return this.getMonthDates().map((function(t){return e.format(t)}))}getWeekdayDates({year:t=2e3,utc:e=!1,firstDayOfWeek:n=this.firstDayOfWeek}={}){const r=[];for(let a=1,o=0;o<q;a++){const i=e?new Date(Date.UTC(t,0,a)):new Date(t,0,a),s=e?i.getUTCDay():i.getDay();(s===n-1||o>0)&&(r.push(i),o++)}return r}getDayNames(t){const e=new Intl.DateTimeFormat(this.id,{weekday:t,timeZone:"UTC"});return this.getWeekdayDates({firstDayOfWeek:1,utc:!0}).map((function(t){return e.format(t)}))}getMonthComps(t,e){const n=`${t}-${e}`;let r=this.monthData[n];if(!r){const a=e%4===0&&e%100!==0||e%400===0,o=new Date(e,t-1,1).getDay()+1,i=2===t&&a?29:G[t-1],s=Math.ceil((i+Math.abs(o-this.firstDayOfWeek))/q);r={firstDayOfWeek:this.firstDayOfWeek,inLeapYear:a,firstWeekday:o,days:i,weeks:s,month:t,year:e},this.monthData[n]=r}return r}getThisMonthComps(){const t=new Date;return this.getMonthComps(t.getMonth()+1,t.getFullYear())}getPrevMonthComps(t,e){return 1===t?this.getMonthComps(12,e-1):this.getMonthComps(t-1,e)}getNextMonthComps(t,e){return 12===t?this.getMonthComps(1,e+1):this.getMonthComps(t+1,e)}getDayId(t){return this.format(t,"YYYY-MM-DD")}getCalendarDays({weeks:t,monthComps:e,prevMonthComps:n,nextMonthComps:r},a){var o=this;const i=[],{firstDayOfWeek:s,firstWeekday:c}=e,u=c+(c<s?q:0)-s;let l=!0,d=!1,f=!1;const p=new Intl.DateTimeFormat(this.id,{weekday:"long",year:"numeric",month:"long",day:"numeric"});let h=n.days-u+1,v=n.days-h+1,b=Math.floor((h-1)/q+1),g=1,m=n.weeks,y=1,w=n.month,x=n.year;const D=new Date,j=D.getDate(),O=D.getMonth()+1,k=D.getFullYear(),M=function(t,e,n){return function(r,i,s,c){return o.normalizeDate({year:t,month:e,day:n,hours:r,minutes:i,seconds:s,milliseconds:c},{timezone:a})}};for(let P=1;P<=t;P++){for(let t=1,n=s;t<=q;t++,n+=n===q?1-q:1){l&&n===c&&(h=1,v=e.days,b=Math.floor((h-1)/q+1),g=Math.floor((e.days-h)/q+1),m=1,y=e.weeks,w=e.month,x=e.year,l=!1,d=!0);const a=M(x,w,h),o=a(12,0,0,0),s={start:a(0,0,0),end:a(23,59,59,999)},u=this.getDayId(o),D=t,S=q-t,Y=h===j&&w===O&&x===k,_=d&&1===h,E=d&&h===e.days,I=1===P,T=6===P,$=1===t,C=t===q;i.push({id:u,label:h.toString(),ariaLabel:p.format(new Date(x,w-1,h)),day:h,dayFromEnd:v,weekday:n,weekdayPosition:D,weekdayPositionFromEnd:S,weekdayOrdinal:b,weekdayOrdinalFromEnd:g,week:m,weekFromEnd:y,month:w,year:x,dateFromTime:a,date:o,range:s,isToday:Y,isFirstDay:_,isLastDay:E,inMonth:d,inPrevMonth:l,inNextMonth:f,onTop:I,onBottom:T,onLeft:$,onRight:C,classes:["id-"+u,"day-"+h,"day-from-end-"+v,"weekday-"+n,"weekday-position-"+D,"weekday-ordinal-"+b,"weekday-ordinal-from-end-"+g,"week-"+m,"week-from-end-"+y,{"is-today":Y,"is-first-day":_,"is-last-day":E,"in-month":d,"in-prev-month":l,"in-next-month":f,"on-top":I,"on-bottom":T,"on-left":$,"on-right":C}]}),d&&E?(d=!1,f=!0,h=1,v=r.days,b=1,g=Math.floor((r.days-h)/q+1),m=1,y=r.weeks,w=r.month,x=r.year):(h++,v--,b=Math.floor((h-1)/q+1),g=Math.floor((e.days-h)/q+1))}m++,y--}return i}}},"29f3":function(t,e){var n=Object.prototype,r=n.toString;function a(t){return r.call(t)}t.exports=a},"2a4d":function(t,e,n){var r=n("7dfe");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("99a6e87a",r,!0,{sourceMap:!1,shadowMode:!1})},"2af9":function(t,e,n){"use strict";n.r(e),n.d(e,"Calendar",(function(){return An})),n.d(e,"CalendarNav",(function(){return on})),n.d(e,"DatePicker",(function(){return ur})),n.d(e,"Popover",(function(){return be})),n.d(e,"Grid",(function(){return Ve}));n("ddb0");var r=n("f7f1"),a=n("fe1f"),o=n("fd3a"),i=n("8c86");function s(t,e){Object(i["a"])(2,arguments);var n=Object(o["a"])(t),r=Object(a["a"])(e);if(isNaN(r))return new Date(NaN);if(!r)return n;var s=n.getDate(),c=new Date(n.getTime());c.setMonth(n.getMonth()+r+1,0);var u=c.getDate();return s>=u?c:(n.setFullYear(c.getFullYear(),c.getMonth(),s),n)}function c(t,e){Object(i["a"])(2,arguments);var n=Object(a["a"])(e);return s(t,12*n)}function u(t){var e=t.getBoundingClientRect();return{width:e.width,height:e.height,top:e.top,right:e.right,bottom:e.bottom,left:e.left,x:e.left,y:e.top}}function l(t){if("[object Window]"!==t.toString()){var e=t.ownerDocument;return e&&e.defaultView||window}return t}function d(t){var e=l(t),n=e.pageXOffset,r=e.pageYOffset;return{scrollLeft:n,scrollTop:r}}function f(t){var e=l(t).Element;return t instanceof e||t instanceof Element}function p(t){var e=l(t).HTMLElement;return t instanceof e||t instanceof HTMLElement}function h(t){var e=l(t).ShadowRoot;return t instanceof e||t instanceof ShadowRoot}function v(t){return{scrollLeft:t.scrollLeft,scrollTop:t.scrollTop}}function b(t){return t!==l(t)&&p(t)?v(t):d(t)}function g(t){return t?(t.nodeName||"").toLowerCase():null}function m(t){return((f(t)?t.ownerDocument:t.document)||window.document).documentElement}function y(t){return u(m(t)).left+d(t).scrollLeft}function w(t){return l(t).getComputedStyle(t)}function x(t){var e=w(t),n=e.overflow,r=e.overflowX,a=e.overflowY;return/auto|scroll|overlay|hidden/.test(n+a+r)}function D(t,e,n){void 0===n&&(n=!1);var r=m(e),a=u(t),o=p(e),i={scrollLeft:0,scrollTop:0},s={x:0,y:0};return(o||!o&&!n)&&(("body"!==g(e)||x(r))&&(i=b(e)),p(e)?(s=u(e),s.x+=e.clientLeft,s.y+=e.clientTop):r&&(s.x=y(r))),{x:a.left+i.scrollLeft-s.x,y:a.top+i.scrollTop-s.y,width:a.width,height:a.height}}function j(t){return{x:t.offsetLeft,y:t.offsetTop,width:t.offsetWidth,height:t.offsetHeight}}function O(t){return"html"===g(t)?t:t.assignedSlot||t.parentNode||t.host||m(t)}function k(t){return["html","body","#document"].indexOf(g(t))>=0?t.ownerDocument.body:p(t)&&x(t)?t:k(O(t))}function M(t,e){void 0===e&&(e=[]);var n=k(t),r="body"===g(n),a=l(n),o=r?[a].concat(a.visualViewport||[],x(n)?n:[]):n,i=e.concat(o);return r?i:i.concat(M(O(o)))}function P(t){return["table","td","th"].indexOf(g(t))>=0}function S(t){if(!p(t)||"fixed"===w(t).position)return null;var e=t.offsetParent;if(e){var n=m(e);if("body"===g(e)&&"static"===w(e).position&&"static"!==w(n).position)return n}return e}function Y(t){var e=O(t);while(p(e)&&["html","body"].indexOf(g(e))<0){var n=w(e);if("none"!==n.transform||"none"!==n.perspective||n.willChange&&"auto"!==n.willChange)return e;e=e.parentNode}return null}function _(t){var e=l(t),n=S(t);while(n&&P(n)&&"static"===w(n).position)n=S(n);return n&&"body"===g(n)&&"static"===w(n).position?e:n||Y(t)||e}var E="top",I="bottom",T="right",$="left",C="auto",A=[E,I,T,$],N="start",z="end",L="clippingParents",F="viewport",R="popper",H="reference",V=A.reduce((function(t,e){return t.concat([e+"-"+N,e+"-"+z])}),[]),W=[].concat(A,[C]).reduce((function(t,e){return t.concat([e,e+"-"+N,e+"-"+z])}),[]),U="beforeRead",B="read",q="afterRead",G="beforeMain",X="main",Z="afterMain",K="beforeWrite",J="write",Q="afterWrite",tt=[U,B,q,G,X,Z,K,J,Q];function et(t){var e=new Map,n=new Set,r=[];function a(t){n.add(t.name);var o=[].concat(t.requires||[],t.requiresIfExists||[]);o.forEach((function(t){if(!n.has(t)){var r=e.get(t);r&&a(r)}})),r.push(t)}return t.forEach((function(t){e.set(t.name,t)})),t.forEach((function(t){n.has(t.name)||a(t)})),r}function nt(t){var e=et(t);return tt.reduce((function(t,n){return t.concat(e.filter((function(t){return t.phase===n})))}),[])}function rt(t){var e;return function(){return e||(e=new Promise((function(n){Promise.resolve().then((function(){e=void 0,n(t())}))}))),e}}function at(t){var e=t.reduce((function(t,e){var n=t[e.name];return t[e.name]=n?Object.assign(Object.assign(Object.assign({},n),e),{},{options:Object.assign(Object.assign({},n.options),e.options),data:Object.assign(Object.assign({},n.data),e.data)}):e,t}),{});return Object.keys(e).map((function(t){return e[t]}))}var ot={placement:"bottom",modifiers:[],strategy:"absolute"};function it(){for(var t=arguments.length,e=new Array(t),n=0;n<t;n++)e[n]=arguments[n];return!e.some((function(t){return!(t&&"function"===typeof t.getBoundingClientRect)}))}function st(t){void 0===t&&(t={});var e=t,n=e.defaultModifiers,r=void 0===n?[]:n,a=e.defaultOptions,o=void 0===a?ot:a;return function(t,e,n){void 0===n&&(n=o);var a={placement:"bottom",orderedModifiers:[],options:Object.assign(Object.assign({},ot),o),modifiersData:{},elements:{reference:t,popper:e},attributes:{},styles:{}},i=[],s=!1,c={state:a,setOptions:function(n){l(),a.options=Object.assign(Object.assign(Object.assign({},o),a.options),n),a.scrollParents={reference:f(t)?M(t):t.contextElement?M(t.contextElement):[],popper:M(e)};var i=nt(at([].concat(r,a.options.modifiers)));return a.orderedModifiers=i.filter((function(t){return t.enabled})),u(),c.update()},forceUpdate:function(){if(!s){var t=a.elements,e=t.reference,n=t.popper;if(it(e,n)){a.rects={reference:D(e,_(n),"fixed"===a.options.strategy),popper:j(n)},a.reset=!1,a.placement=a.options.placement,a.orderedModifiers.forEach((function(t){return a.modifiersData[t.name]=Object.assign({},t.data)}));for(var r=0;r<a.orderedModifiers.length;r++)if(!0!==a.reset){var o=a.orderedModifiers[r],i=o.fn,u=o.options,l=void 0===u?{}:u,d=o.name;"function"===typeof i&&(a=i({state:a,options:l,name:d,instance:c})||a)}else a.reset=!1,r=-1}}},update:rt((function(){return new Promise((function(t){c.forceUpdate(),t(a)}))})),destroy:function(){l(),s=!0}};if(!it(t,e))return c;function u(){a.orderedModifiers.forEach((function(t){var e=t.name,n=t.options,r=void 0===n?{}:n,o=t.effect;if("function"===typeof o){var s=o({state:a,name:e,instance:c,options:r}),u=function(){};i.push(s||u)}}))}function l(){i.forEach((function(t){return t()})),i=[]}return c.setOptions(n).then((function(t){!s&&n.onFirstUpdate&&n.onFirstUpdate(t)})),c}}var ct={passive:!0};function ut(t){var e=t.state,n=t.instance,r=t.options,a=r.scroll,o=void 0===a||a,i=r.resize,s=void 0===i||i,c=l(e.elements.popper),u=[].concat(e.scrollParents.reference,e.scrollParents.popper);return o&&u.forEach((function(t){t.addEventListener("scroll",n.update,ct)})),s&&c.addEventListener("resize",n.update,ct),function(){o&&u.forEach((function(t){t.removeEventListener("scroll",n.update,ct)})),s&&c.removeEventListener("resize",n.update,ct)}}var lt={name:"eventListeners",enabled:!0,phase:"write",fn:function(){},effect:ut,data:{}};function dt(t){return t.split("-")[0]}function ft(t){return t.split("-")[1]}function pt(t){return["top","bottom"].indexOf(t)>=0?"x":"y"}function ht(t){var e,n=t.reference,r=t.element,a=t.placement,o=a?dt(a):null,i=a?ft(a):null,s=n.x+n.width/2-r.width/2,c=n.y+n.height/2-r.height/2;switch(o){case E:e={x:s,y:n.y-r.height};break;case I:e={x:s,y:n.y+n.height};break;case T:e={x:n.x+n.width,y:c};break;case $:e={x:n.x-r.width,y:c};break;default:e={x:n.x,y:n.y}}var u=o?pt(o):null;if(null!=u){var l="y"===u?"height":"width";switch(i){case N:e[u]=Math.floor(e[u])-Math.floor(n[l]/2-r[l]/2);break;case z:e[u]=Math.floor(e[u])+Math.ceil(n[l]/2-r[l]/2);break;default:}}return e}function vt(t){var e=t.state,n=t.name;e.modifiersData[n]=ht({reference:e.rects.reference,element:e.rects.popper,strategy:"absolute",placement:e.placement})}var bt={name:"popperOffsets",enabled:!0,phase:"read",fn:vt,data:{}},gt={top:"auto",right:"auto",bottom:"auto",left:"auto"};function mt(t){var e=t.x,n=t.y,r=window,a=r.devicePixelRatio||1;return{x:Math.round(e*a)/a||0,y:Math.round(n*a)/a||0}}function yt(t){var e,n=t.popper,r=t.popperRect,a=t.placement,o=t.offsets,i=t.position,s=t.gpuAcceleration,c=t.adaptive,u=mt(o),d=u.x,f=u.y,p=o.hasOwnProperty("x"),h=o.hasOwnProperty("y"),v=$,b=E,g=window;if(c){var y=_(n);y===l(n)&&(y=m(n)),a===E&&(b=I,f-=y.clientHeight-r.height,f*=s?1:-1),a===$&&(v=T,d-=y.clientWidth-r.width,d*=s?1:-1)}var w,x=Object.assign({position:i},c&&gt);return s?Object.assign(Object.assign({},x),{},(w={},w[b]=h?"0":"",w[v]=p?"0":"",w.transform=(g.devicePixelRatio||1)<2?"translate("+d+"px, "+f+"px)":"translate3d("+d+"px, "+f+"px, 0)",w)):Object.assign(Object.assign({},x),{},(e={},e[b]=h?f+"px":"",e[v]=p?d+"px":"",e.transform="",e))}function wt(t){var e=t.state,n=t.options,r=n.gpuAcceleration,a=void 0===r||r,o=n.adaptive,i=void 0===o||o,s={placement:dt(e.placement),popper:e.elements.popper,popperRect:e.rects.popper,gpuAcceleration:a};null!=e.modifiersData.popperOffsets&&(e.styles.popper=Object.assign(Object.assign({},e.styles.popper),yt(Object.assign(Object.assign({},s),{},{offsets:e.modifiersData.popperOffsets,position:e.options.strategy,adaptive:i})))),null!=e.modifiersData.arrow&&(e.styles.arrow=Object.assign(Object.assign({},e.styles.arrow),yt(Object.assign(Object.assign({},s),{},{offsets:e.modifiersData.arrow,position:"absolute",adaptive:!1})))),e.attributes.popper=Object.assign(Object.assign({},e.attributes.popper),{},{"data-popper-placement":e.placement})}var xt={name:"computeStyles",enabled:!0,phase:"beforeWrite",fn:wt,data:{}};function Dt(t){var e=t.state;Object.keys(e.elements).forEach((function(t){var n=e.styles[t]||{},r=e.attributes[t]||{},a=e.elements[t];p(a)&&g(a)&&(Object.assign(a.style,n),Object.keys(r).forEach((function(t){var e=r[t];!1===e?a.removeAttribute(t):a.setAttribute(t,!0===e?"":e)})))}))}function jt(t){var e=t.state,n={popper:{position:e.options.strategy,left:"0",top:"0",margin:"0"},arrow:{position:"absolute"},reference:{}};return Object.assign(e.elements.popper.style,n.popper),e.elements.arrow&&Object.assign(e.elements.arrow.style,n.arrow),function(){Object.keys(e.elements).forEach((function(t){var r=e.elements[t],a=e.attributes[t]||{},o=Object.keys(e.styles.hasOwnProperty(t)?e.styles[t]:n[t]),i=o.reduce((function(t,e){return t[e]="",t}),{});p(r)&&g(r)&&(Object.assign(r.style,i),Object.keys(a).forEach((function(t){r.removeAttribute(t)})))}))}}var Ot={name:"applyStyles",enabled:!0,phase:"write",fn:Dt,effect:jt,requires:["computeStyles"]};function kt(t,e,n){var r=dt(t),a=[$,E].indexOf(r)>=0?-1:1,o="function"===typeof n?n(Object.assign(Object.assign({},e),{},{placement:t})):n,i=o[0],s=o[1];return i=i||0,s=(s||0)*a,[$,T].indexOf(r)>=0?{x:s,y:i}:{x:i,y:s}}function Mt(t){var e=t.state,n=t.options,r=t.name,a=n.offset,o=void 0===a?[0,0]:a,i=W.reduce((function(t,n){return t[n]=kt(n,e.rects,o),t}),{}),s=i[e.placement],c=s.x,u=s.y;null!=e.modifiersData.popperOffsets&&(e.modifiersData.popperOffsets.x+=c,e.modifiersData.popperOffsets.y+=u),e.modifiersData[r]=i}var Pt={name:"offset",enabled:!0,phase:"main",requires:["popperOffsets"],fn:Mt},St={left:"right",right:"left",bottom:"top",top:"bottom"};function Yt(t){return t.replace(/left|right|bottom|top/g,(function(t){return St[t]}))}var _t={start:"end",end:"start"};function Et(t){return t.replace(/start|end/g,(function(t){return _t[t]}))}function It(t){var e=l(t),n=m(t),r=e.visualViewport,a=n.clientWidth,o=n.clientHeight,i=0,s=0;return r&&(a=r.width,o=r.height,/^((?!chrome|android).)*safari/i.test(navigator.userAgent)||(i=r.offsetLeft,s=r.offsetTop)),{width:a,height:o,x:i+y(t),y:s}}function Tt(t){var e=m(t),n=d(t),r=t.ownerDocument.body,a=Math.max(e.scrollWidth,e.clientWidth,r?r.scrollWidth:0,r?r.clientWidth:0),o=Math.max(e.scrollHeight,e.clientHeight,r?r.scrollHeight:0,r?r.clientHeight:0),i=-n.scrollLeft+y(t),s=-n.scrollTop;return"rtl"===w(r||e).direction&&(i+=Math.max(e.clientWidth,r?r.clientWidth:0)-a),{width:a,height:o,x:i,y:s}}function $t(t,e){var n=e.getRootNode&&e.getRootNode();if(t.contains(e))return!0;if(h(n)){var r=e;do{if(r&&t.isSameNode(r))return!0;r=r.parentNode||r.host}while(r)}return!1}function Ct(t){return Object.assign(Object.assign({},t),{},{left:t.x,top:t.y,right:t.x+t.width,bottom:t.y+t.height})}function At(t){var e=u(t);return e.top=e.top+t.clientTop,e.left=e.left+t.clientLeft,e.bottom=e.top+t.clientHeight,e.right=e.left+t.clientWidth,e.width=t.clientWidth,e.height=t.clientHeight,e.x=e.left,e.y=e.top,e}function Nt(t,e){return e===F?Ct(It(t)):p(e)?At(e):Ct(Tt(m(t)))}function zt(t){var e=M(O(t)),n=["absolute","fixed"].indexOf(w(t).position)>=0,r=n&&p(t)?_(t):t;return f(r)?e.filter((function(t){return f(t)&&$t(t,r)&&"body"!==g(t)})):[]}function Lt(t,e,n){var r="clippingParents"===e?zt(t):[].concat(e),a=[].concat(r,[n]),o=a[0],i=a.reduce((function(e,n){var r=Nt(t,n);return e.top=Math.max(r.top,e.top),e.right=Math.min(r.right,e.right),e.bottom=Math.min(r.bottom,e.bottom),e.left=Math.max(r.left,e.left),e}),Nt(t,o));return i.width=i.right-i.left,i.height=i.bottom-i.top,i.x=i.left,i.y=i.top,i}function Ft(){return{top:0,right:0,bottom:0,left:0}}function Rt(t){return Object.assign(Object.assign({},Ft()),t)}function Ht(t,e){return e.reduce((function(e,n){return e[n]=t,e}),{})}function Vt(t,e){void 0===e&&(e={});var n=e,r=n.placement,a=void 0===r?t.placement:r,o=n.boundary,i=void 0===o?L:o,s=n.rootBoundary,c=void 0===s?F:s,l=n.elementContext,d=void 0===l?R:l,p=n.altBoundary,h=void 0!==p&&p,v=n.padding,b=void 0===v?0:v,g=Rt("number"!==typeof b?b:Ht(b,A)),y=d===R?H:R,w=t.elements.reference,x=t.rects.popper,D=t.elements[h?y:d],j=Lt(f(D)?D:D.contextElement||m(t.elements.popper),i,c),O=u(w),k=ht({reference:O,element:x,strategy:"absolute",placement:a}),M=Ct(Object.assign(Object.assign({},x),k)),P=d===R?M:O,S={top:j.top-P.top+g.top,bottom:P.bottom-j.bottom+g.bottom,left:j.left-P.left+g.left,right:P.right-j.right+g.right},Y=t.modifiersData.offset;if(d===R&&Y){var _=Y[a];Object.keys(S).forEach((function(t){var e=[T,I].indexOf(t)>=0?1:-1,n=[E,I].indexOf(t)>=0?"y":"x";S[t]+=_[n]*e}))}return S}function Wt(t,e){void 0===e&&(e={});var n=e,r=n.placement,a=n.boundary,o=n.rootBoundary,i=n.padding,s=n.flipVariations,c=n.allowedAutoPlacements,u=void 0===c?W:c,l=ft(r),d=l?s?V:V.filter((function(t){return ft(t)===l})):A,f=d.filter((function(t){return u.indexOf(t)>=0}));0===f.length&&(f=d);var p=f.reduce((function(e,n){return e[n]=Vt(t,{placement:n,boundary:a,rootBoundary:o,padding:i})[dt(n)],e}),{});return Object.keys(p).sort((function(t,e){return p[t]-p[e]}))}function Ut(t){if(dt(t)===C)return[];var e=Yt(t);return[Et(t),e,Et(e)]}function Bt(t){var e=t.state,n=t.options,r=t.name;if(!e.modifiersData[r]._skip){for(var a=n.mainAxis,o=void 0===a||a,i=n.altAxis,s=void 0===i||i,c=n.fallbackPlacements,u=n.padding,l=n.boundary,d=n.rootBoundary,f=n.altBoundary,p=n.flipVariations,h=void 0===p||p,v=n.allowedAutoPlacements,b=e.options.placement,g=dt(b),m=g===b,y=c||(m||!h?[Yt(b)]:Ut(b)),w=[b].concat(y).reduce((function(t,n){return t.concat(dt(n)===C?Wt(e,{placement:n,boundary:l,rootBoundary:d,padding:u,flipVariations:h,allowedAutoPlacements:v}):n)}),[]),x=e.rects.reference,D=e.rects.popper,j=new Map,O=!0,k=w[0],M=0;M<w.length;M++){var P=w[M],S=dt(P),Y=ft(P)===N,_=[E,I].indexOf(S)>=0,A=_?"width":"height",z=Vt(e,{placement:P,boundary:l,rootBoundary:d,altBoundary:f,padding:u}),L=_?Y?T:$:Y?I:E;x[A]>D[A]&&(L=Yt(L));var F=Yt(L),R=[];if(o&&R.push(z[S]<=0),s&&R.push(z[L]<=0,z[F]<=0),R.every((function(t){return t}))){k=P,O=!1;break}j.set(P,R)}if(O)for(var H=h?3:1,V=function(t){var e=w.find((function(e){var n=j.get(e);if(n)return n.slice(0,t).every((function(t){return t}))}));if(e)return k=e,"break"},W=H;W>0;W--){var U=V(W);if("break"===U)break}e.placement!==k&&(e.modifiersData[r]._skip=!0,e.placement=k,e.reset=!0)}}var qt={name:"flip",enabled:!0,phase:"main",fn:Bt,requiresIfExists:["offset"],data:{_skip:!1}};function Gt(t){return"x"===t?"y":"x"}function Xt(t,e,n){return Math.max(t,Math.min(e,n))}function Zt(t){var e=t.state,n=t.options,r=t.name,a=n.mainAxis,o=void 0===a||a,i=n.altAxis,s=void 0!==i&&i,c=n.boundary,u=n.rootBoundary,l=n.altBoundary,d=n.padding,f=n.tether,p=void 0===f||f,h=n.tetherOffset,v=void 0===h?0:h,b=Vt(e,{boundary:c,rootBoundary:u,padding:d,altBoundary:l}),g=dt(e.placement),m=ft(e.placement),y=!m,w=pt(g),x=Gt(w),D=e.modifiersData.popperOffsets,O=e.rects.reference,k=e.rects.popper,M="function"===typeof v?v(Object.assign(Object.assign({},e.rects),{},{placement:e.placement})):v,P={x:0,y:0};if(D){if(o){var S="y"===w?E:$,Y="y"===w?I:T,C="y"===w?"height":"width",A=D[w],z=D[w]+b[S],L=D[w]-b[Y],F=p?-k[C]/2:0,R=m===N?O[C]:k[C],H=m===N?-k[C]:-O[C],V=e.elements.arrow,W=p&&V?j(V):{width:0,height:0},U=e.modifiersData["arrow#persistent"]?e.modifiersData["arrow#persistent"].padding:Ft(),B=U[S],q=U[Y],G=Xt(0,O[C],W[C]),X=y?O[C]/2-F-G-B-M:R-G-B-M,Z=y?-O[C]/2+F+G+q+M:H+G+q+M,K=e.elements.arrow&&_(e.elements.arrow),J=K?"y"===w?K.clientTop||0:K.clientLeft||0:0,Q=e.modifiersData.offset?e.modifiersData.offset[e.placement][w]:0,tt=D[w]+X-Q-J,et=D[w]+Z-Q,nt=Xt(p?Math.min(z,tt):z,A,p?Math.max(L,et):L);D[w]=nt,P[w]=nt-A}if(s){var rt="x"===w?E:$,at="x"===w?I:T,ot=D[x],it=ot+b[rt],st=ot-b[at],ct=Xt(it,ot,st);D[x]=ct,P[x]=ct-ot}e.modifiersData[r]=P}}var Kt={name:"preventOverflow",enabled:!0,phase:"main",fn:Zt,requiresIfExists:["offset"]};function Jt(t){var e,n=t.state,r=t.name,a=n.elements.arrow,o=n.modifiersData.popperOffsets,i=dt(n.placement),s=pt(i),c=[$,T].indexOf(i)>=0,u=c?"height":"width";if(a&&o){var l=n.modifiersData[r+"#persistent"].padding,d=j(a),f="y"===s?E:$,p="y"===s?I:T,h=n.rects.reference[u]+n.rects.reference[s]-o[s]-n.rects.popper[u],v=o[s]-n.rects.reference[s],b=_(a),g=b?"y"===s?b.clientHeight||0:b.clientWidth||0:0,m=h/2-v/2,y=l[f],w=g-d[u]-l[p],x=g/2-d[u]/2+m,D=Xt(y,x,w),O=s;n.modifiersData[r]=(e={},e[O]=D,e.centerOffset=D-x,e)}}function Qt(t){var e=t.state,n=t.options,r=t.name,a=n.element,o=void 0===a?"[data-popper-arrow]":a,i=n.padding,s=void 0===i?0:i;null!=o&&("string"!==typeof o||(o=e.elements.popper.querySelector(o),o))&&$t(e.elements.popper,o)&&(e.elements.arrow=o,e.modifiersData[r+"#persistent"]={padding:Rt("number"!==typeof s?s:Ht(s,A))})}var te={name:"arrow",enabled:!0,phase:"main",fn:Jt,effect:Qt,requires:["popperOffsets"],requiresIfExists:["preventOverflow"]};function ee(t,e,n){return void 0===n&&(n={x:0,y:0}),{top:t.top-e.height-n.y,right:t.right-e.width+n.x,bottom:t.bottom-e.height+n.y,left:t.left-e.width-n.x}}function ne(t){return[E,T,I,$].some((function(e){return t[e]>=0}))}function re(t){var e=t.state,n=t.name,r=e.rects.reference,a=e.rects.popper,o=e.modifiersData.preventOverflow,i=Vt(e,{elementContext:"reference"}),s=Vt(e,{altBoundary:!0}),c=ee(i,r),u=ee(s,a,o),l=ne(c),d=ne(u);e.modifiersData[n]={referenceClippingOffsets:c,popperEscapeOffsets:u,isReferenceHidden:l,hasPopperEscaped:d},e.attributes.popper=Object.assign(Object.assign({},e.attributes.popper),{},{"data-popper-reference-hidden":l,"data-popper-escaped":d})}var ae,oe,ie={name:"hide",enabled:!0,phase:"main",requiresIfExists:["preventOverflow"],fn:re},se=[lt,bt,xt,Ot,Pt,qt,Kt,te,ie],ce=st({defaultModifiers:se}),ue=n("2fa3"),le=n("0733"),de=n("9404"),fe={name:"Popover",render(t){return t("div",{class:["vc-popover-content-wrapper",{"is-interactive":this.isInteractive}],ref:"popover"},[t("transition",{props:{name:this.transition,appear:!0},on:{beforeEnter:this.beforeEnter,afterEnter:this.afterEnter,beforeLeave:this.beforeLeave,afterLeave:this.afterLeave}},[this.isVisible&&t("div",{attrs:{tabindex:-1},class:["vc-popover-content","direction-"+this.direction,this.contentClass]},[this.content,t("span",{class:["vc-popover-caret","direction-"+this.direction,"align-"+this.alignment]})])])])},props:{id:{type:String,required:!0},contentClass:String},data(){return{ref:null,opts:null,data:null,transition:"slide-fade",placement:"bottom",positionFixed:!1,modifiers:[],isInteractive:!1,isHovered:!1,isFocused:!1,showDelay:0,hideDelay:110,autoHide:!1,popperEl:null}},computed:{content(){var t=this;return Object(de["j"])(this.$scopedSlots.default)&&this.$scopedSlots.default({direction:this.direction,alignment:this.alignment,data:this.data,updateLayout:this.setupPopper,hide:function(e){return t.hide(e)}})||this.$slots.default},popperOptions(){return{placement:this.placement,strategy:this.positionFixed?"fixed":"absolute",modifiers:[{name:"onUpdate",enabled:!0,phase:"afterWrite",fn:this.onPopperUpdate},...this.modifiers||[]],onFirstUpdate:this.onPopperUpdate}},isVisible(){return!(!this.ref||!this.content)},direction(){return this.placement&&this.placement.split("-")[0]||"bottom"},alignment(){const t="left"===this.direction||"right"===this.direction;let e=this.placement.split("-");return e=e.length>1?e[1]:"",["start","top","left"].includes(e)?t?"top":"left":["end","bottom","right"].includes(e)?t?"bottom":"right":t?"middle":"center"},state(){return this.$popovers[this.id]}},watch:{opts(t,e){e&&e.callback&&e.callback({...e,completed:!t,reason:t?"Overridden by action":null})}},mounted(){this.popoverEl=this.$refs.popover,this.addEvents()},beforeDestroy(){this.removeEvents()},methods:{addEvents(){Object(ue["o"])(this.popoverEl,"click",this.onClick),Object(ue["o"])(this.popoverEl,"mouseover",this.onMouseOver),Object(ue["o"])(this.popoverEl,"mouseleave",this.onMouseLeave),Object(ue["o"])(this.popoverEl,"focusin",this.onFocusIn),Object(ue["o"])(this.popoverEl,"focusout",this.onFocusOut),Object(ue["o"])(document,"keydown",this.onDocumentKeydown),this.removeDocHandler=Object(le["b"])(document,this.onDocumentClick),Object(ue["o"])(document,"show-popover",this.onDocumentShowPopover),Object(ue["o"])(document,"hide-popover",this.onDocumentHidePopover),Object(ue["o"])(document,"toggle-popover",this.onDocumentTogglePopover),Object(ue["o"])(document,"update-popover",this.onDocumentUpdatePopover)},removeEvents(){Object(ue["n"])(this.popoverEl,"click",this.onClick),Object(ue["n"])(this.popoverEl,"mouseover",this.onMouseOver),Object(ue["n"])(this.popoverEl,"mouseleave",this.onMouseLeave),Object(ue["n"])(this.popoverEl,"focusin",this.onFocusIn),Object(ue["n"])(this.popoverEl,"focusout",this.onFocusOut),Object(ue["n"])(document,"keydown",this.onDocumentKeydown),this.removeDocHandler&&this.removeDocHandler(),Object(ue["n"])(document,"show-popover",this.onDocumentShowPopover),Object(ue["n"])(document,"hide-popover",this.onDocumentHidePopover),Object(ue["n"])(document,"toggle-popover",this.onDocumentTogglePopover),Object(ue["n"])(document,"update-popover",this.onDocumentUpdatePopover)},onClick(t){t.stopPropagation()},onMouseOver(){this.isHovered=!0,this.isInteractive&&this.show()},onMouseLeave(){this.isHovered=!1,!this.autoHide||this.isFocused||this.ref&&this.ref===document.activeElement||this.hide()},onFocusIn(){this.isFocused=!0,this.isInteractive&&this.show()},onFocusOut(t){t.relatedTarget&&Object(ue["e"])(this.popoverEl,t.relatedTarget)||(this.isFocused=!1,!this.isHovered&&this.autoHide&&this.hide())},onDocumentClick(t){this.$refs.popover&&this.ref&&(Object(ue["e"])(this.popoverEl,t.target)||Object(ue["e"])(this.ref,t.target)||this.hide())},onDocumentKeydown(t){"Esc"!==t.key&&"Escape"!==t.key||this.hide()},onDocumentShowPopover({detail:t}){t.id&&t.id===this.id&&this.show(t)},onDocumentHidePopover({detail:t}){t.id&&t.id===this.id&&this.hide(t)},onDocumentTogglePopover({detail:t}){t.id&&t.id===this.id&&this.toggle(t)},onDocumentUpdatePopover({detail:t}){t.id&&t.id===this.id&&this.update(t)},show(t={}){var e=this;t.action="show";const n=t.ref||this.ref,r=t.showDelay>=0?t.showDelay:this.showDelay;if(!n)return void(t.callback&&t.callback({completed:!1,reason:"Invalid reference element provided"}));clearTimeout(this.timeout),this.opts=t;const a=function(){Object.assign(e,t),e.setupPopper(),e.opts=null};r>0?this.timeout=setTimeout((function(){return a()}),r):a()},hide(t={}){var e=this;t.action="hide";const n=t.ref||this.ref,r=t.hideDelay>=0?t.hideDelay:this.hideDelay;if(!this.ref||n!==this.ref)return void(t.callback&&t.callback({...t,completed:!1,reason:this.ref?"Invalid reference element provided":"Popover already hidden"}));const a=function(){e.ref=null,e.opts=null};clearTimeout(this.timeout),this.opts=t,r>0?this.timeout=setTimeout(a,r):a()},toggle(t={}){this.isVisible&&t.ref===this.ref?this.hide(t):this.show(t)},update(t={}){Object.assign(this,t),this.setupPopper()},setupPopper(){var t=this;this.$nextTick((function(){t.ref&&t.$refs.popover&&(t.popper&&t.popper.reference!==t.ref&&t.destroyPopper(),t.popper?t.popper.update():t.popper=ce(t.ref,t.popoverEl,t.popperOptions))}))},onPopperUpdate(t){t.placement?this.placement=t.placement:t.state&&(this.placement=t.state.placement)},beforeEnter(t){this.$emit("beforeShow",t)},afterEnter(t){this.$emit("afterShow",t)},beforeLeave(t){this.$emit("beforeHide",t)},afterLeave(t){this.destroyPopper(),this.$emit("afterHide",t)},destroyPopper(){this.popper&&(this.popper.destroy(),this.popper=null)}}},pe=fe;n("a55a");function he(t,e,n,r,a,o,i,s){var c,u="function"===typeof t?t.options:t;if(e&&(u.render=e,u.staticRenderFns=n,u._compiled=!0),r&&(u.functional=!0),o&&(u._scopeId="data-v-"+o),i?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"===typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),a&&a.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},u._ssrRegister=c):a&&(c=s?function(){a.call(this,(u.functional?this.parent:this).$root.$options.shadowRoot)}:a),c)if(u.functional){u._injectStyles=c;var l=u.render;u.render=function(t,e){return c.call(e),l(t,e)}}else{var d=u.beforeCreate;u.beforeCreate=d?[].concat(d,c):[c]}return{exports:t,options:u}}var ve=he(pe,ae,oe,!1,null,"4cb7b681",null),be=ve.exports,ge=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vc-day-popover-row"},[t.indicator?n("div",{staticClass:"vc-day-popover-row-indicator"},[n("span",{class:t.indicator.class,style:t.indicator.style})]):t._e(),n("div",{staticClass:"vc-day-popover-row-content"},[t._t("default",[t._v(t._s(t.attribute.popover?t.attribute.popover.label:"No content provided"))])],2)])},me=[],ye=n("51ec");const we={inject:["sharedState"],mixins:[ye["a"]],computed:{masks(){return this.sharedState.masks},theme(){return this.sharedState.theme},locale(){return this.sharedState.locale},dayPopoverId(){return this.sharedState.dayPopoverId}},methods:{format(t,e){return this.locale.format(t,e)}}},xe=["base","start","end","startEnd"],De=["class","contentClass","style","contentStyle","color","fillMode"],je={color:"blue",isDark:!1,highlight:{base:{fillMode:"light"},start:{fillMode:"solid"},end:{fillMode:"solid"}},dot:{base:{fillMode:"solid"},start:{fillMode:"solid"},end:{fillMode:"solid"}},bar:{base:{fillMode:"solid"},start:{fillMode:"solid"},end:{fillMode:"solid"}},content:{base:{},start:{},end:{}}};class Oe{constructor(t){Object.assign(this,je,t)}normalizeAttr({config:t,type:e}){let n=this.color,r={};const a=this[e];if(!0===t||Object(de["m"])(t))n=Object(de["m"])(t)?t:n,r={...a};else{if(!Object(de["l"])(t))return null;r=Object(de["f"])(t,xe)?{...t}:{base:{...t},start:{...t},end:{...t}}}return Object(de["b"])(r,{start:r.startEnd,end:r.startEnd},a),Object(de["v"])(r).forEach((function([t,e]){let a=n;!0===e||Object(de["m"])(e)?(a=Object(de["m"])(e)?e:a,r[t]={color:a}):Object(de["l"])(e)&&(Object(de["f"])(e,De)?r[t]={...e}:r[t]={}),Object(de["e"])(r,t+".color")||Object(de["t"])(r,t+".color",a)})),r}normalizeHighlight(t){var e=this;const n=this.normalizeAttr({config:t,type:"highlight"});return Object(de["v"])(n).forEach((function([t,n]){const r=Object(de["b"])(n,{isDark:e.isDark,color:e.color});n.style={...e.getHighlightBgStyle(r),...n.style},n.contentStyle={...e.getHighlightContentStyle(r),...n.contentStyle}})),n}getHighlightBgStyle({fillMode:t,color:e,isDark:n}){switch(t){case"outline":case"none":return{backgroundColor:n?"var(--gray-900)":"var(--white)",border:"2px solid",borderColor:n?`var(--${e}-200)`:`var(--${e}-700)`,borderRadius:"var(--rounded-full)"};case"light":return{backgroundColor:n?`var(--${e}-800)`:`var(--${e}-200)`,opacity:n?.75:1,borderRadius:"var(--rounded-full)"};case"solid":return{backgroundColor:n?`var(--${e}-500)`:`var(--${e}-600)`,borderRadius:"var(--rounded-full)"};default:return{borderRadius:"var(--rounded-full)"}}}getHighlightContentStyle({fillMode:t,color:e,isDark:n}){switch(t){case"outline":case"none":return{fontWeight:"var(--font-bold)",color:n?`var(--${e}-100)`:`var(--${e}-900)`};case"light":return{fontWeight:"var(--font-bold)",color:n?`var(--${e}-100)`:`var(--${e}-900)`};case"solid":return{fontWeight:"var(--font-bold)",color:"var(--white)"};default:return""}}bgAccentHigh({color:t,isDark:e}){return{backgroundColor:e?`var(--${t}-500)`:`var(--${t}-600)`}}contentAccent({color:t,isDark:e}){return t?{fontWeight:"var(--font-bold)",color:e?`var(--${t}-100)`:`var(--${t}-900)`}:null}normalizeDot(t){return this.normalizeNonHighlight("dot",t,this.bgAccentHigh)}normalizeBar(t){return this.normalizeNonHighlight("bar",t,this.bgAccentHigh)}normalizeContent(t){return this.normalizeNonHighlight("content",t,this.contentAccent)}normalizeNonHighlight(t,e,n){var r=this;const a=this.normalizeAttr({type:t,config:e});return Object(de["v"])(a).forEach((function([t,e]){Object(de["b"])(e,{isDark:r.isDark,color:r.color}),e.style={...n(e),...e.style}})),a}}var ke=n("29ae"),Me=n("1315"),Pe=n("22f3");const Se={mixins:[ye["a"]],props:{color:String,isDark:Boolean,firstDayOfWeek:Number,masks:Object,locale:[String,Object],timezone:String,minDate:null,maxDate:null,disabledDates:null,availableDates:null,theme:null},computed:{$theme(){return this.theme instanceof Oe?this.theme:new Oe({color:this.passedProp("color","blue"),isDark:this.passedProp("isDark",!1)})},$locale(){if(this.locale instanceof ke["a"])return this.locale;const t=Object(de["l"])(this.locale)?this.locale:{id:this.locale,firstDayOfWeek:this.firstDayOfWeek,masks:this.masks};return new ke["a"](t,this.$locales)},disabledAttribute(){let t=[];this.disabledDates&&(t=Object(de["h"])(this.disabledDates)?this.disabledDates:[this.disabledDates]);const e=this.normalizeDate(this.minDate),n=this.normalizeDate(this.maxDate);return e&&t.push({start:null,end:Object(r["a"])(e,-1)}),n&&t.push({start:Object(r["a"])(n,1),end:null}),new Pe["a"]({key:"disabled",dates:t,excludeDates:this.availableDates,excludeMode:"includes",order:100},this.$theme,this.$locale)}},created(){Object(Me["a"])(this.$defaults.screens)},methods:{formatDate(t,e){return this.$locale?this.$locale.format(t,e):""},parseDate(t,e){if(!this.$locale)return null;const n=this.$locale.parse(t,e);return Object(de["i"])(n)?n:null},normalizeDate(t,e){return this.$locale?this.$locale.normalizeDate(t,e):t}}},Ye={methods:{safeScopedSlot(t,e,n=null){return Object(de["j"])(this.$scopedSlots[t])?this.$scopedSlots[t](e):n}}},_e=we,Ee=Se,Ie=Ye;var Te={name:"PopoverRow",mixins:[_e],props:{attribute:Object},computed:{indicator(){const{highlight:t,dot:e,bar:n,popover:r}=this.attribute;if(r&&r.hideIndicator)return null;if(t){const{color:e,isDark:n}=t.start;return{style:{...this.theme.bgAccentHigh({color:e,isDark:!n}),width:"10px",height:"5px",borderRadius:"3px"}}}if(e){const{color:t,isDark:n}=e.start;return{style:{...this.theme.bgAccentHigh({color:t,isDark:!n}),width:"5px",height:"5px",borderRadius:"50%"}}}if(n){const{color:t,isDark:e}=n.start;return{style:{...this.theme.bgAccentHigh({color:t,isDark:!e}),width:"10px",height:"3px"}}}return null}}},$e=Te,Ce=(n("d438"),he($e,ge,me,!1,null,"eb5afd1a",null)),Ae=Ce.exports;const Ne={vLeading:"vertical-leading",vTrailing:"vertical-trailing",hLeading:"horizontal-leading",hTrailing:"horizontal-trailing"};var ze,Le,Fe={name:"Grid",render(t){var e=this;const n=function({nodes:t,position:n,row:r,column:a}){return t.length>=n?t[n-1]:e.$scopedSlots.default?e.$scopedSlots.default({position:n,row:r,column:a}):null},r=function(){const r=[],a=e.$slots.default&&e.$slots.default.filter((function(t){return void 0!==t.tag}))||[];for(let o=1,i=1;o<=e.rows;o++)for(let s=1;s<=e.columns;s++){const c=o-e.rows-1,u=s-e.columns-1;r.push(t("div",{class:["vc-grid-cell","vc-grid-cell-row-"+o,"vc-grid-cell-row-"+c,"vc-grid-cell-col-"+s,"vc-grid-cell-col-"+u],style:{"grid-row":o,"grid-column":s},on:{keydown:function(t){return e.handleCellKeydown({row:o,column:s,event:t})}}},[n({nodes:a,position:i++,row:o,column:s})]))}return r};return t("div",{class:"vc-grid-container",style:this.containerStyle},[...r()])},props:{count:Number,rows:{type:Number,default:1},columns:{type:Number,default:1},gap:{type:String,default:"0px"},autofit:Boolean,columnWidth:{type:String,default:"1fr"},disableFocus:{type:Boolean,default:!1}},computed:{containerStyle(){return{gridTemplateColumns:this.gridTemplateColumns,gridGap:this.gap}},gridTemplateColumns(){return`repeat(${this.autofit?"auto-fit":this.columns}, ${this.columnWidth})`}},methods:{handleCellKeydown({row:t,column:e,event:n}){if(this.disableFocus)return;const r={row:t,column:e,alt:!1,handled:!1};switch(n.key){case"ArrowUp":r.row--;break;case"ArrowDown":r.row++;break;case"ArrowLeft":r.column--;break;case"ArrowRight":r.column++;break;case"Home":r.column=1;break;case"End":r.column=this.columns;break;case"PageUp":r.alt=n.altKey,r.direction=Ne.vLeading;break;case"PageDown":r.alt=n.altKey,r.direction=Ne.vTrailing;break;default:return}if(r.row<1?(r.direction=Ne.vLeading,r.row=this.rows):r.row>this.rows&&(r.direction=Ne.vTrailing,r.row=1),r.column<1?(r.direction=Ne.hLeading,r.column=this.columns):r.column>this.columns&&(r.direction=Ne.hTrailing,r.column=1),r.direction&&this.$emit("rollover",r),!r.handled){const t=`.vc-grid-cell-row-${r.row}.vc-grid-cell-col-${r.column}`,e=this.$el.querySelector(t);e&&this.tryFocus(e)}n.stopPropagation(),n.preventDefault()},tryFocus(t=this.$el){this.$nextTick((function(){const e=[".vc-grid-focus",'button, [href], input, select, textarea, [tabindex="0"]','[tabindex]:not([tabindex="undefined"])'],n=e.map((function(e){return t.querySelector(e)})).find((function(t){return t}));return!!n&&(n.focus(),!0)}))}}},Re=Fe,He=(n("998b"),he(Re,ze,Le,!1,null,"3ca35a05",null)),Ve=He.exports,We=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vc-nav-container"},[n("grid",{ref:"headerGrid",attrs:{columns:3},on:{rollover:t.onHeaderRollover}},[n("span",{ref:"prevButton",staticClass:"vc-nav-arrow is-left",attrs:{role:"button",tabindex:"-1"},on:{click:t.movePrev,keydown:function(e){return t.onSpaceOrEnter(e,t.movePrev)}}},[t._t("nav-left-button",[n("svg-icon",{attrs:{name:"left-arrow",width:"20px",height:"24px"}})])],2),n("span",{ref:"titleButton",staticClass:"vc-nav-title vc-grid-focus",style:{whiteSpace:"nowrap"},attrs:{role:"button",tabindex:"0"},on:{click:t.toggleMode,keydown:function(e){return t.onSpaceOrEnter(e,t.toggleMode)}}},[t._v(" "+t._s(t.title)+" ")]),n("span",{ref:"nextButton",staticClass:"vc-nav-arrow is-right",attrs:{role:"button",tabindex:"-1"},on:{click:t.moveNext,keydown:function(e){return t.onSpaceOrEnter(e,t.moveNext)}}},[t._t("nav-right-button",[n("svg-icon",{attrs:{name:"right-arrow",width:"20px",height:"24px"}})])],2)]),n("grid",{ref:"itemsGrid",attrs:{rows:4,columns:3,gap:"2px 5px"},on:{rollover:t.onItemsRollover}},t._l(t.activeItems,(function(e){return n("span",{key:e.label,ref:"items",refInFor:!0,class:t.getItemClasses(e),attrs:{role:"button","aria-label":e.ariaLabel,tabindex:e.isDisabled?void 0:e.isActive?0:-1},on:{click:e.click,keydown:function(n){return t.onSpaceOrEnter(n,e.click)}}},[t._v(" "+t._s(e.label)+" ")])})),0)],1)},Ue=[],Be=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("svg",t._g({staticClass:"vc-svg-icon",attrs:{width:t.width,height:t.height,viewBox:t.viewBox}},t.$listeners),[n("path",{attrs:{d:t.path}})])},qe=[];const Ge="26px",Xe="0 0 32 32",Ze={"left-arrow":{viewBox:"0 -1 16 34",path:"M11.196 10c0 0.143-0.071 0.304-0.179 0.411l-7.018 7.018 7.018 7.018c0.107 0.107 0.179 0.268 0.179 0.411s-0.071 0.304-0.179 0.411l-0.893 0.893c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-8.321-8.321c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l8.321-8.321c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l0.893 0.893c0.107 0.107 0.179 0.25 0.179 0.411z"},"right-arrow":{viewBox:"-5 -1 16 34",path:"M10.625 17.429c0 0.143-0.071 0.304-0.179 0.411l-8.321 8.321c-0.107 0.107-0.268 0.179-0.411 0.179s-0.304-0.071-0.411-0.179l-0.893-0.893c-0.107-0.107-0.179-0.25-0.179-0.411 0-0.143 0.071-0.304 0.179-0.411l7.018-7.018-7.018-7.018c-0.107-0.107-0.179-0.268-0.179-0.411s0.071-0.304 0.179-0.411l0.893-0.893c0.107-0.107 0.268-0.179 0.411-0.179s0.304 0.071 0.411 0.179l8.321 8.321c0.107 0.107 0.179 0.268 0.179 0.411z"}};var Ke={props:["name"],data(){return{width:Ge,height:Ge,viewBox:Xe,path:"",isBaseline:!1}},mounted(){this.updateIcon()},watch:{name(){this.updateIcon()}},methods:{updateIcon(){const t=Ze[this.name];t&&(this.width=t.width||Ge,this.height=t.height||Ge,this.viewBox=t.viewBox,this.path=t.path)}}},Je=Ke,Qe=(n("9010"),he(Je,Be,qe,!1,null,"63f7b5ec",null)),tn=Qe.exports;const en=12;var nn={name:"CalendarNav",components:{Grid:Ve,SvgIcon:tn},mixins:[_e],props:{value:{type:Object,default:function(){return{month:0,year:0}}},validator:{type:Function,default:function(){return function(){return!0}}}},data(){return{monthMode:!0,yearIndex:0,yearGroupIndex:0,onSpaceOrEnter:ue["p"]}},computed:{month(){return this.value&&this.value.month||0},year(){return this.value&&this.value.year||0},title(){return this.monthMode?this.yearIndex:`${this.firstYear} - ${this.lastYear}`},monthItems(){var t=this;const{month:e,year:n}=Object(ue["r"])(new Date);return this.locale.getMonthDates().map((function(r,a){const o=a+1;return{label:t.locale.format(r,t.masks.navMonths),ariaLabel:t.locale.format(r,"MMMM YYYY"),isActive:o===t.month&&t.yearIndex===t.year,isCurrent:o===e&&t.yearIndex===n,isDisabled:!t.validator({month:o,year:t.yearIndex}),click:function(){return t.monthClick(o)}}}))},yearItems(){var t=this;const{_:e,year:n}=Object(ue["r"])(new Date),r=this.yearGroupIndex*en,a=r+en,o=[];for(let i=r;i<a;i+=1)o.push({year:i,label:i,ariaLabel:i,isActive:i===this.year,isCurrent:i===n,isDisabled:!this.validator({month:this.month,year:i}),click:function(){return t.yearClick(i)}});return o},activeItems(){return this.monthMode?this.monthItems:this.yearItems},firstYear(){return Object(de["g"])(this.yearItems.map((function(t){return t.year})))},lastYear(){return Object(de["o"])(this.yearItems.map((function(t){return t.year})))}},watch:{year(){this.yearIndex=this.year},yearIndex(t){this.yearGroupIndex=this.getYearGroupIndex(t)}},created(){this.yearIndex=this.year},mounted(){this.$refs.itemsGrid.tryFocus()},methods:{getItemClasses({isActive:t,isCurrent:e,isDisabled:n}){const r=["vc-nav-item"];return t?r.push("is-active","vc-grid-focus"):e?r.push("is-inactive-current"):r.push("is-inactive"),n&&r.push("is-disabled"),r},getYearGroupIndex(t){return Math.floor(t/en)},monthClick(t){this.$emit("input",{month:t,year:this.yearIndex})},yearClick(t){this.yearIndex=t,this.monthMode=!0,this.$refs.itemsGrid.tryFocus()},toggleMode(){this.monthMode=!this.monthMode},movePrev(){this.monthMode&&this.movePrevYear(),this.movePrevYearGroup()},moveNext(){this.monthMode&&this.moveNextYear(),this.moveNextYearGroup()},movePrevYear(){this.yearIndex--},moveNextYear(){this.yearIndex++},movePrevYearGroup(){this.yearGroupIndex--},moveNextYearGroup(){this.yearGroupIndex++},onHeaderRollover(t){switch(t.direction){case"vertical-trailing":this.$refs.itemsGrid.tryFocus();break}t.handled=!0},onItemsRollover(t){switch(t.direction){case"horizontal-leading":this.movePrev();break;case"horizontal-trailing":this.moveNext();break;case"vertical-leading":this.$refs.headerGrid.tryFocus(),t.handled=!0;break;case"vertical-trailing":t.handled=!0;break}}}},rn=nn,an=(n("3c55"),he(rn,We,Ue,!1,null,null,null)),on=an.exports;function sn(t){document&&document.dispatchEvent(new CustomEvent("show-popover",{detail:t}))}function cn(t){document&&document.dispatchEvent(new CustomEvent("hide-popover",{detail:t}))}function un(t){document&&document.dispatchEvent(new CustomEvent("toggle-popover",{detail:t}))}function ln(t){document&&document.dispatchEvent(new CustomEvent("update-popover",{detail:t}))}function dn(t){const{visibility:e}=t,n="click"===e,r="hover"===e,a="hover-focus"===e,o="focus"===e;t.autoHide=!n;let i=!1,s=!1;return{click(e){n&&(t.ref=e.target,un(t),e.stopPropagation())},mousemove(e){t.ref=e.currentTarget,i||(i=!0,(r||a)&&sn(t))},mouseleave(e){t.ref=e.target,i&&(i=!1,(r||a&&!s)&&cn(t))},focusin(e){t.ref=e.currentTarget,s||(s=!0,(o||a)&&sn(t))},focusout(e){t.ref=e.currentTarget,s&&!Object(ue["e"])(t.ref,e.relatedTarget)&&(s=!1,(o||a&&!i)&&cn(t))}}}var fn,pn,hn,vn,bn,gn,mn,yn,wn={name:"CalendarDay",mixins:[_e,Ie],render(t){var e=this;const n=function(){return e.hasBackgrounds&&t("div",{class:"vc-highlights vc-day-layer"},e.backgrounds.map((function({key:e,wrapperClass:n,class:r,style:a}){return t("div",{key:e,class:n},[t("div",{class:r,style:a})])})))},r=function(){return e.safeScopedSlot("day-content",{day:e.day,attributes:e.day.attributes,attributesMap:e.day.attributesMap,dayProps:e.dayContentProps,dayEvents:e.dayContentEvents})||t("span",{class:e.dayContentClass,style:e.dayContentStyle,attrs:{...e.dayContentProps},on:e.dayContentEvents,ref:"content"},[e.day.label])},a=function(){return e.hasDots&&t("div",{class:"vc-day-layer vc-day-box-center-bottom"},[t("div",{class:"vc-dots"},e.dots.map((function({key:e,class:n,style:r}){return t("span",{key:e,class:n,style:r})})))])},o=function(){return e.hasBars&&t("div",{class:"vc-day-layer vc-day-box-center-bottom"},[t("div",{class:"vc-bars"},e.bars.map((function({key:e,class:n,style:r}){return t("span",{key:e,class:n,style:r})})))])};return t("div",{class:["vc-day",...this.day.classes,{"vc-day-box-center-center":!this.$scopedSlots["day-content"]},{"is-not-in-month":!this.inMonth}]},[n(),r(),a(),o()])},inject:["sharedState"],props:{day:{type:Object,required:!0}},data(){return{glyphs:{},dayContentEvents:{}}},computed:{label(){return this.day.label},startTime(){return this.day.range.start.getTime()},endTime(){return this.day.range.end.getTime()},inMonth(){return this.day.inMonth},isDisabled(){return this.day.isDisabled},backgrounds(){return this.glyphs.backgrounds},hasBackgrounds(){return!!Object(ue["b"])(this.backgrounds)},content(){return this.glyphs.content},dots(){return this.glyphs.dots},hasDots(){return!!Object(ue["b"])(this.dots)},bars(){return this.glyphs.bars},hasBars(){return!!Object(ue["b"])(this.bars)},popovers(){return this.glyphs.popovers},hasPopovers(){return!!Object(ue["b"])(this.popovers)},dayContentClass(){return["vc-day-content vc-focusable",{"is-disabled":this.isDisabled},Object(de["d"])(Object(de["o"])(this.content),"class")||""]},dayContentStyle(){return Object(de["d"])(Object(de["o"])(this.content),"style")},dayContentProps(){let t;return this.day.isFocusable?t="0":this.day.inMonth&&(t="-1"),{tabindex:t,"aria-label":this.day.ariaLabel,"aria-disabled":this.day.isDisabled?"true":"false",role:"button"}},dayEvent(){return{...this.day,el:this.$refs.content,popovers:this.popovers}}},watch:{theme(){this.refresh()},popovers(){this.refreshPopovers()}},mounted(){this.refreshPopovers()},methods:{getDayEvent(t){return{...this.dayEvent,event:t}},click(t){this.$emit("dayclick",this.getDayEvent(t))},mouseenter(t){this.$emit("daymouseenter",this.getDayEvent(t))},mouseleave(t){this.$emit("daymouseleave",this.getDayEvent(t))},focusin(t){this.$emit("dayfocusin",this.getDayEvent(t))},focusout(t){this.$emit("dayfocusout",this.getDayEvent(t))},keydown(t){this.$emit("daykeydown",this.getDayEvent(t))},refresh(){var t=this;if(!this.day.refresh)return;this.day.refresh=!1;const e={backgrounds:[],dots:[],bars:[],popovers:[],content:[]};this.$set(this.day,"attributes",Object.values(this.day.attributesMap||{}).sort((function(t,e){return t.order-e.order}))),this.day.attributes.forEach((function(n){const{targetDate:r}=n,{isDate:a,isComplex:o,startTime:i,endTime:s}=r,c=t.startTime<=i,u=t.endTime>=s,l=c&&u,d=c||u,f={isDate:a,isComplex:o,onStart:c,onEnd:u,onStartAndEnd:l,onStartOrEnd:d};t.processHighlight(n,f,e),t.processNonHighlight(n,"content",f,e.content),t.processNonHighlight(n,"dot",f,e.dots),t.processNonHighlight(n,"bar",f,e.bars),t.processPopover(n,e)})),this.glyphs=e},processHighlight({key:t,highlight:e},{isDate:n,isComplex:r,onStart:a,onEnd:o,onStartAndEnd:i},{backgrounds:s,content:c}){if(!e)return;const{base:u,start:l,end:d}=e;n||r||i?(s.push({key:t,wrapperClass:"vc-day-layer vc-day-box-center-center",class:["vc-highlight",l.class],style:l.style}),c.push({key:t+"-content",class:l.contentClass,style:l.contentStyle})):a?(s.push({key:t+"-base",wrapperClass:"vc-day-layer vc-day-box-right-center",class:["vc-highlight vc-highlight-base-start",u.class],style:u.style}),s.push({key:t,wrapperClass:"vc-day-layer vc-day-box-center-center",class:["vc-highlight",l.class],style:l.style}),c.push({key:t+"-content",class:l.contentClass,style:l.contentStyle})):o?(s.push({key:t+"-base",wrapperClass:"vc-day-layer vc-day-box-left-center",class:["vc-highlight vc-highlight-base-end",u.class],style:u.style}),s.push({key:t,wrapperClass:"vc-day-layer vc-day-box-center-center",class:["vc-highlight",d.class],style:d.style}),c.push({key:t+"-content",class:d.contentClass,style:d.contentStyle})):(s.push({key:t+"-middle",wrapperClass:"vc-day-layer vc-day-box-center-center",class:["vc-highlight vc-highlight-base-middle",u.class],style:u.style}),c.push({key:t+"-content",class:u.contentClass,style:u.contentStyle}))},processNonHighlight(t,e,{isDate:n,onStart:r,onEnd:a},o){if(!t[e])return;const{key:i}=t,s="vc-"+e,{base:c,start:u,end:l}=t[e];n||r?o.push({key:i,class:[s,u.class],style:u.style}):a?o.push({key:i,class:[s,l.class],style:l.style}):o.push({key:i,class:[s,c.class],style:c.style})},processPopover(t,{popovers:e}){const{key:n,customData:r,popover:a}=t;if(!a)return;const o=Object(de["b"])({key:n,customData:r,attribute:t},{...a},{visibility:a.label?"hover":"click",placement:"bottom",isInteractive:!a.label});e.splice(0,0,o)},refreshPopovers(){let t={};Object(ue["b"])(this.popovers)&&(t=dn(Object(de["b"])({id:this.dayPopoverId,data:this.day},...this.popovers))),this.dayContentEvents=Object(ue["l"])({click:this.click,mouseenter:this.mouseenter,mouseleave:this.mouseleave,focusin:this.focusin,focusout:this.focusout,keydown:this.keydown},t),ln({id:this.dayPopoverId,data:this.day})}}},xn=wn,Dn=(n("85ba"),he(xn,fn,pn,!1,null,"243c9412",null)),jn=Dn.exports,On={name:"CalendarPane",mixins:[_e,Ie],render(t){var e=this;const n=this.safeScopedSlot("header",this.page)||t("div",{class:"vc-header"},[t("div",{class:"vc-title-layout align-"+this.titlePosition},[t("div",{class:"vc-title-wrapper"},[t("div",{class:"vc-title",on:this.navPopoverEvents},[this.safeScopedSlot("header-title",this.page,this.page.title)]),t(be,{props:{id:this.navPopoverId,contentClass:"vc-nav-popover-container"}},[t(on,{props:{value:this.page,validator:this.canMove},on:{input:function(t){return e.move(t)}},scopedSlots:this.$scopedSlots})])])])]),r=t(Ve,{class:"vc-weeks",props:{rows:this.page.weeks+1,columns:7,columnWidth:"1fr",disableFocus:!0}},[...this.weekdayLabels.map((function(e,n){return t("div",{key:n+1,class:"vc-weekday"},[e])})),...this.page.days.map((function(n){return t(jn,{attrs:{...e.$attrs,day:n},on:{...e.$listeners},scopedSlots:e.$scopedSlots,key:n.id,ref:"days",refInFor:!0})}))]);return t("div",{class:"vc-pane",ref:"pane"},[n,r])},props:{page:Object,titlePosition:String,navVisibility:String,canMove:{type:Function,default:function(){return!0}}},data(){return{navPopoverId:Object(ue["c"])()}},computed:{navVisibility_(){return this.propOrDefault("navVisibility","navVisibility")},navPlacement(){switch(this.titlePosition){case"left":return"bottom-start";case"right":return"bottom-end";default:return"bottom"}},navPopoverEvents(){return dn({id:this.navPopoverId,visibility:this.navVisibility_,placement:this.navPlacement,modifiers:[{name:"flip",options:{fallbackPlacements:["bottom"]}}],isInteractive:!0})},weekdayLabels(){var t=this;return this.locale.getWeekdayDates().map((function(e){return t.format(e,t.masks.weekdays)}))}},methods:{move(t){this.$emit("update:page",t)},refresh(){this.$refs.days.forEach((function(t){return t.refresh()}))}}},kn=On,Mn=(n("c24e"),n("4889"),he(kn,hn,vn,!1,null,"31279cb5",null)),Pn=Mn.exports,Sn={name:"CustomTransition",render(t){return t("transition",{props:{name:this.name_,appear:this.appear},on:{beforeEnter:this.beforeEnter,afterEnter:this.afterEnter}},[this.$slots.default])},props:{name:String,appear:Boolean},computed:{name_(){return this.name||"none"}},methods:{beforeEnter(t){this.$emit("beforeEnter",t),this.$emit("beforeTransition",t)},afterEnter(t){this.$emit("afterEnter",t),this.$emit("afterTransition",t)}}},Yn=Sn,_n=(n("2285"),he(Yn,bn,gn,!1,null,"5be4b00c",null)),En=_n.exports,In=n("9349"),Tn=(n("3ee2"),{name:"Calendar",render(t){var e=this;const n=this.pages.map((function(n,r){return t(Pn,{attrs:{...e.$attrs,attributes:e.store},props:{titlePosition:e.titlePosition_,page:n,minPage:e.minPage_,maxPage:e.maxPage_,canMove:e.canMove},on:{...e.$listeners,"update:page":function(t){return e.refreshPages({page:t,position:r+1})},dayfocusin:function(t){e.lastFocusedDay=t,e.$emit("dayfocusin",t)},dayfocusout:function(t){e.lastFocusedDay=null,e.$emit("dayfocusout",t)}},scopedSlots:e.$scopedSlots,key:n.key,ref:"pages",refInFor:!0})})),r=function(n){const r=function(){return e.move(n?-e.step_:e.step_)},a=function(t){return Object(ue["p"])(t,r)},o=n?!e.canMovePrev:!e.canMoveNext;return t("div",{class:["vc-arrow",{"is-disabled":o}],attrs:{role:"button"},on:{click:r,keydown:a}},[(n?e.safeScopedSlot("header-left-button",{click:r}):e.safeScopedSlot("header-right-button",{click:r}))||t(tn,{props:{name:n?"left-arrow":"right-arrow"}})])},a=function(){return t(be,{props:{id:e.sharedState.dayPopoverId,contentClass:"vc-day-popover-container"},scopedSlots:{default:function({data:n,updateLayout:r,hide:a}){const o=Object.values(n.attributes).filter((function(t){return t.popover})),i=e.$locale.masks,s=e.formatDate,c=s(n.date,i.dayPopover);return e.safeScopedSlot("day-popover",{day:n,attributes:o,masks:i,format:s,dayTitle:c,updateLayout:r,hide:a})||t("div",[i.dayPopover&&t("div",{class:["vc-day-popover-header"]},[c]),o.map((function(e){return t(Ae,{key:e.key,props:{attribute:e}})}))])}}})},o=function(){return t("div",{attrs:{"data-helptext":"Press the arrow keys to navigate by day, Home and End to navigate to week ends, PageUp and PageDown to navigate by month, Alt+PageUp and Alt+PageDown to navigate by year"},class:["vc-container","vc-"+e.$theme.color,{"vc-is-expanded":e.isExpanded,"vc-is-dark":e.$theme.isDark}],on:{keydown:e.handleKeydown,mouseup:function(t){return t.preventDefault()}},ref:"container"},[t("div",{class:["vc-pane-container",{"in-transition":e.inTransition}]},[t(En,{props:{name:e.transitionName},on:{beforeEnter:function(){e.inTransition=!0},afterEnter:function(){e.inTransition=!1}}},[t(Ve,{class:"grid",props:{rows:e.rows,columns:e.columns,columnWidth:"minmax(256px, 1fr)",disableFocus:!0},attrs:{...e.$attrs},key:Object(ue["b"])(e.pages)?e.pages[0].key:""},n)]),t("div",{class:["vc-arrows-container title-"+e.titlePosition_]},[r(!0),r(!1)]),e.$scopedSlots.footer&&e.$scopedSlots.footer()]),a()])};return o()},mixins:[Ee,Ie],provide(){return{sharedState:this.sharedState}},props:{rows:{type:Number,default:1},columns:{type:Number,default:1},step:Number,titlePosition:String,isExpanded:Boolean,fromDate:Date,toDate:Date,fromPage:Object,toPage:Object,minPage:Object,maxPage:Object,transition:String,attributes:[Object,Array],trimWeeks:Boolean,disablePageSwipe:Boolean},data(){return{pages:[],store:null,lastFocusedDay:null,focusableDay:(new Date).getDate(),transitionName:"",inTransition:!1,sharedState:{dayPopoverId:Object(ue["c"])(),theme:{},masks:{},locale:{}}}},computed:{titlePosition_(){return this.propOrDefault("titlePosition","titlePosition")},firstPage(){return Object(de["g"])(this.pages)},lastPage(){return Object(de["o"])(this.pages)},minPage_(){return this.minPage||Object(ue["r"])(this.normalizeDate(this.minDate))},maxPage_(){return this.maxPage||Object(ue["r"])(this.normalizeDate(this.maxDate))},count(){return this.rows*this.columns},step_(){return this.step||this.count},canMovePrev(){return!Object(ue["z"])(this.minPage_)||Object(ue["v"])(this.pages[0],this.minPage_)},canMoveNext(){return!Object(ue["z"])(this.maxPage_)||Object(ue["w"])(this.pages[this.pages.length-1],this.maxPage_)}},watch:{$locale(){this.refreshLocale(),this.refreshPages({page:this.firstPage,ignoreCache:!0}),this.initStore()},$theme(){this.refreshTheme(),this.initStore()},timezone(){this.refreshPages({ignoreCache:!0}),this.refreshAttrs(this.pages,this.store.list,null,!0)},fromDate(){this.refreshPages()},fromPage(t){const e=this.pages&&this.pages[0];Object(ue["y"])(t,e)||this.refreshPages()},toPage(t){const e=this.pages&&this.pages[this.pages.length-1];Object(ue["y"])(t,e)||this.refreshPages()},count(){this.refreshPages()},attributes(t){const{adds:e,deletes:n}=this.store.refresh(t);this.refreshAttrs(this.pages,e,n)},pages(t){this.refreshAttrs(t,this.store.list,null,!0)},disabledAttribute(){this.refreshDisabledDays()},lastFocusedDay(t){t&&(this.focusableDay=t.day,this.refreshFocusableDays())},inTransition(t){t?this.$emit("transition-start"):(this.$emit("transition-end"),this.transitionPromise&&(this.transitionPromise.resolve(!0),this.transitionPromise=null))}},created(){this.refreshLocale(),this.refreshTheme(),this.initStore(),this.refreshPages()},mounted(){var t=this;if(!this.disablePageSwipe){const e=Object(le["a"])(this.$refs.container,(function({toLeft:e,toRight:n}){e?t.moveNext():n&&t.movePrev()}),this.$defaults.touch);this.$once("beforeDestroy",(function(){return e()}))}},methods:{refreshLocale(){this.sharedState.locale=this.$locale,this.sharedState.masks=this.$locale.masks},refreshTheme(){this.sharedState.theme=this.$theme},canMove(t){return Object(ue["x"])(t,this.minPage_,this.maxPage_)},movePrev(t){return this.move(-this.step_,t)},moveNext(t){return this.move(this.step_,t)},move(t,e={}){const n=this.$locale.toPage(t,this.firstPage);if(Object(de["k"])(t)&&(e.position=1),!n)return Promise.reject(new Error("Invalid argument provided: "+t));if(!e.position)if(Object(ue["w"])(n,this.firstPage))e.position=-1;else{if(!Object(ue["v"])(n,this.lastPage))return Promise.resolve(!0);e.position=1}const{fromPage:r}=this.getTargetPageRange(n,e);return r&&!Object(ue["y"])(r,this.firstPage)?this.refreshPages({...e,position:1,page:r}):Promise.resolve(!0)},focusDate(t,e={}){var n=this;this.move(t,e).then((function(){const e=n.$el.querySelector(`.id-${n.$locale.getDayId(t)}.in-month .vc-focusable`);return e?(e.focus(),Promise.resolve(!0)):Promise.reject(new Error("Day element not found. Consider using `force` option is date is disabled."))}))},showPageRange(t,e){let n,r;if(Object(de["i"])(t))n=Object(ue["r"])(t);else{if(!Object(de["l"])(t))return Promise.reject(new Error("Invalid page range provided."));{const{month:e,year:a}=t,{from:o,to:i}=t;Object(de["k"])(e)&&Object(de["k"])(a)?n=t:(o||i)&&(n=Object(de["i"])(o)?Object(ue["r"])(o):o,r=Object(de["i"])(i)?Object(ue["r"])(i):i)}}const a=this.lastPage;let o=n;return Object(ue["v"])(r,a)&&(o=Object(ue["a"])(r,-(this.pages.length-1))),Object(ue["w"])(o,n)&&(o=n),this.refreshPages({...e,page:o})},getTargetPageRange(t,{position:e,force:n}={}){let r=null;if(Object(ue["z"])(t)){const n=e>0?1-e:-(this.count+e);r=Object(ue["a"])(t,n)}else if(r=this.fromPage||Object(ue["r"])(this.normalizeDate(this.fromDate)),!Object(ue["z"])(r)){const t=this.toPage||Object(ue["r"])(this.normalizeDate(this.toPage));r=Object(ue["z"])(t)?Object(ue["a"])(t,1-this.count):this.getPageForAttributes()}r=Object(ue["z"])(r)?r:Object(ue["u"])();let a=Object(ue["a"])(r,this.count-1);return n||(Object(ue["w"])(r,this.minPage_)?r=this.minPage_:Object(ue["v"])(a,this.maxPage_)&&(r=Object(ue["a"])(this.maxPage_,1-this.count)),a=Object(ue["a"])(r,this.count-1)),{fromPage:r,toPage:a}},refreshPages({page:t,position:e=1,force:n,transition:r,ignoreCache:a}={}){var o=this;return new Promise((function(i,s){const{fromPage:c,toPage:u}=o.getTargetPageRange(t,{position:e,force:n}),l=[];for(let t=0;t<o.count;t++)l.push(o.buildPage(Object(ue["a"])(c,t),a));o.refreshDisabledDays(l),o.refreshFocusableDays(l),o.transitionName=o.getPageTransition(o.pages[0],l[0],r),o.pages=l,o.$emit("update:from-page",c),o.$emit("update:to-page",u),o.transitionName&&"none"!==o.transitionName?o.transitionPromise={resolve:i,reject:s}:i(!0)}))},refreshDisabledDays(t){var e=this;this.getPageDays(t).forEach((function(t){t.isDisabled=!!e.disabledAttribute&&e.disabledAttribute.intersectsDay(t)}))},refreshFocusableDays(t){var e=this;this.getPageDays(t).forEach((function(t){t.isFocusable=t.inMonth&&t.day===e.focusableDay}))},getPageDays(t=this.pages){return t.reduce((function(t,e){return t.concat(e.days)}),[])},getPageTransition(t,e,n=this.transition){if("none"===n)return n;if("fade"===n||!n&&this.count>1||!Object(ue["z"])(t)||!Object(ue["z"])(e))return"fade";const r=Object(ue["w"])(e,t);return"slide-v"===n?r?"slide-down":"slide-up":r?"slide-right":"slide-left"},getPageForAttributes(){let t=null;const e=this.store.pinAttr;if(e&&e.hasDates){let[n]=e.dates;n=n.start||n.date,t=Object(ue["r"])(this.normalizeDate(n))}return t},buildPage({month:t,year:e},n){var r=this;const a=`${e.toString()}-${t.toString()}`;let o=this.pages.find((function(t){return t.key===a}));if(!o||n){const n=new Date(e,t-1,15),i=this.$locale.getMonthComps(t,e),s=this.$locale.getPrevMonthComps(t,e),c=this.$locale.getNextMonthComps(t,e);o={key:a,month:t,year:e,weeks:this.trimWeeks?i.weeks:6,title:this.$locale.format(n,this.$locale.masks.title),shortMonthLabel:this.$locale.format(n,"MMM"),monthLabel:this.$locale.format(n,"MMMM"),shortYearLabel:e.toString().substring(2),yearLabel:e.toString(),monthComps:i,prevMonthComps:s,nextMonthComps:c,canMove:function(t){return r.canMove(t)},move:function(t){return r.move(t)},moveThisMonth:function(){return r.moveThisMonth()},movePrevMonth:function(){return r.move(s)},moveNextMonth:function(){return r.move(c)},refresh:!0},o.days=this.$locale.getCalendarDays(o,this.timezone)}return o},initStore(){this.store=new In["a"](this.$theme,this.$locale,this.attributes),this.refreshAttrs(this.pages,this.store.list,[],!0)},refreshAttrs(t=[],e=[],n=[],r){var a=this;Object(ue["b"])(t)&&(t.forEach((function(t){t.days.forEach((function(t){let a={};r?t.refresh=!0:Object(de["f"])(t.attributesMap,n)?(a=Object(de["r"])(t.attributesMap,n),t.refresh=!0):a=t.attributesMap||{},e.forEach((function(e){const n=e.intersectsDay(t);if(n){const r={...e,targetDate:n};a[e.key]=r,t.refresh=!0}})),t.refresh&&(t.attributesMap=a)}))})),this.$nextTick((function(){a.$refs.pages.forEach((function(t){return t.refresh()}))})))},handleKeydown(t){const e=this.lastFocusedDay;null!=e&&(e.event=t,this.handleDayKeydown(e))},handleDayKeydown(t){const{date:e,event:n}=t;let a=null;switch(n.key){case"ArrowLeft":a=Object(r["a"])(e,-1);break;case"ArrowRight":a=Object(r["a"])(e,1);break;case"ArrowUp":a=Object(r["a"])(e,-7);break;case"ArrowDown":a=Object(r["a"])(e,7);break;case"Home":a=Object(r["a"])(e,1-t.weekdayPosition);break;case"End":a=Object(r["a"])(e,t.weekdayPositionFromEnd);break;case"PageUp":a=n.altKey?c(e,-1):s(e,-1);break;case"PageDown":a=n.altKey?c(e,1):s(e,1);break}a&&(n.preventDefault(),this.focusDate(a))}}}),$n=Tn,Cn=(n("de5e"),he($n,mn,yn,!1,null,null,null)),An=Cn.exports,Nn=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vc-time-picker",class:[{"vc-invalid":!t.value.isValid,"vc-bordered":t.showBorder}]},[n("div",[n("svg",{staticClass:"vc-time-icon",attrs:{fill:"none","stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2",viewBox:"0 0 24 24",stroke:"currentColor"}},[n("path",{attrs:{d:"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"}})])]),n("div",{staticClass:"vc-date-time"},[t.date?n("div",{staticClass:"vc-date"},[n("span",{staticClass:"vc-weekday"},[t._v(" "+t._s(t.locale.format(t.date,"WWW"))+" ")]),n("span",{staticClass:"vc-month"},[t._v(" "+t._s(t.locale.format(t.date,"MMM"))+" ")]),n("span",{staticClass:"vc-day"},[t._v(" "+t._s(t.locale.format(t.date,"D"))+" ")]),n("span",{staticClass:"vc-year"},[t._v(" "+t._s(t.locale.format(t.date,"YYYY"))+" ")])]):t._e(),n("div",{staticClass:"vc-time"},[n("time-select",{attrs:{options:t.hourOptions},model:{value:t.hours,callback:function(e){t.hours=t._n(e)},expression:"hours"}}),n("span",{staticStyle:{margin:"0 4px"}},[t._v(":")]),n("time-select",{attrs:{options:t.minuteOptions},model:{value:t.minutes,callback:function(e){t.minutes=t._n(e)},expression:"minutes"}}),t.is24hr?t._e():n("div",{staticClass:"vc-am-pm"},[n("button",{class:{active:t.isAM},attrs:{type:"button"},on:{click:function(e){e.preventDefault(),t.isAM=!0}}},[t._v(" AM ")]),n("button",{class:{active:!t.isAM},attrs:{type:"button"},on:{click:function(e){e.preventDefault(),t.isAM=!1}}},[t._v(" PM ")])])],1)])])},zn=[],Ln=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"vc-select"},[n("select",t._b({on:{change:function(e){return t.$emit("input",e.target.value)}}},"select",t.$attrs,!1),t._l(t.options,(function(e){return n("option",{key:e.value,attrs:{disabled:e.disabled},domProps:{value:e.value}},[t._v(t._s(e.label))])})),0),n("div",{staticClass:"vc-select-arrow"},[n("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 20 20"}},[n("path",{attrs:{d:"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"}})])])])},Fn=[],Rn={inheritAttrs:!1,props:{options:Array}},Hn=Rn,Vn=(n("ff3b"),he(Hn,Ln,Fn,!1,null,"13c05cad",null)),Wn=Vn.exports,Un={name:"TimePicker",components:{TimeSelect:Wn},props:{value:{type:Object,required:!0},locale:{type:Object,required:!0},theme:{type:Object,required:!0},is24hr:{type:Boolean,default:!0},minuteIncrement:{type:Number,default:1},showBorder:Boolean},data(){return{hours:0,minutes:0,isAM:!0}},computed:{date(){let t=this.locale.normalizeDate(this.value);return 24===this.value.hours&&(t=new Date(t.getTime()-1)),t},hourOptions(){const t=[{value:0,label:"12"},{value:1,label:"1"},{value:2,label:"2"},{value:3,label:"3"},{value:4,label:"4"},{value:5,label:"5"},{value:6,label:"6"},{value:7,label:"7"},{value:8,label:"8"},{value:9,label:"9"},{value:10,label:"10"},{value:11,label:"11"}],e=[{value:0,label:"00"},{value:1,label:"01"},{value:2,label:"02"},{value:3,label:"03"},{value:4,label:"04"},{value:5,label:"05"},{value:6,label:"06"},{value:7,label:"07"},{value:8,label:"08"},{value:9,label:"09"},{value:10,label:"10"},{value:11,label:"11"},{value:12,label:"12"},{value:13,label:"13"},{value:14,label:"14"},{value:15,label:"15"},{value:16,label:"16"},{value:17,label:"17"},{value:18,label:"18"},{value:19,label:"19"},{value:20,label:"20"},{value:21,label:"21"},{value:22,label:"22"},{value:23,label:"23"}];return this.is24hr?e:t},minuteOptions(){const t=[];let e=0,n=!1;while(e<=59)t.push({value:e,label:Object(ue["q"])(e,2)}),n=n||e===this.minutes,e+=this.minuteIncrement,!n&&e>this.minutes&&(n=!0,t.push({value:this.minutes,label:Object(ue["q"])(this.minutes,2),disabled:!0}));return t}},watch:{value(){this.setup()},hours(){this.updateValue()},minutes(){this.updateValue()},isAM(){this.updateValue()}},created(){this.setup()},methods:{protected(t){var e=this;this.busy||(this.busy=!0,t(),this.$nextTick((function(){return e.busy=!1})))},setup(){var t=this;this.protected((function(){let{hours:e}=t.value;24===e&&(e=0);let n=!0;!t.is24hr&&e>=12&&(e-=12,n=!1),t.hours=e,t.minutes=t.value.minutes,t.isAM=n}))},updateValue(){var t=this;this.protected((function(){let e=t.hours;t.is24hr||t.isAM||(e+=12),t.$emit("input",{...t.value,hours:e,minutes:t.minutes,seconds:0})}))}}},Bn=Un,qn=(n("e184"),he(Bn,Nn,zn,!1,null,"c4600cf4",null)),Gn=qn.exports;const Xn={type:"auto",mask:"iso",timeAdjust:""},Zn={start:{...Xn,timeAdjust:"00:00:00"},end:{...Xn,timeAdjust:"23:59:59"}},Kn={1:["year","month","day","hours","minutes","seconds"],2:["year","month","day"],3:["hours","minutes","seconds"]},Jn="date",Qn="datetime",tr="time",er=1,nr=2,rr=3;var ar,or,ir={name:"DatePicker",render(t){var e=this;const n=function(){if(!e.dateParts)return null;const n=e.isRange?e.dateParts:[e.dateParts[0]];return t("div",[...n.map((function(n,r){return t(Gn,{props:{value:n,locale:e.$locale,theme:e.$theme,is24hr:e.is24hr,minuteIncrement:e.minuteIncrement,showBorder:!e.isTime},on:{input:function(t){return e.onTimeInput(t,r)}}})})),e.$scopedSlots.footer&&e.$scopedSlots.footer()])},r=function(){return t(An,{attrs:{...e.$attrs,attributes:e.attributes_,theme:e.$theme,locale:e.$locale,timezone:e.timezone},props:{minDate:e.minDate,maxDate:e.maxDate,disabledDates:e.disabledDates,availableDates:e.availableDates},on:{...e.$listeners,dayclick:e.onDayClick,daykeydown:e.onDayKeydown,daymouseenter:e.onDayMouseEnter},scopedSlots:{...e.$scopedSlots,footer:e.isDateTime?n:e.$scopedSlots.footer},ref:"calendar"})},a=function(){return e.isTime?t("div",{class:["vc-container","vc-"+e.$theme.color,{"vc-is-dark":e.$theme.isDark}]},[n()]):r()};return this.$scopedSlots.default&&t("span",[this.$scopedSlots.default(this.slotArgs),t(be,{props:{id:this.datePickerPopoverId,placement:"bottom-start",contentClass:"vc-container"+(this.isDark?" vc-is-dark":"")},on:{beforeShow:function(t){return e.$emit("popoverWillShow",t)},afterShow:function(t){return e.$emit("popoverDidShow",t)},beforeHide:function(t){return e.$emit("popoverWillHide",t)},afterHide:function(t){return e.$emit("popoverDidHide",t)}},scopedSlots:{default(){return a()}},ref:"popover"})])||a()},mixins:[Ee],props:{mode:{type:String,default:Jn},value:{type:null,required:!0},modelConfig:{type:Object,default:function(){return{...Xn}}},is24hr:Boolean,minuteIncrement:Number,isRequired:Boolean,isRange:Boolean,updateOnInput:Boolean,inputDebounce:Number,popover:{type:Object,default:function(){return{}}},dragAttribute:Object,selectAttribute:Object,attributes:Array},data(){return{value_:null,dateParts:null,activeDate:"",dragValue:null,inputValues:["",""],updateTimeout:null,watchValue:!0,datePickerPopoverId:Object(ue["c"])()}},computed:{updateOnInput_(){return this.propOrDefault("updateOnInput","datePicker.updateOnInput")},inputDebounce_(){return this.propOrDefault("inputDebounce","datePicker.inputDebounce")},isDate(){return this.mode.toLowerCase()===Jn},isDateTime(){return this.mode.toLowerCase()===Qn},isTime(){return this.mode.toLowerCase()===tr},isDragging(){return!!this.dragValue},inputMask(){const t=this.$locale.masks;return this.isTime?this.is24hr?t.inputTime24hr:t.inputTime:this.isDateTime?this.is24hr?t.inputDateTime24hr:t.inputDateTime:this.$locale.masks.input},slotArgs(){var t=this;const e={type:"string",mask:this.inputMask,patch:er,timezone:this.timezone},{isRange:n,isDragging:r,updateValue:a,showPopover:o,hidePopover:i,togglePopover:s}=this,c=n?{start:this.inputValues[0],end:this.inputValues[1]}:this.inputValues[0],u=[!0,!1].map((function(n){return{input:t.onInputInput(e,n),change:t.onInputChange(e,n),keyup:t.onInputKeyup,...dn({...t.popover_,id:t.datePickerPopoverId,callback:function(e){"show"===e.action&&e.completed&&t.onInputShow(n)}})}})),l=n?{start:u[0],end:u[1]}:u[0];return{inputValue:c,inputEvents:l,isDragging:r,updateValue:a,showPopover:o,hidePopover:i,togglePopover:s,getPopoverTriggerEvents:dn}},popover_(){return this.propOrDefault("popover","datePicker.popover","merge")},canHidePopover(){return!(this.popover.keepVisibleOnInput||"visible"!==this.popover_.visibility)},selectAttribute_(){if(!this.hasValue(this.value_))return null;const t={key:"select-drag",...this.selectAttribute,dates:this.value_,pinPage:!0},{dot:e,bar:n,highlight:r,content:a}=t;return e||n||r||a||(t.highlight=!0),t},dragAttribute_(){if(!this.isRange||!this.hasValue(this.dragValue))return null;const t={key:"select-drag",...this.dragAttribute,dates:this.dragValue},{dot:e,bar:n,highlight:r,content:a}=t;return e||n||r||a||(t.highlight={startEnd:{fillMode:"outline"}}),t},attributes_(){const t=Object(de["h"])(this.attributes)?[...this.attributes]:[];return this.dragAttribute_?t.push(this.dragAttribute_):this.selectAttribute_&&t.push(this.selectAttribute_),t}},watch:{inputMask(){this.formatInput()},isRange:{immediate:!0,handler(){this.initDateConfig()}},value(){this.watchValue&&this.forceUpdateValue(this.value,{config:this.modelConfig,notify:!1,formatInput:!0,hidePopover:!1})},value_(){this.refreshDateParts()},dragValue(){this.refreshDateParts()},timezone(){this.initDateConfig(),this.refreshDateParts(),this.forceUpdateValue(this.value_,{notify:!0,formatInput:!0})}},created(){this.forceUpdateValue(this.value,{config:this.modelConfig,notify:!1,formatInput:!0,hidePopover:!1}),this.refreshDateParts()},mounted(){var t=this;Object(ue["o"])(document,"keydown",this.onDocumentKeyDown);const e=Object(le["b"])(document,(function(e){document.body.contains(e.target)&&!Object(ue["e"])(t.$el,e.target)&&(t.dragValue=null)}));this.$once("beforeDestroy",(function(){Object(ue["n"])(document,"keydown",t.onDocumentKeyDown),e()}))},methods:{initDateConfig(){let t;const e=this.timezone;t=this.isRange?{start:{timezone:e,...Zn.start,...this.modelConfig.start||this.modelConfig},end:{timezone:e,...Zn.end,...this.modelConfig.end||this.modelConfig}}:{timezone:e,...Xn,...this.modelConfig},this.dateConfig=t},getDateParts(t){return this.$locale.getDateParts(t,this.timezone)},getDateFromParts(t){return this.$locale.getDateFromParts(t,this.timezone)},refreshDateParts(){var t=this;const e=this.dragValue||this.value_,n=[];this.isRange?(e&&e.start?n.push(this.getDateParts(e.start)):n.push({}),e&&e.end?n.push(this.getDateParts(e.end)):n.push({})):e?n.push(this.getDateParts(e)):n.push({}),this.$nextTick((function(){return t.dateParts=n}))},onDocumentKeyDown(t){this.dragValue&&"Escape"===t.key&&(this.dragValue=null)},onDayClick(t){this.handleDayClick(t),this.$emit("dayclick",t)},onDayKeydown(t){switch(t.event.key){case" ":case"Enter":this.handleDayClick(t),t.event.preventDefault();break;case"Escape":this.hidePopover()}this.$emit("daykeydown",t)},handleDayClick(t){const e={patch:nr,adjustTime:!0,formatInput:!0,hidePopover:this.isDate};this.isRange?(this.isDragging?this.dragTrackingValue.end=t.range.start:this.dragTrackingValue={...t.range},e.isDragging=!this.isDragging,e.hidePopover=e.hidePopover&&!e.isDragging,this.updateValue(this.dragTrackingValue,e)):this.updateValue(t.range.start,e)},onDayMouseEnter(t){this.isDragging&&(this.dragTrackingValue.end=t.range.start,this.updateValue(this.dragTrackingValue,{patch:nr,adjustTime:!0}))},onTimeInput(t,e){const n={config:{timezone:this.timezone,type:"object"},patch:rr};if(this.isRange){const r=0===e?t:this.dateParts[0],a=0===e?this.dateParts[1]:t;this.updateValue({start:r,end:a},n)}else this.updateValue(t,n)},onInputInput(t,e){var n=this;return function(r){if(!n.updateOnInput_)return;let a=r.target.value;n.inputValues.splice(e?0:1,1,a),n.isRange&&(a={start:n.inputValues[0],end:n.inputValues[1]}),n.updateValue(a,{config:t,patch:er,formatInput:!1,hidePopover:!1,debounce:n.inputDebounce_}).then((function(){n.adjustPageRange(e)}))}},onInputChange(t,e){var n=this;const r={config:t,formatInput:!0,hidePopover:!1};return function(t){const a=t.target.value;n.isRange?(n.inputValues.splice(e?0:1,1,a),n.updateValue({start:n.inputValues[0],end:n.inputValues[1]},r)):(n.inputValues.splice(0,1,a),n.updateValue(a,r))}},onInputShow(t){this.adjustPageRange(t)},onInputKeyup(t){"Escape"===t.key&&this.updateValue(this.value_,{formatInput:!0,hidePopover:!0})},updateValue(t,e={}){var n=this;return clearTimeout(this.updateTimeout),new Promise((function(r){const{debounce:a,...o}=e;a>0?n.updateTimeout=setTimeout((function(){n.forceUpdateValue(t,o),r(n.value_)}),a):(n.forceUpdateValue(t,o),r(n.value_))}))},forceUpdateValue(t,{config:e=this.dateConfig,patch:n=er,notify:r=!0,formatInput:a=!0,hidePopover:o=!1,adjustTime:i=!1,isDragging:s=this.isDragging}={}){var c=this;let u=this.normalizeValue(t,e,n,s);if(i&&(u=this.adjustTimeForValue(u,e)),this.hasValue(u)&&this.disabledAttribute&&this.disabledAttribute.intersectsDate(u)){if(s)return;u=this.value_}const l=s?"dragValue":"value_",d=!this.valuesAreEqual(this[l],u);if(d&&(this.$set(this,l,u),s||(this.dragValue=null)),r&&d){const t=this.denormalizeValue(u,this.dateConfig),e=this.isDragging?"drag":"input";this.watchValue=!1,this.$emit(e,t),this.$nextTick((function(){return c.watchValue=!0}))}a&&this.formatInput(),o&&this.hidePopover()},hasValue(t){return this.isRange?Object(de["l"])(t)&&t.start&&t.end:!!t},normalizeValue(t,e,n,r){if(!this.hasValue(t))return null;const a=Kn[n];if(this.isRange){const o=this.normalizeDate(t.start,e.start||e),i=this.normalizeDate(t.end,e.end||e),s=this.sortRange({start:o,end:i});if(n!==er){const t={...this.dateParts[0],...Object(de["s"])(this.getDateParts(s.start),a)};s.start=this.getDateFromParts(t);const e={...this.dateParts[1],...Object(de["s"])(this.getDateParts(s.end),a)};s.end=this.getDateFromParts(e)}return r?s:this.sortRange(s)}let o=this.normalizeDate(t,e);return n===er?o:(o={...this.dateParts[0],...Object(de["s"])(this.getDateParts(o),a)},this.getDateFromParts(o))},adjustTimeForValue(t,e){return this.isRange?this.hasValue(t)?{start:this.$locale.adjustTimeForDate(t.start,e.start||e),end:this.$locale.adjustTimeForDate(t.end,e.end||e)}:null:this.$locale.adjustTimeForDate(t,e)},sortRange(t){const{start:e,end:n}=t;return e>n?{start:n,end:e}:{start:e,end:n}},denormalizeValue(t,e){return this.isRange?this.hasValue(t)?{start:this.$locale.denormalizeDate(t.start,e.start||e),end:this.$locale.denormalizeDate(t.end,e.end||e)}:null:this.$locale.denormalizeDate(t,e)},valuesAreEqual(t,e){if(this.isRange){const n=this.hasValue(t),r=this.hasValue(e);return!n&&!r||n===r&&(Object(ue["d"])(t.start,e.start)&&Object(ue["d"])(t.end,e.end))}return Object(ue["d"])(t,e)},formatInput(){var t=this;this.$nextTick((function(){const e={type:"string",mask:t.inputMask,timezone:t.timezone},n=t.denormalizeValue(t.dragValue||t.value_,e);t.isRange?t.inputValues=[n&&n.start,n&&n.end]:t.inputValues=[n,""]}))},showPopover(t={}){sn({ref:this.$el,...t,isInteractive:!0,id:this.datePickerPopoverId})},hidePopover(t={}){cn({...t,id:this.datePickerPopoverId})},togglePopover(t){un({ref:this.$el,...t,isInteractive:!0,id:this.datePickerPopoverId})},adjustPageRange(t){var e=this;this.$nextTick((function(){const n=e.$refs.calendar,r=e.getPageForValue(t),a=t?1:-1;r&&n&&!Object(ue["x"])(r,n.firstPage,n.lastPage)&&n.move(r,{position:a,transition:"fade"})}))},getPageForValue(t){return this.hasValue(this.value_)?Object(ue["r"])(this.isRange?this.value_[t?"start":"end"]:this.value_):null},move(t,e){return this.$refs.calendar?this.$refs.calendar.move(t,e):Promise.reject(new Error("Navigation disabled while calendar is not yet displayed"))},focusDate(t,e){return this.$refs.calendar?this.$refs.calendar.focusDate(t,e):Promise.reject(new Error("Navigation disabled while calendar is not yet displayed"))}}},sr=ir,cr=he(sr,ar,or,!1,null,null,null),ur=cr.exports},"2b10":function(t,e){function n(t,e,n){var r=-1,a=t.length;e<0&&(e=-e>a?0:a+e),n=n>a?a:n,n<0&&(n+=a),a=e>n?0:n-e>>>0,e>>>=0;var o=Array(a);while(++r<a)o[r]=t[r+e];return o}t.exports=n},"2b3e":function(t,e,n){var r=n("585a"),a="object"==typeof self&&self&&self.Object===Object&&self,o=r||a||Function("return this")();t.exports=o},"2d7c":function(t,e){function n(t,e){var n=-1,r=null==t?0:t.length,a=0,o=[];while(++n<r){var i=t[n];e(i,n,t)&&(o[a++]=i)}return o}t.exports=n},"2dcb":function(t,e,n){var r=n("91e9"),a=r(Object.getPrototypeOf,Object);t.exports=a},"2ec1":function(t,e,n){var r=n("100e"),a=n("9aff");function o(t){return r((function(e,n){var r=-1,o=n.length,i=o>1?n[o-1]:void 0,s=o>2?n[2]:void 0;i=t.length>3&&"function"==typeof i?(o--,i):void 0,s&&a(n[0],n[1],s)&&(i=o<3?void 0:i,o=1),e=Object(e);while(++r<o){var c=n[r];c&&t(e,c,r,i)}return e}))}t.exports=o},"2fa3":function(t,e,n){"use strict";n.d(e,"q",(function(){return a})),n.d(e,"h",(function(){return o})),n.d(e,"z",(function(){return i})),n.d(e,"l",(function(){return s})),n.d(e,"w",(function(){return c})),n.d(e,"v",(function(){return u})),n.d(e,"x",(function(){return l})),n.d(e,"y",(function(){return d})),n.d(e,"r",(function(){return f})),n.d(e,"a",(function(){return p})),n.d(e,"u",(function(){return h})),n.d(e,"s",(function(){return v})),n.d(e,"t",(function(){return b})),n.d(e,"j",(function(){return g})),n.d(e,"d",(function(){return m})),n.d(e,"b",(function(){return y})),n.d(e,"i",(function(){return w})),n.d(e,"f",(function(){return x})),n.d(e,"g",(function(){return D})),n.d(e,"m",(function(){return j})),n.d(e,"o",(function(){return O})),n.d(e,"n",(function(){return k})),n.d(e,"e",(function(){return M})),n.d(e,"p",(function(){return P})),n.d(e,"c",(function(){return S})),n.d(e,"k",(function(){return Y}));n("ddb0");var r=n("9404");const a=function(t,e,n="0"){t=null!==t&&void 0!==t?String(t):"",e=e||2;while(t.length<e)t=`${n}${t}`;return t},o=function(t,e){return Object(r["j"])(t)?t(e):t},i=function(t){return!!(t&&t.month&&t.year)},s=function(...t){const e={};return t.forEach((function(t){return Object.entries(t).forEach((function([t,n]){e[t]?Object(r["h"])(e[t])?e[t].push(n):e[t]=[e[t],n]:e[t]=n}))})),e},c=function(t,e){return!(!i(t)||!i(e))&&(t.year===e.year?t.month<e.month:t.year<e.year)},u=function(t,e){return!(!i(t)||!i(e))&&(t.year===e.year?t.month>e.month:t.year>e.year)},l=function(t,e,n){return!!t&&!c(t,e)&&!u(t,n)},d=function(t,e){return!(!t&&e)&&(!(t&&!e)&&(!t&&!e||t.month===e.month&&t.year===e.year))},f=function(t){return t?{month:t.getMonth()+1,year:t.getFullYear()}:null},p=function({month:t,year:e},n){const r=n>0?1:-1;for(let a=0;a<Math.abs(n);a++)t+=r,t>12?(t=1,e++):t<1&&(t=12,e--);return{month:t,year:e}},h=function(){return f(new Date)},v=function(){return p(h(),1)},b=function(){return p(h(),-1)},g=function(...t){return t.reduce((function(t,e){return t?e&&u(e,t)?e:t:e}))};function m(t,e){const n=Object(r["i"])(t),a=Object(r["i"])(e);return!n&&!a||n===a&&t.getTime()===e.getTime()}const y=function(t){return Object(r["h"])(t)&&t.length},w=function(t,e){return t?e&&e(t)?t:w(t.parentElement,e):null},x=function(t,e){return!!w(t,(function(t){return t===e}))},D=function(t,e){let n=0,r=0;do{n+=t.offsetTop||0,r+=t.offsetLeft||0,t=t.offsetParent}while(t&&t!==e);return{top:n,left:r}},j=function(t,e,n){const a=[];return n.forEach((function(n){const o=n.name||n.toString(),i=n.mixin,s=n.validate;if(Object.prototype.hasOwnProperty.call(t,o)){const n=s?s(t[o]):t[o];e[o]=i&&Object(r["l"])(n)?{...i,...n}:n,a.push(o)}})),{target:e,assigned:a.length?a:null}},O=function(t,e,n,r){t&&e&&n&&t.addEventListener(e,n,r)},k=function(t,e,n,r){t&&e&&t.removeEventListener(e,n,r)},M=function(t,e){return!!t&&!!e&&(t===e||t.contains(e))},P=function(t,e){" "!==t.key&&"Enter"!==t.key||(e(t),t.preventDefault())},S=function(){function t(){return(65536*(1+Math.random())|0).toString(16).substring(1)}return`${t()+t()}-${t()}-${t()}-${t()}-${t()}${t()}${t()}`};function Y(t){let e,n=0,r=0;if(0===t.length)return n;for(r=0;r<t.length;r++)e=t.charCodeAt(r),n=(n<<5)-n+e,n|=0;return n}},"2fcc":function(t,e){function n(t){var e=this.__data__,n=e["delete"](t);return this.size=e.size,n}t.exports=n},3092:function(t,e,n){var r=n("4284"),a=n("badf"),o=n("361d"),i=n("6747"),s=n("9aff");function c(t,e,n){var c=i(t)?r:o;return n&&s(t,e,n)&&(e=void 0),c(t,a(e,3))}t.exports=c},"30c9":function(t,e,n){var r=n("9520"),a=n("b218");function o(t){return null!=t&&a(t.length)&&!r(t)}t.exports=o},"32b3":function(t,e,n){var r=n("872a"),a=n("9638"),o=Object.prototype,i=o.hasOwnProperty;function s(t,e,n){var o=t[e];i.call(t,e)&&a(o,n)&&(void 0!==n||e in t)||r(t,e,n)}t.exports=s},"32f4":function(t,e,n){var r=n("2d7c"),a=n("d327"),o=Object.prototype,i=o.propertyIsEnumerable,s=Object.getOwnPropertySymbols,c=s?function(t){return null==t?[]:(t=Object(t),r(s(t),(function(e){return i.call(t,e)})))}:a;t.exports=c},"34ac":function(t,e,n){var r=n("9520"),a=n("1368"),o=n("1a8c"),i=n("dc57"),s=/[\\^$.*+?()[\]{}|]/g,c=/^\[object .+?Constructor\]$/,u=Function.prototype,l=Object.prototype,d=u.toString,f=l.hasOwnProperty,p=RegExp("^"+d.call(f).replace(s,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$");function h(t){if(!o(t)||a(t))return!1;var e=r(t)?p:c;return e.test(i(t))}t.exports=h},"34e9":function(t,e,n){"use strict";(function(t){n("ddb0");var r=n("2af9"),a=n("ed08");function o(t,e){if(o.installed)return;o.installed=!0;const n=a["setupCalendar"](e);Object.entries(r).forEach((function([e,r]){t.component(`${n.componentPrefix}${e}`,r)}))}n.d(e,"c",(function(){return r["Calendar"]})),n.d(e,"d",(function(){return r["CalendarNav"]})),n.d(e,"f",(function(){return r["DatePicker"]})),n.d(e,"g",(function(){return r["Grid"]})),n.d(e,"i",(function(){return r["Popover"]})),n.d(e,"a",(function(){return a["Attribute"]})),n.d(e,"b",(function(){return a["AttributeStore"]})),n.d(e,"e",(function(){return a["DateInfo"]})),n.d(e,"h",(function(){return a["Locale"]})),n.d(e,"j",(function(){return a["addHorizontalSwipeHandler"]})),n.d(e,"k",(function(){return a["addPages"]})),n.d(e,"l",(function(){return a["addTapOrClickHandler"]})),n.d(e,"m",(function(){return a["arrayHasItems"]})),n.d(e,"n",(function(){return a["createGuid"]})),n.d(e,"o",(function(){return a["datesAreEqual"]})),n.d(e,"q",(function(){return a["elementContains"]})),n.d(e,"r",(function(){return a["elementHasAncestor"]})),n.d(e,"s",(function(){return a["elementPositionInAncestor"]})),n.d(e,"t",(function(){return a["evalFn"]})),n.d(e,"u",(function(){return a["findAncestor"]})),n.d(e,"v",(function(){return a["getMaxPage"]})),n.d(e,"w",(function(){return a["hash"]})),n.d(e,"x",(function(){return a["mergeEvents"]})),n.d(e,"y",(function(){return a["mixinOptionalProps"]})),n.d(e,"z",(function(){return a["off"]})),n.d(e,"A",(function(){return a["on"]})),n.d(e,"B",(function(){return a["onSpaceOrEnter"]})),n.d(e,"C",(function(){return a["pad"]})),n.d(e,"D",(function(){return a["pageForDate"]})),n.d(e,"E",(function(){return a["pageForNextMonth"]})),n.d(e,"F",(function(){return a["pageForPrevMonth"]})),n.d(e,"G",(function(){return a["pageForThisMonth"]})),n.d(e,"H",(function(){return a["pageIsAfterPage"]})),n.d(e,"I",(function(){return a["pageIsBeforePage"]})),n.d(e,"J",(function(){return a["pageIsBetweenPages"]})),n.d(e,"K",(function(){return a["pageIsEqualToPage"]})),n.d(e,"L",(function(){return a["pageIsValid"]})),n.d(e,"M",(function(){return a["setupCalendar"]}));const i={install:o,...r,...a};let s=null;"undefined"!==typeof window?s=window.Vue:"undefined"!==typeof t&&(s=t.Vue),s&&s.use(i),e["p"]=i}).call(this,n("c8ba"))},"361d":function(t,e,n){var r=n("48a0");function a(t,e){var n;return r(t,(function(t,r,a){return n=e(t,r,a),!n})),!!n}t.exports=a},3698:function(t,e){function n(t,e){return null==t?void 0:t[e]}t.exports=n},3729:function(t,e,n){var r=n("9e69"),a=n("00fd"),o=n("29f3"),i="[object Null]",s="[object Undefined]",c=r?r.toStringTag:void 0;function u(t){return null==t?void 0===t?s:i:c&&c in Object(t)?a(t):o(t)}t.exports=u},"37e8":function(t,e,n){var r=n("83ab"),a=n("9bf2"),o=n("825a"),i=n("df75");t.exports=r?Object.defineProperties:function(t,e){o(t);var n,r=i(e),s=r.length,c=0;while(s>c)a.f(t,n=r[c++],e[n]);return t}},3818:function(t,e,n){var r=n("7e64"),a=n("8057"),o=n("32b3"),i=n("5b01"),s=n("0f0f"),c=n("e538"),u=n("4359"),l=n("54eb"),d=n("1041"),f=n("a994"),p=n("1bac"),h=n("42a2"),v=n("c87c"),b=n("c2b6"),g=n("fa21"),m=n("6747"),y=n("0d24"),w=n("cc45"),x=n("1a8c"),D=n("d7ee"),j=n("ec69"),O=n("9934"),k=1,M=2,P=4,S="[object Arguments]",Y="[object Array]",_="[object Boolean]",E="[object Date]",I="[object Error]",T="[object Function]",$="[object GeneratorFunction]",C="[object Map]",A="[object Number]",N="[object Object]",z="[object RegExp]",L="[object Set]",F="[object String]",R="[object Symbol]",H="[object WeakMap]",V="[object ArrayBuffer]",W="[object DataView]",U="[object Float32Array]",B="[object Float64Array]",q="[object Int8Array]",G="[object Int16Array]",X="[object Int32Array]",Z="[object Uint8Array]",K="[object Uint8ClampedArray]",J="[object Uint16Array]",Q="[object Uint32Array]",tt={};function et(t,e,n,Y,_,E){var I,C=e&k,A=e&M,z=e&P;if(n&&(I=_?n(t,Y,_,E):n(t)),void 0!==I)return I;if(!x(t))return t;var L=m(t);if(L){if(I=v(t),!C)return u(t,I)}else{var F=h(t),R=F==T||F==$;if(y(t))return c(t,C);if(F==N||F==S||R&&!_){if(I=A||R?{}:g(t),!C)return A?d(t,s(I,t)):l(t,i(I,t))}else{if(!tt[F])return _?t:{};I=b(t,F,C)}}E||(E=new r);var H=E.get(t);if(H)return H;E.set(t,I),D(t)?t.forEach((function(r){I.add(et(r,e,n,r,t,E))})):w(t)&&t.forEach((function(r,a){I.set(a,et(r,e,n,a,t,E))}));var V=z?A?p:f:A?O:j,W=L?void 0:V(t);return a(W||t,(function(r,a){W&&(a=r,r=t[a]),o(I,a,et(r,e,n,a,t,E))})),I}tt[S]=tt[Y]=tt[V]=tt[W]=tt[_]=tt[E]=tt[U]=tt[B]=tt[q]=tt[G]=tt[X]=tt[C]=tt[A]=tt[N]=tt[z]=tt[L]=tt[F]=tt[R]=tt[Z]=tt[K]=tt[J]=tt[Q]=!0,tt[I]=tt[T]=tt[H]=!1,t.exports=et},3852:function(t,e,n){var r=n("96f3"),a=n("e2c0");function o(t,e){return null!=t&&a(t,e,r)}t.exports=o},"39ff":function(t,e,n){var r=n("0b07"),a=n("2b3e"),o=r(a,"WeakMap");t.exports=o},"3a6f":function(t,e,n){var r=n("f3e2");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("82f7f64e",r,!0,{sourceMap:!1,shadowMode:!1})},"3b4a":function(t,e,n){var r=n("0b07"),a=function(){try{var t=r(Object,"defineProperty");return t({},"",{}),t}catch(e){}}();t.exports=a},"3bb4":function(t,e,n){var r=n("08cc"),a=n("ec69");function o(t){var e=a(t),n=e.length;while(n--){var o=e[n],i=t[o];e[n]=[o,i,r(i)]}return e}t.exports=o},"3bbe":function(t,e,n){var r=n("861d");t.exports=function(t){if(!r(t)&&null!==t)throw TypeError("Can't set "+String(t)+" as a prototype");return t}},"3c55":function(t,e,n){"use strict";var r=n("e969"),a=n.n(r);a.a},"3db9":function(t,e,n){var r=n("adc8");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("2b7f9a9d",r,!0,{sourceMap:!1,shadowMode:!1})},"3ee2":function(t,e,n){var r=n("dc8c");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("13d41af5",r,!0,{sourceMap:!1,shadowMode:!1})},"3eea":function(t,e,n){var r=n("7948"),a=n("3818"),o=n("4bb5"),i=n("e2e4"),s=n("8eeb"),c=n("e0e7"),u=n("c6cf"),l=n("1bac"),d=1,f=2,p=4,h=u((function(t,e){var n={};if(null==t)return n;var u=!1;e=r(e,(function(e){return e=i(e,t),u||(u=e.length>1),e})),s(t,l(t),n),u&&(n=a(n,d|f|p,c));var h=e.length;while(h--)o(n,e[h]);return n}));t.exports=h},"3f84":function(t,e,n){var r=n("85e3"),a=n("100e"),o=n("e031"),i=n("2411"),s=a((function(t){return t.push(void 0,o),r(i,void 0,t)}));t.exports=s},"3f8c":function(t,e){t.exports={}},"41c3":function(t,e,n){var r=n("1a8c"),a=n("eac5"),o=n("ec8c"),i=Object.prototype,s=i.hasOwnProperty;function c(t){if(!r(t))return o(t);var e=a(t),n=[];for(var i in t)("constructor"!=i||!e&&s.call(t,i))&&n.push(i);return n}t.exports=c},4245:function(t,e,n){var r=n("1290");function a(t,e){var n=t.__data__;return r(e)?n["string"==typeof e?"string":"hash"]:n.map}t.exports=a},4284:function(t,e){function n(t,e){var n=-1,r=null==t?0:t.length;while(++n<r)if(e(t[n],n,t))return!0;return!1}t.exports=n},"428f":function(t,e,n){var r=n("da84");t.exports=r},"42a2":function(t,e,n){var r=n("b5a7"),a=n("79bc"),o=n("1cec"),i=n("c869"),s=n("39ff"),c=n("3729"),u=n("dc57"),l="[object Map]",d="[object Object]",f="[object Promise]",p="[object Set]",h="[object WeakMap]",v="[object DataView]",b=u(r),g=u(a),m=u(o),y=u(i),w=u(s),x=c;(r&&x(new r(new ArrayBuffer(1)))!=v||a&&x(new a)!=l||o&&x(o.resolve())!=f||i&&x(new i)!=p||s&&x(new s)!=h)&&(x=function(t){var e=c(t),n=e==d?t.constructor:void 0,r=n?u(n):"";if(r)switch(r){case b:return v;case g:return l;case m:return f;case y:return p;case w:return h}return e}),t.exports=x},4350:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-grid-container[data-v-3ca35a05]{position:relative;flex-shrink:1;display:grid;overflow:auto;-webkit-overflow-scrolling:touch}.vc-grid-cell[data-v-3ca35a05]{display:flex;justify-content:center;align-items:center}",""]),t.exports=e},4359:function(t,e){function n(t,e){var n=-1,r=t.length;e||(e=Array(r));while(++n<r)e[n]=t[n];return e}t.exports=n},4416:function(t,e){function n(t){var e=null==t?0:t.length;return e?t[e-1]:void 0}t.exports=n},"44ad":function(t,e,n){var r=n("d039"),a=n("c6b6"),o="".split;t.exports=r((function(){return!Object("z").propertyIsEnumerable(0)}))?function(t){return"String"==a(t)?o.call(t,""):Object(t)}:Object},"44d2":function(t,e,n){var r=n("b622"),a=n("7c73"),o=n("9bf2"),i=r("unscopables"),s=Array.prototype;void 0==s[i]&&o.f(s,i,{configurable:!0,value:a(null)}),t.exports=function(t){s[i][t]=!0}},"45b6":function(t,e,n){var r=n("2809");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("f74a86dc",r,!0,{sourceMap:!1,shadowMode:!1})},4728:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-pane[data-v-31279cb5]{flex-grow:1;flex-shrink:1;align-self:flex-start;display:flex;flex-direction:column;justify-content:center;align-items:stretch}.vc-horizontal-divider[data-v-31279cb5]{align-self:center}.vc-header[data-v-31279cb5]{flex-shrink:0;display:flex;align-items:stretch;color:var(--gray-900);-webkit-user-select:none;user-select:none;padding:10px 10px 0 10px}.vc-header.align-left[data-v-31279cb5]{order:-1;justify-content:flex-start}.vc-header.align-right[data-v-31279cb5]{order:1;justify-content:flex-end}.vc-title-layout[data-v-31279cb5]{display:flex;justify-content:center;align-items:center;flex-grow:1}.vc-title-layout.align-left[data-v-31279cb5]{justify-content:flex-start}.vc-title-layout.align-right[data-v-31279cb5]{justify-content:flex-end}.vc-title-wrapper[data-v-31279cb5]{position:relative}.vc-title[data-v-31279cb5]{font-size:var(--text-lg);color:var(--gray-800);font-weight:var(--font-semibold);cursor:pointer;-webkit-user-select:none;user-select:none;white-space:nowrap;padding:0 8px;line-height:27px}.vc-title[data-v-31279cb5]:hover{opacity:.75}.vc-weekday[data-v-31279cb5]{display:flex;justify-content:center;align-items:center;flex:1;color:var(--gray-500);font-size:var(--text-sm);font-weight:var(--font-bold);padding:5px 0;cursor:default;-webkit-user-select:none;user-select:none}.vc-weeks[data-v-31279cb5]{flex-shrink:1;flex-grow:1;padding:5px 6px 7px 6px}.vc-is-dark .vc-header[data-v-31279cb5]{color:var(--gray-200)}.vc-is-dark .vc-title[data-v-31279cb5]{color:var(--gray-100)}.vc-is-dark .vc-weekday[data-v-31279cb5]{color:var(--accent-200)}",""]),t.exports=e},4889:function(t,e,n){"use strict";var r=n("df9e"),a=n.n(r);a.a},"48a0":function(t,e,n){var r=n("242e"),a=n("950a"),o=a(r);t.exports=o},4930:function(t,e,n){var r=n("d039");t.exports=!!Object.getOwnPropertySymbols&&!r((function(){return!String(Symbol())}))},"499e":function(t,e,n){"use strict";function r(t,e){for(var n=[],r={},a=0;a<e.length;a++){var o=e[a],i=o[0],s=o[1],c=o[2],u=o[3],l={id:t+":"+a,css:s,media:c,sourceMap:u};r[i]?r[i].parts.push(l):n.push(r[i]={id:i,parts:[l]})}return n}n.r(e),n.d(e,"default",(function(){return h}));var a="undefined"!==typeof document;if("undefined"!==typeof DEBUG&&DEBUG&&!a)throw new Error("vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.");var o={},i=a&&(document.head||document.getElementsByTagName("head")[0]),s=null,c=0,u=!1,l=function(){},d=null,f="data-vue-ssr-id",p="undefined"!==typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());function h(t,e,n,a){u=n,d=a||{};var i=r(t,e);return v(i),function(e){for(var n=[],a=0;a<i.length;a++){var s=i[a],c=o[s.id];c.refs--,n.push(c)}e?(i=r(t,e),v(i)):i=[];for(a=0;a<n.length;a++){c=n[a];if(0===c.refs){for(var u=0;u<c.parts.length;u++)c.parts[u]();delete o[c.id]}}}}function v(t){for(var e=0;e<t.length;e++){var n=t[e],r=o[n.id];if(r){r.refs++;for(var a=0;a<r.parts.length;a++)r.parts[a](n.parts[a]);for(;a<n.parts.length;a++)r.parts.push(g(n.parts[a]));r.parts.length>n.parts.length&&(r.parts.length=n.parts.length)}else{var i=[];for(a=0;a<n.parts.length;a++)i.push(g(n.parts[a]));o[n.id]={id:n.id,refs:1,parts:i}}}}function b(){var t=document.createElement("style");return t.type="text/css",i.appendChild(t),t}function g(t){var e,n,r=document.querySelector("style["+f+'~="'+t.id+'"]');if(r){if(u)return l;r.parentNode.removeChild(r)}if(p){var a=c++;r=s||(s=b()),e=y.bind(null,r,a,!1),n=y.bind(null,r,a,!0)}else r=b(),e=w.bind(null,r),n=function(){r.parentNode.removeChild(r)};return e(t),function(r){if(r){if(r.css===t.css&&r.media===t.media&&r.sourceMap===t.sourceMap)return;e(t=r)}else n()}}var m=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}();function y(t,e,n,r){var a=n?"":r.css;if(t.styleSheet)t.styleSheet.cssText=m(e,a);else{var o=document.createTextNode(a),i=t.childNodes;i[e]&&t.removeChild(i[e]),i.length?t.insertBefore(o,i[e]):t.appendChild(o)}}function w(t,e){var n=e.css,r=e.media,a=e.sourceMap;if(r&&t.setAttribute("media",r),d.ssrId&&t.setAttribute(f,e.id),a&&(n+="\n/*# sourceURL="+a.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(a))))+" */"),t.styleSheet)t.styleSheet.cssText=n;else{while(t.firstChild)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}},"49f4":function(t,e,n){var r=n("6044");function a(){this.__data__=r?r(null):{},this.size=0}t.exports=a},"4bb5":function(t,e,n){var r=n("e2e4"),a=n("4416"),o=n("8296"),i=n("f4d6");function s(t,e){return e=r(e,t),t=o(t,e),null==t||delete t[i(a(e))]}t.exports=s},"4cfe":function(t,e){function n(t){return void 0===t}t.exports=n},"4d64":function(t,e,n){var r=n("fc6a"),a=n("50c4"),o=n("23cb"),i=function(t){return function(e,n,i){var s,c=r(e),u=a(c.length),l=o(i,u);if(t&&n!=n){while(u>l)if(s=c[l++],s!=s)return!0}else for(;u>l;l++)if((t||l in c)&&c[l]===n)return t||l||0;return!t&&-1}};t.exports={includes:i(!0),indexOf:i(!1)}},"4d8c":function(t,e,n){var r=n("5c69");function a(t){var e=null==t?0:t.length;return e?r(t,1):[]}t.exports=a},"4f50":function(t,e,n){var r=n("b760"),a=n("e538"),o=n("c8fe"),i=n("4359"),s=n("fa21"),c=n("d370"),u=n("6747"),l=n("dcbe"),d=n("0d24"),f=n("9520"),p=n("1a8c"),h=n("60ed"),v=n("73ac"),b=n("8adb"),g=n("8de2");function m(t,e,n,m,y,w,x){var D=b(t,n),j=b(e,n),O=x.get(j);if(O)r(t,n,O);else{var k=w?w(D,j,n+"",t,e,x):void 0,M=void 0===k;if(M){var P=u(j),S=!P&&d(j),Y=!P&&!S&&v(j);k=j,P||S||Y?u(D)?k=D:l(D)?k=i(D):S?(M=!1,k=a(j,!0)):Y?(M=!1,k=o(j,!0)):k=[]:h(j)||c(j)?(k=D,c(D)?k=g(D):p(D)&&!f(D)||(k=s(j))):M=!1}M&&(x.set(j,k),y(k,j,m,w,x),x["delete"](j)),r(t,n,k)}}t.exports=m},"501e":function(t,e,n){var r=n("3729"),a=n("1310"),o="[object Number]";function i(t){return"number"==typeof t||a(t)&&r(t)==o}t.exports=i},"50c4":function(t,e,n){var r=n("a691"),a=Math.min;t.exports=function(t){return t>0?a(r(t),9007199254740991):0}},"50d8":function(t,e){function n(t,e){var n=-1,r=Array(t);while(++n<t)r[n]=e(n);return r}t.exports=n},5135:function(t,e){var n={}.hasOwnProperty;t.exports=function(t,e){return n.call(t,e)}},"51ec":function(t,e,n){"use strict";n.d(e,"b",(function(){return f})),n.d(e,"a",(function(){return p}));var r=n("8bbf"),a=n.n(r),o=n("9404"),i=n("23a5"),s=n("7efe"),c=n("85a9"),u=n("f15d");const l={componentPrefix:"v",navVisibility:"click",titlePosition:"center",transition:"slide-h",touch:i,masks:s,screens:c,locales:u["a"],datePicker:{updateOnInput:!0,inputDebounce:1e3,popover:{visibility:"hover-focus",placement:"bottom-start",keepVisibleOnInput:!1,isInteractive:!0}}};let d=null;const f=function(t){return d||(d=new a.a({data(){return{defaults:Object(o["c"])(t,l)}},computed:{locales(){var t=this;return Object(o["q"])(this.defaults.locales,(function(e){return e.masks=Object(o["c"])(e.masks,t.defaults.masks),e}))}}})),d.defaults},p={beforeCreate(){f()},computed:{$defaults(){return d.defaults},$locales(){return d.locales}},methods:{propOrDefault(t,e,n){return this.passedProp(t,Object(o["d"])(this.$defaults,e),n)},passedProp(t,e,n){if(Object(o["e"])(this.$options.propsData,t)){const r=this[t];return Object(o["l"])(r)&&"merge"===n?Object(o["c"])(r,e):r}return e}}}},5319:function(t,e,n){"use strict";var r=n("d784"),a=n("825a"),o=n("7b0b"),i=n("50c4"),s=n("a691"),c=n("1d80"),u=n("8aa5"),l=n("14c3"),d=Math.max,f=Math.min,p=Math.floor,h=/\$([$&'`]|\d\d?|<[^>]*>)/g,v=/\$([$&'`]|\d\d?)/g,b=function(t){return void 0===t?t:String(t)};r("replace",2,(function(t,e,n,r){var g=r.REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE,m=r.REPLACE_KEEPS_$0,y=g?"$":"$0";return[function(n,r){var a=c(this),o=void 0==n?void 0:n[t];return void 0!==o?o.call(n,a,r):e.call(String(a),n,r)},function(t,r){if(!g&&m||"string"===typeof r&&-1===r.indexOf(y)){var o=n(e,t,this,r);if(o.done)return o.value}var c=a(t),p=String(this),h="function"===typeof r;h||(r=String(r));var v=c.global;if(v){var x=c.unicode;c.lastIndex=0}var D=[];while(1){var j=l(c,p);if(null===j)break;if(D.push(j),!v)break;var O=String(j[0]);""===O&&(c.lastIndex=u(p,i(c.lastIndex),x))}for(var k="",M=0,P=0;P<D.length;P++){j=D[P];for(var S=String(j[0]),Y=d(f(s(j.index),p.length),0),_=[],E=1;E<j.length;E++)_.push(b(j[E]));var I=j.groups;if(h){var T=[S].concat(_,Y,p);void 0!==I&&T.push(I);var $=String(r.apply(void 0,T))}else $=w(S,p,Y,_,I,r);Y>=M&&(k+=p.slice(M,Y)+$,M=Y+S.length)}return k+p.slice(M)}];function w(t,n,r,a,i,s){var c=r+t.length,u=a.length,l=v;return void 0!==i&&(i=o(i),l=h),e.call(s,l,(function(e,o){var s;switch(o.charAt(0)){case"$":return"$";case"&":return t;case"`":return n.slice(0,r);case"'":return n.slice(c);case"<":s=i[o.slice(1,-1)];break;default:var l=+o;if(0===l)return e;if(l>u){var d=p(l/10);return 0===d?e:d<=u?void 0===a[d-1]?o.charAt(1):a[d-1]+o.charAt(1):e}s=a[l-1]}return void 0===s?"":s}))}}))},"54eb":function(t,e,n){var r=n("8eeb"),a=n("32f4");function o(t,e){return r(t,a(t),e)}t.exports=o},"55a3":function(t,e){function n(t){return this.__data__.has(t)}t.exports=n},5692:function(t,e,n){var r=n("c430"),a=n("c6cd");(t.exports=function(t,e){return a[t]||(a[t]=void 0!==e?e:{})})("versions",[]).push({version:"3.6.5",mode:r?"pure":"global",copyright:"© 2020 Denis Pushkarev (zloirock.ru)"})},"56ef":function(t,e,n){var r=n("d066"),a=n("241c"),o=n("7418"),i=n("825a");t.exports=r("Reflect","ownKeys")||function(t){var e=a.f(i(t)),n=o.f;return n?e.concat(n(t)):e}},"57a5":function(t,e,n){var r=n("91e9"),a=r(Object.keys,Object);t.exports=a},"585a":function(t,e,n){(function(e){var n="object"==typeof e&&e&&e.Object===Object&&e;t.exports=n}).call(this,n("c8ba"))},"5b01":function(t,e,n){var r=n("8eeb"),a=n("ec69");function o(t,e){return t&&r(e,a(e),t)}t.exports=o},"5c69":function(t,e,n){var r=n("087d"),a=n("0621");function o(t,e,n,i,s){var c=-1,u=t.length;n||(n=a),s||(s=[]);while(++c<u){var l=t[c];e>0&&n(l)?e>1?o(l,e-1,n,i,s):r(s,l):i||(s[s.length]=l)}return s}t.exports=o},"5c6c":function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},"5d89":function(t,e,n){var r=n("f8af");function a(t,e){var n=e?r(t.buffer):t.buffer;return new t.constructor(n,t.byteOffset,t.byteLength)}t.exports=a},"5e2e":function(t,e,n){var r=n("28c9"),a=n("69d5"),o=n("b4c0"),i=n("fba5"),s=n("67ca");function c(t){var e=-1,n=null==t?0:t.length;this.clear();while(++e<n){var r=t[e];this.set(r[0],r[1])}}c.prototype.clear=r,c.prototype["delete"]=a,c.prototype.get=o,c.prototype.has=i,c.prototype.set=s,t.exports=c},6044:function(t,e,n){var r=n("0b07"),a=r(Object,"create");t.exports=a},"60ed":function(t,e,n){var r=n("3729"),a=n("2dcb"),o=n("1310"),i="[object Object]",s=Function.prototype,c=Object.prototype,u=s.toString,l=c.hasOwnProperty,d=u.call(Object);function f(t){if(!o(t)||r(t)!=i)return!1;var e=a(t);if(null===e)return!0;var n=l.call(e,"constructor")&&e.constructor;return"function"==typeof n&&n instanceof n&&u.call(n)==d}t.exports=f},6220:function(t,e,n){var r=n("b1d2"),a=n("b047"),o=n("99d3"),i=o&&o.isDate,s=i?a(i):r;t.exports=s},"62e4":function(t,e){t.exports=function(t){return t.webpackPolyfill||(t.deprecate=function(){},t.paths=[],t.children||(t.children=[]),Object.defineProperty(t,"loaded",{enumerable:!0,get:function(){return t.l}}),Object.defineProperty(t,"id",{enumerable:!0,get:function(){return t.i}}),t.webpackPolyfill=1),t}},"642a":function(t,e,n){var r=n("966f"),a=n("3bb4"),o=n("20ec");function i(t){var e=a(t);return 1==e.length&&e[0][2]?o(e[0][0],e[0][1]):function(n){return n===t||r(n,t,e)}}t.exports=i},6547:function(t,e,n){var r=n("a691"),a=n("1d80"),o=function(t){return function(e,n){var o,i,s=String(a(e)),c=r(n),u=s.length;return c<0||c>=u?t?"":void 0:(o=s.charCodeAt(c),o<55296||o>56319||c+1===u||(i=s.charCodeAt(c+1))<56320||i>57343?t?s.charAt(c):o:t?s.slice(c,c+2):i-56320+(o-55296<<10)+65536)}};t.exports={codeAt:o(!1),charAt:o(!0)}},"656b":function(t,e,n){var r=n("e2e4"),a=n("f4d6");function o(t,e){e=r(e,t);var n=0,o=e.length;while(null!=t&&n<o)t=t[a(e[n++])];return n&&n==o?t:void 0}t.exports=o},6679:function(t,e,n){var r=n("3729"),a=n("1310"),o="[object Boolean]";function i(t){return!0===t||!1===t||a(t)&&r(t)==o}t.exports=i},6747:function(t,e){var n=Array.isArray;t.exports=n},"67ca":function(t,e,n){var r=n("cb5a");function a(t,e){var n=this.__data__,a=r(n,t);return a<0?(++this.size,n.push([t,e])):n[a][1]=e,this}t.exports=a},"69d5":function(t,e,n){var r=n("cb5a"),a=Array.prototype,o=a.splice;function i(t){var e=this.__data__,n=r(e,t);if(n<0)return!1;var a=e.length-1;return n==a?e.pop():o.call(e,n,1),--this.size,!0}t.exports=i},"69f3":function(t,e,n){var r,a,o,i=n("7f9a"),s=n("da84"),c=n("861d"),u=n("9112"),l=n("5135"),d=n("f772"),f=n("d012"),p=s.WeakMap,h=function(t){return o(t)?a(t):r(t,{})},v=function(t){return function(e){var n;if(!c(e)||(n=a(e)).type!==t)throw TypeError("Incompatible receiver, "+t+" required");return n}};if(i){var b=new p,g=b.get,m=b.has,y=b.set;r=function(t,e){return y.call(b,t,e),e},a=function(t){return g.call(b,t)||{}},o=function(t){return m.call(b,t)}}else{var w=d("state");f[w]=!0,r=function(t,e){return u(t,w,e),e},a=function(t){return l(t,w)?t[w]:{}},o=function(t){return l(t,w)}}t.exports={set:r,get:a,has:o,enforce:h,getterFor:v}},"6edb":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-select[data-v-13c05cad]{position:relative}.vc-select select[data-v-13c05cad]{flex-grow:1;display:block;-webkit-appearance:none;appearance:none;width:52px;height:30px;font-size:var(--text-base);font-weight:var(--font-medium);text-align:left;background-color:var(--gray-200);border:2px solid;border-color:var(--gray-200);color:var(--gray-700);padding:0 20px 0 8px;border-radius:var(--rounded);line-height:var(--leading-tight);text-indent:0;cursor:pointer;-moz-padding-start:3px}.vc-select select[data-v-13c05cad]:hover{color:var(--gray-600)}.vc-select select[data-v-13c05cad]:focus{outline:0;border-color:var(--accent-400);background-color:var(--white)}.vc-select-arrow[data-v-13c05cad]{display:flex;align-items:center;pointer-events:none;position:absolute;top:0;bottom:0;right:0;padding:0 4px 0 0;color:var(--gray-500)}.vc-select-arrow svg[data-v-13c05cad]{width:16px;height:16px;fill:currentColor}.vc-is-dark select[data-v-13c05cad]{background:var(--gray-700);color:var(--gray-100);border-color:var(--gray-700)}.vc-is-dark select[data-v-13c05cad]:hover{color:var(--gray-400)}.vc-is-dark select[data-v-13c05cad]:focus{border-color:var(--accent-500);background-color:var(--gray-800)}",""]),t.exports=e},"6eeb":function(t,e,n){var r=n("da84"),a=n("9112"),o=n("5135"),i=n("ce4e"),s=n("8925"),c=n("69f3"),u=c.get,l=c.enforce,d=String(String).split("String");(t.exports=function(t,e,n,s){var c=!!s&&!!s.unsafe,u=!!s&&!!s.enumerable,f=!!s&&!!s.noTargetGet;"function"==typeof n&&("string"!=typeof e||o(n,"name")||a(n,"name",e),l(n).source=d.join("string"==typeof e?e:"")),t!==r?(c?!f&&t[e]&&(u=!0):delete t[e],u?t[e]=n:a(t,e,n)):u?t[e]=n:i(e,n)})(Function.prototype,"toString",(function(){return"function"==typeof this&&u(this).source||s(this)}))},"6f6c":function(t,e){var n=/\w*$/;function r(t){var e=new t.constructor(t.source,n.exec(t));return e.lastIndex=t.lastIndex,e}t.exports=r},"6fcd":function(t,e,n){var r=n("50d8"),a=n("d370"),o=n("6747"),i=n("0d24"),s=n("c098"),c=n("73ac"),u=Object.prototype,l=u.hasOwnProperty;function d(t,e){var n=o(t),u=!n&&a(t),d=!n&&!u&&i(t),f=!n&&!u&&!d&&c(t),p=n||u||d||f,h=p?r(t.length,String):[],v=h.length;for(var b in t)!e&&!l.call(t,b)||p&&("length"==b||d&&("offset"==b||"parent"==b)||f&&("buffer"==b||"byteLength"==b||"byteOffset"==b)||s(b,v))||h.push(b);return h}t.exports=d},"70b8":function(t,e,n){var r=n("fcff");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("407d10db",r,!0,{sourceMap:!1,shadowMode:!1})},"72af":function(t,e,n){var r=n("99cd"),a=r();t.exports=a},"72f0":function(t,e){function n(t){return function(){return t}}t.exports=n},"72f5":function(t,e,n){var r=n("9e2e");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("2997fbdf",r,!0,{sourceMap:!1,shadowMode:!1})},"73ac":function(t,e,n){var r=n("743f"),a=n("b047"),o=n("99d3"),i=o&&o.isTypedArray,s=i?a(i):r;t.exports=s},7418:function(t,e){e.f=Object.getOwnPropertySymbols},"743f":function(t,e,n){var r=n("3729"),a=n("b218"),o=n("1310"),i="[object Arguments]",s="[object Array]",c="[object Boolean]",u="[object Date]",l="[object Error]",d="[object Function]",f="[object Map]",p="[object Number]",h="[object Object]",v="[object RegExp]",b="[object Set]",g="[object String]",m="[object WeakMap]",y="[object ArrayBuffer]",w="[object DataView]",x="[object Float32Array]",D="[object Float64Array]",j="[object Int8Array]",O="[object Int16Array]",k="[object Int32Array]",M="[object Uint8Array]",P="[object Uint8ClampedArray]",S="[object Uint16Array]",Y="[object Uint32Array]",_={};function E(t){return o(t)&&a(t.length)&&!!_[r(t)]}_[x]=_[D]=_[j]=_[O]=_[k]=_[M]=_[P]=_[S]=_[Y]=!0,_[i]=_[s]=_[y]=_[c]=_[w]=_[u]=_[l]=_[d]=_[f]=_[p]=_[h]=_[v]=_[b]=_[g]=_[m]=!1,t.exports=E},7530:function(t,e,n){var r=n("1a8c"),a=Object.create,o=function(){function t(){}return function(e){if(!r(e))return{};if(a)return a(e);t.prototype=e;var n=new t;return t.prototype=void 0,n}}();t.exports=o},"76dd":function(t,e,n){var r=n("ce86");function a(t){return null==t?"":r(t)}t.exports=a},7839:function(t,e){t.exports=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"]},7948:function(t,e){function n(t,e){var n=-1,r=null==t?0:t.length,a=Array(r);while(++n<r)a[n]=e(t[n],n,t);return a}t.exports=n},"79bc":function(t,e,n){var r=n("0b07"),a=n("2b3e"),o=r(a,"Map");t.exports=o},"7a48":function(t,e,n){var r=n("6044"),a=Object.prototype,o=a.hasOwnProperty;function i(t){var e=this.__data__;return r?void 0!==e[t]:o.call(e,t)}t.exports=i},"7b0b":function(t,e,n){var r=n("1d80");t.exports=function(t){return Object(r(t))}},"7b83":function(t,e,n){var r=n("7c64"),a=n("93ed"),o=n("2478"),i=n("a524"),s=n("1fc8");function c(t){var e=-1,n=null==t?0:t.length;this.clear();while(++e<n){var r=t[e];this.set(r[0],r[1])}}c.prototype.clear=r,c.prototype["delete"]=a,c.prototype.get=o,c.prototype.has=i,c.prototype.set=s,t.exports=c},"7b97":function(t,e,n){var r=n("7e64"),a=n("a2be"),o=n("1c3c"),i=n("b1e5"),s=n("42a2"),c=n("6747"),u=n("0d24"),l=n("73ac"),d=1,f="[object Arguments]",p="[object Array]",h="[object Object]",v=Object.prototype,b=v.hasOwnProperty;function g(t,e,n,v,g,m){var y=c(t),w=c(e),x=y?p:s(t),D=w?p:s(e);x=x==f?h:x,D=D==f?h:D;var j=x==h,O=D==h,k=x==D;if(k&&u(t)){if(!u(e))return!1;y=!0,j=!1}if(k&&!j)return m||(m=new r),y||l(t)?a(t,e,n,v,g,m):o(t,e,x,n,v,g,m);if(!(n&d)){var M=j&&b.call(t,"__wrapped__"),P=O&&b.call(e,"__wrapped__");if(M||P){var S=M?t.value():t,Y=P?e.value():e;return m||(m=new r),g(S,Y,n,v,m)}}return!!k&&(m||(m=new r),i(t,e,n,v,g,m))}t.exports=g},"7c64":function(t,e,n){var r=n("e24b"),a=n("5e2e"),o=n("79bc");function i(){this.size=0,this.__data__={hash:new r,map:new(o||a),string:new r}}t.exports=i},"7c73":function(t,e,n){var r,a=n("825a"),o=n("37e8"),i=n("7839"),s=n("d012"),c=n("1be4"),u=n("cc12"),l=n("f772"),d=">",f="<",p="prototype",h="script",v=l("IE_PROTO"),b=function(){},g=function(t){return f+h+d+t+f+"/"+h+d},m=function(t){t.write(g("")),t.close();var e=t.parentWindow.Object;return t=null,e},y=function(){var t,e=u("iframe"),n="java"+h+":";return e.style.display="none",c.appendChild(e),e.src=String(n),t=e.contentWindow.document,t.open(),t.write(g("document.F=Object")),t.close(),t.F},w=function(){try{r=document.domain&&new ActiveXObject("htmlfile")}catch(e){}w=r?m(r):y();var t=i.length;while(t--)delete w[p][i[t]];return w()};s[v]=!0,t.exports=Object.create||function(t,e){var n;return null!==t?(b[p]=a(t),n=new b,b[p]=null,n[v]=t):n=w(),void 0===e?n:o(n,e)}},"7d1f":function(t,e,n){var r=n("087d"),a=n("6747");function o(t,e,n){var o=e(t);return a(t)?o:r(o,n(t))}t.exports=o},"7dd0":function(t,e,n){"use strict";var r=n("23e7"),a=n("9ed3"),o=n("e163"),i=n("d2bb"),s=n("d44e"),c=n("9112"),u=n("6eeb"),l=n("b622"),d=n("c430"),f=n("3f8c"),p=n("ae93"),h=p.IteratorPrototype,v=p.BUGGY_SAFARI_ITERATORS,b=l("iterator"),g="keys",m="values",y="entries",w=function(){return this};t.exports=function(t,e,n,l,p,x,D){a(n,e,l);var j,O,k,M=function(t){if(t===p&&E)return E;if(!v&&t in Y)return Y[t];switch(t){case g:return function(){return new n(this,t)};case m:return function(){return new n(this,t)};case y:return function(){return new n(this,t)}}return function(){return new n(this)}},P=e+" Iterator",S=!1,Y=t.prototype,_=Y[b]||Y["@@iterator"]||p&&Y[p],E=!v&&_||M(p),I="Array"==e&&Y.entries||_;if(I&&(j=o(I.call(new t)),h!==Object.prototype&&j.next&&(d||o(j)===h||(i?i(j,h):"function"!=typeof j[b]&&c(j,b,w)),s(j,P,!0,!0),d&&(f[P]=w))),p==m&&_&&_.name!==m&&(S=!0,E=function(){return _.call(this)}),d&&!D||Y[b]===E||c(Y,b,E),f[e]=E,p)if(O={values:M(m),keys:x?E:M(g),entries:M(y)},D)for(k in O)(v||S||!(k in Y))&&u(Y,k,O[k]);else r({target:e,proto:!0,forced:v||S},O);return O}},"7dfe":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".none-enter-active[data-v-5be4b00c],.none-leave-active[data-v-5be4b00c]{transition-duration:0s}.fade-enter-active[data-v-5be4b00c],.fade-leave-active[data-v-5be4b00c],.slide-down-enter-active[data-v-5be4b00c],.slide-down-leave-active[data-v-5be4b00c],.slide-left-enter-active[data-v-5be4b00c],.slide-left-leave-active[data-v-5be4b00c],.slide-right-enter-active[data-v-5be4b00c],.slide-right-leave-active[data-v-5be4b00c],.slide-up-enter-active[data-v-5be4b00c],.slide-up-leave-active[data-v-5be4b00c]{transition:transform var(--slide-duration) var(--slide-timing),opacity var(--slide-duration) var(--slide-timing);-webkit-backface-visibility:hidden;backface-visibility:hidden}.fade-leave-active[data-v-5be4b00c],.none-leave-active[data-v-5be4b00c],.slide-down-leave-active[data-v-5be4b00c],.slide-left-leave-active[data-v-5be4b00c],.slide-right-leave-active[data-v-5be4b00c],.slide-up-leave-active[data-v-5be4b00c]{position:absolute;width:100%}.fade-enter[data-v-5be4b00c],.fade-leave-to[data-v-5be4b00c],.none-enter[data-v-5be4b00c],.none-leave-to[data-v-5be4b00c],.slide-down-enter[data-v-5be4b00c],.slide-down-leave-to[data-v-5be4b00c],.slide-left-enter[data-v-5be4b00c],.slide-left-leave-to[data-v-5be4b00c],.slide-right-enter[data-v-5be4b00c],.slide-right-leave-to[data-v-5be4b00c],.slide-up-enter[data-v-5be4b00c],.slide-up-leave-to[data-v-5be4b00c]{opacity:0}.slide-left-enter[data-v-5be4b00c],.slide-right-leave-to[data-v-5be4b00c]{transform:translateX(var(--slide-translate))}.slide-left-leave-to[data-v-5be4b00c],.slide-right-enter[data-v-5be4b00c]{transform:translateX(calc(var(--slide-translate)*-1))}.slide-down-leave-to[data-v-5be4b00c],.slide-up-enter[data-v-5be4b00c]{transform:translateY(var(--slide-translate))}.slide-down-enter[data-v-5be4b00c],.slide-up-leave-to[data-v-5be4b00c]{transform:translateY(calc(var(--slide-translate)*-1))}",""]),t.exports=e},"7e64":function(t,e,n){var r=n("5e2e"),a=n("efb6"),o=n("2fcc"),i=n("802a"),s=n("55a3"),c=n("d02c");function u(t){var e=this.__data__=new r(t);this.size=e.size}u.prototype.clear=a,u.prototype["delete"]=o,u.prototype.get=i,u.prototype.has=s,u.prototype.set=c,t.exports=u},"7ed2":function(t,e){var n="__lodash_hash_undefined__";function r(t){return this.__data__.set(t,n),this}t.exports=r},"7efe":function(t){t.exports=JSON.parse('{"title":"MMMM YYYY","weekdays":"W","navMonths":"MMM","input":["L","YYYY-MM-DD","YYYY/MM/DD"],"inputDateTime":["L h:mm A","YYYY-MM-DD h:mm A","YYYY/MM/DD h:mm A"],"inputDateTime24hr":["L HH:mm","YYYY-MM-DD HH:mm","YYYY/MM/DD HH:mm"],"inputTime":["h:mm A"],"inputTime24hr":["HH:mm"],"dayPopover":"WWW, MMM D, YYYY","data":["L","YYYY-MM-DD","YYYY/MM/DD"],"model":"iso","iso":"YYYY-MM-DDTHH:mm:ssXXX"}')},"7f9a":function(t,e,n){var r=n("da84"),a=n("8925"),o=r.WeakMap;t.exports="function"===typeof o&&/native code/.test(a(o))},"802a":function(t,e){function n(t){return this.__data__.get(t)}t.exports=n},8057:function(t,e){function n(t,e){var n=-1,r=null==t?0:t.length;while(++n<r)if(!1===e(t[n],n,t))break;return t}t.exports=n},"825a":function(t,e,n){var r=n("861d");t.exports=function(t){if(!r(t))throw TypeError(String(t)+" is not an object");return t}},8296:function(t,e,n){var r=n("656b"),a=n("2b10");function o(t,e){return e.length<2?t:r(t,a(e,0,-1))}t.exports=o},8384:function(t,e){function n(t,e,n){return t===t&&(void 0!==n&&(t=t<=n?t:n),void 0!==e&&(t=t>=e?t:e)),t}t.exports=n},"83ab":function(t,e,n){var r=n("d039");t.exports=!r((function(){return 7!=Object.defineProperty({},1,{get:function(){return 7}})[1]}))},"85a9":function(t){t.exports=JSON.parse('{"sm":"640px","md":"768px","lg":"1024px","xl":"1280px"}')},"85ba":function(t,e,n){"use strict";var r=n("e50d"),a=n.n(r);a.a},"85e3":function(t,e){function n(t,e,n){switch(n.length){case 0:return t.call(e);case 1:return t.call(e,n[0]);case 2:return t.call(e,n[0],n[1]);case 3:return t.call(e,n[0],n[1],n[2])}return t.apply(e,n)}t.exports=n},8604:function(t,e,n){var r=n("26e8"),a=n("e2c0");function o(t,e){return null!=t&&a(t,e,r)}t.exports=o},"861d":function(t,e){t.exports=function(t){return"object"===typeof t?null!==t:"function"===typeof t}},"872a":function(t,e,n){var r=n("3b4a");function a(t,e,n){"__proto__"==e&&r?r(t,e,{configurable:!0,enumerable:!0,value:n,writable:!0}):t[e]=n}t.exports=a},8925:function(t,e,n){var r=n("c6cd"),a=Function.toString;"function"!=typeof r.inspectSource&&(r.inspectSource=function(t){return a.call(t)}),t.exports=r.inspectSource},"89d9":function(t,e,n){var r=n("656b"),a=n("159a"),o=n("e2e4");function i(t,e,n){var i=-1,s=e.length,c={};while(++i<s){var u=e[i],l=r(t,u);n(l,u)&&a(c,o(u,t),l)}return c}t.exports=i},"8aa5":function(t,e,n){"use strict";var r=n("6547").charAt;t.exports=function(t,e,n){return e+(n?r(t,e).length:1)}},"8adb":function(t,e){function n(t,e){if(("constructor"!==e||"function"!==typeof t[e])&&"__proto__"!=e)return t[e]}t.exports=n},"8bbf":function(e,n){e.exports=t},"8c86":function(t,e,n){"use strict";function r(t,e){if(e.length<t)throw new TypeError(t+" argument"+(t>1?"s":"")+" required, but only "+e.length+" present")}n.d(e,"a",(function(){return r}))},"8de2":function(t,e,n){var r=n("8eeb"),a=n("9934");function o(t){return r(t,a(t))}t.exports=o},"8eeb":function(t,e,n){var r=n("32b3"),a=n("872a");function o(t,e,n,o){var i=!n;n||(n={});var s=-1,c=e.length;while(++s<c){var u=e[s],l=o?o(n[u],t[u],u,n,t):void 0;void 0===l&&(l=t[u]),i?a(n,u,l):r(n,u,l)}return n}t.exports=o},9010:function(t,e,n){"use strict";var r=n("70b8"),a=n.n(r);a.a},"90e3":function(t,e){var n=0,r=Math.random();t.exports=function(t){return"Symbol("+String(void 0===t?"":t)+")_"+(++n+r).toString(36)}},9112:function(t,e,n){var r=n("83ab"),a=n("9bf2"),o=n("5c6c");t.exports=r?function(t,e,n){return a.f(t,e,o(1,n))}:function(t,e,n){return t[e]=n,t}},"91e9":function(t,e){function n(t,e){return function(n){return t(e(n))}}t.exports=n},9263:function(t,e,n){"use strict";var r=n("ad6d"),a=n("9f7f"),o=RegExp.prototype.exec,i=String.prototype.replace,s=o,c=function(){var t=/a/,e=/b*/g;return o.call(t,"a"),o.call(e,"a"),0!==t.lastIndex||0!==e.lastIndex}(),u=a.UNSUPPORTED_Y||a.BROKEN_CARET,l=void 0!==/()??/.exec("")[1],d=c||l||u;d&&(s=function(t){var e,n,a,s,d=this,f=u&&d.sticky,p=r.call(d),h=d.source,v=0,b=t;return f&&(p=p.replace("y",""),-1===p.indexOf("g")&&(p+="g"),b=String(t).slice(d.lastIndex),d.lastIndex>0&&(!d.multiline||d.multiline&&"\n"!==t[d.lastIndex-1])&&(h="(?: "+h+")",b=" "+b,v++),n=new RegExp("^(?:"+h+")",p)),l&&(n=new RegExp("^"+h+"$(?!\\s)",p)),c&&(e=d.lastIndex),a=o.call(f?n:d,b),f?a?(a.input=a.input.slice(v),a[0]=a[0].slice(v),a.index=d.lastIndex,d.lastIndex+=a[0].length):d.lastIndex=0:c&&a&&(d.lastIndex=d.global?a.index+a[0].length:e),l&&a&&a.length>1&&i.call(a[0],n,(function(){for(s=1;s<arguments.length-2;s++)void 0===arguments[s]&&(a[s]=void 0)})),a}),t.exports=s},9349:function(t,e,n){"use strict";n.d(e,"a",(function(){return o}));n("ddb0");var r=n("22f3"),a=n("2fa3");class o{constructor(t,e,n){this.theme=t,this.locale=e,this.map={},this.refresh(n,!0)}refresh(t,e){var n=this;const o={},i=[];let s=null;const c=[],u=e?new Set:new Set(Object.keys(this.map));return Object(a["b"])(t)&&t.forEach((function(t,l){if(!t||!t.dates)return;const d=t.key?t.key.toString():l.toString(),f=t.order||0,p=Object(a["k"])(JSON.stringify(t));let h=n.map[d];!e&&h&&h.hashcode===p?u.delete(d):(h=new r["a"]({key:d,order:f,hashcode:p,...t},n.theme,n.locale),c.push(h)),h&&h.pinPage&&(s=h),o[d]=h,i.push(h)})),this.map=o,this.list=i,this.pinAttr=s,{adds:c,deletes:Array.from(u)}}}},"93ed":function(t,e,n){var r=n("4245");function a(t){var e=r(this,t)["delete"](t);return this.size-=e?1:0,e}t.exports=a},9404:function(t,e,n){"use strict";n.d(e,"i",(function(){return W})),n.d(e,"l",(function(){return U})),n.d(e,"e",(function(){return B})),n.d(e,"f",(function(){return q})),n.d(e,"u",(function(){return G}));n("6679");var r=n("501e"),a=n.n(r);n.d(e,"k",(function(){return a.a}));var o=n("e2a0"),i=n.n(o);n.d(e,"m",(function(){return i.a}));var s=n("dcbe"),c=n.n(s);n.d(e,"h",(function(){return c.a}));var u=n("9520"),l=n.n(u);n.d(e,"j",(function(){return l.a}));var d=n("4cfe"),f=n.n(d);n.d(e,"n",(function(){return f.a}));var p=n("6220"),h=n.n(p),v=n("f678"),b=n.n(v);n.d(e,"a",(function(){return b.a}));var g=n("9b02"),m=n.n(g);n.d(e,"d",(function(){return m.a}));var y=n("0f5c"),w=n.n(y);n.d(e,"t",(function(){return w.a}));var x=n("9e86"),D=n.n(x);n.d(e,"q",(function(){return D.a}));var j=n("f542"),O=n.n(j);n.d(e,"v",(function(){return O.a}));var k=n("95ae"),M=n.n(k);n.d(e,"b",(function(){return M.a}));var P=n("3f84"),S=n.n(P);n.d(e,"c",(function(){return S.a}));var Y=n("2593"),_=n.n(Y);n.d(e,"s",(function(){return _.a}));var E=n("3eea"),I=n.n(E);n.d(e,"r",(function(){return I.a}));var T=n("3852"),$=n.n(T),C=n("dd61"),A=n.n(C);n.d(e,"p",(function(){return A.a}));var N=n("a59b"),z=n.n(N);n.d(e,"g",(function(){return z.a}));var L=n("4416"),F=n.n(L);n.d(e,"o",(function(){return F.a}));var R=n("3092"),H=n.n(R);const V=function(t){return Object.prototype.toString.call(t).slice(8,-1)},W=function(t){return h()(t)&&!isNaN(t.getTime())},U=function(t){return"Object"===V(t)},B=$.a,q=function(t,e){return H()(e,(function(e){return $()(t,e)}))},G=H.a},"94ca":function(t,e,n){var r=n("d039"),a=/#|\.prototype\./,o=function(t,e){var n=s[i(t)];return n==u||n!=c&&("function"==typeof e?r(e):!!e)},i=o.normalize=function(t){return String(t).replace(a,".").toLowerCase()},s=o.data={},c=o.NATIVE="N",u=o.POLYFILL="P";t.exports=o},"950a":function(t,e,n){var r=n("30c9");function a(t,e){return function(n,a){if(null==n)return n;if(!r(n))return t(n,a);var o=n.length,i=e?o:-1,s=Object(n);while(e?i--:++i<o)if(!1===a(s[i],i,s))break;return n}}t.exports=a},9520:function(t,e,n){var r=n("3729"),a=n("1a8c"),o="[object AsyncFunction]",i="[object Function]",s="[object GeneratorFunction]",c="[object Proxy]";function u(t){if(!a(t))return!1;var e=r(t);return e==i||e==s||e==o||e==c}t.exports=u},"95ae":function(t,e,n){var r=n("100e"),a=n("9638"),o=n("9aff"),i=n("9934"),s=Object.prototype,c=s.hasOwnProperty,u=r((function(t,e){t=Object(t);var n=-1,r=e.length,u=r>2?e[2]:void 0;u&&o(e[0],e[1],u)&&(r=1);while(++n<r){var l=e[n],d=i(l),f=-1,p=d.length;while(++f<p){var h=d[f],v=t[h];(void 0===v||a(v,s[h])&&!c.call(t,h))&&(t[h]=l[h])}}return t}));t.exports=u},9638:function(t,e){function n(t,e){return t===e||t!==t&&e!==e}t.exports=n},"966f":function(t,e,n){var r=n("7e64"),a=n("c05f"),o=1,i=2;function s(t,e,n,s){var c=n.length,u=c,l=!s;if(null==t)return!u;t=Object(t);while(c--){var d=n[c];if(l&&d[2]?d[1]!==t[d[0]]:!(d[0]in t))return!1}while(++c<u){d=n[c];var f=d[0],p=t[f],h=d[1];if(l&&d[2]){if(void 0===p&&!(f in t))return!1}else{var v=new r;if(s)var b=s(p,h,f,t,e,v);if(!(void 0===b?a(h,p,o|i,s,v):b))return!1}}return!0}t.exports=s},"96f3":function(t,e){var n=Object.prototype,r=n.hasOwnProperty;function a(t,e){return null!=t&&r.call(t,e)}t.exports=a},"97d3":function(t,e,n){var r=n("48a0"),a=n("30c9");function o(t,e){var n=-1,o=a(t)?Array(t.length):[];return r(t,(function(t,r,a){o[++n]=e(t,r,a)})),o}t.exports=o},9934:function(t,e,n){var r=n("6fcd"),a=n("41c3"),o=n("30c9");function i(t){return o(t)?r(t,!0):a(t)}t.exports=i},"998b":function(t,e,n){"use strict";var r=n("b351"),a=n.n(r);a.a},"99cd":function(t,e){function n(t){return function(e,n,r){var a=-1,o=Object(e),i=r(e),s=i.length;while(s--){var c=i[t?s:++a];if(!1===n(o[c],c,o))break}return e}}t.exports=n},"99d3":function(t,e,n){(function(t){var r=n("585a"),a=e&&!e.nodeType&&e,o=a&&"object"==typeof t&&t&&!t.nodeType&&t,i=o&&o.exports===a,s=i&&r.process,c=function(){try{var t=o&&o.require&&o.require("util").types;return t||s&&s.binding&&s.binding("util")}catch(e){}}();t.exports=c}).call(this,n("62e4")(t))},"9aff":function(t,e,n){var r=n("9638"),a=n("30c9"),o=n("c098"),i=n("1a8c");function s(t,e,n){if(!i(n))return!1;var s=typeof e;return!!("number"==s?a(n)&&o(e,n.length):"string"==s&&e in n)&&r(n[e],t)}t.exports=s},"9b02":function(t,e,n){var r=n("656b");function a(t,e,n){var a=null==t?void 0:r(t,e);return void 0===a?n:a}t.exports=a},"9bf2":function(t,e,n){var r=n("83ab"),a=n("0cfb"),o=n("825a"),i=n("c04e"),s=Object.defineProperty;e.f=r?s:function(t,e,n){if(o(t),e=i(e,!0),o(n),a)try{return s(t,e,n)}catch(r){}if("get"in n||"set"in n)throw TypeError("Accessors not supported");return"value"in n&&(t[e]=n.value),t}},"9ce2":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-day[data-v-243c9412]{position:relative;min-height:28px;width:100%;height:100%;z-index:1}.vc-day.is-not-in-month *[data-v-243c9412]{opacity:0;pointer-events:none}.vc-day-layer[data-v-243c9412]{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}.vc-day-box-center-center[data-v-243c9412]{display:flex;justify-content:center;align-items:center;height:100%;transform-origin:50% 50%}.vc-day-box-left-center[data-v-243c9412]{display:flex;justify-content:flex-start;align-items:center;height:100%;transform-origin:0 50%}.vc-day-box-right-center[data-v-243c9412]{display:flex;justify-content:flex-end;align-items:center;height:100%;transform-origin:100% 50%}.vc-day-box-center-bottom[data-v-243c9412]{display:flex;justify-content:center;align-items:flex-end}.vc-day-content[data-v-243c9412]{display:flex;justify-content:center;align-items:center;font-size:var(--text-sm);font-weight:var(--font-medium);width:28px;height:28px;margin:1.6px auto;border-radius:var(--rounded-full);-webkit-user-select:none;user-select:none;cursor:pointer}.vc-day-content[data-v-243c9412]:hover{background-color:rgba(204,214,224,.3)}.vc-day-content[data-v-243c9412]:focus{font-weight:var(--font-bold);background-color:rgba(204,214,224,.4)}.vc-day-content.is-disabled[data-v-243c9412]{color:var(--gray-400)}.vc-is-dark .vc-day-content[data-v-243c9412]:hover{background-color:rgba(114,129,151,.3)}.vc-is-dark .vc-day-content[data-v-243c9412]:focus{background-color:rgba(114,129,151,.4)}.vc-is-dark .vc-day-content.is-disabled[data-v-243c9412]{color:var(--gray-600)}.vc-highlights[data-v-243c9412]{overflow:hidden;pointer-events:none;z-index:-1}.vc-highlight[data-v-243c9412]{width:28px;height:28px}.vc-highlight.vc-highlight-base-start[data-v-243c9412]{width:50%!important;border-radius:0!important;border-right-width:0!important}.vc-highlight.vc-highlight-base-end[data-v-243c9412]{width:50%!important;border-radius:0!important;border-left-width:0!important}.vc-highlight.vc-highlight-base-middle[data-v-243c9412]{width:100%;border-radius:0!important;border-left-width:0!important;border-right-width:0!important;margin:0 -1px}.vc-dots[data-v-243c9412]{display:flex;justify-content:center;align-items:center}.vc-dot[data-v-243c9412]{width:5px;height:5px;border-radius:50%;transition:all var(--day-content-transition-time)}.vc-dot[data-v-243c9412]:not(:last-child){margin-right:3px}.vc-bars[data-v-243c9412]{display:flex;justify-content:flex-start;align-items:center;width:75%}.vc-bar[data-v-243c9412]{flex-grow:1;height:3px;transition:all var(--day-content-transition-time)}",""]),t.exports=e},"9e2e":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-pane-container{width:100%;position:relative}.vc-pane-container.in-transition{overflow:hidden}.vc-arrow{display:flex;justify-content:center;align-items:center;cursor:pointer;-webkit-user-select:none;user-select:none;pointer-events:auto;color:var(--gray-600);border-width:2px;border-style:solid;border-radius:var(--rounded);border-color:transparent}.vc-arrow:hover{background:var(--gray-200)}.vc-arrow:focus{border-color:var(--gray-300)}.vc-arrow.is-disabled{opacity:.25;pointer-events:none;cursor:not-allowed}.vc-day-popover-container{color:var(--white);background-color:var(--gray-800);border:1px solid;border-color:var(--gray-700);border-radius:var(--rounded);font-size:var(--text-xs);font-weight:var(--font-medium);padding:4px 8px;box-shadow:var(--shadow)}.vc-day-popover-header{font-size:var(--text-xs);color:var(--gray-300);font-weight:var(--font-semibold);text-align:center}.vc-arrows-container{width:100%;position:absolute;top:0;display:flex;justify-content:space-between;padding:8px 10px;pointer-events:none}.vc-arrows-container.title-left{justify-content:flex-end}.vc-arrows-container.title-right{justify-content:flex-start}.vc-is-dark .vc-arrow{color:var(--white)}.vc-is-dark .vc-arrow:hover{background:var(--gray-800)}.vc-is-dark .vc-arrow:focus{border-color:var(--gray-700)}.vc-is-dark .vc-day-popover-container{color:var(--gray-800);background-color:var(--white);border-color:var(--gray-100)}.vc-is-dark .vc-day-popover-header{color:var(--gray-700)}",""]),t.exports=e},"9e69":function(t,e,n){var r=n("2b3e"),a=r.Symbol;t.exports=a},"9e83":function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-nav-popover-container{color:var(--white);font-size:var(--text-sm);font-weight:var(--font-semibold);background-color:var(--gray-800);border:1px solid;border-color:var(--gray-700);border-radius:var(--rounded-lg);padding:4px;box-shadow:var(--shadow)}.vc-is-dark .vc-nav-popover-container{color:var(--gray-800);background-color:var(--white);border-color:var(--gray-100)}",""]),t.exports=e},"9e86":function(t,e,n){var r=n("872a"),a=n("242e"),o=n("badf");function i(t,e){var n={};return e=o(e,3),a(t,(function(t,a,o){r(n,a,e(t,a,o))})),n}t.exports=i},"9ed3":function(t,e,n){"use strict";var r=n("ae93").IteratorPrototype,a=n("7c73"),o=n("5c6c"),i=n("d44e"),s=n("3f8c"),c=function(){return this};t.exports=function(t,e,n){var u=e+" Iterator";return t.prototype=a(r,{next:o(1,n)}),i(t,u,!1,!0),s[u]=c,t}},"9f7f":function(t,e,n){"use strict";var r=n("d039");function a(t,e){return RegExp(t,e)}e.UNSUPPORTED_Y=r((function(){var t=a("a","y");return t.lastIndex=2,null!=t.exec("abcd")})),e.BROKEN_CARET=r((function(){var t=a("^r","gy");return t.lastIndex=2,null!=t.exec("str")}))},a029:function(t,e,n){var r=n("087d"),a=n("2dcb"),o=n("32f4"),i=n("d327"),s=Object.getOwnPropertySymbols,c=s?function(t){var e=[];while(t)r(e,o(t)),t=a(t);return e}:i;t.exports=c},a2be:function(t,e,n){var r=n("d612"),a=n("4284"),o=n("c584"),i=1,s=2;function c(t,e,n,c,u,l){var d=n&i,f=t.length,p=e.length;if(f!=p&&!(d&&p>f))return!1;var h=l.get(t),v=l.get(e);if(h&&v)return h==e&&v==t;var b=-1,g=!0,m=n&s?new r:void 0;l.set(t,e),l.set(e,t);while(++b<f){var y=t[b],w=e[b];if(c)var x=d?c(w,y,b,e,t,l):c(y,w,b,t,e,l);if(void 0!==x){if(x)continue;g=!1;break}if(m){if(!a(e,(function(t,e){if(!o(m,e)&&(y===t||u(y,t,n,c,l)))return m.push(e)}))){g=!1;break}}else if(y!==w&&!u(y,w,n,c,l)){g=!1;break}}return l["delete"](t),l["delete"](e),g}t.exports=c},a2db:function(t,e,n){var r=n("9e69"),a=r?r.prototype:void 0,o=a?a.valueOf:void 0;function i(t){return o?Object(o.call(t)):{}}t.exports=i},a3fd:function(t,e,n){var r=n("7948");function a(t,e){return r(e,(function(e){return[e,t[e]]}))}t.exports=a},a454:function(t,e,n){var r=n("72f0"),a=n("3b4a"),o=n("cd9d"),i=a?function(t,e){return a(t,"toString",{configurable:!0,enumerable:!1,value:r(e),writable:!0})}:o;t.exports=i},a524:function(t,e,n){var r=n("4245");function a(t){return r(this,t).has(t)}t.exports=a},a55a:function(t,e,n){"use strict";var r=n("3a6f"),a=n.n(r);a.a},a59b:function(t,e){function n(t){return t&&t.length?t[0]:void 0}t.exports=n},a691:function(t,e){var n=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:n)(t)}},a994:function(t,e,n){var r=n("7d1f"),a=n("32f4"),o=n("ec69");function i(t){return r(t,o,a)}t.exports=i},ac1f:function(t,e,n){"use strict";var r=n("23e7"),a=n("9263");r({target:"RegExp",proto:!0,forced:/./.exec!==a},{exec:a})},ac41:function(t,e){function n(t){var e=-1,n=Array(t.size);return t.forEach((function(t){n[++e]=t})),n}t.exports=n},ad6d:function(t,e,n){"use strict";var r=n("825a");t.exports=function(){var t=r(this),e="";return t.global&&(e+="g"),t.ignoreCase&&(e+="i"),t.multiline&&(e+="m"),t.dotAll&&(e+="s"),t.unicode&&(e+="u"),t.sticky&&(e+="y"),e}},adc8:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-day-popover-row[data-v-eb5afd1a]{--day-content-transition-time:0.13s ease-in;display:flex;align-items:center;transition:all var(--day-content-transition-time)}.vc-day-popover-row[data-v-eb5afd1a]:not(:first-child){margin-top:3px}.vc-day-popover-row-indicator[data-v-eb5afd1a]{display:flex;justify-content:center;align-items:center;flex-grow:0;width:15px;margin-right:3px}.vc-day-popover-row-indicator span[data-v-eb5afd1a]{transition:all var(--day-content-transition-time)}.vc-day-popover-row-content[data-v-eb5afd1a]{display:flex;align-items:center;flex-wrap:none;flex-grow:1;width:-webkit-max-content;width:max-content}",""]),t.exports=e},ae93:function(t,e,n){"use strict";var r,a,o,i=n("e163"),s=n("9112"),c=n("5135"),u=n("b622"),l=n("c430"),d=u("iterator"),f=!1,p=function(){return this};[].keys&&(o=[].keys(),"next"in o?(a=i(i(o)),a!==Object.prototype&&(r=a)):f=!0),void 0==r&&(r={}),l||c(r,d)||s(r,d,p),t.exports={IteratorPrototype:r,BUGGY_SAFARI_ITERATORS:f}},b047:function(t,e){function n(t){return function(e){return t(e)}}t.exports=n},b1d2:function(t,e,n){var r=n("3729"),a=n("1310"),o="[object Date]";function i(t){return a(t)&&r(t)==o}t.exports=i},b1e5:function(t,e,n){var r=n("a994"),a=1,o=Object.prototype,i=o.hasOwnProperty;function s(t,e,n,o,s,c){var u=n&a,l=r(t),d=l.length,f=r(e),p=f.length;if(d!=p&&!u)return!1;var h=d;while(h--){var v=l[h];if(!(u?v in e:i.call(e,v)))return!1}var b=c.get(t),g=c.get(e);if(b&&g)return b==e&&g==t;var m=!0;c.set(t,e),c.set(e,t);var y=u;while(++h<d){v=l[h];var w=t[v],x=e[v];if(o)var D=u?o(x,w,v,e,t,c):o(w,x,v,t,e,c);if(!(void 0===D?w===x||s(w,x,n,o,c):D)){m=!1;break}y||(y="constructor"==v)}if(m&&!y){var j=t.constructor,O=e.constructor;j==O||!("constructor"in t)||!("constructor"in e)||"function"==typeof j&&j instanceof j&&"function"==typeof O&&O instanceof O||(m=!1)}return c["delete"](t),c["delete"](e),m}t.exports=s},b218:function(t,e){var n=9007199254740991;function r(t){return"number"==typeof t&&t>-1&&t%1==0&&t<=n}t.exports=r},b351:function(t,e,n){var r=n("4350");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("14db14a2",r,!0,{sourceMap:!1,shadowMode:!1})},b4b0:function(t,e,n){var r=n("1a8c"),a=n("ffd6"),o=NaN,i=/^\s+|\s+$/g,s=/^[-+]0x[0-9a-f]+$/i,c=/^0b[01]+$/i,u=/^0o[0-7]+$/i,l=parseInt;function d(t){if("number"==typeof t)return t;if(a(t))return o;if(r(t)){var e="function"==typeof t.valueOf?t.valueOf():t;t=r(e)?e+"":e}if("string"!=typeof t)return 0===t?t:+t;t=t.replace(i,"");var n=c.test(t);return n||u.test(t)?l(t.slice(2),n?2:8):s.test(t)?o:+t}t.exports=d},b4c0:function(t,e,n){var r=n("cb5a");function a(t){var e=this.__data__,n=r(e,t);return n<0?void 0:e[n][1]}t.exports=a},b5a7:function(t,e,n){var r=n("0b07"),a=n("2b3e"),o=r(a,"DataView");t.exports=o},b622:function(t,e,n){var r=n("da84"),a=n("5692"),o=n("5135"),i=n("90e3"),s=n("4930"),c=n("fdbf"),u=a("wks"),l=r.Symbol,d=c?l:l&&l.withoutSetter||i;t.exports=function(t){return o(u,t)||(s&&o(l,t)?u[t]=l[t]:u[t]=d("Symbol."+t)),u[t]}},b760:function(t,e,n){var r=n("872a"),a=n("9638");function o(t,e,n){(void 0!==n&&!a(t[e],n)||void 0===n&&!(e in t))&&r(t,e,n)}t.exports=o},badf:function(t,e,n){var r=n("642a"),a=n("1838"),o=n("cd9d"),i=n("6747"),s=n("f9ce");function c(t){return"function"==typeof t?t:null==t?o:"object"==typeof t?i(t)?a(t[0],t[1]):r(t):s(t)}t.exports=c},bbc0:function(t,e,n){var r=n("6044"),a="__lodash_hash_undefined__",o=Object.prototype,i=o.hasOwnProperty;function s(t){var e=this.__data__;if(r){var n=e[t];return n===a?void 0:n}return i.call(e,t)?e[t]:void 0}t.exports=s},c04e:function(t,e,n){var r=n("861d");t.exports=function(t,e){if(!r(t))return t;var n,a;if(e&&"function"==typeof(n=t.toString)&&!r(a=n.call(t)))return a;if("function"==typeof(n=t.valueOf)&&!r(a=n.call(t)))return a;if(!e&&"function"==typeof(n=t.toString)&&!r(a=n.call(t)))return a;throw TypeError("Can't convert object to primitive value")}},c05f:function(t,e,n){var r=n("7b97"),a=n("1310");function o(t,e,n,i,s){return t===e||(null==t||null==e||!a(t)&&!a(e)?t!==t&&e!==e:r(t,e,n,i,o,s))}t.exports=o},c098:function(t,e){var n=9007199254740991,r=/^(?:0|[1-9]\d*)$/;function a(t,e){var a=typeof t;return e=null==e?n:e,!!e&&("number"==a||"symbol"!=a&&r.test(t))&&t>-1&&t%1==0&&t<e}t.exports=a},c1c9:function(t,e,n){var r=n("a454"),a=n("f3c1"),o=a(r);t.exports=o},c24e:function(t,e,n){"use strict";var r=n("e501"),a=n.n(r);a.a},c2b6:function(t,e,n){var r=n("f8af"),a=n("5d89"),o=n("6f6c"),i=n("a2db"),s=n("c8fe"),c="[object Boolean]",u="[object Date]",l="[object Map]",d="[object Number]",f="[object RegExp]",p="[object Set]",h="[object String]",v="[object Symbol]",b="[object ArrayBuffer]",g="[object DataView]",m="[object Float32Array]",y="[object Float64Array]",w="[object Int8Array]",x="[object Int16Array]",D="[object Int32Array]",j="[object Uint8Array]",O="[object Uint8ClampedArray]",k="[object Uint16Array]",M="[object Uint32Array]";function P(t,e,n){var P=t.constructor;switch(e){case b:return r(t);case c:case u:return new P(+t);case g:return a(t,n);case m:case y:case w:case x:case D:case j:case O:case k:case M:return s(t,n);case l:return new P;case d:case h:return new P(t);case f:return o(t);case p:return new P;case v:return i(t)}}t.exports=P},c3fc:function(t,e,n){var r=n("42a2"),a=n("1310"),o="[object Set]";function i(t){return a(t)&&r(t)==o}t.exports=i},c430:function(t,e){t.exports=!1},c584:function(t,e){function n(t,e){return t.has(e)}t.exports=n},c6b6:function(t,e){var n={}.toString;t.exports=function(t){return n.call(t).slice(8,-1)}},c6cd:function(t,e,n){var r=n("da84"),a=n("ce4e"),o="__core-js_shared__",i=r[o]||a(o,{});t.exports=i},c6cf:function(t,e,n){var r=n("4d8c"),a=n("2286"),o=n("c1c9");function i(t){return o(a(t,void 0,r),t+"")}t.exports=i},c869:function(t,e,n){var r=n("0b07"),a=n("2b3e"),o=r(a,"Set");t.exports=o},c87c:function(t,e){var n=Object.prototype,r=n.hasOwnProperty;function a(t){var e=t.length,n=new t.constructor(e);return e&&"string"==typeof t[0]&&r.call(t,"index")&&(n.index=t.index,n.input=t.input),n}t.exports=a},c8ba:function(t,e){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(r){"object"===typeof window&&(n=window)}t.exports=n},c8fe:function(t,e,n){var r=n("f8af");function a(t,e){var n=e?r(t.buffer):t.buffer;return new t.constructor(n,t.byteOffset,t.length)}t.exports=a},ca84:function(t,e,n){var r=n("5135"),a=n("fc6a"),o=n("4d64").indexOf,i=n("d012");t.exports=function(t,e){var n,s=a(t),c=0,u=[];for(n in s)!r(i,n)&&r(s,n)&&u.push(n);while(e.length>c)r(s,n=e[c++])&&(~o(u,n)||u.push(n));return u}},cb5a:function(t,e,n){var r=n("9638");function a(t,e){var n=t.length;while(n--)if(r(t[n][0],e))return n;return-1}t.exports=a},cc12:function(t,e,n){var r=n("da84"),a=n("861d"),o=r.document,i=a(o)&&a(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},cc45:function(t,e,n){var r=n("1a2d"),a=n("b047"),o=n("99d3"),i=o&&o.isMap,s=i?a(i):r;t.exports=s},cd9d:function(t,e){function n(t){return t}t.exports=n},ce4e:function(t,e,n){var r=n("da84"),a=n("9112");t.exports=function(t,e){try{a(r,t,e)}catch(n){r[t]=e}return e}},ce86:function(t,e,n){var r=n("9e69"),a=n("7948"),o=n("6747"),i=n("ffd6"),s=1/0,c=r?r.prototype:void 0,u=c?c.toString:void 0;function l(t){if("string"==typeof t)return t;if(o(t))return a(t,l)+"";if(i(t))return u?u.call(t):"";var e=t+"";return"0"==e&&1/t==-s?"-0":e}t.exports=l},cebd:function(t,e){function n(t){var e=-1,n=Array(t.size);return t.forEach((function(t){n[++e]=[t,t]})),n}t.exports=n},cfe5:function(t,e,n){"use strict";n.d(e,"a",(function(){return c}));var r=n("f7f1"),a=n("2fa3"),o=n("9404"),i=n("29ae");const s=864e5;class c{constructor(t,{order:e=0,locale:n}={}){if(this.isDateInfo=!0,this.isRange=Object(o["l"])(t),this.isDate=!this.isRange,this.order=e,this.locale=n instanceof i["a"]?n:new i["a"](n),this.firstDayOfWeek=this.locale.firstDayOfWeek,this.isDate&&(this.type="date",this.date=this.locale.normalizeDate(t),this.dateTime=this.date&&this.date.getTime()),this.isRange){this.type="range";let e=this.locale.normalizeDate(t.start),n=this.locale.normalizeDate(t.end);if(e&&n&&e>n){const t=e;e=n,n=t}else e&&t.span>=1&&(n=Object(r["a"])(e,t.span-1));e&&(Object(o["i"])(e)||(e=null)),n&&(Object(o["i"])(n)||(n=null)),this.start=e,this.startTime=e?e.getTime():NaN,this.end=n,this.endTime=n?n.getTime():NaN,e&&n&&(this.daySpan=this.diffInDays(e,n),this.weekSpan=this.diffInWeeks(e,n),this.monthSpan=this.diffInMonths(e,n),this.yearSpan=this.diffInYears(e,n));const i=Object(a["m"])(t,{},c.patternProps);if(i.assigned&&(this.on={and:i.target}),t.on){const e=(Object(o["h"])(t.on)?t.on:[t.on]).map((function(t){if(Object(o["j"])(t))return t;const e=Object(a["m"])(t,{},c.patternProps);return e.assigned?e.target:null})).filter((function(t){return t}));e.length&&(this.on={...this.on,or:e})}this.isComplex=!!this.on}}get opts(){return{order:this.order,locale:this.locale}}toDateInfo(t){return t.isDateInfo?t:new c(t,this.opts)}startOfWeek(t){const e=t.getDay()+1,n=e>=this.firstDayOfWeek?this.firstDayOfWeek-e:-(7-(this.firstDayOfWeek-e));return Object(r["a"])(t,n)}diffInDays(t,e){return Math.round((e-t)/s)}diffInWeeks(t,e){return this.diffInDays(this.startOfWeek(t),this.startOfWeek(e))}diffInYears(t,e){return e.getUTCFullYear()-t.getUTCFullYear()}diffInMonths(t,e){return 12*this.diffInYears(t,e)+(e.getMonth()-t.getMonth())}static get patterns(){return{dailyInterval:{test:function(t,e,n){return n.diffInDays(n.start||new Date,t.date)%e===0}},weeklyInterval:{test:function(t,e,n){return n.diffInWeeks(n.start||new Date,t.date)%e===0}},monthlyInterval:{test:function(t,e,n){return n.diffInMonths(n.start||new Date,t.date)%e===0}},yearlyInterval:{test:function(){return function(t,e,n){return n.diffInYears(n.start||new Date,t.date)%e===0}}},days:{validate:function(t){return Object(o["h"])(t)?t:[parseInt(t,10)]},test:function(t,e){return e.includes(t.day)||e.includes(-t.dayFromEnd)}},weekdays:{validate:function(t){return Object(o["h"])(t)?t:[parseInt(t,10)]},test:function(t,e){return e.includes(t.weekday)}},ordinalWeekdays:{validate:function(t){return Object.keys(t).reduce((function(e,n){const r=t[n];return r?(e[n]=Object(o["h"])(r)?r:[parseInt(r,10)],e):e}),{})},test:function(t,e){return Object.keys(e).map((function(t){return parseInt(t,10)})).find((function(n){return e[n].includes(t.weekday)&&(n===t.weekdayOrdinal||n===-t.weekdayOrdinalFromEnd)}))}},weekends:{validate:function(t){return t},test:function(t){return 1===t.weekday||7===t.weekday}},workweek:{validate:function(t){return t},test:function(t){return t.weekday>=2&&t.weekday<=6}},weeks:{validate:function(t){return Object(o["h"])(t)?t:[parseInt(t,10)]},test:function(t,e){return e.includes(t.week)||e.includes(-t.weekFromEnd)}},months:{validate:function(t){return Object(o["h"])(t)?t:[parseInt(t,10)]},test:function(t,e){return e.includes(t.month)}},years:{validate:function(t){return Object(o["h"])(t)?t:[parseInt(t,10)]},test:function(t,e){return e.includes(t.year)}}}}static get patternProps(){return Object.keys(c.patterns).map((function(t){return{name:t,validate:c.patterns[t].validate}}))}static testConfig(t,e,n){return Object(o["j"])(t)?t(e):Object(o["l"])(t)?Object.keys(t).every((function(r){return c.patterns[r].test(e,t[r],n)})):null}iterateDatesInRange({start:t,end:e},n){if(!t||!e||!Object(o["j"])(n))return null;const a={i:0,date:t,day:this.locale.getDateParts(t),finished:!1};let i=null;for(;!a.finished&&a.date<=e;a.i++)i=n(a),a.date=Object(r["a"])(a.date,1),a.day=this.locale.getDateParts(a.date);return i}shallowIntersectingRange(t){return this.rangeShallowIntersectingRange(this,t)}rangeShallowIntersectingRange(t,e){if(t=this.toDateInfo(t),e=this.toDateInfo(e),!this.dateShallowIntersectsDate(t,e))return null;const n=t.toRange(),r=e.toRange();let a=null,o=null;return n.start?a=r.start?n.start>r.start?n.start:r.start:n.start:r.start&&(a=r.start),n.end?o=r.end?n.end<r.end?n.end:r.end:n.end:r.end&&(o=r.end),{start:a,end:o}}intersectsDate(t){var e=this;const n=this.toDateInfo(t);if(!this.shallowIntersectsDate(n))return null;if(!this.on)return this;const r=this.rangeShallowIntersectingRange(this,n);let a=!1;return this.iterateDatesInRange(r,(function(t){e.matchesDay(t.day)&&(a=a||n.matchesDay(t.day),t.finished=a)})),a}shallowIntersectsDate(t){return this.dateShallowIntersectsDate(this,this.toDateInfo(t))}dateShallowIntersectsDate(t,e){return t.isDate?e.isDate?t.dateTime===e.dateTime:this.dateShallowIncludesDate(e,t):e.isDate?this.dateShallowIncludesDate(t,e):!(t.start&&e.end&&t.start>e.end)&&!(t.end&&e.start&&t.end<e.start)}includesDate(t){var e=this;const n=this.toDateInfo(t);if(!this.shallowIncludesDate(n))return!1;if(!this.on)return!0;const r=this.rangeShallowIntersectingRange(this,n);let a=!0;return this.iterateDatesInRange(r,(function(t){e.matchesDay(t.day)&&(a=a&&n.matchesDay(t.day),t.finished=!a)})),a}shallowIncludesDate(t){return this.dateShallowIncludesDate(this,t.isDate?t:new c(t,this.opts))}dateShallowIncludesDate(t,e){return t.isDate?e.isDate?t.dateTime===e.dateTime:!(!e.startTime||!e.endTime)&&(t.dateTime===e.startTime&&t.dateTime===e.endTime):e.isDate?!(t.start&&e.date<t.start)&&!(t.end&&e.date>t.end):!(t.start&&(!e.start||e.start<t.start))&&!(t.end&&(!e.end||e.end>t.end))}intersectsDay(t){return this.shallowIntersectsDate(t.range)&&this.matchesDay(t)?this:null}matchesDay(t){var e=this;return!this.on||!(this.on.and&&!c.testConfig(this.on.and,t,this))&&!(this.on.or&&!this.on.or.some((function(n){return c.testConfig(n,t,e)})))}toRange(){return this.isDate?new c({start:this.date,end:this.date},this.opts):new c({start:this.start,end:this.end},this.opts)}compare(t){if(this.order!==t.order)return this.order-t.order;if(this.type!==t.type)return this.isDate?1:-1;if(this.isDate)return 0;const e=this.start-t.start;return 0!==e?e:this.end-t.end}}},d012:function(t,e){t.exports={}},d02c:function(t,e,n){var r=n("5e2e"),a=n("79bc"),o=n("7b83"),i=200;function s(t,e){var n=this.__data__;if(n instanceof r){var s=n.__data__;if(!a||s.length<i-1)return s.push([t,e]),this.size=++n.size,this;n=this.__data__=new o(s)}return n.set(t,e),this.size=n.size,this}t.exports=s},d039:function(t,e){t.exports=function(t){try{return!!t()}catch(e){return!0}}},d066:function(t,e,n){var r=n("428f"),a=n("da84"),o=function(t){return"function"==typeof t?t:void 0};t.exports=function(t,e){return arguments.length<2?o(r[t])||o(a[t]):r[t]&&r[t][e]||a[t]&&a[t][e]}},d1e7:function(t,e,n){"use strict";var r={}.propertyIsEnumerable,a=Object.getOwnPropertyDescriptor,o=a&&!r.call({1:2},1);e.f=o?function(t){var e=a(this,t);return!!e&&e.enumerable}:r},d2bb:function(t,e,n){var r=n("825a"),a=n("3bbe");t.exports=Object.setPrototypeOf||("__proto__"in{}?function(){var t,e=!1,n={};try{t=Object.getOwnPropertyDescriptor(Object.prototype,"__proto__").set,t.call(n,[]),e=n instanceof Array}catch(o){}return function(n,o){return r(n),a(o),e?t.call(n,o):n.__proto__=o,n}}():void 0)},d327:function(t,e){function n(){return[]}t.exports=n},d370:function(t,e,n){var r=n("253c"),a=n("1310"),o=Object.prototype,i=o.hasOwnProperty,s=o.propertyIsEnumerable,c=r(function(){return arguments}())?r:function(t){return a(t)&&i.call(t,"callee")&&!s.call(t,"callee")};t.exports=c},d438:function(t,e,n){"use strict";var r=n("3db9"),a=n.n(r);a.a},d44e:function(t,e,n){var r=n("9bf2").f,a=n("5135"),o=n("b622"),i=o("toStringTag");t.exports=function(t,e,n){t&&!a(t=n?t:t.prototype,i)&&r(t,i,{configurable:!0,value:e})}},d612:function(t,e,n){var r=n("7b83"),a=n("7ed2"),o=n("dc0f");function i(t){var e=-1,n=null==t?0:t.length;this.__data__=new r;while(++e<n)this.add(t[e])}i.prototype.add=i.prototype.push=a,i.prototype.has=o,t.exports=i},d784:function(t,e,n){"use strict";n("ac1f");var r=n("6eeb"),a=n("d039"),o=n("b622"),i=n("9263"),s=n("9112"),c=o("species"),u=!a((function(){var t=/./;return t.exec=function(){var t=[];return t.groups={a:"7"},t},"7"!=="".replace(t,"$<a>")})),l=function(){return"$0"==="a".replace(/./,"$0")}(),d=o("replace"),f=function(){return!!/./[d]&&""===/./[d]("a","$0")}(),p=!a((function(){var t=/(?:)/,e=t.exec;t.exec=function(){return e.apply(this,arguments)};var n="ab".split(t);return 2!==n.length||"a"!==n[0]||"b"!==n[1]}));t.exports=function(t,e,n,d){var h=o(t),v=!a((function(){var e={};return e[h]=function(){return 7},7!=""[t](e)})),b=v&&!a((function(){var e=!1,n=/a/;return"split"===t&&(n={},n.constructor={},n.constructor[c]=function(){return n},n.flags="",n[h]=/./[h]),n.exec=function(){return e=!0,null},n[h](""),!e}));if(!v||!b||"replace"===t&&(!u||!l||f)||"split"===t&&!p){var g=/./[h],m=n(h,""[t],(function(t,e,n,r,a){return e.exec===i?v&&!a?{done:!0,value:g.call(e,n,r)}:{done:!0,value:t.call(n,e,r)}:{done:!1}}),{REPLACE_KEEPS_$0:l,REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE:f}),y=m[0],w=m[1];r(String.prototype,t,y),r(RegExp.prototype,h,2==e?function(t,e){return w.call(t,this,e)}:function(t){return w.call(t,this)})}d&&s(RegExp.prototype[h],"sham",!0)}},d7ee:function(t,e,n){var r=n("c3fc"),a=n("b047"),o=n("99d3"),i=o&&o.isSet,s=i?a(i):r;t.exports=s},da03:function(t,e,n){var r=n("2b3e"),a=r["__core-js_shared__"];t.exports=a},da84:function(t,e,n){(function(e){var n=function(t){return t&&t.Math==Math&&t};t.exports=n("object"==typeof globalThis&&globalThis)||n("object"==typeof window&&window)||n("object"==typeof self&&self)||n("object"==typeof e&&e)||Function("return this")()}).call(this,n("c8ba"))},dc0f:function(t,e){function n(t){return this.__data__.has(t)}t.exports=n},dc57:function(t,e){var n=Function.prototype,r=n.toString;function a(t){if(null!=t){try{return r.call(t)}catch(e){}try{return t+""}catch(e){}}return""}t.exports=a},dc8c:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-container{--white:#fff;--black:#000;--gray-100:#f7fafc;--gray-200:#edf2f7;--gray-300:#e2e8f0;--gray-400:#cbd5e0;--gray-500:#a0aec0;--gray-600:#718096;--gray-700:#4a5568;--gray-800:#2d3748;--gray-900:#1a202c;--red-100:#fff5f5;--red-200:#fed7d7;--red-300:#feb2b2;--red-400:#fc8181;--red-500:#f56565;--red-600:#e53e3e;--red-700:#c53030;--red-800:#9b2c2c;--red-900:#742a2a;--orange-100:#fffaf0;--orange-200:#feebc8;--orange-300:#fbd38d;--orange-400:#f6ad55;--orange-500:#ed8936;--orange-600:#dd6b20;--orange-700:#c05621;--orange-800:#9c4221;--orange-900:#7b341e;--yellow-100:ivory;--yellow-200:#fefcbf;--yellow-300:#faf089;--yellow-400:#f6e05e;--yellow-500:#ecc94b;--yellow-600:#d69e2e;--yellow-700:#b7791f;--yellow-800:#975a16;--yellow-900:#744210;--green-100:#f0fff4;--green-200:#c6f6d5;--green-300:#9ae6b4;--green-400:#68d391;--green-500:#48bb78;--green-600:#38a169;--green-700:#2f855a;--green-800:#276749;--green-900:#22543d;--teal-100:#e6fffa;--teal-200:#b2f5ea;--teal-300:#81e6d9;--teal-400:#4fd1c5;--teal-500:#38b2ac;--teal-600:#319795;--teal-700:#2c7a7b;--teal-800:#285e61;--teal-900:#234e52;--blue-100:#ebf8ff;--blue-200:#bee3f8;--blue-300:#90cdf4;--blue-400:#63b3ed;--blue-500:#4299e1;--blue-600:#3182ce;--blue-700:#2b6cb0;--blue-800:#2c5282;--blue-900:#2a4365;--indigo-100:#ebf4ff;--indigo-200:#c3dafe;--indigo-300:#a3bffa;--indigo-400:#7f9cf5;--indigo-500:#667eea;--indigo-600:#5a67d8;--indigo-700:#4c51bf;--indigo-800:#434190;--indigo-900:#3c366b;--purple-100:#faf5ff;--purple-200:#e9d8fd;--purple-300:#d6bcfa;--purple-400:#b794f4;--purple-500:#9f7aea;--purple-600:#805ad5;--purple-700:#6b46c1;--purple-800:#553c9a;--purple-900:#44337a;--pink-100:#fff5f7;--pink-200:#fed7e2;--pink-300:#fbb6ce;--pink-400:#f687b3;--pink-500:#ed64a6;--pink-600:#d53f8c;--pink-700:#b83280;--pink-800:#97266d;--pink-900:#702459}.vc-container.vc-red{--accent-100:var(--red-100);--accent-200:var(--red-200);--accent-300:var(--red-300);--accent-400:var(--red-400);--accent-500:var(--red-500);--accent-600:var(--red-600);--accent-700:var(--red-700);--accent-800:var(--red-800);--accent-900:var(--red-900)}.vc-container.vc-orange{--accent-100:var(--orange-100);--accent-200:var(--orange-200);--accent-300:var(--orange-300);--accent-400:var(--orange-400);--accent-500:var(--orange-500);--accent-600:var(--orange-600);--accent-700:var(--orange-700);--accent-800:var(--orange-800);--accent-900:var(--orange-900)}.vc-container.vc-yellow{--accent-100:var(--yellow-100);--accent-200:var(--yellow-200);--accent-300:var(--yellow-300);--accent-400:var(--yellow-400);--accent-500:var(--yellow-500);--accent-600:var(--yellow-600);--accent-700:var(--yellow-700);--accent-800:var(--yellow-800);--accent-900:var(--yellow-900)}.vc-container.vc-green{--accent-100:var(--green-100);--accent-200:var(--green-200);--accent-300:var(--green-300);--accent-400:var(--green-400);--accent-500:var(--green-500);--accent-600:var(--green-600);--accent-700:var(--green-700);--accent-800:var(--green-800);--accent-900:var(--green-900)}.vc-container.vc-teal{--accent-100:var(--teal-100);--accent-200:var(--teal-200);--accent-300:var(--teal-300);--accent-400:var(--teal-400);--accent-500:var(--teal-500);--accent-600:var(--teal-600);--accent-700:var(--teal-700);--accent-800:var(--teal-800);--accent-900:var(--teal-900)}.vc-container.vc-blue{--accent-100:var(--blue-100);--accent-200:var(--blue-200);--accent-300:var(--blue-300);--accent-400:var(--blue-400);--accent-500:var(--blue-500);--accent-600:var(--blue-600);--accent-700:var(--blue-700);--accent-800:var(--blue-800);--accent-900:var(--blue-900)}.vc-container.vc-indigo{--accent-100:var(--indigo-100);--accent-200:var(--indigo-200);--accent-300:var(--indigo-300);--accent-400:var(--indigo-400);--accent-500:var(--indigo-500);--accent-600:var(--indigo-600);--accent-700:var(--indigo-700);--accent-800:var(--indigo-800);--accent-900:var(--indigo-900)}.vc-container.vc-purple{--accent-100:var(--purple-100);--accent-200:var(--purple-200);--accent-300:var(--purple-300);--accent-400:var(--purple-400);--accent-500:var(--purple-500);--accent-600:var(--purple-600);--accent-700:var(--purple-700);--accent-800:var(--purple-800);--accent-900:var(--purple-900)}.vc-container.vc-pink{--accent-100:var(--pink-100);--accent-200:var(--pink-200);--accent-300:var(--pink-300);--accent-400:var(--pink-400);--accent-500:var(--pink-500);--accent-600:var(--pink-600);--accent-700:var(--pink-700);--accent-800:var(--pink-800);--accent-900:var(--pink-900)}.vc-container{--font-normal:400;--font-medium:500;--font-semibold:600;--font-bold:700;--text-xs:12px;--text-sm:14px;--text-base:16px;--text-lg:18px;--leading-snug:1.375;--rounded:0.25rem;--rounded-lg:0.5rem;--rounded-full:9999px;--shadow:0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);--shadow-inner:inset 0 2px 4px 0 rgba(0,0,0,0.06);--slide-translate:22px;--slide-duration:0.15s;--slide-timing:ease;--day-content-transition-time:0.13s ease-in;font-family:BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;color:var(--gray-900);background-color:var(--white);border:1px solid;border-color:var(--gray-400);border-radius:var(--rounded-lg);position:relative;width:-webkit-max-content;width:max-content;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}.vc-container,.vc-container *{box-sizing:border-box}.vc-container:focus,.vc-container :focus{outline:none}.vc-container [role=button],.vc-container button{cursor:pointer}.vc-container.vc-is-expanded{min-width:100%}.vc-container .vc-container{border:none}.vc-container.vc-is-dark{color:var(--gray-100);background-color:var(--gray-900);border-color:var(--gray-700)}",""]),t.exports=e},dcbe:function(t,e,n){var r=n("30c9"),a=n("1310");function o(t){return a(t)&&r(t)}t.exports=o},dd61:function(t,e,n){var r=n("7948"),a=n("badf"),o=n("97d3"),i=n("6747");function s(t,e){var n=i(t)?r:o;return n(t,a(e,3))}t.exports=s},ddb0:function(t,e,n){var r=n("da84"),a=n("fdbc"),o=n("e260"),i=n("9112"),s=n("b622"),c=s("iterator"),u=s("toStringTag"),l=o.values;for(var d in a){var f=r[d],p=f&&f.prototype;if(p){if(p[c]!==l)try{i(p,c,l)}catch(v){p[c]=l}if(p[u]||i(p,u,d),a[d])for(var h in o)if(p[h]!==o[h])try{i(p,h,o[h])}catch(v){p[h]=o[h]}}}},de5e:function(t,e,n){"use strict";var r=n("72f5"),a=n.n(r);a.a},df75:function(t,e,n){var r=n("ca84"),a=n("7839");t.exports=Object.keys||function(t){return r(t,a)}},df9e:function(t,e,n){var r=n("9e83");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("29f48e5f",r,!0,{sourceMap:!1,shadowMode:!1})},e031:function(t,e,n){var r=n("f909"),a=n("1a8c");function o(t,e,n,i,s,c){return a(t)&&a(e)&&(c.set(e,t),r(t,e,void 0,o,c),c["delete"](e)),t}t.exports=o},e0e7:function(t,e,n){var r=n("60ed");function a(t){return r(t)?void 0:t}t.exports=a},e163:function(t,e,n){var r=n("5135"),a=n("7b0b"),o=n("f772"),i=n("e177"),s=o("IE_PROTO"),c=Object.prototype;t.exports=i?Object.getPrototypeOf:function(t){return t=a(t),r(t,s)?t[s]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?c:null}},e177:function(t,e,n){var r=n("d039");t.exports=!r((function(){function t(){}return t.prototype.constructor=null,Object.getPrototypeOf(new t)!==t.prototype}))},e184:function(t,e,n){"use strict";var r=n("45b6"),a=n.n(r);a.a},e24b:function(t,e,n){var r=n("49f4"),a=n("1efc"),o=n("bbc0"),i=n("7a48"),s=n("2524");function c(t){var e=-1,n=null==t?0:t.length;this.clear();while(++e<n){var r=t[e];this.set(r[0],r[1])}}c.prototype.clear=r,c.prototype["delete"]=a,c.prototype.get=o,c.prototype.has=i,c.prototype.set=s,t.exports=c},e260:function(t,e,n){"use strict";var r=n("fc6a"),a=n("44d2"),o=n("3f8c"),i=n("69f3"),s=n("7dd0"),c="Array Iterator",u=i.set,l=i.getterFor(c);t.exports=s(Array,"Array",(function(t,e){u(this,{type:c,target:r(t),index:0,kind:e})}),(function(){var t=l(this),e=t.target,n=t.kind,r=t.index++;return!e||r>=e.length?(t.target=void 0,{value:void 0,done:!0}):"keys"==n?{value:r,done:!1}:"values"==n?{value:e[r],done:!1}:{value:[r,e[r]],done:!1}}),"values"),o.Arguments=o.Array,a("keys"),a("values"),a("entries")},e2a0:function(t,e,n){var r=n("3729"),a=n("6747"),o=n("1310"),i="[object String]";function s(t){return"string"==typeof t||!a(t)&&o(t)&&r(t)==i}t.exports=s},e2c0:function(t,e,n){var r=n("e2e4"),a=n("d370"),o=n("6747"),i=n("c098"),s=n("b218"),c=n("f4d6");function u(t,e,n){e=r(e,t);var u=-1,l=e.length,d=!1;while(++u<l){var f=c(e[u]);if(!(d=null!=t&&n(t,f)))break;t=t[f]}return d||++u!=l?d:(l=null==t?0:t.length,!!l&&s(l)&&i(f,l)&&(o(t)||a(t)))}t.exports=u},e2e4:function(t,e,n){var r=n("6747"),a=n("f608"),o=n("18d8"),i=n("76dd");function s(t,e){return r(t)?t:a(t,e)?[t]:o(i(t))}t.exports=s},e380:function(t,e,n){var r=n("7b83"),a="Expected a function";function o(t,e){if("function"!=typeof t||null!=e&&"function"!=typeof e)throw new TypeError(a);var n=function(){var r=arguments,a=e?e.apply(this,r):r[0],o=n.cache;if(o.has(a))return o.get(a);var i=t.apply(this,r);return n.cache=o.set(a,i)||o,i};return n.cache=new(o.Cache||r),n}o.Cache=r,t.exports=o},e3f8:function(t,e,n){var r=n("656b");function a(t){return function(e){return r(e,t)}}t.exports=a},e501:function(t,e,n){var r=n("4728");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("3d2480f4",r,!0,{sourceMap:!1,shadowMode:!1})},e50d:function(t,e,n){var r=n("9ce2");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("75736d24",r,!0,{sourceMap:!1,shadowMode:!1})},e538:function(t,e,n){(function(t){var r=n("2b3e"),a=e&&!e.nodeType&&e,o=a&&"object"==typeof t&&t&&!t.nodeType&&t,i=o&&o.exports===a,s=i?r.Buffer:void 0,c=s?s.allocUnsafe:void 0;function u(t,e){if(e)return t.slice();var n=t.length,r=c?c(n):new t.constructor(n);return t.copy(r),r}t.exports=u}).call(this,n("62e4")(t))},e893:function(t,e,n){var r=n("5135"),a=n("56ef"),o=n("06cf"),i=n("9bf2");t.exports=function(t,e){for(var n=a(e),s=i.f,c=o.f,u=0;u<n.length;u++){var l=n[u];r(t,l)||s(t,l,c(e,l))}}},e969:function(t,e,n){var r=n("0da5");"string"===typeof r&&(r=[[t.i,r,""]]),r.locals&&(t.exports=r.locals);var a=n("499e").default;a("61c2bd5e",r,!0,{sourceMap:!1,shadowMode:!1})},eac5:function(t,e){var n=Object.prototype;function r(t){var e=t&&t.constructor,r="function"==typeof e&&e.prototype||n;return t===r}t.exports=r},ec47:function(t,e,n){var r=n("a3fd"),a=n("42a2"),o=n("edfa"),i=n("cebd"),s="[object Map]",c="[object Set]";function u(t){return function(e){var n=a(e);return n==s?o(e):n==c?i(e):r(e,t(e))}}t.exports=u},ec69:function(t,e,n){var r=n("6fcd"),a=n("03dd"),o=n("30c9");function i(t){return o(t)?r(t):a(t)}t.exports=i},ec8c:function(t,e){function n(t){var e=[];if(null!=t)for(var n in Object(t))e.push(n);return e}t.exports=n},ed08:function(t,e,n){"use strict";n.r(e),n.d(e,"Locale",(function(){return r["a"]})),n.d(e,"DateInfo",(function(){return a["a"]})),n.d(e,"Attribute",(function(){return o["a"]})),n.d(e,"AttributeStore",(function(){return i["a"]})),n.d(e,"setupCalendar",(function(){return u})),n.d(e,"pad",(function(){return l["q"]})),n.d(e,"evalFn",(function(){return l["h"]})),n.d(e,"pageIsValid",(function(){return l["z"]})),n.d(e,"mergeEvents",(function(){return l["l"]})),n.d(e,"pageIsBeforePage",(function(){return l["w"]})),n.d(e,"pageIsAfterPage",(function(){return l["v"]})),n.d(e,"pageIsBetweenPages",(function(){return l["x"]})),n.d(e,"pageIsEqualToPage",(function(){return l["y"]})),n.d(e,"pageForDate",(function(){return l["r"]})),n.d(e,"addPages",(function(){return l["a"]})),n.d(e,"pageForThisMonth",(function(){return l["u"]})),n.d(e,"pageForNextMonth",(function(){return l["s"]})),n.d(e,"pageForPrevMonth",(function(){return l["t"]})),n.d(e,"getMaxPage",(function(){return l["j"]})),n.d(e,"datesAreEqual",(function(){return l["d"]})),n.d(e,"arrayHasItems",(function(){return l["b"]})),n.d(e,"findAncestor",(function(){return l["i"]})),n.d(e,"elementHasAncestor",(function(){return l["f"]})),n.d(e,"elementPositionInAncestor",(function(){return l["g"]})),n.d(e,"mixinOptionalProps",(function(){return l["m"]})),n.d(e,"on",(function(){return l["o"]})),n.d(e,"off",(function(){return l["n"]})),n.d(e,"elementContains",(function(){return l["e"]})),n.d(e,"onSpaceOrEnter",(function(){return l["p"]})),n.d(e,"createGuid",(function(){return l["c"]})),n.d(e,"hash",(function(){return l["k"]})),n.d(e,"addTapOrClickHandler",(function(){return d["b"]})),n.d(e,"addHorizontalSwipeHandler",(function(){return d["a"]}));var r=n("29ae"),a=n("cfe5"),o=n("22f3"),i=n("9349"),s=n("51ec"),c=n("1315"),u=function(t){const e=Object(s["b"])(t);return Object(c["a"])(e.screens,!0),e},l=n("2fa3"),d=n("0733")},edfa:function(t,e){function n(t){var e=-1,n=Array(t.size);return t.forEach((function(t,r){n[++e]=[r,t]})),n}t.exports=n},ef5d:function(t,e){function n(t){return function(e){return null==e?void 0:e[t]}}t.exports=n},efb6:function(t,e,n){var r=n("5e2e");function a(){this.__data__=new r,this.size=0}t.exports=a},f15d:function(t,e,n){"use strict";n("ddb0");var r=n("9404");const a={ar:{dow:7,L:"D/‏M/‏YYYY"},bg:{dow:2,L:"D.MM.YYYY"},ca:{dow:2,L:"DD/MM/YYYY"},"zh-CN":{dow:2,L:"YYYY/MM/DD"},"zh-TW":{dow:1,L:"YYYY/MM/DD"},hr:{dow:2,L:"DD.MM.YYYY"},cs:{dow:2,L:"DD.MM.YYYY"},da:{dow:2,L:"DD.MM.YYYY"},nl:{dow:2,L:"DD-MM-YYYY"},"en-US":{dow:1,L:"MM/DD/YYYY"},"en-AU":{dow:2,L:"DD/MM/YYYY"},"en-CA":{dow:1,L:"YYYY-MM-DD"},"en-GB":{dow:2,L:"DD/MM/YYYY"},"en-IE":{dow:2,L:"DD-MM-YYYY"},"en-NZ":{dow:2,L:"DD/MM/YYYY"},"en-ZA":{dow:1,L:"YYYY/MM/DD"},eo:{dow:2,L:"YYYY-MM-DD"},et:{dow:2,L:"DD.MM.YYYY"},fi:{dow:2,L:"DD.MM.YYYY"},fr:{dow:2,L:"DD/MM/YYYY"},"fr-CA":{dow:1,L:"YYYY-MM-DD"},"fr-CH":{dow:2,L:"DD.MM.YYYY"},de:{dow:2,L:"DD.MM.YYYY"},he:{dow:1,L:"DD.MM.YYYY"},id:{dow:2,L:"DD/MM/YYYY"},it:{dow:2,L:"DD/MM/YYYY"},ja:{dow:1,L:"YYYY年M月D日"},ko:{dow:1,L:"YYYY.MM.DD"},lv:{dow:2,L:"DD.MM.YYYY"},lt:{dow:2,L:"DD.MM.YYYY"},mk:{dow:2,L:"D.MM.YYYY"},nb:{dow:2,L:"D. MMMM YYYY"},nn:{dow:2,L:"D. MMMM YYYY"},pl:{dow:2,L:"DD.MM.YYYY"},pt:{dow:2,L:"DD/MM/YYYY"},ro:{dow:2,L:"DD.MM.YYYY"},ru:{dow:2,L:"DD.MM.YYYY"},sk:{dow:2,L:"DD.MM.YYYY"},"es-ES":{dow:2,L:"DD/MM/YYYY"},"es-MX":{dow:2,L:"DD/MM/YYYY"},sv:{dow:2,L:"YYYY-MM-DD"},th:{dow:1,L:"DD/MM/YYYY"},tr:{dow:2,L:"DD.MM.YYYY"},uk:{dow:2,L:"DD.MM.YYYY"},vi:{dow:2,L:"DD/MM/YYYY"}};a.en=a["en-US"],a.es=a["es-ES"],a.no=a.nb,a.zh=a["zh-CN"],Object(r["v"])(a).forEach((function([t,{dow:e,L:n}]){a[t]={id:t,firstDayOfWeek:e,masks:{L:n}}})),e["a"]=a},f3c1:function(t,e){var n=800,r=16,a=Date.now;function o(t){var e=0,o=0;return function(){var i=a(),s=r-(i-o);if(o=i,s>0){if(++e>=n)return arguments[0]}else e=0;return t.apply(void 0,arguments)}}t.exports=o},f3e2:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,'.vc-popover-content-wrapper[data-v-4cb7b681]{--popover-horizontal-content-offset:8px;--popover-vertical-content-offset:10px;--popover-slide-translation:15px;--popover-transition-time:0.14s ease-in-out;--popover-caret-horizontal-offset:18px;--popover-caret-vertical-offset:8px;position:absolute;display:block;outline:none;z-index:10}.vc-popover-content-wrapper[data-v-4cb7b681]:not(.is-interactive){pointer-events:none}.vc-popover-content[data-v-4cb7b681]{position:relative;outline:none;z-index:10;box-shadow:var(--shadow-lg)}.vc-popover-content.direction-bottom[data-v-4cb7b681]{margin-top:var(--popover-vertical-content-offset)}.vc-popover-content.direction-top[data-v-4cb7b681]{margin-bottom:var(--popover-vertical-content-offset)}.vc-popover-content.direction-left[data-v-4cb7b681]{margin-right:var(--popover-horizontal-content-offset)}.vc-popover-content.direction-right[data-v-4cb7b681]{margin-left:var(--popover-horizontal-content-offset)}.vc-popover-caret[data-v-4cb7b681]{content:"";position:absolute;display:block;width:12px;height:12px;border-top:inherit;border-left:inherit;background-color:inherit;z-index:-1}.vc-popover-caret.direction-bottom[data-v-4cb7b681]{top:0}.vc-popover-caret.direction-bottom.align-left[data-v-4cb7b681]{transform:translateY(-50%) rotate(45deg)}.vc-popover-caret.direction-bottom.align-center[data-v-4cb7b681]{transform:translateX(-50%) translateY(-50%) rotate(45deg)}.vc-popover-caret.direction-bottom.align-right[data-v-4cb7b681]{transform:translateY(-50%) rotate(45deg)}.vc-popover-caret.direction-top[data-v-4cb7b681]{top:100%}.vc-popover-caret.direction-top.align-left[data-v-4cb7b681]{transform:translateY(-50%) rotate(-135deg)}.vc-popover-caret.direction-top.align-center[data-v-4cb7b681]{transform:translateX(-50%) translateY(-50%) rotate(-135deg)}.vc-popover-caret.direction-top.align-right[data-v-4cb7b681]{transform:translateY(-50%) rotate(-135deg)}.vc-popover-caret.direction-left[data-v-4cb7b681]{left:100%}.vc-popover-caret.direction-left.align-top[data-v-4cb7b681]{transform:translateX(-50%) rotate(135deg)}.vc-popover-caret.direction-left.align-middle[data-v-4cb7b681]{transform:translateY(-50%) translateX(-50%) rotate(135deg)}.vc-popover-caret.direction-left.align-bottom[data-v-4cb7b681]{transform:translateX(-50%) rotate(135deg)}.vc-popover-caret.direction-right[data-v-4cb7b681]{left:0}.vc-popover-caret.direction-right.align-top[data-v-4cb7b681]{transform:translateX(-50%) rotate(-45deg)}.vc-popover-caret.direction-right.align-middle[data-v-4cb7b681]{transform:translateY(-50%) translateX(-50%) rotate(-45deg)}.vc-popover-caret.direction-right.align-bottom[data-v-4cb7b681]{transform:translateX(-50%) rotate(-45deg)}.vc-popover-caret.align-left[data-v-4cb7b681]{left:var(--popover-caret-horizontal-offset)}.vc-popover-caret.align-center[data-v-4cb7b681]{left:50%}.vc-popover-caret.align-right[data-v-4cb7b681]{right:var(--popover-caret-horizontal-offset)}.vc-popover-caret.align-top[data-v-4cb7b681]{top:var(--popover-caret-vertical-offset)}.vc-popover-caret.align-middle[data-v-4cb7b681]{top:50%}.vc-popover-caret.align-bottom[data-v-4cb7b681]{bottom:var(--popover-caret-vertical-offset)}.fade-enter-active[data-v-4cb7b681],.fade-leave-active[data-v-4cb7b681],.slide-fade-enter-active[data-v-4cb7b681],.slide-fade-leave-active[data-v-4cb7b681]{transition:all var(--popover-transition-time);pointer-events:none}.fade-enter[data-v-4cb7b681],.fade-leave-to[data-v-4cb7b681],.slide-fade-enter[data-v-4cb7b681],.slide-fade-leave-to[data-v-4cb7b681]{opacity:0}.slide-fade-enter.direction-bottom[data-v-4cb7b681],.slide-fade-leave-to.direction-bottom[data-v-4cb7b681]{transform:translateY(calc(var(--popover-slide-translation)*-1))}.slide-fade-enter.direction-top[data-v-4cb7b681],.slide-fade-leave-to.direction-top[data-v-4cb7b681]{transform:translateY(var(--popover-slide-translation))}.slide-fade-enter.direction-left[data-v-4cb7b681],.slide-fade-leave-to.direction-left[data-v-4cb7b681]{transform:translateX(var(--popover-slide-translation))}.slide-fade-enter.direction-right[data-v-4cb7b681],.slide-fade-leave-to.direction-right[data-v-4cb7b681]{transform:translateX(calc(var(--popover-slide-translation)*-1))}',""]),t.exports=e},f4d6:function(t,e,n){var r=n("ffd6"),a=1/0;function o(t){if("string"==typeof t||r(t))return t;var e=t+"";return"0"==e&&1/t==-a?"-0":e}t.exports=o},f542:function(t,e,n){var r=n("ec47"),a=n("ec69"),o=r(a);t.exports=o},f608:function(t,e,n){var r=n("6747"),a=n("ffd6"),o=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,i=/^\w*$/;function s(t,e){if(r(t))return!1;var n=typeof t;return!("number"!=n&&"symbol"!=n&&"boolean"!=n&&null!=t&&!a(t))||(i.test(t)||!o.test(t)||null!=e&&t in Object(e))}t.exports=s},f678:function(t,e,n){var r=n("8384"),a=n("b4b0");function o(t,e,n){return void 0===n&&(n=e,e=void 0),void 0!==n&&(n=a(n),n=n===n?n:0),void 0!==e&&(e=a(e),e=e===e?e:0),r(a(t),e,n)}t.exports=o},f772:function(t,e,n){var r=n("5692"),a=n("90e3"),o=r("keys");t.exports=function(t){return o[t]||(o[t]=a(t))}},f7f1:function(t,e,n){"use strict";n.d(e,"a",(function(){return i}));var r=n("fe1f"),a=n("fd3a"),o=n("8c86");function i(t,e){Object(o["a"])(2,arguments);var n=Object(a["a"])(t),i=Object(r["a"])(e);return isNaN(i)?new Date(NaN):i?(n.setDate(n.getDate()+i),n):n}},f8af:function(t,e,n){var r=n("2474");function a(t){var e=new t.constructor(t.byteLength);return new r(e).set(new r(t)),e}t.exports=a},f909:function(t,e,n){var r=n("7e64"),a=n("b760"),o=n("72af"),i=n("4f50"),s=n("1a8c"),c=n("9934"),u=n("8adb");function l(t,e,n,d,f){t!==e&&o(e,(function(o,c){if(f||(f=new r),s(o))i(t,e,c,n,l,d,f);else{var p=d?d(u(t,c),o,c+"",t,e,f):void 0;void 0===p&&(p=o),a(t,c,p)}}),c)}t.exports=l},f9ce:function(t,e,n){var r=n("ef5d"),a=n("e3f8"),o=n("f608"),i=n("f4d6");function s(t){return o(t)?r(i(t)):a(t)}t.exports=s},fa21:function(t,e,n){var r=n("7530"),a=n("2dcb"),o=n("eac5");function i(t){return"function"!=typeof t.constructor||o(t)?{}:r(a(t))}t.exports=i},fb15:function(t,e,n){"use strict";if(n.r(e),n.d(e,"Calendar",(function(){return o["c"]})),n.d(e,"CalendarNav",(function(){return o["d"]})),n.d(e,"DatePicker",(function(){return o["f"]})),n.d(e,"Popover",(function(){return o["i"]})),n.d(e,"Grid",(function(){return o["g"]})),n.d(e,"Locale",(function(){return o["h"]})),n.d(e,"DateInfo",(function(){return o["e"]})),n.d(e,"Attribute",(function(){return o["a"]})),n.d(e,"AttributeStore",(function(){return o["b"]})),n.d(e,"setupCalendar",(function(){return o["M"]})),n.d(e,"pad",(function(){return o["C"]})),n.d(e,"evalFn",(function(){return o["t"]})),n.d(e,"pageIsValid",(function(){return o["L"]})),n.d(e,"mergeEvents",(function(){return o["x"]})),n.d(e,"pageIsBeforePage",(function(){return o["I"]})),n.d(e,"pageIsAfterPage",(function(){return o["H"]})),n.d(e,"pageIsBetweenPages",(function(){return o["J"]})),n.d(e,"pageIsEqualToPage",(function(){return o["K"]})),n.d(e,"pageForDate",(function(){return o["D"]})),n.d(e,"addPages",(function(){return o["k"]})),n.d(e,"pageForThisMonth",(function(){return o["G"]})),n.d(e,"pageForNextMonth",(function(){return o["E"]})),n.d(e,"pageForPrevMonth",(function(){return o["F"]})),n.d(e,"getMaxPage",(function(){return o["v"]})),n.d(e,"datesAreEqual",(function(){return o["o"]})),n.d(e,"arrayHasItems",(function(){return o["m"]})),n.d(e,"findAncestor",(function(){return o["u"]})),n.d(e,"elementHasAncestor",(function(){return o["r"]})),n.d(e,"elementPositionInAncestor",(function(){return o["s"]})),n.d(e,"mixinOptionalProps",(function(){return o["y"]})),n.d(e,"on",(function(){return o["A"]})),n.d(e,"off",(function(){return o["z"]})),n.d(e,"elementContains",(function(){return o["q"]})),n.d(e,"onSpaceOrEnter",(function(){return o["B"]})),n.d(e,"createGuid",(function(){return o["n"]})),n.d(e,"hash",(function(){return o["w"]})),n.d(e,"addTapOrClickHandler",(function(){return o["l"]})),n.d(e,"addHorizontalSwipeHandler",(function(){return o["j"]})),"undefined"!==typeof window){var r=window.document.currentScript,a=r&&r.src.match(/(.+\/)[^/]+\.js(\?.*)?$/);a&&(n.p=a[1])}var o=n("34e9");e["default"]=o["p"]},fba5:function(t,e,n){var r=n("cb5a");function a(t){return r(this.__data__,t)>-1}t.exports=a},fc6a:function(t,e,n){var r=n("44ad"),a=n("1d80");t.exports=function(t){return r(a(t))}},fcff:function(t,e,n){var r=n("24fb");e=r(!1),e.push([t.i,".vc-svg-icon[data-v-63f7b5ec]{display:inline-block;stroke:currentColor;stroke-width:0}.vc-svg-icon path[data-v-63f7b5ec]{fill:currentColor}",""]),t.exports=e},fd3a:function(t,e,n){"use strict";n.d(e,"a",(function(){return a}));var r=n("8c86");function a(t){Object(r["a"])(1,arguments);var e=Object.prototype.toString.call(t);return t instanceof Date||"object"===typeof t&&"[object Date]"===e?new Date(t.getTime()):"number"===typeof t||"[object Number]"===e?new Date(t):("string"!==typeof t&&"[object String]"!==e||"undefined"===typeof console||(console.warn("Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"),console.warn((new Error).stack)),new Date(NaN))}},fdbc:function(t,e){t.exports={CSSRuleList:0,CSSStyleDeclaration:0,CSSValueList:0,ClientRectList:0,DOMRectList:0,DOMStringList:0,DOMTokenList:1,DataTransferItemList:0,FileList:0,HTMLAllCollection:0,HTMLCollection:0,HTMLFormElement:0,HTMLSelectElement:0,MediaList:0,MimeTypeArray:0,NamedNodeMap:0,NodeList:1,PaintRequestList:0,Plugin:0,PluginArray:0,SVGLengthList:0,SVGNumberList:0,SVGPathSegList:0,SVGPointList:0,SVGStringList:0,SVGTransformList:0,SourceBufferList:0,StyleSheetList:0,TextTrackCueList:0,TextTrackList:0,TouchList:0}},fdbf:function(t,e,n){var r=n("4930");t.exports=r&&!Symbol.sham&&"symbol"==typeof Symbol.iterator},fe1f:function(t,e,n){"use strict";function r(t){if(null===t||!0===t||!1===t)return NaN;var e=Number(t);return isNaN(e)?e:e<0?Math.ceil(e):Math.floor(e)}n.d(e,"a",(function(){return r}))},ff3b:function(t,e,n){"use strict";var r=n("1a0a"),a=n.n(r);a.a},ffd6:function(t,e,n){var r=n("3729"),a=n("1310"),o="[object Symbol]";function i(t){return"symbol"==typeof t||a(t)&&r(t)==o}t.exports=i}})}));
 //# sourceMappingURL=v-calendar.umd.min.js.map
+
+/***/ }),
+
+/***/ "./node_modules/vue-cal/dist/vuecal.common.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-cal/dist/vuecal.common.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		40: 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "vuecal.common." + ({"0":"i18n/ar","1":"i18n/bg","2":"i18n/bn","3":"i18n/bs","4":"i18n/ca","5":"i18n/cs","6":"i18n/da","7":"i18n/de","8":"i18n/el","9":"i18n/es","10":"i18n/fa","11":"i18n/fr","12":"i18n/he","13":"i18n/hr","14":"i18n/hu","15":"i18n/id","16":"i18n/is","17":"i18n/it","18":"i18n/ja","19":"i18n/ka","20":"i18n/ko","21":"i18n/lt","22":"i18n/mn","23":"i18n/nl","24":"i18n/no","25":"i18n/pl","26":"i18n/pt-br","27":"i18n/ro","28":"i18n/ru","29":"i18n/sk","30":"i18n/sl","31":"i18n/sq","32":"i18n/sr","33":"i18n/sv","34":"i18n/tr","35":"i18n/uk","36":"i18n/vi","37":"i18n/zh-cn","38":"i18n/zh-hk","39":"drag-and-drop"}[chunkId]||chunkId) + ".js"
+/******/ 	}
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				// create error before stack unwound to get useful stacktrace later
+/******/ 				var error = new Error();
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 							error.name = 'ChunkLoadError';
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				document.head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
+/******/ 	var jsonpArray = (typeof self !== 'undefined' ? self : this)["webpackJsonpvuecal"] = (typeof self !== 'undefined' ? self : this)["webpackJsonpvuecal"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "00ee":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var test = {};
+
+test[TO_STRING_TAG] = 'z';
+
+module.exports = String(test) === '[object z]';
+
+
+/***/ }),
+
+/***/ "0366":
+/***/ (function(module, exports, __webpack_require__) {
+
+var aFunction = __webpack_require__("1c0b");
+
+// optional / simple context binding
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 0: return function () {
+      return fn.call(that);
+    };
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ "057f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toIndexedObject = __webpack_require__("fc6a");
+var nativeGetOwnPropertyNames = __webpack_require__("241c").f;
+
+var toString = {}.toString;
+
+var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
+  ? Object.getOwnPropertyNames(window) : [];
+
+var getWindowNames = function (it) {
+  try {
+    return nativeGetOwnPropertyNames(it);
+  } catch (error) {
+    return windowNames.slice();
+  }
+};
+
+// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+module.exports.f = function getOwnPropertyNames(it) {
+  return windowNames && toString.call(it) == '[object Window]'
+    ? getWindowNames(it)
+    : nativeGetOwnPropertyNames(toIndexedObject(it));
+};
+
+
+/***/ }),
+
+/***/ "06cf":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var propertyIsEnumerableModule = __webpack_require__("d1e7");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+var toIndexedObject = __webpack_require__("fc6a");
+var toPrimitive = __webpack_require__("c04e");
+var has = __webpack_require__("5135");
+var IE8_DOM_DEFINE = __webpack_require__("0cfb");
+
+var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject(O);
+  P = toPrimitive(P, true);
+  if (IE8_DOM_DEFINE) try {
+    return nativeGetOwnPropertyDescriptor(O, P);
+  } catch (error) { /* empty */ }
+  if (has(O, P)) return createPropertyDescriptor(!propertyIsEnumerableModule.f.call(O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "0a96":
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"weekDays\":[\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\",\"Friday\",\"Saturday\",\"Sunday\"],\"months\":[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"years\":\"Years\",\"year\":\"Year\",\"month\":\"Month\",\"week\":\"Week\",\"day\":\"Day\",\"today\":\"Today\",\"noEvent\":\"No Event\",\"allDay\":\"All day\",\"deleteEvent\":\"Delete\",\"createEvent\":\"Create an event\",\"dateFormat\":\"dddd MMMM D{S}, YYYY\"}");
+
+/***/ }),
+
+/***/ "0cfb":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var fails = __webpack_require__("d039");
+var createElement = __webpack_require__("cc12");
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !DESCRIPTORS && !fails(function () {
+  return Object.defineProperty(createElement('div'), 'a', {
+    get: function () { return 7; }
+  }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "1148":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toInteger = __webpack_require__("a691");
+var requireObjectCoercible = __webpack_require__("1d80");
+
+// `String.prototype.repeat` method implementation
+// https://tc39.github.io/ecma262/#sec-string.prototype.repeat
+module.exports = ''.repeat || function repeat(count) {
+  var str = String(requireObjectCoercible(this));
+  var result = '';
+  var n = toInteger(count);
+  if (n < 0 || n == Infinity) throw RangeError('Wrong number of repetitions');
+  for (;n > 0; (n >>>= 1) && (str += str)) if (n & 1) result += str;
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "1276":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fixRegExpWellKnownSymbolLogic = __webpack_require__("d784");
+var isRegExp = __webpack_require__("44e7");
+var anObject = __webpack_require__("825a");
+var requireObjectCoercible = __webpack_require__("1d80");
+var speciesConstructor = __webpack_require__("4840");
+var advanceStringIndex = __webpack_require__("8aa5");
+var toLength = __webpack_require__("50c4");
+var callRegExpExec = __webpack_require__("14c3");
+var regexpExec = __webpack_require__("9263");
+var fails = __webpack_require__("d039");
+
+var arrayPush = [].push;
+var min = Math.min;
+var MAX_UINT32 = 0xFFFFFFFF;
+
+// babel-minify transpiles RegExp('x', 'y') -> /x/y and it causes SyntaxError
+var SUPPORTS_Y = !fails(function () { return !RegExp(MAX_UINT32, 'y'); });
+
+// @@split logic
+fixRegExpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCallNative) {
+  var internalSplit;
+  if (
+    'abbc'.split(/(b)*/)[1] == 'c' ||
+    'test'.split(/(?:)/, -1).length != 4 ||
+    'ab'.split(/(?:ab)*/).length != 2 ||
+    '.'.split(/(.?)(.?)/).length != 4 ||
+    '.'.split(/()()/).length > 1 ||
+    ''.split(/.?/).length
+  ) {
+    // based on es5-shim implementation, need to rework it
+    internalSplit = function (separator, limit) {
+      var string = String(requireObjectCoercible(this));
+      var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
+      if (lim === 0) return [];
+      if (separator === undefined) return [string];
+      // If `separator` is not a regex, use native split
+      if (!isRegExp(separator)) {
+        return nativeSplit.call(string, separator, lim);
+      }
+      var output = [];
+      var flags = (separator.ignoreCase ? 'i' : '') +
+                  (separator.multiline ? 'm' : '') +
+                  (separator.unicode ? 'u' : '') +
+                  (separator.sticky ? 'y' : '');
+      var lastLastIndex = 0;
+      // Make `global` and avoid `lastIndex` issues by working with a copy
+      var separatorCopy = new RegExp(separator.source, flags + 'g');
+      var match, lastIndex, lastLength;
+      while (match = regexpExec.call(separatorCopy, string)) {
+        lastIndex = separatorCopy.lastIndex;
+        if (lastIndex > lastLastIndex) {
+          output.push(string.slice(lastLastIndex, match.index));
+          if (match.length > 1 && match.index < string.length) arrayPush.apply(output, match.slice(1));
+          lastLength = match[0].length;
+          lastLastIndex = lastIndex;
+          if (output.length >= lim) break;
+        }
+        if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
+      }
+      if (lastLastIndex === string.length) {
+        if (lastLength || !separatorCopy.test('')) output.push('');
+      } else output.push(string.slice(lastLastIndex));
+      return output.length > lim ? output.slice(0, lim) : output;
+    };
+  // Chakra, V8
+  } else if ('0'.split(undefined, 0).length) {
+    internalSplit = function (separator, limit) {
+      return separator === undefined && limit === 0 ? [] : nativeSplit.call(this, separator, limit);
+    };
+  } else internalSplit = nativeSplit;
+
+  return [
+    // `String.prototype.split` method
+    // https://tc39.github.io/ecma262/#sec-string.prototype.split
+    function split(separator, limit) {
+      var O = requireObjectCoercible(this);
+      var splitter = separator == undefined ? undefined : separator[SPLIT];
+      return splitter !== undefined
+        ? splitter.call(separator, O, limit)
+        : internalSplit.call(String(O), separator, limit);
+    },
+    // `RegExp.prototype[@@split]` method
+    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@split
+    //
+    // NOTE: This cannot be properly polyfilled in engines that don't support
+    // the 'y' flag.
+    function (regexp, limit) {
+      var res = maybeCallNative(internalSplit, regexp, this, limit, internalSplit !== nativeSplit);
+      if (res.done) return res.value;
+
+      var rx = anObject(regexp);
+      var S = String(this);
+      var C = speciesConstructor(rx, RegExp);
+
+      var unicodeMatching = rx.unicode;
+      var flags = (rx.ignoreCase ? 'i' : '') +
+                  (rx.multiline ? 'm' : '') +
+                  (rx.unicode ? 'u' : '') +
+                  (SUPPORTS_Y ? 'y' : 'g');
+
+      // ^(? + rx + ) is needed, in combination with some S slicing, to
+      // simulate the 'y' flag.
+      var splitter = new C(SUPPORTS_Y ? rx : '^(?:' + rx.source + ')', flags);
+      var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
+      if (lim === 0) return [];
+      if (S.length === 0) return callRegExpExec(splitter, S) === null ? [S] : [];
+      var p = 0;
+      var q = 0;
+      var A = [];
+      while (q < S.length) {
+        splitter.lastIndex = SUPPORTS_Y ? q : 0;
+        var z = callRegExpExec(splitter, SUPPORTS_Y ? S : S.slice(q));
+        var e;
+        if (
+          z === null ||
+          (e = min(toLength(splitter.lastIndex + (SUPPORTS_Y ? 0 : q)), S.length)) === p
+        ) {
+          q = advanceStringIndex(S, q, unicodeMatching);
+        } else {
+          A.push(S.slice(p, q));
+          if (A.length === lim) return A;
+          for (var i = 1; i <= z.length - 1; i++) {
+            A.push(z[i]);
+            if (A.length === lim) return A;
+          }
+          q = p = e;
+        }
+      }
+      A.push(S.slice(p));
+      return A;
+    }
+  ];
+}, !SUPPORTS_Y);
+
+
+/***/ }),
+
+/***/ "12cd":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "1332":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "13d5":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $reduce = __webpack_require__("d58f").left;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var STRICT_METHOD = arrayMethodIsStrict('reduce');
+var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', { 1: 0 });
+
+// `Array.prototype.reduce` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+  reduce: function reduce(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "14c3":
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__("c6b6");
+var regexpExec = __webpack_require__("9263");
+
+// `RegExpExec` abstract operation
+// https://tc39.github.io/ecma262/#sec-regexpexec
+module.exports = function (R, S) {
+  var exec = R.exec;
+  if (typeof exec === 'function') {
+    var result = exec.call(R, S);
+    if (typeof result !== 'object') {
+      throw TypeError('RegExp exec method returned something other than an Object or null');
+    }
+    return result;
+  }
+
+  if (classof(R) !== 'RegExp') {
+    throw TypeError('RegExp#exec called on incompatible receiver');
+  }
+
+  return regexpExec.call(R, S);
+};
+
+
+
+/***/ }),
+
+/***/ "159b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var DOMIterables = __webpack_require__("fdbc");
+var forEach = __webpack_require__("17c2");
+var createNonEnumerableProperty = __webpack_require__("9112");
+
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
+  // some Chrome versions have non-configurable methods on DOMTokenList
+  if (CollectionPrototype && CollectionPrototype.forEach !== forEach) try {
+    createNonEnumerableProperty(CollectionPrototype, 'forEach', forEach);
+  } catch (error) {
+    CollectionPrototype.forEach = forEach;
+  }
+}
+
+
+/***/ }),
+
+/***/ "17c2":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $forEach = __webpack_require__("b727").forEach;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var STRICT_METHOD = arrayMethodIsStrict('forEach');
+var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
+
+// `Array.prototype.forEach` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
+  return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+} : [].forEach;
+
+
+/***/ }),
+
+/***/ "19aa":
+/***/ (function(module, exports) {
+
+module.exports = function (it, Constructor, name) {
+  if (!(it instanceof Constructor)) {
+    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "1be4":
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__("d066");
+
+module.exports = getBuiltIn('document', 'documentElement');
+
+
+/***/ }),
+
+/***/ "1c0b":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "1c7e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var SAFE_CLOSING = false;
+
+try {
+  var called = 0;
+  var iteratorWithReturn = {
+    next: function () {
+      return { done: !!called++ };
+    },
+    'return': function () {
+      SAFE_CLOSING = true;
+    }
+  };
+  iteratorWithReturn[ITERATOR] = function () {
+    return this;
+  };
+  // eslint-disable-next-line no-throw-literal
+  Array.from(iteratorWithReturn, function () { throw 2; });
+} catch (error) { /* empty */ }
+
+module.exports = function (exec, SKIP_CLOSING) {
+  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
+  var ITERATION_SUPPORT = false;
+  try {
+    var object = {};
+    object[ITERATOR] = function () {
+      return {
+        next: function () {
+          return { done: ITERATION_SUPPORT = true };
+        }
+      };
+    };
+    exec(object);
+  } catch (error) { /* empty */ }
+  return ITERATION_SUPPORT;
+};
+
+
+/***/ }),
+
+/***/ "1d80":
+/***/ (function(module, exports) {
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "1dde":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+var wellKnownSymbol = __webpack_require__("b622");
+var V8_VERSION = __webpack_require__("2d00");
+
+var SPECIES = wellKnownSymbol('species');
+
+module.exports = function (METHOD_NAME) {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return V8_VERSION >= 51 || !fails(function () {
+    var array = [];
+    var constructor = array.constructor = {};
+    constructor[SPECIES] = function () {
+      return { foo: 1 };
+    };
+    return array[METHOD_NAME](Boolean).foo !== 1;
+  });
+};
+
+
+/***/ }),
+
+/***/ "2170":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "2266":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var isArrayIteratorMethod = __webpack_require__("e95a");
+var toLength = __webpack_require__("50c4");
+var bind = __webpack_require__("0366");
+var getIteratorMethod = __webpack_require__("35a1");
+var callWithSafeIterationClosing = __webpack_require__("9bdd");
+
+var Result = function (stopped, result) {
+  this.stopped = stopped;
+  this.result = result;
+};
+
+var iterate = module.exports = function (iterable, fn, that, AS_ENTRIES, IS_ITERATOR) {
+  var boundFunction = bind(fn, that, AS_ENTRIES ? 2 : 1);
+  var iterator, iterFn, index, length, result, next, step;
+
+  if (IS_ITERATOR) {
+    iterator = iterable;
+  } else {
+    iterFn = getIteratorMethod(iterable);
+    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
+    // optimisation for array iterators
+    if (isArrayIteratorMethod(iterFn)) {
+      for (index = 0, length = toLength(iterable.length); length > index; index++) {
+        result = AS_ENTRIES
+          ? boundFunction(anObject(step = iterable[index])[0], step[1])
+          : boundFunction(iterable[index]);
+        if (result && result instanceof Result) return result;
+      } return new Result(false);
+    }
+    iterator = iterFn.call(iterable);
+  }
+
+  next = iterator.next;
+  while (!(step = next.call(iterator)).done) {
+    result = callWithSafeIterationClosing(iterator, boundFunction, step.value, AS_ENTRIES);
+    if (typeof result == 'object' && result && result instanceof Result) return result;
+  } return new Result(false);
+};
+
+iterate.stop = function (result) {
+  return new Result(true, result);
+};
+
+
+/***/ }),
+
+/***/ "23cb":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("a691");
+
+var max = Math.max;
+var min = Math.min;
+
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(integer, length).
+module.exports = function (index, length) {
+  var integer = toInteger(index);
+  return integer < 0 ? max(integer + length, 0) : min(integer, length);
+};
+
+
+/***/ }),
+
+/***/ "23e7":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
+var createNonEnumerableProperty = __webpack_require__("9112");
+var redefine = __webpack_require__("6eeb");
+var setGlobal = __webpack_require__("ce4e");
+var copyConstructorProperties = __webpack_require__("e893");
+var isForced = __webpack_require__("94ca");
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+module.exports = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = global;
+  } else if (STATIC) {
+    target = global[TARGET] || setGlobal(TARGET, {});
+  } else {
+    target = (global[TARGET] || {}).prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.noTargetGet) {
+      descriptor = getOwnPropertyDescriptor(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED = isForced(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contained in target
+    if (!FORCED && targetProperty !== undefined) {
+      if (typeof sourceProperty === typeof targetProperty) continue;
+      copyConstructorProperties(sourceProperty, targetProperty);
+    }
+    // add a flag to not completely full polyfills
+    if (options.sham || (targetProperty && targetProperty.sham)) {
+      createNonEnumerableProperty(sourceProperty, 'sham', true);
+    }
+    // extend global
+    redefine(target, key, sourceProperty, options);
+  }
+};
+
+
+/***/ }),
+
+/***/ "241c":
+/***/ (function(module, exports, __webpack_require__) {
+
+var internalObjectKeys = __webpack_require__("ca84");
+var enumBugKeys = __webpack_require__("7839");
+
+var hiddenKeys = enumBugKeys.concat('length', 'prototype');
+
+// `Object.getOwnPropertyNames` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return internalObjectKeys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ "2532":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var notARegExp = __webpack_require__("5a34");
+var requireObjectCoercible = __webpack_require__("1d80");
+var correctIsRegExpLogic = __webpack_require__("ab13");
+
+// `String.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+$({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
+  includes: function includes(searchString /* , position = 0 */) {
+    return !!~String(requireObjectCoercible(this))
+      .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "25f0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var redefine = __webpack_require__("6eeb");
+var anObject = __webpack_require__("825a");
+var fails = __webpack_require__("d039");
+var flags = __webpack_require__("ad6d");
+
+var TO_STRING = 'toString';
+var RegExpPrototype = RegExp.prototype;
+var nativeToString = RegExpPrototype[TO_STRING];
+
+var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+// FF44- RegExp#toString has a wrong name
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
+
+// `RegExp.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+if (NOT_GENERIC || INCORRECT_NAME) {
+  redefine(RegExp.prototype, TO_STRING, function toString() {
+    var R = anObject(this);
+    var p = String(R.source);
+    var rf = R.flags;
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
+    return '/' + p + '/' + f;
+  }, { unsafe: true });
+}
+
+
+/***/ }),
+
+/***/ "2626":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var getBuiltIn = __webpack_require__("d066");
+var definePropertyModule = __webpack_require__("9bf2");
+var wellKnownSymbol = __webpack_require__("b622");
+var DESCRIPTORS = __webpack_require__("83ab");
+
+var SPECIES = wellKnownSymbol('species');
+
+module.exports = function (CONSTRUCTOR_NAME) {
+  var Constructor = getBuiltIn(CONSTRUCTOR_NAME);
+  var defineProperty = definePropertyModule.f;
+
+  if (DESCRIPTORS && Constructor && !Constructor[SPECIES]) {
+    defineProperty(Constructor, SPECIES, {
+      configurable: true,
+      get: function () { return this; }
+    });
+  }
+};
+
+
+/***/ }),
+
+/***/ "2d00":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var userAgent = __webpack_require__("342f");
+
+var process = global.process;
+var versions = process && process.versions;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  version = match[0] + match[1];
+} else if (userAgent) {
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = match[1];
+  }
+}
+
+module.exports = version && +version;
+
+
+/***/ }),
+
+/***/ "342f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__("d066");
+
+module.exports = getBuiltIn('navigator', 'userAgent') || '';
+
+
+/***/ }),
+
+/***/ "35a1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__("f5df");
+var Iterators = __webpack_require__("3f8c");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+
+module.exports = function (it) {
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
+    || Iterators[classof(it)];
+};
+
+
+/***/ }),
+
+/***/ "37e8":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var definePropertyModule = __webpack_require__("9bf2");
+var anObject = __webpack_require__("825a");
+var objectKeys = __webpack_require__("df75");
+
+// `Object.defineProperties` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperties
+module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = objectKeys(Properties);
+  var length = keys.length;
+  var index = 0;
+  var key;
+  while (length > index) definePropertyModule.f(O, key = keys[index++], Properties[key]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "38cf":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var repeat = __webpack_require__("1148");
+
+// `String.prototype.repeat` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.repeat
+$({ target: 'String', proto: true }, {
+  repeat: repeat
+});
+
+
+/***/ }),
+
+/***/ "3bbe":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+
+module.exports = function (it) {
+  if (!isObject(it) && it !== null) {
+    throw TypeError("Can't set " + String(it) + ' as a prototype');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "3ca3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var charAt = __webpack_require__("6547").charAt;
+var InternalStateModule = __webpack_require__("69f3");
+var defineIterator = __webpack_require__("7dd0");
+
+var STRING_ITERATOR = 'String Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
+
+// `String.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+defineIterator(String, 'String', function (iterated) {
+  setInternalState(this, {
+    type: STRING_ITERATOR,
+    string: String(iterated),
+    index: 0
+  });
+// `%StringIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+}, function next() {
+  var state = getInternalState(this);
+  var string = state.string;
+  var index = state.index;
+  var point;
+  if (index >= string.length) return { value: undefined, done: true };
+  point = charAt(string, index);
+  state.index += point.length;
+  return { value: point, done: false };
+});
+
+
+/***/ }),
+
+/***/ "3f8c":
+/***/ (function(module, exports) {
+
+module.exports = {};
+
+
+/***/ }),
+
+/***/ "4160":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var forEach = __webpack_require__("17c2");
+
+// `Array.prototype.forEach` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+$({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
+  forEach: forEach
+});
+
+
+/***/ }),
+
+/***/ "428f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+
+module.exports = global;
+
+
+/***/ }),
+
+/***/ "44ad":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+var classof = __webpack_require__("c6b6");
+
+var split = ''.split;
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+module.exports = fails(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins
+  return !Object('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classof(it) == 'String' ? split.call(it, '') : Object(it);
+} : Object;
+
+
+/***/ }),
+
+/***/ "44d2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+var create = __webpack_require__("7c73");
+var definePropertyModule = __webpack_require__("9bf2");
+
+var UNSCOPABLES = wellKnownSymbol('unscopables');
+var ArrayPrototype = Array.prototype;
+
+// Array.prototype[@@unscopables]
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+if (ArrayPrototype[UNSCOPABLES] == undefined) {
+  definePropertyModule.f(ArrayPrototype, UNSCOPABLES, {
+    configurable: true,
+    value: create(null)
+  });
+}
+
+// add a key to Array.prototype[@@unscopables]
+module.exports = function (key) {
+  ArrayPrototype[UNSCOPABLES][key] = true;
+};
+
+
+/***/ }),
+
+/***/ "44e7":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+var classof = __webpack_require__("c6b6");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var MATCH = wellKnownSymbol('match');
+
+// `IsRegExp` abstract operation
+// https://tc39.github.io/ecma262/#sec-isregexp
+module.exports = function (it) {
+  var isRegExp;
+  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classof(it) == 'RegExp');
+};
+
+
+/***/ }),
+
+/***/ "45fc":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $some = __webpack_require__("b727").some;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var STRICT_METHOD = arrayMethodIsStrict('some');
+var USES_TO_LENGTH = arrayMethodUsesToLength('some');
+
+// `Array.prototype.some` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.some
+$({ target: 'Array', proto: true, forced: !STRICT_METHOD || !USES_TO_LENGTH }, {
+  some: function some(callbackfn /* , thisArg */) {
+    return $some(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "4840":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var aFunction = __webpack_require__("1c0b");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var SPECIES = wellKnownSymbol('species');
+
+// `SpeciesConstructor` abstract operation
+// https://tc39.github.io/ecma262/#sec-speciesconstructor
+module.exports = function (O, defaultConstructor) {
+  var C = anObject(O).constructor;
+  var S;
+  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aFunction(S);
+};
+
+
+/***/ }),
+
+/***/ "4930":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
+  // Chrome 38 Symbol has incorrect toString conversion
+  // eslint-disable-next-line no-undef
+  return !String(Symbol());
+});
+
+
+/***/ }),
+
+/***/ "4a53":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./ar": [
+		"cfcc",
+		0
+	],
+	"./ar.json": [
+		"cfcc",
+		0
+	],
+	"./bg": [
+		"1f0e",
+		1
+	],
+	"./bg.json": [
+		"1f0e",
+		1
+	],
+	"./bn": [
+		"d2d5",
+		2
+	],
+	"./bn.json": [
+		"d2d5",
+		2
+	],
+	"./bs": [
+		"e06f",
+		3
+	],
+	"./bs.json": [
+		"e06f",
+		3
+	],
+	"./ca": [
+		"aeaf",
+		4
+	],
+	"./ca.json": [
+		"aeaf",
+		4
+	],
+	"./cs": [
+		"442f",
+		5
+	],
+	"./cs.json": [
+		"442f",
+		5
+	],
+	"./da": [
+		"93f6",
+		6
+	],
+	"./da.json": [
+		"93f6",
+		6
+	],
+	"./de": [
+		"44ff",
+		7
+	],
+	"./de.json": [
+		"44ff",
+		7
+	],
+	"./el": [
+		"bac9",
+		8
+	],
+	"./el.json": [
+		"bac9",
+		8
+	],
+	"./en": [
+		"0a96"
+	],
+	"./en.json": [
+		"0a96"
+	],
+	"./es": [
+		"3541",
+		9
+	],
+	"./es.json": [
+		"3541",
+		9
+	],
+	"./fa": [
+		"e4ca",
+		10
+	],
+	"./fa.json": [
+		"e4ca",
+		10
+	],
+	"./fr": [
+		"d791",
+		11
+	],
+	"./fr.json": [
+		"d791",
+		11
+	],
+	"./he": [
+		"5f2c",
+		12
+	],
+	"./he.json": [
+		"5f2c",
+		12
+	],
+	"./hr": [
+		"2364",
+		13
+	],
+	"./hr.json": [
+		"2364",
+		13
+	],
+	"./hu": [
+		"0ade",
+		14
+	],
+	"./hu.json": [
+		"0ade",
+		14
+	],
+	"./id": [
+		"ad69",
+		15
+	],
+	"./id.json": [
+		"ad69",
+		15
+	],
+	"./is": [
+		"3ada",
+		16
+	],
+	"./is.json": [
+		"3ada",
+		16
+	],
+	"./it": [
+		"1412",
+		17
+	],
+	"./it.json": [
+		"1412",
+		17
+	],
+	"./ja": [
+		"e135",
+		18
+	],
+	"./ja.json": [
+		"e135",
+		18
+	],
+	"./ka": [
+		"2969",
+		19
+	],
+	"./ka.json": [
+		"2969",
+		19
+	],
+	"./ko": [
+		"03b7",
+		20
+	],
+	"./ko.json": [
+		"03b7",
+		20
+	],
+	"./lt": [
+		"a2f0",
+		21
+	],
+	"./lt.json": [
+		"a2f0",
+		21
+	],
+	"./mn": [
+		"956e",
+		22
+	],
+	"./mn.json": [
+		"956e",
+		22
+	],
+	"./nl": [
+		"9f37",
+		23
+	],
+	"./nl.json": [
+		"9f37",
+		23
+	],
+	"./no": [
+		"9efb",
+		24
+	],
+	"./no.json": [
+		"9efb",
+		24
+	],
+	"./pl": [
+		"e44c",
+		25
+	],
+	"./pl.json": [
+		"e44c",
+		25
+	],
+	"./pt-br": [
+		"dac8",
+		26
+	],
+	"./pt-br.json": [
+		"dac8",
+		26
+	],
+	"./ro": [
+		"0946",
+		27
+	],
+	"./ro.json": [
+		"0946",
+		27
+	],
+	"./ru": [
+		"d82c",
+		28
+	],
+	"./ru.json": [
+		"d82c",
+		28
+	],
+	"./sk": [
+		"1037",
+		29
+	],
+	"./sk.json": [
+		"1037",
+		29
+	],
+	"./sl": [
+		"c17e",
+		30
+	],
+	"./sl.json": [
+		"c17e",
+		30
+	],
+	"./sq": [
+		"09b8",
+		31
+	],
+	"./sq.json": [
+		"09b8",
+		31
+	],
+	"./sr": [
+		"65a6",
+		32
+	],
+	"./sr.json": [
+		"65a6",
+		32
+	],
+	"./sv": [
+		"1fd1",
+		33
+	],
+	"./sv.json": [
+		"1fd1",
+		33
+	],
+	"./tr": [
+		"20e4",
+		34
+	],
+	"./tr.json": [
+		"20e4",
+		34
+	],
+	"./uk": [
+		"7dc6",
+		35
+	],
+	"./uk.json": [
+		"7dc6",
+		35
+	],
+	"./vi": [
+		"5465",
+		36
+	],
+	"./vi.json": [
+		"5465",
+		36
+	],
+	"./zh-cn": [
+		"8035",
+		37
+	],
+	"./zh-cn.json": [
+		"8035",
+		37
+	],
+	"./zh-hk": [
+		"a5dc",
+		38
+	],
+	"./zh-hk.json": [
+		"a5dc",
+		38
+	]
+};
+function webpackAsyncContext(req) {
+	if(!__webpack_require__.o(map, req)) {
+		return Promise.resolve().then(function() {
+			var e = new Error("Cannot find module '" + req + "'");
+			e.code = 'MODULE_NOT_FOUND';
+			throw e;
+		});
+	}
+
+	var ids = map[req], id = ids[0];
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
+		return __webpack_require__.t(id, 3);
+	});
+}
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = "4a53";
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ "4d64":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toIndexedObject = __webpack_require__("fc6a");
+var toLength = __webpack_require__("50c4");
+var toAbsoluteIndex = __webpack_require__("23cb");
+
+// `Array.prototype.{ indexOf, includes }` methods implementation
+var createMethod = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIndexedObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.includes` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  includes: createMethod(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod(false)
+};
+
+
+/***/ }),
+
+/***/ "4de4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $filter = __webpack_require__("b727").filter;
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
+// Edge 14- issue
+var USES_TO_LENGTH = arrayMethodUsesToLength('filter');
+
+// `Array.prototype.filter` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  filter: function filter(callbackfn /* , thisArg */) {
+    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "4df4":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var bind = __webpack_require__("0366");
+var toObject = __webpack_require__("7b0b");
+var callWithSafeIterationClosing = __webpack_require__("9bdd");
+var isArrayIteratorMethod = __webpack_require__("e95a");
+var toLength = __webpack_require__("50c4");
+var createProperty = __webpack_require__("8418");
+var getIteratorMethod = __webpack_require__("35a1");
+
+// `Array.from` method implementation
+// https://tc39.github.io/ecma262/#sec-array.from
+module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject(arrayLike);
+  var C = typeof this == 'function' ? this : Array;
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var iteratorMethod = getIteratorMethod(O);
+  var index = 0;
+  var length, result, step, iterator, next, value;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
+    next = iterator.next;
+    result = new C();
+    for (;!(step = next.call(iterator)).done; index++) {
+      value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
+      createProperty(result, index, value);
+    }
+  } else {
+    length = toLength(O.length);
+    result = new C(length);
+    for (;length > index; index++) {
+      value = mapping ? mapfn(O[index], index) : O[index];
+      createProperty(result, index, value);
+    }
+  }
+  result.length = index;
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "50c4":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("a691");
+
+var min = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+module.exports = function (argument) {
+  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ "5135":
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "5319":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fixRegExpWellKnownSymbolLogic = __webpack_require__("d784");
+var anObject = __webpack_require__("825a");
+var toObject = __webpack_require__("7b0b");
+var toLength = __webpack_require__("50c4");
+var toInteger = __webpack_require__("a691");
+var requireObjectCoercible = __webpack_require__("1d80");
+var advanceStringIndex = __webpack_require__("8aa5");
+var regExpExec = __webpack_require__("14c3");
+
+var max = Math.max;
+var min = Math.min;
+var floor = Math.floor;
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
+
+var maybeToString = function (it) {
+  return it === undefined ? it : String(it);
+};
+
+// @@replace logic
+fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, maybeCallNative, reason) {
+  var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = reason.REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE;
+  var REPLACE_KEEPS_$0 = reason.REPLACE_KEEPS_$0;
+  var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
+
+  return [
+    // `String.prototype.replace` method
+    // https://tc39.github.io/ecma262/#sec-string.prototype.replace
+    function replace(searchValue, replaceValue) {
+      var O = requireObjectCoercible(this);
+      var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
+      return replacer !== undefined
+        ? replacer.call(searchValue, O, replaceValue)
+        : nativeReplace.call(String(O), searchValue, replaceValue);
+    },
+    // `RegExp.prototype[@@replace]` method
+    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
+    function (regexp, replaceValue) {
+      if (
+        (!REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE && REPLACE_KEEPS_$0) ||
+        (typeof replaceValue === 'string' && replaceValue.indexOf(UNSAFE_SUBSTITUTE) === -1)
+      ) {
+        var res = maybeCallNative(nativeReplace, regexp, this, replaceValue);
+        if (res.done) return res.value;
+      }
+
+      var rx = anObject(regexp);
+      var S = String(this);
+
+      var functionalReplace = typeof replaceValue === 'function';
+      if (!functionalReplace) replaceValue = String(replaceValue);
+
+      var global = rx.global;
+      if (global) {
+        var fullUnicode = rx.unicode;
+        rx.lastIndex = 0;
+      }
+      var results = [];
+      while (true) {
+        var result = regExpExec(rx, S);
+        if (result === null) break;
+
+        results.push(result);
+        if (!global) break;
+
+        var matchStr = String(result[0]);
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
+      }
+
+      var accumulatedResult = '';
+      var nextSourcePosition = 0;
+      for (var i = 0; i < results.length; i++) {
+        result = results[i];
+
+        var matched = String(result[0]);
+        var position = max(min(toInteger(result.index), S.length), 0);
+        var captures = [];
+        // NOTE: This is equivalent to
+        //   captures = result.slice(1).map(maybeToString)
+        // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
+        // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
+        // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
+        for (var j = 1; j < result.length; j++) captures.push(maybeToString(result[j]));
+        var namedCaptures = result.groups;
+        if (functionalReplace) {
+          var replacerArgs = [matched].concat(captures, position, S);
+          if (namedCaptures !== undefined) replacerArgs.push(namedCaptures);
+          var replacement = String(replaceValue.apply(undefined, replacerArgs));
+        } else {
+          replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
+        }
+        if (position >= nextSourcePosition) {
+          accumulatedResult += S.slice(nextSourcePosition, position) + replacement;
+          nextSourcePosition = position + matched.length;
+        }
+      }
+      return accumulatedResult + S.slice(nextSourcePosition);
+    }
+  ];
+
+  // https://tc39.github.io/ecma262/#sec-getsubstitution
+  function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
+    var tailPos = position + matched.length;
+    var m = captures.length;
+    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
+    if (namedCaptures !== undefined) {
+      namedCaptures = toObject(namedCaptures);
+      symbols = SUBSTITUTION_SYMBOLS;
+    }
+    return nativeReplace.call(replacement, symbols, function (match, ch) {
+      var capture;
+      switch (ch.charAt(0)) {
+        case '$': return '$';
+        case '&': return matched;
+        case '`': return str.slice(0, position);
+        case "'": return str.slice(tailPos);
+        case '<':
+          capture = namedCaptures[ch.slice(1, -1)];
+          break;
+        default: // \d\d?
+          var n = +ch;
+          if (n === 0) return match;
+          if (n > m) {
+            var f = floor(n / 10);
+            if (f === 0) return match;
+            if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
+            return match;
+          }
+          capture = captures[n - 1];
+      }
+      return capture === undefined ? '' : capture;
+    });
+  }
+});
+
+
+/***/ }),
+
+/***/ "5530":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectSpread2; });
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("a4d3");
+/* harmony import */ var core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("4de4");
+/* harmony import */ var core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_filter__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("4160");
+/* harmony import */ var core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("e439");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("dbb4");
+/* harmony import */ var core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("b64b");
+/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("159b");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("ade3");
+
+
+
+
+
+
+
+
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        Object(_defineProperty__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ "5692":
+/***/ (function(module, exports, __webpack_require__) {
+
+var IS_PURE = __webpack_require__("c430");
+var store = __webpack_require__("c6cd");
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: '3.6.5',
+  mode: IS_PURE ? 'pure' : 'global',
+  copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
+});
+
+
+/***/ }),
+
+/***/ "56ef":
+/***/ (function(module, exports, __webpack_require__) {
+
+var getBuiltIn = __webpack_require__("d066");
+var getOwnPropertyNamesModule = __webpack_require__("241c");
+var getOwnPropertySymbolsModule = __webpack_require__("7418");
+var anObject = __webpack_require__("825a");
+
+// all object keys, includes non-enumerable and symbols
+module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
+  var keys = getOwnPropertyNamesModule.f(anObject(it));
+  var getOwnPropertySymbols = getOwnPropertySymbolsModule.f;
+  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
+};
+
+
+/***/ }),
+
+/***/ "5899":
+/***/ (function(module, exports) {
+
+// a string of all valid unicode whitespaces
+// eslint-disable-next-line max-len
+module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+
+/***/ }),
+
+/***/ "58a8":
+/***/ (function(module, exports, __webpack_require__) {
+
+var requireObjectCoercible = __webpack_require__("1d80");
+var whitespaces = __webpack_require__("5899");
+
+var whitespace = '[' + whitespaces + ']';
+var ltrim = RegExp('^' + whitespace + whitespace + '*');
+var rtrim = RegExp(whitespace + whitespace + '*$');
+
+// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
+var createMethod = function (TYPE) {
+  return function ($this) {
+    var string = String(requireObjectCoercible($this));
+    if (TYPE & 1) string = string.replace(ltrim, '');
+    if (TYPE & 2) string = string.replace(rtrim, '');
+    return string;
+  };
+};
+
+module.exports = {
+  // `String.prototype.{ trimLeft, trimStart }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  start: createMethod(1),
+  // `String.prototype.{ trimRight, trimEnd }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  end: createMethod(2),
+  // `String.prototype.trim` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  trim: createMethod(3)
+};
+
+
+/***/ }),
+
+/***/ "5a34":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isRegExp = __webpack_require__("44e7");
+
+module.exports = function (it) {
+  if (isRegExp(it)) {
+    throw TypeError("The method doesn't accept regular expressions");
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "5c6c":
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ "6062":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var collection = __webpack_require__("6d61");
+var collectionStrong = __webpack_require__("6566");
+
+// `Set` constructor
+// https://tc39.github.io/ecma262/#sec-set-objects
+module.exports = collection('Set', function (init) {
+  return function Set() { return init(this, arguments.length ? arguments[0] : undefined); };
+}, collectionStrong);
+
+
+/***/ }),
+
+/***/ "61f2":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("12cd");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_event_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "6547":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("a691");
+var requireObjectCoercible = __webpack_require__("1d80");
+
+// `String.prototype.{ codePointAt, at }` methods implementation
+var createMethod = function (CONVERT_TO_STRING) {
+  return function ($this, pos) {
+    var S = String(requireObjectCoercible($this));
+    var position = toInteger(pos);
+    var size = S.length;
+    var first, second;
+    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+    first = S.charCodeAt(position);
+    return first < 0xD800 || first > 0xDBFF || position + 1 === size
+      || (second = S.charCodeAt(position + 1)) < 0xDC00 || second > 0xDFFF
+        ? CONVERT_TO_STRING ? S.charAt(position) : first
+        : CONVERT_TO_STRING ? S.slice(position, position + 2) : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+  };
+};
+
+module.exports = {
+  // `String.prototype.codePointAt` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  codeAt: createMethod(false),
+  // `String.prototype.at` method
+  // https://github.com/mathiasbynens/String.prototype.at
+  charAt: createMethod(true)
+};
+
+
+/***/ }),
+
+/***/ "6566":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var defineProperty = __webpack_require__("9bf2").f;
+var create = __webpack_require__("7c73");
+var redefineAll = __webpack_require__("e2cc");
+var bind = __webpack_require__("0366");
+var anInstance = __webpack_require__("19aa");
+var iterate = __webpack_require__("2266");
+var defineIterator = __webpack_require__("7dd0");
+var setSpecies = __webpack_require__("2626");
+var DESCRIPTORS = __webpack_require__("83ab");
+var fastKey = __webpack_require__("f183").fastKey;
+var InternalStateModule = __webpack_require__("69f3");
+
+var setInternalState = InternalStateModule.set;
+var internalStateGetterFor = InternalStateModule.getterFor;
+
+module.exports = {
+  getConstructor: function (wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER) {
+    var C = wrapper(function (that, iterable) {
+      anInstance(that, C, CONSTRUCTOR_NAME);
+      setInternalState(that, {
+        type: CONSTRUCTOR_NAME,
+        index: create(null),
+        first: undefined,
+        last: undefined,
+        size: 0
+      });
+      if (!DESCRIPTORS) that.size = 0;
+      if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+    });
+
+    var getInternalState = internalStateGetterFor(CONSTRUCTOR_NAME);
+
+    var define = function (that, key, value) {
+      var state = getInternalState(that);
+      var entry = getEntry(that, key);
+      var previous, index;
+      // change existing entry
+      if (entry) {
+        entry.value = value;
+      // create new entry
+      } else {
+        state.last = entry = {
+          index: index = fastKey(key, true),
+          key: key,
+          value: value,
+          previous: previous = state.last,
+          next: undefined,
+          removed: false
+        };
+        if (!state.first) state.first = entry;
+        if (previous) previous.next = entry;
+        if (DESCRIPTORS) state.size++;
+        else that.size++;
+        // add to index
+        if (index !== 'F') state.index[index] = entry;
+      } return that;
+    };
+
+    var getEntry = function (that, key) {
+      var state = getInternalState(that);
+      // fast case
+      var index = fastKey(key);
+      var entry;
+      if (index !== 'F') return state.index[index];
+      // frozen object case
+      for (entry = state.first; entry; entry = entry.next) {
+        if (entry.key == key) return entry;
+      }
+    };
+
+    redefineAll(C.prototype, {
+      // 23.1.3.1 Map.prototype.clear()
+      // 23.2.3.2 Set.prototype.clear()
+      clear: function clear() {
+        var that = this;
+        var state = getInternalState(that);
+        var data = state.index;
+        var entry = state.first;
+        while (entry) {
+          entry.removed = true;
+          if (entry.previous) entry.previous = entry.previous.next = undefined;
+          delete data[entry.index];
+          entry = entry.next;
+        }
+        state.first = state.last = undefined;
+        if (DESCRIPTORS) state.size = 0;
+        else that.size = 0;
+      },
+      // 23.1.3.3 Map.prototype.delete(key)
+      // 23.2.3.4 Set.prototype.delete(value)
+      'delete': function (key) {
+        var that = this;
+        var state = getInternalState(that);
+        var entry = getEntry(that, key);
+        if (entry) {
+          var next = entry.next;
+          var prev = entry.previous;
+          delete state.index[entry.index];
+          entry.removed = true;
+          if (prev) prev.next = next;
+          if (next) next.previous = prev;
+          if (state.first == entry) state.first = next;
+          if (state.last == entry) state.last = prev;
+          if (DESCRIPTORS) state.size--;
+          else that.size--;
+        } return !!entry;
+      },
+      // 23.2.3.6 Set.prototype.forEach(callbackfn, thisArg = undefined)
+      // 23.1.3.5 Map.prototype.forEach(callbackfn, thisArg = undefined)
+      forEach: function forEach(callbackfn /* , that = undefined */) {
+        var state = getInternalState(this);
+        var boundFunction = bind(callbackfn, arguments.length > 1 ? arguments[1] : undefined, 3);
+        var entry;
+        while (entry = entry ? entry.next : state.first) {
+          boundFunction(entry.value, entry.key, this);
+          // revert to the last existing entry
+          while (entry && entry.removed) entry = entry.previous;
+        }
+      },
+      // 23.1.3.7 Map.prototype.has(key)
+      // 23.2.3.7 Set.prototype.has(value)
+      has: function has(key) {
+        return !!getEntry(this, key);
+      }
+    });
+
+    redefineAll(C.prototype, IS_MAP ? {
+      // 23.1.3.6 Map.prototype.get(key)
+      get: function get(key) {
+        var entry = getEntry(this, key);
+        return entry && entry.value;
+      },
+      // 23.1.3.9 Map.prototype.set(key, value)
+      set: function set(key, value) {
+        return define(this, key === 0 ? 0 : key, value);
+      }
+    } : {
+      // 23.2.3.1 Set.prototype.add(value)
+      add: function add(value) {
+        return define(this, value = value === 0 ? 0 : value, value);
+      }
+    });
+    if (DESCRIPTORS) defineProperty(C.prototype, 'size', {
+      get: function () {
+        return getInternalState(this).size;
+      }
+    });
+    return C;
+  },
+  setStrong: function (C, CONSTRUCTOR_NAME, IS_MAP) {
+    var ITERATOR_NAME = CONSTRUCTOR_NAME + ' Iterator';
+    var getInternalCollectionState = internalStateGetterFor(CONSTRUCTOR_NAME);
+    var getInternalIteratorState = internalStateGetterFor(ITERATOR_NAME);
+    // add .keys, .values, .entries, [@@iterator]
+    // 23.1.3.4, 23.1.3.8, 23.1.3.11, 23.1.3.12, 23.2.3.5, 23.2.3.8, 23.2.3.10, 23.2.3.11
+    defineIterator(C, CONSTRUCTOR_NAME, function (iterated, kind) {
+      setInternalState(this, {
+        type: ITERATOR_NAME,
+        target: iterated,
+        state: getInternalCollectionState(iterated),
+        kind: kind,
+        last: undefined
+      });
+    }, function () {
+      var state = getInternalIteratorState(this);
+      var kind = state.kind;
+      var entry = state.last;
+      // revert to the last existing entry
+      while (entry && entry.removed) entry = entry.previous;
+      // get next entry
+      if (!state.target || !(state.last = entry = entry ? entry.next : state.state.first)) {
+        // or finish the iteration
+        state.target = undefined;
+        return { value: undefined, done: true };
+      }
+      // return step by kind
+      if (kind == 'keys') return { value: entry.key, done: false };
+      if (kind == 'values') return { value: entry.value, done: false };
+      return { value: [entry.key, entry.value], done: false };
+    }, IS_MAP ? 'entries' : 'values', !IS_MAP, true);
+
+    // add [@@species], 23.1.2.2, 23.2.2.2
+    setSpecies(CONSTRUCTOR_NAME);
+  }
+};
+
+
+/***/ }),
+
+/***/ "65f0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+var isArray = __webpack_require__("e8b5");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var SPECIES = wellKnownSymbol('species');
+
+// `ArraySpeciesCreate` abstract operation
+// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+module.exports = function (originalArray, length) {
+  var C;
+  if (isArray(originalArray)) {
+    C = originalArray.constructor;
+    // cross-realm fallback
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
+    else if (isObject(C)) {
+      C = C[SPECIES];
+      if (C === null) C = undefined;
+    }
+  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
+};
+
+
+/***/ }),
+
+/***/ "69f3":
+/***/ (function(module, exports, __webpack_require__) {
+
+var NATIVE_WEAK_MAP = __webpack_require__("7f9a");
+var global = __webpack_require__("da84");
+var isObject = __webpack_require__("861d");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var objectHas = __webpack_require__("5135");
+var sharedKey = __webpack_require__("f772");
+var hiddenKeys = __webpack_require__("d012");
+
+var WeakMap = global.WeakMap;
+var set, get, has;
+
+var enforce = function (it) {
+  return has(it) ? get(it) : set(it, {});
+};
+
+var getterFor = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject(it) || (state = get(it)).type !== TYPE) {
+      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
+
+if (NATIVE_WEAK_MAP) {
+  var store = new WeakMap();
+  var wmget = store.get;
+  var wmhas = store.has;
+  var wmset = store.set;
+  set = function (it, metadata) {
+    wmset.call(store, it, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return wmget.call(store, it) || {};
+  };
+  has = function (it) {
+    return wmhas.call(store, it);
+  };
+} else {
+  var STATE = sharedKey('state');
+  hiddenKeys[STATE] = true;
+  set = function (it, metadata) {
+    createNonEnumerableProperty(it, STATE, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return objectHas(it, STATE) ? it[STATE] : {};
+  };
+  has = function (it) {
+    return objectHas(it, STATE);
+  };
+}
+
+module.exports = {
+  set: set,
+  get: get,
+  has: has,
+  enforce: enforce,
+  getterFor: getterFor
+};
+
+
+/***/ }),
+
+/***/ "6d61":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var global = __webpack_require__("da84");
+var isForced = __webpack_require__("94ca");
+var redefine = __webpack_require__("6eeb");
+var InternalMetadataModule = __webpack_require__("f183");
+var iterate = __webpack_require__("2266");
+var anInstance = __webpack_require__("19aa");
+var isObject = __webpack_require__("861d");
+var fails = __webpack_require__("d039");
+var checkCorrectnessOfIteration = __webpack_require__("1c7e");
+var setToStringTag = __webpack_require__("d44e");
+var inheritIfRequired = __webpack_require__("7156");
+
+module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
+  var IS_MAP = CONSTRUCTOR_NAME.indexOf('Map') !== -1;
+  var IS_WEAK = CONSTRUCTOR_NAME.indexOf('Weak') !== -1;
+  var ADDER = IS_MAP ? 'set' : 'add';
+  var NativeConstructor = global[CONSTRUCTOR_NAME];
+  var NativePrototype = NativeConstructor && NativeConstructor.prototype;
+  var Constructor = NativeConstructor;
+  var exported = {};
+
+  var fixMethod = function (KEY) {
+    var nativeMethod = NativePrototype[KEY];
+    redefine(NativePrototype, KEY,
+      KEY == 'add' ? function add(value) {
+        nativeMethod.call(this, value === 0 ? 0 : value);
+        return this;
+      } : KEY == 'delete' ? function (key) {
+        return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : KEY == 'get' ? function get(key) {
+        return IS_WEAK && !isObject(key) ? undefined : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : KEY == 'has' ? function has(key) {
+        return IS_WEAK && !isObject(key) ? false : nativeMethod.call(this, key === 0 ? 0 : key);
+      } : function set(key, value) {
+        nativeMethod.call(this, key === 0 ? 0 : key, value);
+        return this;
+      }
+    );
+  };
+
+  // eslint-disable-next-line max-len
+  if (isForced(CONSTRUCTOR_NAME, typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+    new NativeConstructor().entries().next();
+  })))) {
+    // create collection constructor
+    Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
+    InternalMetadataModule.REQUIRED = true;
+  } else if (isForced(CONSTRUCTOR_NAME, true)) {
+    var instance = new Constructor();
+    // early implementations not supports chaining
+    var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
+    // V8 ~ Chromium 40- weak-collections throws on primitives, but should return false
+    var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
+    // most early implementations doesn't supports iterables, most modern - not close it correctly
+    // eslint-disable-next-line no-new
+    var ACCEPT_ITERABLES = checkCorrectnessOfIteration(function (iterable) { new NativeConstructor(iterable); });
+    // for early implementations -0 and +0 not the same
+    var BUGGY_ZERO = !IS_WEAK && fails(function () {
+      // V8 ~ Chromium 42- fails only with 5+ elements
+      var $instance = new NativeConstructor();
+      var index = 5;
+      while (index--) $instance[ADDER](index, index);
+      return !$instance.has(-0);
+    });
+
+    if (!ACCEPT_ITERABLES) {
+      Constructor = wrapper(function (dummy, iterable) {
+        anInstance(dummy, Constructor, CONSTRUCTOR_NAME);
+        var that = inheritIfRequired(new NativeConstructor(), dummy, Constructor);
+        if (iterable != undefined) iterate(iterable, that[ADDER], that, IS_MAP);
+        return that;
+      });
+      Constructor.prototype = NativePrototype;
+      NativePrototype.constructor = Constructor;
+    }
+
+    if (THROWS_ON_PRIMITIVES || BUGGY_ZERO) {
+      fixMethod('delete');
+      fixMethod('has');
+      IS_MAP && fixMethod('get');
+    }
+
+    if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
+
+    // weak collections should not contains .clear method
+    if (IS_WEAK && NativePrototype.clear) delete NativePrototype.clear;
+  }
+
+  exported[CONSTRUCTOR_NAME] = Constructor;
+  $({ global: true, forced: Constructor != NativeConstructor }, exported);
+
+  setToStringTag(Constructor, CONSTRUCTOR_NAME);
+
+  if (!IS_WEAK) common.setStrong(Constructor, CONSTRUCTOR_NAME, IS_MAP);
+
+  return Constructor;
+};
+
+
+/***/ }),
+
+/***/ "6eeb":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var has = __webpack_require__("5135");
+var setGlobal = __webpack_require__("ce4e");
+var inspectSource = __webpack_require__("8925");
+var InternalStateModule = __webpack_require__("69f3");
+
+var getInternalState = InternalStateModule.get;
+var enforceInternalState = InternalStateModule.enforce;
+var TEMPLATE = String(String).split('String');
+
+(module.exports = function (O, key, value, options) {
+  var unsafe = options ? !!options.unsafe : false;
+  var simple = options ? !!options.enumerable : false;
+  var noTargetGet = options ? !!options.noTargetGet : false;
+  if (typeof value == 'function') {
+    if (typeof key == 'string' && !has(value, 'name')) createNonEnumerableProperty(value, 'name', key);
+    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
+  }
+  if (O === global) {
+    if (simple) O[key] = value;
+    else setGlobal(key, value);
+    return;
+  } else if (!unsafe) {
+    delete O[key];
+  } else if (!noTargetGet && O[key]) {
+    simple = true;
+  }
+  if (simple) O[key] = value;
+  else createNonEnumerableProperty(O, key, value);
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, 'toString', function toString() {
+  return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
+});
+
+
+/***/ }),
+
+/***/ "7156":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+var setPrototypeOf = __webpack_require__("d2bb");
+
+// makes subclassing work correct for wrapped built-ins
+module.exports = function ($this, dummy, Wrapper) {
+  var NewTarget, NewTargetPrototype;
+  if (
+    // it can work only with native `setPrototypeOf`
+    setPrototypeOf &&
+    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+    typeof (NewTarget = dummy.constructor) == 'function' &&
+    NewTarget !== Wrapper &&
+    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    NewTargetPrototype !== Wrapper.prototype
+  ) setPrototypeOf($this, NewTargetPrototype);
+  return $this;
+};
+
+
+/***/ }),
+
+/***/ "7371":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "7418":
+/***/ (function(module, exports) {
+
+exports.f = Object.getOwnPropertySymbols;
+
+
+/***/ }),
+
+/***/ "746f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var path = __webpack_require__("428f");
+var has = __webpack_require__("5135");
+var wrappedWellKnownSymbolModule = __webpack_require__("e538");
+var defineProperty = __webpack_require__("9bf2").f;
+
+module.exports = function (NAME) {
+  var Symbol = path.Symbol || (path.Symbol = {});
+  if (!has(Symbol, NAME)) defineProperty(Symbol, NAME, {
+    value: wrappedWellKnownSymbolModule.f(NAME)
+  });
+};
+
+
+/***/ }),
+
+/***/ "7839":
+/***/ (function(module, exports) {
+
+// IE8- don't enum bug keys
+module.exports = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
+
+
+/***/ }),
+
+/***/ "7b0b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var requireObjectCoercible = __webpack_require__("1d80");
+
+// `ToObject` abstract operation
+// https://tc39.github.io/ecma262/#sec-toobject
+module.exports = function (argument) {
+  return Object(requireObjectCoercible(argument));
+};
+
+
+/***/ }),
+
+/***/ "7c73":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var defineProperties = __webpack_require__("37e8");
+var enumBugKeys = __webpack_require__("7839");
+var hiddenKeys = __webpack_require__("d012");
+var html = __webpack_require__("1be4");
+var documentCreateElement = __webpack_require__("cc12");
+var sharedKey = __webpack_require__("f772");
+
+var GT = '>';
+var LT = '<';
+var PROTOTYPE = 'prototype';
+var SCRIPT = 'script';
+var IE_PROTO = sharedKey('IE_PROTO');
+
+var EmptyConstructor = function () { /* empty */ };
+
+var scriptTag = function (content) {
+  return LT + SCRIPT + GT + content + LT + '/' + SCRIPT + GT;
+};
+
+// Create object with fake `null` prototype: use ActiveX Object with cleared prototype
+var NullProtoObjectViaActiveX = function (activeXDocument) {
+  activeXDocument.write(scriptTag(''));
+  activeXDocument.close();
+  var temp = activeXDocument.parentWindow.Object;
+  activeXDocument = null; // avoid memory leak
+  return temp;
+};
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var NullProtoObjectViaIFrame = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = documentCreateElement('iframe');
+  var JS = 'java' + SCRIPT + ':';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  html.appendChild(iframe);
+  // https://github.com/zloirock/core-js/issues/475
+  iframe.src = String(JS);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(scriptTag('document.F=Object'));
+  iframeDocument.close();
+  return iframeDocument.F;
+};
+
+// Check for document.domain and active x support
+// No need to use active x approach when document.domain is not set
+// see https://github.com/es-shims/es5-shim/issues/150
+// variation of https://github.com/kitcambridge/es5-shim/commit/4f738ac066346
+// avoid IE GC bug
+var activeXDocument;
+var NullProtoObject = function () {
+  try {
+    /* global ActiveXObject */
+    activeXDocument = document.domain && new ActiveXObject('htmlfile');
+  } catch (error) { /* ignore */ }
+  NullProtoObject = activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame();
+  var length = enumBugKeys.length;
+  while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
+  return NullProtoObject();
+};
+
+hiddenKeys[IE_PROTO] = true;
+
+// `Object.create` method
+// https://tc39.github.io/ecma262/#sec-object.create
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    EmptyConstructor[PROTOTYPE] = anObject(O);
+    result = new EmptyConstructor();
+    EmptyConstructor[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = NullProtoObject();
+  return Properties === undefined ? result : defineProperties(result, Properties);
+};
+
+
+/***/ }),
+
+/***/ "7db0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $find = __webpack_require__("b727").find;
+var addToUnscopables = __webpack_require__("44d2");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var FIND = 'find';
+var SKIPS_HOLES = true;
+
+var USES_TO_LENGTH = arrayMethodUsesToLength(FIND);
+
+// Shouldn't skip holes
+if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.find` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.find
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
+  find: function find(callbackfn /* , that = undefined */) {
+    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND);
+
+
+/***/ }),
+
+/***/ "7dd0":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var createIteratorConstructor = __webpack_require__("9ed3");
+var getPrototypeOf = __webpack_require__("e163");
+var setPrototypeOf = __webpack_require__("d2bb");
+var setToStringTag = __webpack_require__("d44e");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var redefine = __webpack_require__("6eeb");
+var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
+var Iterators = __webpack_require__("3f8c");
+var IteratorsCore = __webpack_require__("ae93");
+
+var IteratorPrototype = IteratorsCore.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
+var ITERATOR = wellKnownSymbol('iterator');
+var KEYS = 'keys';
+var VALUES = 'values';
+var ENTRIES = 'entries';
+
+var returnThis = function () { return this; };
+
+module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
+    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+      if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
+        if (setPrototypeOf) {
+          setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
+          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
+        }
+      }
+      // Set @@toStringTag to native iterators
+      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
+      if (IS_PURE) Iterators[TO_STRING_TAG] = returnThis;
+    }
+  }
+
+  // fix Array#{values, @@iterator}.name in V8 / FF
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
+  }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
+  }
+  Iterators[NAME] = defaultIterator;
+
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+      entries: getIterationMethod(ENTRIES)
+    };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        redefine(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  return methods;
+};
+
+
+/***/ }),
+
+/***/ "7f9a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var inspectSource = __webpack_require__("8925");
+
+var WeakMap = global.WeakMap;
+
+module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
+
+
+/***/ }),
+
+/***/ "81d5":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toObject = __webpack_require__("7b0b");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toLength = __webpack_require__("50c4");
+
+// `Array.prototype.fill` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+module.exports = function fill(value /* , start = 0, end = @length */) {
+  var O = toObject(this);
+  var length = toLength(O.length);
+  var argumentsLength = arguments.length;
+  var index = toAbsoluteIndex(argumentsLength > 1 ? arguments[1] : undefined, length);
+  var end = argumentsLength > 2 ? arguments[2] : undefined;
+  var endPos = end === undefined ? length : toAbsoluteIndex(end, length);
+  while (endPos > index) O[index++] = value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "825a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+
+module.exports = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
+};
+
+
+/***/ }),
+
+/***/ "83ab":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !fails(function () {
+  return Object.defineProperty({}, 1, { get: function () { return 7; } })[1] != 7;
+});
+
+
+/***/ }),
+
+/***/ "8418":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toPrimitive = __webpack_require__("c04e");
+var definePropertyModule = __webpack_require__("9bf2");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+
+module.exports = function (object, key, value) {
+  var propertyKey = toPrimitive(key);
+  if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
+};
+
+
+/***/ }),
+
+/***/ "857a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var requireObjectCoercible = __webpack_require__("1d80");
+
+var quot = /"/g;
+
+// B.2.3.2.1 CreateHTML(string, tag, attribute, value)
+// https://tc39.github.io/ecma262/#sec-createhtml
+module.exports = function (string, tag, attribute, value) {
+  var S = String(requireObjectCoercible(string));
+  var p1 = '<' + tag;
+  if (attribute !== '') p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
+  return p1 + '>' + S + '</' + tag + '>';
+};
+
+
+/***/ }),
+
+/***/ "861d":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "8875":
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// addapted from the document.currentScript polyfill by Adam Miller
+// MIT license
+// source: https://github.com/amiller-gh/currentScript-polyfill
+
+// added support for Firefox https://bugzilla.mozilla.org/show_bug.cgi?id=1620505
+
+(function (root, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+}(typeof self !== 'undefined' ? self : this, function () {
+  function getCurrentScript () {
+    var descriptor = Object.getOwnPropertyDescriptor(document, 'currentScript')
+    // for chrome
+    if (!descriptor && 'currentScript' in document && document.currentScript) {
+      return document.currentScript
+    }
+
+    // for other browsers with native support for currentScript
+    if (descriptor && descriptor.get !== getCurrentScript && document.currentScript) {
+      return document.currentScript
+    }
+  
+    // IE 8-10 support script readyState
+    // IE 11+ & Firefox support stack trace
+    try {
+      throw new Error();
+    }
+    catch (err) {
+      // Find the second match for the "at" string to get file src url from stack.
+      var ieStackRegExp = /.*at [^(]*\((.*):(.+):(.+)\)$/ig,
+        ffStackRegExp = /@([^@]*):(\d+):(\d+)\s*$/ig,
+        stackDetails = ieStackRegExp.exec(err.stack) || ffStackRegExp.exec(err.stack),
+        scriptLocation = (stackDetails && stackDetails[1]) || false,
+        line = (stackDetails && stackDetails[2]) || false,
+        currentLocation = document.location.href.replace(document.location.hash, ''),
+        pageSource,
+        inlineScriptSourceRegExp,
+        inlineScriptSource,
+        scripts = document.getElementsByTagName('script'); // Live NodeList collection
+  
+      if (scriptLocation === currentLocation) {
+        pageSource = document.documentElement.outerHTML;
+        inlineScriptSourceRegExp = new RegExp('(?:[^\\n]+?\\n){0,' + (line - 2) + '}[^<]*<script>([\\d\\D]*?)<\\/script>[\\d\\D]*', 'i');
+        inlineScriptSource = pageSource.replace(inlineScriptSourceRegExp, '$1').trim();
+      }
+  
+      for (var i = 0; i < scripts.length; i++) {
+        // If ready state is interactive, return the script tag
+        if (scripts[i].readyState === 'interactive') {
+          return scripts[i];
+        }
+  
+        // If src matches, return the script tag
+        if (scripts[i].src === scriptLocation) {
+          return scripts[i];
+        }
+  
+        // If inline source matches, return the script tag
+        if (
+          scriptLocation === currentLocation &&
+          scripts[i].innerHTML &&
+          scripts[i].innerHTML.trim() === inlineScriptSource
+        ) {
+          return scripts[i];
+        }
+      }
+  
+      // If no match, return null
+      return null;
+    }
+  };
+
+  return getCurrentScript
+}));
+
+
+/***/ }),
+
+/***/ "8925":
+/***/ (function(module, exports, __webpack_require__) {
+
+var store = __webpack_require__("c6cd");
+
+var functionToString = Function.toString;
+
+// this helper broken in `3.4.1-3.4.4`, so we can't use `shared` helper
+if (typeof store.inspectSource != 'function') {
+  store.inspectSource = function (it) {
+    return functionToString.call(it);
+  };
+}
+
+module.exports = store.inspectSource;
+
+
+/***/ }),
+
+/***/ "8aa5":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var charAt = __webpack_require__("6547").charAt;
+
+// `AdvanceStringIndex` abstract operation
+// https://tc39.github.io/ecma262/#sec-advancestringindex
+module.exports = function (S, index, unicode) {
+  return index + (unicode ? charAt(S, index).length : 1);
+};
+
+
+/***/ }),
+
+/***/ "8bbf":
+/***/ (function(module, exports) {
+
+module.exports = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+/***/ }),
+
+/***/ "90e3":
+/***/ (function(module, exports) {
+
+var id = 0;
+var postfix = Math.random();
+
+module.exports = function (key) {
+  return 'Symbol(' + String(key === undefined ? '' : key) + ')_' + (++id + postfix).toString(36);
+};
+
+
+/***/ }),
+
+/***/ "9112":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var definePropertyModule = __webpack_require__("9bf2");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+
+module.exports = DESCRIPTORS ? function (object, key, value) {
+  return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ "9263":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var regexpFlags = __webpack_require__("ad6d");
+var stickyHelpers = __webpack_require__("9f7f");
+
+var nativeExec = RegExp.prototype.exec;
+// This always refers to the native implementation, because the
+// String#replace polyfill uses ./fix-regexp-well-known-symbol-logic.js,
+// which loads this file before patching the method.
+var nativeReplace = String.prototype.replace;
+
+var patchedExec = nativeExec;
+
+var UPDATES_LAST_INDEX_WRONG = (function () {
+  var re1 = /a/;
+  var re2 = /b*/g;
+  nativeExec.call(re1, 'a');
+  nativeExec.call(re2, 'a');
+  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
+})();
+
+var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y || stickyHelpers.BROKEN_CARET;
+
+// nonparticipating capturing group, copied from es5-shim's String#split patch.
+var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
+
+var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y;
+
+if (PATCH) {
+  patchedExec = function exec(str) {
+    var re = this;
+    var lastIndex, reCopy, match, i;
+    var sticky = UNSUPPORTED_Y && re.sticky;
+    var flags = regexpFlags.call(re);
+    var source = re.source;
+    var charsAdded = 0;
+    var strCopy = str;
+
+    if (sticky) {
+      flags = flags.replace('y', '');
+      if (flags.indexOf('g') === -1) {
+        flags += 'g';
+      }
+
+      strCopy = String(str).slice(re.lastIndex);
+      // Support anchored sticky behavior.
+      if (re.lastIndex > 0 && (!re.multiline || re.multiline && str[re.lastIndex - 1] !== '\n')) {
+        source = '(?: ' + source + ')';
+        strCopy = ' ' + strCopy;
+        charsAdded++;
+      }
+      // ^(? + rx + ) is needed, in combination with some str slicing, to
+      // simulate the 'y' flag.
+      reCopy = new RegExp('^(?:' + source + ')', flags);
+    }
+
+    if (NPCG_INCLUDED) {
+      reCopy = new RegExp('^' + source + '$(?!\\s)', flags);
+    }
+    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
+
+    match = nativeExec.call(sticky ? reCopy : re, strCopy);
+
+    if (sticky) {
+      if (match) {
+        match.input = match.input.slice(charsAdded);
+        match[0] = match[0].slice(charsAdded);
+        match.index = re.lastIndex;
+        re.lastIndex += match[0].length;
+      } else re.lastIndex = 0;
+    } else if (UPDATES_LAST_INDEX_WRONG && match) {
+      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
+    }
+    if (NPCG_INCLUDED && match && match.length > 1) {
+      // Fix browsers whose `exec` methods don't consistently return `undefined`
+      // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
+      nativeReplace.call(match[0], reCopy, function () {
+        for (i = 1; i < arguments.length - 2; i++) {
+          if (arguments[i] === undefined) match[i] = undefined;
+        }
+      });
+    }
+
+    return match;
+  };
+}
+
+module.exports = patchedExec;
+
+
+/***/ }),
+
+/***/ "94ca":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+var replacement = /#|\.prototype\./;
+
+var isForced = function (feature, detection) {
+  var value = data[normalize(feature)];
+  return value == POLYFILL ? true
+    : value == NATIVE ? false
+    : typeof detection == 'function' ? fails(detection)
+    : !!detection;
+};
+
+var normalize = isForced.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase();
+};
+
+var data = isForced.data = {};
+var NATIVE = isForced.NATIVE = 'N';
+var POLYFILL = isForced.POLYFILL = 'P';
+
+module.exports = isForced;
+
+
+/***/ }),
+
+/***/ "95dd":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cell_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7371");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cell_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cell_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_cell_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "9735":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekdays_headings_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("2170");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekdays_headings_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekdays_headings_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_weekdays_headings_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "99af":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var fails = __webpack_require__("d039");
+var isArray = __webpack_require__("e8b5");
+var isObject = __webpack_require__("861d");
+var toObject = __webpack_require__("7b0b");
+var toLength = __webpack_require__("50c4");
+var createProperty = __webpack_require__("8418");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var wellKnownSymbol = __webpack_require__("b622");
+var V8_VERSION = __webpack_require__("2d00");
+
+var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
+
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT = V8_VERSION >= 51 || !fails(function () {
+  var array = [];
+  array[IS_CONCAT_SPREADABLE] = false;
+  return array.concat()[0] !== array;
+});
+
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
+
+var isConcatSpreadable = function (O) {
+  if (!isObject(O)) return false;
+  var spreadable = O[IS_CONCAT_SPREADABLE];
+  return spreadable !== undefined ? !!spreadable : isArray(O);
+};
+
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+
+// `Array.prototype.concat` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+$({ target: 'Array', proto: true, forced: FORCED }, {
+  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+    var O = toObject(this);
+    var A = arraySpeciesCreate(O, 0);
+    var n = 0;
+    var i, k, length, len, E;
+    for (i = -1, length = arguments.length; i < length; i++) {
+      E = i === -1 ? O : arguments[i];
+      if (isConcatSpreadable(E)) {
+        len = toLength(E.length);
+        if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
+      } else {
+        if (n >= MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        createProperty(A, n++, E);
+      }
+    }
+    A.length = n;
+    return A;
+  }
+});
+
+
+/***/ }),
+
+/***/ "9bdd":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+
+// call something on iterator step with safe closing on error
+module.exports = function (iterator, fn, value, ENTRIES) {
+  try {
+    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
+  // 7.4.6 IteratorClose(iterator, completion)
+  } catch (error) {
+    var returnMethod = iterator['return'];
+    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
+    throw error;
+  }
+};
+
+
+/***/ }),
+
+/***/ "9bf2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var IE8_DOM_DEFINE = __webpack_require__("0cfb");
+var anObject = __webpack_require__("825a");
+var toPrimitive = __webpack_require__("c04e");
+
+var nativeDefineProperty = Object.defineProperty;
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return nativeDefineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "9ed3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var IteratorPrototype = __webpack_require__("ae93").IteratorPrototype;
+var create = __webpack_require__("7c73");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+var setToStringTag = __webpack_require__("d44e");
+var Iterators = __webpack_require__("3f8c");
+
+var returnThis = function () { return this; };
+
+module.exports = function (IteratorConstructor, NAME, next) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = create(IteratorPrototype, { next: createPropertyDescriptor(1, next) });
+  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
+  Iterators[TO_STRING_TAG] = returnThis;
+  return IteratorConstructor;
+};
+
+
+/***/ }),
+
+/***/ "9f7f":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var fails = __webpack_require__("d039");
+
+// babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
+// so we use an intermediate function.
+function RE(s, f) {
+  return RegExp(s, f);
+}
+
+exports.UNSUPPORTED_Y = fails(function () {
+  // babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
+  var re = RE('a', 'y');
+  re.lastIndex = 2;
+  return re.exec('abcd') != null;
+});
+
+exports.BROKEN_CARET = fails(function () {
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
+  var re = RE('^r', 'gy');
+  re.lastIndex = 2;
+  return re.exec('str') != null;
+});
+
+
+/***/ }),
+
+/***/ "a15b":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var IndexedObject = __webpack_require__("44ad");
+var toIndexedObject = __webpack_require__("fc6a");
+var arrayMethodIsStrict = __webpack_require__("a640");
+
+var nativeJoin = [].join;
+
+var ES3_STRINGS = IndexedObject != Object;
+var STRICT_METHOD = arrayMethodIsStrict('join', ',');
+
+// `Array.prototype.join` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.join
+$({ target: 'Array', proto: true, forced: ES3_STRINGS || !STRICT_METHOD }, {
+  join: function join(separator) {
+    return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
+  }
+});
+
+
+/***/ }),
+
+/***/ "a434":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toInteger = __webpack_require__("a691");
+var toLength = __webpack_require__("50c4");
+var toObject = __webpack_require__("7b0b");
+var arraySpeciesCreate = __webpack_require__("65f0");
+var createProperty = __webpack_require__("8418");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+var USES_TO_LENGTH = arrayMethodUsesToLength('splice', { ACCESSORS: true, 0: 0, 1: 2 });
+
+var max = Math.max;
+var min = Math.min;
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_LENGTH_EXCEEDED = 'Maximum allowed length exceeded';
+
+// `Array.prototype.splice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.splice
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  splice: function splice(start, deleteCount /* , ...items */) {
+    var O = toObject(this);
+    var len = toLength(O.length);
+    var actualStart = toAbsoluteIndex(start, len);
+    var argumentsLength = arguments.length;
+    var insertCount, actualDeleteCount, A, k, from, to;
+    if (argumentsLength === 0) {
+      insertCount = actualDeleteCount = 0;
+    } else if (argumentsLength === 1) {
+      insertCount = 0;
+      actualDeleteCount = len - actualStart;
+    } else {
+      insertCount = argumentsLength - 2;
+      actualDeleteCount = min(max(toInteger(deleteCount), 0), len - actualStart);
+    }
+    if (len + insertCount - actualDeleteCount > MAX_SAFE_INTEGER) {
+      throw TypeError(MAXIMUM_ALLOWED_LENGTH_EXCEEDED);
+    }
+    A = arraySpeciesCreate(O, actualDeleteCount);
+    for (k = 0; k < actualDeleteCount; k++) {
+      from = actualStart + k;
+      if (from in O) createProperty(A, k, O[from]);
+    }
+    A.length = actualDeleteCount;
+    if (insertCount < actualDeleteCount) {
+      for (k = actualStart; k < len - actualDeleteCount; k++) {
+        from = k + actualDeleteCount;
+        to = k + insertCount;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+      for (k = len; k > len - actualDeleteCount + insertCount; k--) delete O[k - 1];
+    } else if (insertCount > actualDeleteCount) {
+      for (k = len - actualDeleteCount; k > actualStart; k--) {
+        from = k + actualDeleteCount - 1;
+        to = k + insertCount - 1;
+        if (from in O) O[to] = O[from];
+        else delete O[to];
+      }
+    }
+    for (k = 0; k < insertCount; k++) {
+      O[k + actualStart] = arguments[k + 2];
+    }
+    O.length = len - actualDeleteCount + insertCount;
+    return A;
+  }
+});
+
+
+/***/ }),
+
+/***/ "a4d3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var global = __webpack_require__("da84");
+var getBuiltIn = __webpack_require__("d066");
+var IS_PURE = __webpack_require__("c430");
+var DESCRIPTORS = __webpack_require__("83ab");
+var NATIVE_SYMBOL = __webpack_require__("4930");
+var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
+var fails = __webpack_require__("d039");
+var has = __webpack_require__("5135");
+var isArray = __webpack_require__("e8b5");
+var isObject = __webpack_require__("861d");
+var anObject = __webpack_require__("825a");
+var toObject = __webpack_require__("7b0b");
+var toIndexedObject = __webpack_require__("fc6a");
+var toPrimitive = __webpack_require__("c04e");
+var createPropertyDescriptor = __webpack_require__("5c6c");
+var nativeObjectCreate = __webpack_require__("7c73");
+var objectKeys = __webpack_require__("df75");
+var getOwnPropertyNamesModule = __webpack_require__("241c");
+var getOwnPropertyNamesExternal = __webpack_require__("057f");
+var getOwnPropertySymbolsModule = __webpack_require__("7418");
+var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
+var definePropertyModule = __webpack_require__("9bf2");
+var propertyIsEnumerableModule = __webpack_require__("d1e7");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var redefine = __webpack_require__("6eeb");
+var shared = __webpack_require__("5692");
+var sharedKey = __webpack_require__("f772");
+var hiddenKeys = __webpack_require__("d012");
+var uid = __webpack_require__("90e3");
+var wellKnownSymbol = __webpack_require__("b622");
+var wrappedWellKnownSymbolModule = __webpack_require__("e538");
+var defineWellKnownSymbol = __webpack_require__("746f");
+var setToStringTag = __webpack_require__("d44e");
+var InternalStateModule = __webpack_require__("69f3");
+var $forEach = __webpack_require__("b727").forEach;
+
+var HIDDEN = sharedKey('hidden');
+var SYMBOL = 'Symbol';
+var PROTOTYPE = 'prototype';
+var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(SYMBOL);
+var ObjectPrototype = Object[PROTOTYPE];
+var $Symbol = global.Symbol;
+var $stringify = getBuiltIn('JSON', 'stringify');
+var nativeGetOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+var nativeDefineProperty = definePropertyModule.f;
+var nativeGetOwnPropertyNames = getOwnPropertyNamesExternal.f;
+var nativePropertyIsEnumerable = propertyIsEnumerableModule.f;
+var AllSymbols = shared('symbols');
+var ObjectPrototypeSymbols = shared('op-symbols');
+var StringToSymbolRegistry = shared('string-to-symbol-registry');
+var SymbolToStringRegistry = shared('symbol-to-string-registry');
+var WellKnownSymbolsStore = shared('wks');
+var QObject = global.QObject;
+// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
+var USE_SETTER = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
+
+// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
+var setSymbolDescriptor = DESCRIPTORS && fails(function () {
+  return nativeObjectCreate(nativeDefineProperty({}, 'a', {
+    get: function () { return nativeDefineProperty(this, 'a', { value: 7 }).a; }
+  })).a != 7;
+}) ? function (O, P, Attributes) {
+  var ObjectPrototypeDescriptor = nativeGetOwnPropertyDescriptor(ObjectPrototype, P);
+  if (ObjectPrototypeDescriptor) delete ObjectPrototype[P];
+  nativeDefineProperty(O, P, Attributes);
+  if (ObjectPrototypeDescriptor && O !== ObjectPrototype) {
+    nativeDefineProperty(ObjectPrototype, P, ObjectPrototypeDescriptor);
+  }
+} : nativeDefineProperty;
+
+var wrap = function (tag, description) {
+  var symbol = AllSymbols[tag] = nativeObjectCreate($Symbol[PROTOTYPE]);
+  setInternalState(symbol, {
+    type: SYMBOL,
+    tag: tag,
+    description: description
+  });
+  if (!DESCRIPTORS) symbol.description = description;
+  return symbol;
+};
+
+var isSymbol = USE_SYMBOL_AS_UID ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  return Object(it) instanceof $Symbol;
+};
+
+var $defineProperty = function defineProperty(O, P, Attributes) {
+  if (O === ObjectPrototype) $defineProperty(ObjectPrototypeSymbols, P, Attributes);
+  anObject(O);
+  var key = toPrimitive(P, true);
+  anObject(Attributes);
+  if (has(AllSymbols, key)) {
+    if (!Attributes.enumerable) {
+      if (!has(O, HIDDEN)) nativeDefineProperty(O, HIDDEN, createPropertyDescriptor(1, {}));
+      O[HIDDEN][key] = true;
+    } else {
+      if (has(O, HIDDEN) && O[HIDDEN][key]) O[HIDDEN][key] = false;
+      Attributes = nativeObjectCreate(Attributes, { enumerable: createPropertyDescriptor(0, false) });
+    } return setSymbolDescriptor(O, key, Attributes);
+  } return nativeDefineProperty(O, key, Attributes);
+};
+
+var $defineProperties = function defineProperties(O, Properties) {
+  anObject(O);
+  var properties = toIndexedObject(Properties);
+  var keys = objectKeys(properties).concat($getOwnPropertySymbols(properties));
+  $forEach(keys, function (key) {
+    if (!DESCRIPTORS || $propertyIsEnumerable.call(properties, key)) $defineProperty(O, key, properties[key]);
+  });
+  return O;
+};
+
+var $create = function create(O, Properties) {
+  return Properties === undefined ? nativeObjectCreate(O) : $defineProperties(nativeObjectCreate(O), Properties);
+};
+
+var $propertyIsEnumerable = function propertyIsEnumerable(V) {
+  var P = toPrimitive(V, true);
+  var enumerable = nativePropertyIsEnumerable.call(this, P);
+  if (this === ObjectPrototype && has(AllSymbols, P) && !has(ObjectPrototypeSymbols, P)) return false;
+  return enumerable || !has(this, P) || !has(AllSymbols, P) || has(this, HIDDEN) && this[HIDDEN][P] ? enumerable : true;
+};
+
+var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(O, P) {
+  var it = toIndexedObject(O);
+  var key = toPrimitive(P, true);
+  if (it === ObjectPrototype && has(AllSymbols, key) && !has(ObjectPrototypeSymbols, key)) return;
+  var descriptor = nativeGetOwnPropertyDescriptor(it, key);
+  if (descriptor && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key])) {
+    descriptor.enumerable = true;
+  }
+  return descriptor;
+};
+
+var $getOwnPropertyNames = function getOwnPropertyNames(O) {
+  var names = nativeGetOwnPropertyNames(toIndexedObject(O));
+  var result = [];
+  $forEach(names, function (key) {
+    if (!has(AllSymbols, key) && !has(hiddenKeys, key)) result.push(key);
+  });
+  return result;
+};
+
+var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
+  var IS_OBJECT_PROTOTYPE = O === ObjectPrototype;
+  var names = nativeGetOwnPropertyNames(IS_OBJECT_PROTOTYPE ? ObjectPrototypeSymbols : toIndexedObject(O));
+  var result = [];
+  $forEach(names, function (key) {
+    if (has(AllSymbols, key) && (!IS_OBJECT_PROTOTYPE || has(ObjectPrototype, key))) {
+      result.push(AllSymbols[key]);
+    }
+  });
+  return result;
+};
+
+// `Symbol` constructor
+// https://tc39.github.io/ecma262/#sec-symbol-constructor
+if (!NATIVE_SYMBOL) {
+  $Symbol = function Symbol() {
+    if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor');
+    var description = !arguments.length || arguments[0] === undefined ? undefined : String(arguments[0]);
+    var tag = uid(description);
+    var setter = function (value) {
+      if (this === ObjectPrototype) setter.call(ObjectPrototypeSymbols, value);
+      if (has(this, HIDDEN) && has(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
+      setSymbolDescriptor(this, tag, createPropertyDescriptor(1, value));
+    };
+    if (DESCRIPTORS && USE_SETTER) setSymbolDescriptor(ObjectPrototype, tag, { configurable: true, set: setter });
+    return wrap(tag, description);
+  };
+
+  redefine($Symbol[PROTOTYPE], 'toString', function toString() {
+    return getInternalState(this).tag;
+  });
+
+  redefine($Symbol, 'withoutSetter', function (description) {
+    return wrap(uid(description), description);
+  });
+
+  propertyIsEnumerableModule.f = $propertyIsEnumerable;
+  definePropertyModule.f = $defineProperty;
+  getOwnPropertyDescriptorModule.f = $getOwnPropertyDescriptor;
+  getOwnPropertyNamesModule.f = getOwnPropertyNamesExternal.f = $getOwnPropertyNames;
+  getOwnPropertySymbolsModule.f = $getOwnPropertySymbols;
+
+  wrappedWellKnownSymbolModule.f = function (name) {
+    return wrap(wellKnownSymbol(name), name);
+  };
+
+  if (DESCRIPTORS) {
+    // https://github.com/tc39/proposal-Symbol-description
+    nativeDefineProperty($Symbol[PROTOTYPE], 'description', {
+      configurable: true,
+      get: function description() {
+        return getInternalState(this).description;
+      }
+    });
+    if (!IS_PURE) {
+      redefine(ObjectPrototype, 'propertyIsEnumerable', $propertyIsEnumerable, { unsafe: true });
+    }
+  }
+}
+
+$({ global: true, wrap: true, forced: !NATIVE_SYMBOL, sham: !NATIVE_SYMBOL }, {
+  Symbol: $Symbol
+});
+
+$forEach(objectKeys(WellKnownSymbolsStore), function (name) {
+  defineWellKnownSymbol(name);
+});
+
+$({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
+  // `Symbol.for` method
+  // https://tc39.github.io/ecma262/#sec-symbol.for
+  'for': function (key) {
+    var string = String(key);
+    if (has(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
+    var symbol = $Symbol(string);
+    StringToSymbolRegistry[string] = symbol;
+    SymbolToStringRegistry[symbol] = string;
+    return symbol;
+  },
+  // `Symbol.keyFor` method
+  // https://tc39.github.io/ecma262/#sec-symbol.keyfor
+  keyFor: function keyFor(sym) {
+    if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol');
+    if (has(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
+  },
+  useSetter: function () { USE_SETTER = true; },
+  useSimple: function () { USE_SETTER = false; }
+});
+
+$({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL, sham: !DESCRIPTORS }, {
+  // `Object.create` method
+  // https://tc39.github.io/ecma262/#sec-object.create
+  create: $create,
+  // `Object.defineProperty` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperty
+  defineProperty: $defineProperty,
+  // `Object.defineProperties` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperties
+  defineProperties: $defineProperties,
+  // `Object.getOwnPropertyDescriptor` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+  getOwnPropertyDescriptor: $getOwnPropertyDescriptor
+});
+
+$({ target: 'Object', stat: true, forced: !NATIVE_SYMBOL }, {
+  // `Object.getOwnPropertyNames` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+  getOwnPropertyNames: $getOwnPropertyNames,
+  // `Object.getOwnPropertySymbols` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertysymbols
+  getOwnPropertySymbols: $getOwnPropertySymbols
+});
+
+// Chrome 38 and 39 `Object.getOwnPropertySymbols` fails on primitives
+// https://bugs.chromium.org/p/v8/issues/detail?id=3443
+$({ target: 'Object', stat: true, forced: fails(function () { getOwnPropertySymbolsModule.f(1); }) }, {
+  getOwnPropertySymbols: function getOwnPropertySymbols(it) {
+    return getOwnPropertySymbolsModule.f(toObject(it));
+  }
+});
+
+// `JSON.stringify` method behavior with symbols
+// https://tc39.github.io/ecma262/#sec-json.stringify
+if ($stringify) {
+  var FORCED_JSON_STRINGIFY = !NATIVE_SYMBOL || fails(function () {
+    var symbol = $Symbol();
+    // MS Edge converts symbol values to JSON as {}
+    return $stringify([symbol]) != '[null]'
+      // WebKit converts symbol values to JSON as null
+      || $stringify({ a: symbol }) != '{}'
+      // V8 throws on boxed symbols
+      || $stringify(Object(symbol)) != '{}';
+  });
+
+  $({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
+    // eslint-disable-next-line no-unused-vars
+    stringify: function stringify(it, replacer, space) {
+      var args = [it];
+      var index = 1;
+      var $replacer;
+      while (arguments.length > index) args.push(arguments[index++]);
+      $replacer = replacer;
+      if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+      if (!isArray(replacer)) replacer = function (key, value) {
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
+        if (!isSymbol(value)) return value;
+      };
+      args[1] = replacer;
+      return $stringify.apply(null, args);
+    }
+  });
+}
+
+// `Symbol.prototype[@@toPrimitive]` method
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
+if (!$Symbol[PROTOTYPE][TO_PRIMITIVE]) {
+  createNonEnumerableProperty($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+}
+// `Symbol.prototype[@@toStringTag]` property
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@tostringtag
+setToStringTag($Symbol, SYMBOL);
+
+hiddenKeys[HIDDEN] = true;
+
+
+/***/ }),
+
+/***/ "a630":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var from = __webpack_require__("4df4");
+var checkCorrectnessOfIteration = __webpack_require__("1c7e");
+
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+$({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: from
+});
+
+
+/***/ }),
+
+/***/ "a640":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var fails = __webpack_require__("d039");
+
+module.exports = function (METHOD_NAME, argument) {
+  var method = [][METHOD_NAME];
+  return !!method && fails(function () {
+    // eslint-disable-next-line no-useless-call,no-throw-literal
+    method.call(null, argument || function () { throw 1; }, 1);
+  });
+};
+
+
+/***/ }),
+
+/***/ "a691":
+/***/ (function(module, exports) {
+
+var ceil = Math.ceil;
+var floor = Math.floor;
+
+// `ToInteger` abstract operation
+// https://tc39.github.io/ecma262/#sec-tointeger
+module.exports = function (argument) {
+  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
+};
+
+
+/***/ }),
+
+/***/ "a9e3":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var global = __webpack_require__("da84");
+var isForced = __webpack_require__("94ca");
+var redefine = __webpack_require__("6eeb");
+var has = __webpack_require__("5135");
+var classof = __webpack_require__("c6b6");
+var inheritIfRequired = __webpack_require__("7156");
+var toPrimitive = __webpack_require__("c04e");
+var fails = __webpack_require__("d039");
+var create = __webpack_require__("7c73");
+var getOwnPropertyNames = __webpack_require__("241c").f;
+var getOwnPropertyDescriptor = __webpack_require__("06cf").f;
+var defineProperty = __webpack_require__("9bf2").f;
+var trim = __webpack_require__("58a8").trim;
+
+var NUMBER = 'Number';
+var NativeNumber = global[NUMBER];
+var NumberPrototype = NativeNumber.prototype;
+
+// Opera ~12 has broken Object#toString
+var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
+
+// `ToNumber` abstract operation
+// https://tc39.github.io/ecma262/#sec-tonumber
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  var first, third, radix, maxCode, digits, length, index, code;
+  if (typeof it == 'string' && it.length > 2) {
+    it = trim(it);
+    first = it.charCodeAt(0);
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal of /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal of /^0o[0-7]+$/i
+        default: return +it;
+      }
+      digits = it.slice(2);
+      length = digits.length;
+      for (index = 0; index < length; index++) {
+        code = digits.charCodeAt(index);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+// `Number` constructor
+// https://tc39.github.io/ecma262/#sec-number-constructor
+if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
+  var NumberWrapper = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var dummy = this;
+    return dummy instanceof NumberWrapper
+      // check on 1..constructor(foo) case
+      && (BROKEN_CLASSOF ? fails(function () { NumberPrototype.valueOf.call(dummy); }) : classof(dummy) != NUMBER)
+        ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
+  };
+  for (var keys = DESCRIPTORS ? getOwnPropertyNames(NativeNumber) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES2015 (in case, if modules with ES2015 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(NativeNumber, key = keys[j]) && !has(NumberWrapper, key)) {
+      defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
+    }
+  }
+  NumberWrapper.prototype = NumberPrototype;
+  NumberPrototype.constructor = NumberWrapper;
+  redefine(global, NUMBER, NumberWrapper);
+}
+
+
+/***/ }),
+
+/***/ "ab13":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+var MATCH = wellKnownSymbol('match');
+
+module.exports = function (METHOD_NAME) {
+  var regexp = /./;
+  try {
+    '/./'[METHOD_NAME](regexp);
+  } catch (e) {
+    try {
+      regexp[MATCH] = false;
+      return '/./'[METHOD_NAME](regexp);
+    } catch (f) { /* empty */ }
+  } return false;
+};
+
+
+/***/ }),
+
+/***/ "ac1f":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var exec = __webpack_require__("9263");
+
+$({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
+  exec: exec
+});
+
+
+/***/ }),
+
+/***/ "ad6d":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var anObject = __webpack_require__("825a");
+
+// `RegExp.prototype.flags` getter implementation
+// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+module.exports = function () {
+  var that = anObject(this);
+  var result = '';
+  if (that.global) result += 'g';
+  if (that.ignoreCase) result += 'i';
+  if (that.multiline) result += 'm';
+  if (that.dotAll) result += 's';
+  if (that.unicode) result += 'u';
+  if (that.sticky) result += 'y';
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "ade3":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _defineProperty; });
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
+/***/ "ae40":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var fails = __webpack_require__("d039");
+var has = __webpack_require__("5135");
+
+var defineProperty = Object.defineProperty;
+var cache = {};
+
+var thrower = function (it) { throw it; };
+
+module.exports = function (METHOD_NAME, options) {
+  if (has(cache, METHOD_NAME)) return cache[METHOD_NAME];
+  if (!options) options = {};
+  var method = [][METHOD_NAME];
+  var ACCESSORS = has(options, 'ACCESSORS') ? options.ACCESSORS : false;
+  var argument0 = has(options, 0) ? options[0] : thrower;
+  var argument1 = has(options, 1) ? options[1] : undefined;
+
+  return cache[METHOD_NAME] = !!method && !fails(function () {
+    if (ACCESSORS && !DESCRIPTORS) return true;
+    var O = { length: -1 };
+
+    if (ACCESSORS) defineProperty(O, 1, { enumerable: true, get: thrower });
+    else O[1] = 1;
+
+    method.call(O, argument0, argument1);
+  });
+};
+
+
+/***/ }),
+
+/***/ "ae93":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var getPrototypeOf = __webpack_require__("e163");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var has = __webpack_require__("5135");
+var wellKnownSymbol = __webpack_require__("b622");
+var IS_PURE = __webpack_require__("c430");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var BUGGY_SAFARI_ITERATORS = false;
+
+var returnThis = function () { return this; };
+
+// `%IteratorPrototype%` object
+// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+if ([].keys) {
+  arrayIterator = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+  else {
+    PrototypeOfArrayIteratorPrototype = getPrototypeOf(getPrototypeOf(arrayIterator));
+    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+  }
+}
+
+if (IteratorPrototype == undefined) IteratorPrototype = {};
+
+// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
+if (!IS_PURE && !has(IteratorPrototype, ITERATOR)) {
+  createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
+}
+
+module.exports = {
+  IteratorPrototype: IteratorPrototype,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
+};
+
+
+/***/ }),
+
+/***/ "af03":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+// check the existence of a method, lowercase
+// of a tag and escaping quotes in arguments
+module.exports = function (METHOD_NAME) {
+  return fails(function () {
+    var test = ''[METHOD_NAME]('"');
+    return test !== test.toLowerCase() || test.split('"').length > 3;
+  });
+};
+
+
+/***/ }),
+
+/***/ "b041":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var classof = __webpack_require__("f5df");
+
+// `Object.prototype.toString` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
+  return '[object ' + classof(this) + ']';
+};
+
+
+/***/ }),
+
+/***/ "b0c0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__("83ab");
+var defineProperty = __webpack_require__("9bf2").f;
+
+var FunctionPrototype = Function.prototype;
+var FunctionPrototypeToString = FunctionPrototype.toString;
+var nameRE = /^\s*function ([^ (]*)/;
+var NAME = 'name';
+
+// Function instances `.name` property
+// https://tc39.github.io/ecma262/#sec-function-instances-name
+if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
+  defineProperty(FunctionPrototype, NAME, {
+    configurable: true,
+    get: function () {
+      try {
+        return FunctionPrototypeToString.call(this).match(nameRE)[1];
+      } catch (error) {
+        return '';
+      }
+    }
+  });
+}
+
+
+/***/ }),
+
+/***/ "b2b6":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "b622":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var shared = __webpack_require__("5692");
+var has = __webpack_require__("5135");
+var uid = __webpack_require__("90e3");
+var NATIVE_SYMBOL = __webpack_require__("4930");
+var USE_SYMBOL_AS_UID = __webpack_require__("fdbf");
+
+var WellKnownSymbolsStore = shared('wks');
+var Symbol = global.Symbol;
+var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
+
+module.exports = function (name) {
+  if (!has(WellKnownSymbolsStore, name)) {
+    if (NATIVE_SYMBOL && has(Symbol, name)) WellKnownSymbolsStore[name] = Symbol[name];
+    else WellKnownSymbolsStore[name] = createWellKnownSymbol('Symbol.' + name);
+  } return WellKnownSymbolsStore[name];
+};
+
+
+/***/ }),
+
+/***/ "b64b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var toObject = __webpack_require__("7b0b");
+var nativeKeys = __webpack_require__("df75");
+var fails = __webpack_require__("d039");
+
+var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
+
+// `Object.keys` method
+// https://tc39.github.io/ecma262/#sec-object.keys
+$({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
+  keys: function keys(it) {
+    return nativeKeys(toObject(it));
+  }
+});
+
+
+/***/ }),
+
+/***/ "b727":
+/***/ (function(module, exports, __webpack_require__) {
+
+var bind = __webpack_require__("0366");
+var IndexedObject = __webpack_require__("44ad");
+var toObject = __webpack_require__("7b0b");
+var toLength = __webpack_require__("50c4");
+var arraySpeciesCreate = __webpack_require__("65f0");
+
+var push = [].push;
+
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
+var createMethod = function (TYPE) {
+  var IS_MAP = TYPE == 1;
+  var IS_FILTER = TYPE == 2;
+  var IS_SOME = TYPE == 3;
+  var IS_EVERY = TYPE == 4;
+  var IS_FIND_INDEX = TYPE == 6;
+  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+  return function ($this, callbackfn, that, specificCreate) {
+    var O = toObject($this);
+    var self = IndexedObject(O);
+    var boundFunction = bind(callbackfn, that, 3);
+    var length = toLength(self.length);
+    var index = 0;
+    var create = specificCreate || arraySpeciesCreate;
+    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var value, result;
+    for (;length > index; index++) if (NO_HOLES || index in self) {
+      value = self[index];
+      result = boundFunction(value, index, O);
+      if (TYPE) {
+        if (IS_MAP) target[index] = result; // map
+        else if (result) switch (TYPE) {
+          case 3: return true;              // some
+          case 5: return value;             // find
+          case 6: return index;             // findIndex
+          case 2: push.call(target, value); // filter
+        } else if (IS_EVERY) return false;  // every
+      }
+    }
+    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.forEach` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  forEach: createMethod(0),
+  // `Array.prototype.map` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  map: createMethod(1),
+  // `Array.prototype.filter` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  filter: createMethod(2),
+  // `Array.prototype.some` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  some: createMethod(3),
+  // `Array.prototype.every` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  every: createMethod(4),
+  // `Array.prototype.find` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  find: createMethod(5),
+  // `Array.prototype.findIndex` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+  findIndex: createMethod(6)
+};
+
+
+/***/ }),
+
+/***/ "bb2f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !fails(function () {
+  return Object.isExtensible(Object.preventExtensions({}));
+});
+
+
+/***/ }),
+
+/***/ "bee2":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+/***/ }),
+
+/***/ "c04e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("861d");
+
+// `ToPrimitive` abstract operation
+// https://tc39.github.io/ecma262/#sec-toprimitive
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (input, PREFERRED_STRING) {
+  if (!isObject(input)) return input;
+  var fn, val;
+  if (PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ "c430":
+/***/ (function(module, exports) {
+
+module.exports = false;
+
+
+/***/ }),
+
+/***/ "c6b6":
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+
+/***/ }),
+
+/***/ "c6cd":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var setGlobal = __webpack_require__("ce4e");
+
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || setGlobal(SHARED, {});
+
+module.exports = store;
+
+
+/***/ }),
+
+/***/ "c740":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $findIndex = __webpack_require__("b727").findIndex;
+var addToUnscopables = __webpack_require__("44d2");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var FIND_INDEX = 'findIndex';
+var SKIPS_HOLES = true;
+
+var USES_TO_LENGTH = arrayMethodUsesToLength(FIND_INDEX);
+
+// Shouldn't skip holes
+if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.findIndex` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.findindex
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES || !USES_TO_LENGTH }, {
+  findIndex: function findIndex(callbackfn /* , that = undefined */) {
+    return $findIndex(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND_INDEX);
+
+
+/***/ }),
+
+/***/ "c8ba":
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ "c96a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var createHTML = __webpack_require__("857a");
+var forcedStringHTMLMethod = __webpack_require__("af03");
+
+// `String.prototype.small` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.small
+$({ target: 'String', proto: true, forced: forcedStringHTMLMethod('small') }, {
+  small: function small() {
+    return createHTML(this, 'small', '', '');
+  }
+});
+
+
+/***/ }),
+
+/***/ "c975":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $indexOf = __webpack_require__("4d64").indexOf;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var nativeIndexOf = [].indexOf;
+
+var NEGATIVE_ZERO = !!nativeIndexOf && 1 / [1].indexOf(1, -0) < 0;
+var STRICT_METHOD = arrayMethodIsStrict('indexOf');
+var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+
+// `Array.prototype.indexOf` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+$({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH }, {
+  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
+    return NEGATIVE_ZERO
+      // convert -0 to +0
+      ? nativeIndexOf.apply(this, arguments) || 0
+      : $indexOf(this, searchElement, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "ca84":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("5135");
+var toIndexedObject = __webpack_require__("fc6a");
+var indexOf = __webpack_require__("4d64").indexOf;
+var hiddenKeys = __webpack_require__("d012");
+
+module.exports = function (object, names) {
+  var O = toIndexedObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~indexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "caad":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $includes = __webpack_require__("4d64").includes;
+var addToUnscopables = __webpack_require__("44d2");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+
+// `Array.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+$({ target: 'Array', proto: true, forced: !USES_TO_LENGTH }, {
+  includes: function includes(el /* , fromIndex = 0 */) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('includes');
+
+
+/***/ }),
+
+/***/ "cb29":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var fill = __webpack_require__("81d5");
+var addToUnscopables = __webpack_require__("44d2");
+
+// `Array.prototype.fill` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+$({ target: 'Array', proto: true }, {
+  fill: fill
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('fill');
+
+
+/***/ }),
+
+/***/ "cc12":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var isObject = __webpack_require__("861d");
+
+var document = global.document;
+// typeof document.createElement is 'object' in old IE
+var EXISTS = isObject(document) && isObject(document.createElement);
+
+module.exports = function (it) {
+  return EXISTS ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ "ce4e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var createNonEnumerableProperty = __webpack_require__("9112");
+
+module.exports = function (key, value) {
+  try {
+    createNonEnumerableProperty(global, key, value);
+  } catch (error) {
+    global[key] = value;
+  } return value;
+};
+
+
+/***/ }),
+
+/***/ "d012":
+/***/ (function(module, exports) {
+
+module.exports = {};
+
+
+/***/ }),
+
+/***/ "d039":
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ "d066":
+/***/ (function(module, exports, __webpack_require__) {
+
+var path = __webpack_require__("428f");
+var global = __webpack_require__("da84");
+
+var aFunction = function (variable) {
+  return typeof variable == 'function' ? variable : undefined;
+};
+
+module.exports = function (namespace, method) {
+  return arguments.length < 2 ? aFunction(path[namespace]) || aFunction(global[namespace])
+    : path[namespace] && path[namespace][method] || global[namespace] && global[namespace][method];
+};
+
+
+/***/ }),
+
+/***/ "d1e7":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var nativePropertyIsEnumerable = {}.propertyIsEnumerable;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : nativePropertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ "d28b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var defineWellKnownSymbol = __webpack_require__("746f");
+
+// `Symbol.iterator` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.iterator
+defineWellKnownSymbol('iterator');
+
+
+/***/ }),
+
+/***/ "d2bb":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("825a");
+var aPossiblePrototype = __webpack_require__("3bbe");
+
+// `Object.setPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var CORRECT_SETTER = false;
+  var test = {};
+  var setter;
+  try {
+    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
+    setter.call(test, []);
+    CORRECT_SETTER = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    anObject(O);
+    aPossiblePrototype(proto);
+    if (CORRECT_SETTER) setter.call(O, proto);
+    else O.__proto__ = proto;
+    return O;
+  };
+}() : undefined);
+
+
+/***/ }),
+
+/***/ "d3b7":
+/***/ (function(module, exports, __webpack_require__) {
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var redefine = __webpack_require__("6eeb");
+var toString = __webpack_require__("b041");
+
+// `Object.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+if (!TO_STRING_TAG_SUPPORT) {
+  redefine(Object.prototype, 'toString', toString, { unsafe: true });
+}
+
+
+/***/ }),
+
+/***/ "d44e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var defineProperty = __webpack_require__("9bf2").f;
+var has = __webpack_require__("5135");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+
+module.exports = function (it, TAG, STATIC) {
+  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
+    defineProperty(it, TO_STRING_TAG, { configurable: true, value: TAG });
+  }
+};
+
+
+/***/ }),
+
+/***/ "d4ec":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _classCallCheck; });
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+/***/ }),
+
+/***/ "d58f":
+/***/ (function(module, exports, __webpack_require__) {
+
+var aFunction = __webpack_require__("1c0b");
+var toObject = __webpack_require__("7b0b");
+var IndexedObject = __webpack_require__("44ad");
+var toLength = __webpack_require__("50c4");
+
+// `Array.prototype.{ reduce, reduceRight }` methods implementation
+var createMethod = function (IS_RIGHT) {
+  return function (that, callbackfn, argumentsLength, memo) {
+    aFunction(callbackfn);
+    var O = toObject(that);
+    var self = IndexedObject(O);
+    var length = toLength(O.length);
+    var index = IS_RIGHT ? length - 1 : 0;
+    var i = IS_RIGHT ? -1 : 1;
+    if (argumentsLength < 2) while (true) {
+      if (index in self) {
+        memo = self[index];
+        index += i;
+        break;
+      }
+      index += i;
+      if (IS_RIGHT ? index < 0 : length <= index) {
+        throw TypeError('Reduce of empty array with no initial value');
+      }
+    }
+    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
+      memo = callbackfn(memo, self[index], index, O);
+    }
+    return memo;
+  };
+};
+
+module.exports = {
+  // `Array.prototype.reduce` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+  left: createMethod(false),
+  // `Array.prototype.reduceRight` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+  right: createMethod(true)
+};
+
+
+/***/ }),
+
+/***/ "d784":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// TODO: Remove from `core-js@4` since it's moved to entry points
+__webpack_require__("ac1f");
+var redefine = __webpack_require__("6eeb");
+var fails = __webpack_require__("d039");
+var wellKnownSymbol = __webpack_require__("b622");
+var regexpExec = __webpack_require__("9263");
+var createNonEnumerableProperty = __webpack_require__("9112");
+
+var SPECIES = wellKnownSymbol('species');
+
+var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
+  // #replace needs built-in support for named groups.
+  // #match works fine because it just return the exec results, even if it has
+  // a "grops" property.
+  var re = /./;
+  re.exec = function () {
+    var result = [];
+    result.groups = { a: '7' };
+    return result;
+  };
+  return ''.replace(re, '$<a>') !== '7';
+});
+
+// IE <= 11 replaces $0 with the whole match, as if it was $&
+// https://stackoverflow.com/questions/6024666/getting-ie-to-replace-a-regex-with-the-literal-string-0
+var REPLACE_KEEPS_$0 = (function () {
+  return 'a'.replace(/./, '$0') === '$0';
+})();
+
+var REPLACE = wellKnownSymbol('replace');
+// Safari <= 13.0.3(?) substitutes nth capture where n>m with an empty string
+var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = (function () {
+  if (/./[REPLACE]) {
+    return /./[REPLACE]('a', '$0') === '';
+  }
+  return false;
+})();
+
+// Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
+// Weex JS has frozen built-in prototypes, so use try / catch wrapper
+var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
+  var re = /(?:)/;
+  var originalExec = re.exec;
+  re.exec = function () { return originalExec.apply(this, arguments); };
+  var result = 'ab'.split(re);
+  return result.length !== 2 || result[0] !== 'a' || result[1] !== 'b';
+});
+
+module.exports = function (KEY, length, exec, sham) {
+  var SYMBOL = wellKnownSymbol(KEY);
+
+  var DELEGATES_TO_SYMBOL = !fails(function () {
+    // String methods call symbol-named RegEp methods
+    var O = {};
+    O[SYMBOL] = function () { return 7; };
+    return ''[KEY](O) != 7;
+  });
+
+  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails(function () {
+    // Symbol-named RegExp methods call .exec
+    var execCalled = false;
+    var re = /a/;
+
+    if (KEY === 'split') {
+      // We can't use real regex here since it causes deoptimization
+      // and serious performance degradation in V8
+      // https://github.com/zloirock/core-js/issues/306
+      re = {};
+      // RegExp[@@split] doesn't call the regex's exec method, but first creates
+      // a new one. We need to return the patched regex when creating the new one.
+      re.constructor = {};
+      re.constructor[SPECIES] = function () { return re; };
+      re.flags = '';
+      re[SYMBOL] = /./[SYMBOL];
+    }
+
+    re.exec = function () { execCalled = true; return null; };
+
+    re[SYMBOL]('');
+    return !execCalled;
+  });
+
+  if (
+    !DELEGATES_TO_SYMBOL ||
+    !DELEGATES_TO_EXEC ||
+    (KEY === 'replace' && !(
+      REPLACE_SUPPORTS_NAMED_GROUPS &&
+      REPLACE_KEEPS_$0 &&
+      !REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE
+    )) ||
+    (KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC)
+  ) {
+    var nativeRegExpMethod = /./[SYMBOL];
+    var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
+      if (regexp.exec === regexpExec) {
+        if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
+          // The native String method already delegates to @@method (this
+          // polyfilled function), leasing to infinite recursion.
+          // We avoid it by directly calling the native @@method method.
+          return { done: true, value: nativeRegExpMethod.call(regexp, str, arg2) };
+        }
+        return { done: true, value: nativeMethod.call(str, regexp, arg2) };
+      }
+      return { done: false };
+    }, {
+      REPLACE_KEEPS_$0: REPLACE_KEEPS_$0,
+      REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE: REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE
+    });
+    var stringMethod = methods[0];
+    var regexMethod = methods[1];
+
+    redefine(String.prototype, KEY, stringMethod);
+    redefine(RegExp.prototype, SYMBOL, length == 2
+      // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
+      // 21.2.5.11 RegExp.prototype[@@split](string, limit)
+      ? function (string, arg) { return regexMethod.call(string, this, arg); }
+      // 21.2.5.6 RegExp.prototype[@@match](string)
+      // 21.2.5.9 RegExp.prototype[@@search](string)
+      : function (string) { return regexMethod.call(string, this); }
+    );
+  }
+
+  if (sham) createNonEnumerableProperty(RegExp.prototype[SYMBOL], 'sham', true);
+};
+
+
+/***/ }),
+
+/***/ "d81d":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $map = __webpack_require__("b727").map;
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
+// FF49- issue
+var USES_TO_LENGTH = arrayMethodUsesToLength('map');
+
+// `Array.prototype.map` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.map
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  map: function map(callbackfn /* , thisArg */) {
+    return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
+/***/ "da84":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var check = function (it) {
+  return it && it.Math == Math && it;
+};
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+module.exports =
+  // eslint-disable-next-line no-undef
+  check(typeof globalThis == 'object' && globalThis) ||
+  check(typeof window == 'object' && window) ||
+  check(typeof self == 'object' && self) ||
+  check(typeof global == 'object' && global) ||
+  // eslint-disable-next-line no-new-func
+  Function('return this')();
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
+
+/***/ }),
+
+/***/ "dbb4":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var DESCRIPTORS = __webpack_require__("83ab");
+var ownKeys = __webpack_require__("56ef");
+var toIndexedObject = __webpack_require__("fc6a");
+var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
+var createProperty = __webpack_require__("8418");
+
+// `Object.getOwnPropertyDescriptors` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+$({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
+  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
+    var O = toIndexedObject(object);
+    var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+    var keys = ownKeys(O);
+    var result = {};
+    var index = 0;
+    var key, descriptor;
+    while (keys.length > index) {
+      descriptor = getOwnPropertyDescriptor(O, key = keys[index++]);
+      if (descriptor !== undefined) createProperty(result, key, descriptor);
+    }
+    return result;
+  }
+});
+
+
+/***/ }),
+
+/***/ "dc34":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_header_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("b2b6");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_header_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_header_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_dist_cjs_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_header_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "ddb0":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("da84");
+var DOMIterables = __webpack_require__("fdbc");
+var ArrayIteratorMethods = __webpack_require__("e260");
+var createNonEnumerableProperty = __webpack_require__("9112");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var ArrayValues = ArrayIteratorMethods.values;
+
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
+  if (CollectionPrototype) {
+    // some Chrome versions have non-configurable methods on DOMTokenList
+    if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
+      createNonEnumerableProperty(CollectionPrototype, ITERATOR, ArrayValues);
+    } catch (error) {
+      CollectionPrototype[ITERATOR] = ArrayValues;
+    }
+    if (!CollectionPrototype[TO_STRING_TAG]) {
+      createNonEnumerableProperty(CollectionPrototype, TO_STRING_TAG, COLLECTION_NAME);
+    }
+    if (DOMIterables[COLLECTION_NAME]) for (var METHOD_NAME in ArrayIteratorMethods) {
+      // some Chrome versions have non-configurable methods on DOMTokenList
+      if (CollectionPrototype[METHOD_NAME] !== ArrayIteratorMethods[METHOD_NAME]) try {
+        createNonEnumerableProperty(CollectionPrototype, METHOD_NAME, ArrayIteratorMethods[METHOD_NAME]);
+      } catch (error) {
+        CollectionPrototype[METHOD_NAME] = ArrayIteratorMethods[METHOD_NAME];
+      }
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ "df75":
+/***/ (function(module, exports, __webpack_require__) {
+
+var internalObjectKeys = __webpack_require__("ca84");
+var enumBugKeys = __webpack_require__("7839");
+
+// `Object.keys` method
+// https://tc39.github.io/ecma262/#sec-object.keys
+module.exports = Object.keys || function keys(O) {
+  return internalObjectKeys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ "e01a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// `Symbol.prototype.description` getter
+// https://tc39.github.io/ecma262/#sec-symbol.prototype.description
+
+var $ = __webpack_require__("23e7");
+var DESCRIPTORS = __webpack_require__("83ab");
+var global = __webpack_require__("da84");
+var has = __webpack_require__("5135");
+var isObject = __webpack_require__("861d");
+var defineProperty = __webpack_require__("9bf2").f;
+var copyConstructorProperties = __webpack_require__("e893");
+
+var NativeSymbol = global.Symbol;
+
+if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in NativeSymbol.prototype) ||
+  // Safari 12 bug
+  NativeSymbol().description !== undefined
+)) {
+  var EmptyStringDescriptionStore = {};
+  // wrap Symbol constructor for correct work with undefined description
+  var SymbolWrapper = function Symbol() {
+    var description = arguments.length < 1 || arguments[0] === undefined ? undefined : String(arguments[0]);
+    var result = this instanceof SymbolWrapper
+      ? new NativeSymbol(description)
+      // in Edge 13, String(Symbol(undefined)) === 'Symbol(undefined)'
+      : description === undefined ? NativeSymbol() : NativeSymbol(description);
+    if (description === '') EmptyStringDescriptionStore[result] = true;
+    return result;
+  };
+  copyConstructorProperties(SymbolWrapper, NativeSymbol);
+  var symbolPrototype = SymbolWrapper.prototype = NativeSymbol.prototype;
+  symbolPrototype.constructor = SymbolWrapper;
+
+  var symbolToString = symbolPrototype.toString;
+  var native = String(NativeSymbol('test')) == 'Symbol(test)';
+  var regexp = /^Symbol\((.*)\)[^)]+$/;
+  defineProperty(symbolPrototype, 'description', {
+    configurable: true,
+    get: function description() {
+      var symbol = isObject(this) ? this.valueOf() : this;
+      var string = symbolToString.call(symbol);
+      if (has(EmptyStringDescriptionStore, symbol)) return '';
+      var desc = native ? string.slice(7, -1) : string.replace(regexp, '$1');
+      return desc === '' ? undefined : desc;
+    }
+  });
+
+  $({ global: true, forced: true }, {
+    Symbol: SymbolWrapper
+  });
+}
+
+
+/***/ }),
+
+/***/ "e163":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("5135");
+var toObject = __webpack_require__("7b0b");
+var sharedKey = __webpack_require__("f772");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__("e177");
+
+var IE_PROTO = sharedKey('IE_PROTO');
+var ObjectPrototype = Object.prototype;
+
+// `Object.getPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
+  O = toObject(O);
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
+};
+
+
+/***/ }),
+
+/***/ "e177":
+/***/ (function(module, exports, __webpack_require__) {
+
+var fails = __webpack_require__("d039");
+
+module.exports = !fails(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+
+/***/ }),
+
+/***/ "e260":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toIndexedObject = __webpack_require__("fc6a");
+var addToUnscopables = __webpack_require__("44d2");
+var Iterators = __webpack_require__("3f8c");
+var InternalStateModule = __webpack_require__("69f3");
+var defineIterator = __webpack_require__("7dd0");
+
+var ARRAY_ITERATOR = 'Array Iterator';
+var setInternalState = InternalStateModule.set;
+var getInternalState = InternalStateModule.getterFor(ARRAY_ITERATOR);
+
+// `Array.prototype.entries` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// `Array.prototype.keys` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// `Array.prototype.values` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// `Array.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// `CreateArrayIterator` internal method
+// https://tc39.github.io/ecma262/#sec-createarrayiterator
+module.exports = defineIterator(Array, 'Array', function (iterated, kind) {
+  setInternalState(this, {
+    type: ARRAY_ITERATOR,
+    target: toIndexedObject(iterated), // target
+    index: 0,                          // next index
+    kind: kind                         // kind
+  });
+// `%ArrayIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+}, function () {
+  var state = getInternalState(this);
+  var target = state.target;
+  var kind = state.kind;
+  var index = state.index++;
+  if (!target || index >= target.length) {
+    state.target = undefined;
+    return { value: undefined, done: true };
+  }
+  if (kind == 'keys') return { value: index, done: false };
+  if (kind == 'values') return { value: target[index], done: false };
+  return { value: [index, target[index]], done: false };
+}, 'values');
+
+// argumentsList[@@iterator] is %ArrayProto_values%
+// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+Iterators.Arguments = Iterators.Array;
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('keys');
+addToUnscopables('values');
+addToUnscopables('entries');
+
+
+/***/ }),
+
+/***/ "e2cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var redefine = __webpack_require__("6eeb");
+
+module.exports = function (target, src, options) {
+  for (var key in src) redefine(target, key, src[key], options);
+  return target;
+};
+
+
+/***/ }),
+
+/***/ "e439":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__("23e7");
+var fails = __webpack_require__("d039");
+var toIndexedObject = __webpack_require__("fc6a");
+var nativeGetOwnPropertyDescriptor = __webpack_require__("06cf").f;
+var DESCRIPTORS = __webpack_require__("83ab");
+
+var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
+var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+$({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
+  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
+    return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
+  }
+});
+
+
+/***/ }),
+
+/***/ "e538":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+
+exports.f = wellKnownSymbol;
+
+
+/***/ }),
+
+/***/ "e893":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("5135");
+var ownKeys = __webpack_require__("56ef");
+var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
+var definePropertyModule = __webpack_require__("9bf2");
+
+module.exports = function (target, source) {
+  var keys = ownKeys(source);
+  var defineProperty = definePropertyModule.f;
+  var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+  }
+};
+
+
+/***/ }),
+
+/***/ "e8b5":
+/***/ (function(module, exports, __webpack_require__) {
+
+var classof = __webpack_require__("c6b6");
+
+// `IsArray` abstract operation
+// https://tc39.github.io/ecma262/#sec-isarray
+module.exports = Array.isArray || function isArray(arg) {
+  return classof(arg) == 'Array';
+};
+
+
+/***/ }),
+
+/***/ "e95a":
+/***/ (function(module, exports, __webpack_require__) {
+
+var wellKnownSymbol = __webpack_require__("b622");
+var Iterators = __webpack_require__("3f8c");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var ArrayPrototype = Array.prototype;
+
+// check on default Array iterator
+module.exports = function (it) {
+  return it !== undefined && (Iterators.Array === it || ArrayPrototype[ITERATOR] === it);
+};
+
+
+/***/ }),
+
+/***/ "f183":
+/***/ (function(module, exports, __webpack_require__) {
+
+var hiddenKeys = __webpack_require__("d012");
+var isObject = __webpack_require__("861d");
+var has = __webpack_require__("5135");
+var defineProperty = __webpack_require__("9bf2").f;
+var uid = __webpack_require__("90e3");
+var FREEZING = __webpack_require__("bb2f");
+
+var METADATA = uid('meta');
+var id = 0;
+
+var isExtensible = Object.isExtensible || function () {
+  return true;
+};
+
+var setMetadata = function (it) {
+  defineProperty(it, METADATA, { value: {
+    objectID: 'O' + ++id, // object ID
+    weakData: {}          // weak collections IDs
+  } });
+};
+
+var fastKey = function (it, create) {
+  // return a primitive with prefix
+  if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+  if (!has(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return 'F';
+    // not necessary to add metadata
+    if (!create) return 'E';
+    // add missing metadata
+    setMetadata(it);
+  // return object ID
+  } return it[METADATA].objectID;
+};
+
+var getWeakData = function (it, create) {
+  if (!has(it, METADATA)) {
+    // can't set metadata to uncaught frozen object
+    if (!isExtensible(it)) return true;
+    // not necessary to add metadata
+    if (!create) return false;
+    // add missing metadata
+    setMetadata(it);
+  // return the store of weak collections IDs
+  } return it[METADATA].weakData;
+};
+
+// add metadata on freeze-family methods calling
+var onFreeze = function (it) {
+  if (FREEZING && meta.REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
+  return it;
+};
+
+var meta = module.exports = {
+  REQUIRED: false,
+  fastKey: fastKey,
+  getWeakData: getWeakData,
+  onFreeze: onFreeze
+};
+
+hiddenKeys[METADATA] = true;
+
+
+/***/ }),
+
+/***/ "f5df":
+/***/ (function(module, exports, __webpack_require__) {
+
+var TO_STRING_TAG_SUPPORT = __webpack_require__("00ee");
+var classofRaw = __webpack_require__("c6b6");
+var wellKnownSymbol = __webpack_require__("b622");
+
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+// ES3 wrong here
+var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
+};
+
+
+/***/ }),
+
+/***/ "f772":
+/***/ (function(module, exports, __webpack_require__) {
+
+var shared = __webpack_require__("5692");
+var uid = __webpack_require__("90e3");
+
+var keys = shared('keys');
+
+module.exports = function (key) {
+  return keys[key] || (keys[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ "fb15":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
+
+if (typeof window !== 'undefined') {
+  var currentScript = window.document.currentScript
+  if (true) {
+    var getCurrentScript = __webpack_require__("8875")
+    currentScript = getCurrentScript()
+
+    // for backward compatibility, because previously we directly included the polyfill
+    if (!('currentScript' in document)) {
+      Object.defineProperty(document, 'currentScript', { get: getCurrentScript })
+    }
+  }
+
+  var src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
+  if (src) {
+    __webpack_require__.p = src[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/index.vue?vue&type=template&id=ba84bbfc&lang=pug&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"vuecal",staticClass:"vuecal__flex vuecal",class:_vm.cssClasses,attrs:{"column":"","lang":_vm.locale}},[_c('vuecal-header',{attrs:{"options":_vm.$props,"edit-events":_vm.editEvents,"view-props":{ views: _vm.views, weekDaysInHeader: _vm.weekDaysInHeader },"week-days":_vm.weekDays,"has-splits":_vm.hasSplits,"day-splits":_vm.daySplits,"switch-to-narrower-view":_vm.switchToNarrowerView},scopedSlots:_vm._u([{key:"arrow-prev",fn:function(){return [_vm._t("arrow-prev",[_vm._v(" "),_c('i',{staticClass:"angle"}),_vm._v(" ")])]},proxy:true},{key:"arrow-next",fn:function(){return [_vm._t("arrow-next",[_vm._v(" "),_c('i',{staticClass:"angle"}),_vm._v(" ")])]},proxy:true},{key:"today-button",fn:function(){return [_vm._t("today-button",[_c('span',{staticClass:"default"},[_vm._v(_vm._s(_vm.texts.today))])])]},proxy:true},{key:"title",fn:function(){return [_vm._t("title",[_vm._v(_vm._s(_vm.viewTitle))],{"title":_vm.viewTitle,"view":_vm.view})]},proxy:true},{key:"weekday-heading",fn:function(ref){
+var heading = ref.heading;
+var view = ref.view;
+return [_vm._t("weekday-heading",null,{"heading":heading,"view":view})]}},{key:"split-label",fn:function(ref){
+var split = ref.split;
+return [_vm._t("split-label",null,{"split":split,"view":_vm.view.id})]}}],null,true)}),(!_vm.hideBody)?_c('div',{staticClass:"vuecal__flex vuecal__body",attrs:{"grow":""}},[_c('transition',{attrs:{"name":("slide-fade--" + _vm.transitionDirection),"appear":_vm.transitions}},[_c('div',{key:_vm.transitions ? _vm.view.id : false,staticClass:"vuecal__flex",staticStyle:{"min-width":"100%"},attrs:{"column":""}},[(_vm.showAllDayEvents && _vm.hasTimeColumn && (!_vm.cellOrSplitMinWidth || (_vm.isDayView && !_vm.minSplitWidth)))?_c('all-day-bar',_vm._b({scopedSlots:_vm._u([{key:"event",fn:function(ref){
+var event = ref.event;
+var view = ref.view;
+return [_vm._t("event",[(_vm.editEvents.title && event.titleEditable)?_c('div',{staticClass:"vuecal__event-title vuecal__event-title--edit",attrs:{"contenteditable":""},domProps:{"innerHTML":_vm._s(event.title)},on:{"blur":function($event){return _vm.onEventTitleBlur($event, event)}}}):(event.title)?_c('div',{staticClass:"vuecal__event-title",domProps:{"innerHTML":_vm._s(event.title)}}):_vm._e(),(event.content && !_vm.hasShortEvents && !_vm.isShortMonthView)?_c('div',{staticClass:"vuecal__event-content",domProps:{"innerHTML":_vm._s(event.content)}}):_vm._e()],{"view":view,"event":event})]}}],null,true)},'all-day-bar',_vm.allDayBar,false)):_vm._e(),_c('div',{staticClass:"vuecal__bg",class:{ vuecal__flex: !_vm.hasTimeColumn },attrs:{"column":""}},[_c('div',{staticClass:"vuecal__flex",attrs:{"row":"","grow":""}},[(_vm.hasTimeColumn)?_c('div',{staticClass:"vuecal__time-column"},[(_vm.showAllDayEvents && _vm.cellOrSplitMinWidth && !(_vm.isDayView && !_vm.minSplitWidth))?_c('div',{staticClass:"vuecal__all-day-text",style:({ height: _vm.allDayBar.height })},[_c('span',[_vm._v(_vm._s(_vm.texts.allDay))])]):_vm._e(),_vm._l((_vm.timeCells),function(cell,i){return _c('div',{key:i,staticClass:"vuecal__time-cell",style:(("height: " + _vm.timeCellHeight + "px"))},[_vm._t("time-cell",[_c('span',{staticClass:"vuecal__time-cell-line"}),_c('span',{staticClass:"vuecal__time-cell-label"},[_vm._v(_vm._s(cell.label))])],{"hours":cell.hours,"minutes":cell.minutes})],2)})],2):_vm._e(),(_vm.showWeekNumbers && _vm.isMonthView)?_c('div',{staticClass:"vuecal__flex vuecal__week-numbers",attrs:{"column":""}},_vm._l((6),function(i){return _c('div',{key:i,staticClass:"vuecal__flex vuecal__week-number-cell",attrs:{"grow":""}},[_vm._t("week-number-cell",[_vm._v(_vm._s(_vm.getWeekNumber(i - 1)))],{"week":_vm.getWeekNumber(i - 1)})],2)}),0):_vm._e(),_c('div',{staticClass:"vuecal__flex vuecal__cells",class:((_vm.view.id) + "-view"),attrs:{"grow":"","wrap":!_vm.cellOrSplitMinWidth || !_vm.isWeekView,"column":!!_vm.cellOrSplitMinWidth}},[(_vm.cellOrSplitMinWidth && _vm.isWeekView)?_c('weekdays-headings',{style:(_vm.cellOrSplitMinWidth ? ("min-width: " + _vm.cellOrSplitMinWidth + "px") : ''),attrs:{"transition-direction":_vm.transitionDirection,"week-days":_vm.weekDays,"switch-to-narrower-view":_vm.switchToNarrowerView},scopedSlots:_vm._u([{key:"weekday-heading",fn:function(ref){
+var heading = ref.heading;
+var view = ref.view;
+return [_vm._t("weekday-heading",null,{"heading":heading,"view":view})]}},{key:"split-label",fn:function(ref){
+var split = ref.split;
+return [_vm._t("split-label",null,{"split":split,"view":_vm.view.id})]}}],null,true)}):(_vm.hasSplits && _vm.stickySplitLabels && _vm.minSplitWidth)?_c('div',{staticClass:"vuecal__flex vuecal__split-days-headers",style:(_vm.cellOrSplitMinWidth ? ("min-width: " + _vm.cellOrSplitMinWidth + "px") : '')},_vm._l((_vm.daySplits),function(split,i){return _c('div',{key:i,staticClass:"day-split-header",class:split.class || false},[_vm._t("split-label",[_vm._v(_vm._s(split.label))],{"split":split,"view":_vm.view.id})],2)}),0):_vm._e(),(_vm.showAllDayEvents && _vm.hasTimeColumn && ((_vm.isWeekView && _vm.cellOrSplitMinWidth) || (_vm.isDayView && _vm.hasSplits && _vm.minSplitWidth)))?_c('all-day-bar',_vm._b({scopedSlots:_vm._u([{key:"event",fn:function(ref){
+var event = ref.event;
+var view = ref.view;
+return [_vm._t("event",[(_vm.editEvents.title && event.titleEditable)?_c('div',{staticClass:"vuecal__event-title vuecal__event-title--edit",attrs:{"contenteditable":""},domProps:{"innerHTML":_vm._s(event.title)},on:{"blur":function($event){return _vm.onEventTitleBlur($event, event)}}}):(event.title)?_c('div',{staticClass:"vuecal__event-title",domProps:{"innerHTML":_vm._s(event.title)}}):_vm._e(),(event.content && !_vm.hasShortEvents && !_vm.isShortMonthView)?_c('div',{staticClass:"vuecal__event-content",domProps:{"innerHTML":_vm._s(event.content)}}):_vm._e()],{"view":view,"event":event})]}}],null,true)},'all-day-bar',_vm.allDayBar,false)):_vm._e(),_c('div',{ref:"cells",staticClass:"vuecal__flex",style:(_vm.cellOrSplitMinWidth ? ("min-width: " + _vm.cellOrSplitMinWidth + "px") : ''),attrs:{"grow":"","wrap":!_vm.cellOrSplitMinWidth || !_vm.isWeekView}},_vm._l((_vm.viewCells),function(cell,i){return _c('vuecal-cell',{key:i,attrs:{"options":_vm.$props,"edit-events":_vm.editEvents,"data":cell,"cell-width":_vm.hideWeekdays.length && (_vm.isWeekView || _vm.isMonthView) && _vm.cellWidth,"min-timestamp":_vm.minTimestamp,"max-timestamp":_vm.maxTimestamp,"cell-splits":_vm.hasSplits && _vm.daySplits || []},scopedSlots:_vm._u([{key:"cell-content",fn:function(ref){
+var events = ref.events;
+var split = ref.split;
+var selectCell = ref.selectCell;
+return [_vm._t("cell-content",[(split && !_vm.stickySplitLabels)?_c('div',{staticClass:"split-label",domProps:{"innerHTML":_vm._s(split.label)}}):_vm._e(),(cell.content)?_c('div',{staticClass:"vuecal__cell-date",domProps:{"innerHTML":_vm._s(cell.content)}}):_vm._e(),(((_vm.isMonthView && !_vm.eventsOnMonthView) || (_vm.isYearsOrYearView && _vm.eventsCountOnYearView)) && events.length)?_c('div',{staticClass:"vuecal__cell-events-count"},[_vm._t("events-count",[_vm._v(_vm._s(events.length))],{"view":_vm.view,"events":events})],2):_vm._e(),(!_vm.cellOrSplitHasEvents(events, split) && _vm.isWeekOrDayView)?_c('div',{staticClass:"vuecal__no-event"},[_vm._t("no-event",[_vm._v(_vm._s(_vm.texts.noEvent))])],2):_vm._e()],{"cell":cell,"view":_vm.view,"goNarrower":selectCell,"events":events})]}},{key:"event",fn:function(ref){
+var event = ref.event;
+var view = ref.view;
+return [_vm._t("event",[(_vm.editEvents.title && event.titleEditable)?_c('div',{staticClass:"vuecal__event-title vuecal__event-title--edit",attrs:{"contenteditable":""},domProps:{"innerHTML":_vm._s(event.title)},on:{"blur":function($event){return _vm.onEventTitleBlur($event, event)}}}):(event.title)?_c('div',{staticClass:"vuecal__event-title",domProps:{"innerHTML":_vm._s(event.title)}}):_vm._e(),(_vm.time && !event.allDay && !(_vm.isMonthView && (event.allDay || _vm.showAllDayEvents === 'short')) && !_vm.isShortMonthView)?_c('div',{staticClass:"vuecal__event-time"},[_vm._v(_vm._s(_vm.utils.date.formatTime(event.start, _vm.TimeFormat))),(event.endTimeMinutes)?_c('span',[_vm._v(" - "+_vm._s(_vm.utils.date.formatTime(event.end, _vm.TimeFormat, null, true)))]):_vm._e(),(event.daysCount > 1 && (event.segments[cell.formattedDate] || {}).isFirstDay)?_c('small',{staticClass:"days-to-end"},[_vm._v(" +"+_vm._s(event.daysCount - 1)+_vm._s((_vm.texts.day[0] || '').toLowerCase()))]):_vm._e()]):_vm._e(),(event.content && !(_vm.isMonthView && event.allDay && _vm.showAllDayEvents === 'short') && !_vm.isShortMonthView)?_c('div',{staticClass:"vuecal__event-content",domProps:{"innerHTML":_vm._s(event.content)}}):_vm._e()],{"view":view,"event":event})]}}],null,true)},[_vm._t("default")],2)}),1)],1)])])],1)]),(!_vm.ready)?_c('div',{staticClass:"vuecal__scrollbar-check"},[_c('div')]):_vm._e()],1):_vm._e()],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/index.vue?vue&type=template&id=ba84bbfc&lang=pug&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__("99af");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.fill.js
+var es_array_fill = __webpack_require__("cb29");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
+var es_array_filter = __webpack_require__("4de4");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
+var es_array_find = __webpack_require__("7db0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
+var es_array_for_each = __webpack_require__("4160");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.includes.js
+var es_array_includes = __webpack_require__("caad");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
+var es_array_index_of = __webpack_require__("c975");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.join.js
+var es_array_join = __webpack_require__("a15b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("d81d");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reduce.js
+var es_array_reduce = __webpack_require__("13d5");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__("fb6a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.some.js
+var es_array_some = __webpack_require__("45fc");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
+var es_number_constructor = __webpack_require__("a9e3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__("b64b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__("d3b7");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
+var es_regexp_exec = __webpack_require__("ac1f");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
+var es_string_includes = __webpack_require__("2532");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.repeat.js
+var es_string_repeat = __webpack_require__("38cf");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.replace.js
+var es_string_replace = __webpack_require__("5319");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
+var es_string_split = __webpack_require__("1276");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.small.js
+var es_string_small = __webpack_require__("c96a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__("159b");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__("ade3");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
+var es_symbol = __webpack_require__("a4d3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
+var es_symbol_description = __webpack_require__("e01a");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__("d28b");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
+var es_array_from = __webpack_require__("a630");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__("3ca3");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__("ddb0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+
+
+
+
+
+
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
+var es_function_name = __webpack_require__("b0c0");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__("25f0");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+
+
+
+
+
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+
+
+
+
+
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
+var objectSpread2 = __webpack_require__("5530");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/classCallCheck.js
+var classCallCheck = __webpack_require__("d4ec");
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/createClass.js
+var createClass = __webpack_require__("bee2");
+
+// CONCATENATED MODULE: ./src/vue-cal/utils/date.js
+
+
+
+
+
+
+
+
+
+/**
+ * Date Utils & prototypes.
+ *
+ * Waiting for VS Code to support JavaScript private fields.
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+ * Meantime keep `_` for private.
+ */
+var now, todayDate, todayF, date_self;
+var _dateObject = {};
+var _timeObject = {};
+
+var date_DateUtils = /*#__PURE__*/function () {
+  function DateUtils(texts) {
+    var noPrototypes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    Object(classCallCheck["a" /* default */])(this, DateUtils);
+
+    Object(defineProperty["a" /* default */])(this, "texts", {});
+
+    Object(defineProperty["a" /* default */])(this, "dateToMinutes", function (date) {
+      return date.getHours() * 60 + date.getMinutes();
+    });
+
+    date_self = this; // For use in Date prototypes.
+
+    this._texts = texts; // Add prototypes ASAP - only once.
+
+    if (!noPrototypes && Date && !Date.prototype.addDays) this._initDatePrototypes(); // @todo: This would be nicer, but how to set Date.noPrototypes ASAP only if user wants?
+    // if (Date.noPrototypes) delete Date.noPrototypes
+    // else this._initDatePrototypes()
+  }
+
+  Object(createClass["a" /* default */])(DateUtils, [{
+    key: "_initDatePrototypes",
+    value: function _initDatePrototypes() {
+      /* eslint-disable no-extend-native */
+      Date.prototype.addDays = function (days) {
+        return date_self.addDays(this, days);
+      };
+
+      Date.prototype.subtractDays = function (days) {
+        return date_self.subtractDays(this, days);
+      };
+
+      Date.prototype.addHours = function (hours) {
+        return date_self.addHours(this, hours);
+      };
+
+      Date.prototype.subtractHours = function (hours) {
+        return date_self.subtractHours(this, hours);
+      };
+
+      Date.prototype.addMinutes = function (minutes) {
+        return date_self.addMinutes(this, minutes);
+      };
+
+      Date.prototype.subtractMinutes = function (minutes) {
+        return date_self.subtractMinutes(this, minutes);
+      };
+
+      Date.prototype.getWeek = function () {
+        return date_self.getWeek(this);
+      };
+
+      Date.prototype.isToday = function () {
+        return date_self.isToday(this);
+      };
+
+      Date.prototype.isLeapYear = function () {
+        return date_self.isLeapYear(this);
+      };
+
+      Date.prototype.format = function () {
+        var format = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'YYYY-MM-DD';
+        return date_self.formatDate(this, format);
+      };
+
+      Date.prototype.formatTime = function () {
+        var format = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'HH:mm';
+        return date_self.formatTime(this, format);
+      };
+      /* eslint-enable no-extend-native */
+
+    }
+  }, {
+    key: "removePrototypes",
+    value: function removePrototypes() {
+      delete Date.prototype.addDays;
+      delete Date.prototype.subtractDays;
+      delete Date.prototype.addHours;
+      delete Date.prototype.subtractHours;
+      delete Date.prototype.addMinutes;
+      delete Date.prototype.subtractMinutes;
+      delete Date.prototype.getWeek;
+      delete Date.prototype.isToday;
+      delete Date.prototype.isLeapYear;
+      delete Date.prototype.format;
+      delete Date.prototype.formatTime;
+    }
+  }, {
+    key: "updateTexts",
+    value: function updateTexts(texts) {
+      this._texts = texts;
+    } // Cache Today's date (to a maximum) for better isToday() performances. Formatted without leading 0.
+    // We still need to update Today's date when Today changes without page refresh.
+
+  }, {
+    key: "_todayFormatted",
+    value: function _todayFormatted() {
+      if (todayDate !== new Date().getDate()) {
+        now = new Date();
+        todayDate = now.getDate();
+        todayF = "".concat(now.getFullYear(), "-").concat(now.getMonth(), "-").concat(now.getDate());
+      }
+
+      return todayF;
+    } // UTILITIES.
+    // ====================================================================
+
+  }, {
+    key: "addDays",
+    value: function addDays(date, days) {
+      var d = new Date(date.valueOf());
+      d.setDate(d.getDate() + days);
+      return d;
+    }
+  }, {
+    key: "subtractDays",
+    value: function subtractDays(date, days) {
+      var d = new Date(date.valueOf());
+      d.setDate(d.getDate() - days);
+      return d;
+    }
+  }, {
+    key: "addHours",
+    value: function addHours(date, hours) {
+      var d = new Date(date.valueOf());
+      d.setHours(d.getHours() + hours);
+      return d;
+    }
+  }, {
+    key: "subtractHours",
+    value: function subtractHours(date, hours) {
+      var d = new Date(date.valueOf());
+      d.setHours(d.getHours() - hours);
+      return d;
+    }
+  }, {
+    key: "addMinutes",
+    value: function addMinutes(date, minutes) {
+      var d = new Date(date.valueOf());
+      d.setMinutes(d.getMinutes() + minutes);
+      return d;
+    }
+  }, {
+    key: "subtractMinutes",
+    value: function subtractMinutes(date, minutes) {
+      var d = new Date(date.valueOf());
+      d.setMinutes(d.getMinutes() - minutes);
+      return d;
+    }
+  }, {
+    key: "getWeek",
+    value: function getWeek(date) {
+      var d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      var dayNum = d.getUTCDay() || 7;
+      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+      var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+    }
+  }, {
+    key: "isToday",
+    value: function isToday(date) {
+      return "".concat(date.getFullYear(), "-").concat(date.getMonth(), "-").concat(date.getDate()) === this._todayFormatted();
+    }
+  }, {
+    key: "isLeapYear",
+    value: function isLeapYear(date) {
+      var year = date.getFullYear();
+      return !(year % 400) || year % 100 && !(year % 4);
+    } // Returns today if it's FirstDayOfWeek (Monday or Sunday) or previous FirstDayOfWeek otherwise.
+
+  }, {
+    key: "getPreviousFirstDayOfWeek",
+    value: function getPreviousFirstDayOfWeek() {
+      var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      var weekStartsOnSunday = arguments.length > 1 ? arguments[1] : undefined;
+      var prevFirstDayOfWeek = date && new Date(date.valueOf()) || new Date();
+      var dayModifier = weekStartsOnSunday ? 7 : 6;
+      prevFirstDayOfWeek.setDate(prevFirstDayOfWeek.getDate() - (prevFirstDayOfWeek.getDay() + dayModifier) % 7);
+      return prevFirstDayOfWeek;
+    }
+    /**
+     * Converts a string to a Javascript Date object. If a Date object is passed, return it as is.
+     *
+     * @param {String | Date} date the string to convert to Date.
+     * @return {Date} the equivalent Javascript Date object.
+     */
+
+  }, {
+    key: "stringToDate",
+    value: function stringToDate(date) {
+      if (date instanceof Date) return date; // Regexp way is less performant: https://jsperf.com/string-to-date-regexp-vs-new-date
+      // const [, y, m, d, h = 0, min = 0] = date.match(/(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2}))?/)
+      // return new Date(y, parseInt(m) - 1, d, h, min)
+
+      if (date.length === 10) date += ' 00:00';
+      return new Date(date.replace(/-/g, '/')); // replace '-' with '/' for Safari.
+    }
+    /**
+     * Simply takes a Date and returns the associated time in minutes (sum of hours + minutes).
+     *
+     * @param {Date} date the JavaScript Date to extract minutes from.
+     * @return {Number} the number of minutes (total of hours plus minutes).
+     */
+
+  }, {
+    key: "countDays",
+
+    /**
+     * Count the number of days this date range spans onto.
+     * E.g. countDays(2019-11-02 18:00, 2019-11-03 02:00) = 2
+     *
+     * @param {String | Date} start the start date
+     * @param {String | Date} end the end date
+     * @return {Integer} The number of days this date range involves
+     */
+    value: function countDays(start, end) {
+      // replace '-' with '/' for Safari.
+      if (typeof start === 'string') start = start.replace(/-/g, '/');
+      if (typeof end === 'string') end = end.replace(/-/g, '/'); // Set start & end at midnight then compare the delta. Don't modify the original dates.
+
+      start = new Date(start).setHours(0, 0, 0, 0); // Set end at midnight plus 1 sec, so Math.ceil will round it up to a full day.
+
+      end = new Date(end).setHours(0, 0, 1, 0); // Remove the potential daylight saving delta.
+
+      var timezoneDiffMs = (new Date(end).getTimezoneOffset() - new Date(start).getTimezoneOffset()) * 60 * 1000;
+      return Math.ceil((end - start - timezoneDiffMs) / (24 * 3600 * 1000));
+    }
+    /**
+     * Take 2 dates and check if within the same time step (useful in overlapping events).
+     *
+     * @return {Boolean} `true` if their time is included in the same time step,
+     *                   this means these 2 dates are very close.
+     */
+
+  }, {
+    key: "datesInSameTimeStep",
+    value: function datesInSameTimeStep(date1, date2, timeStep) {
+      return Math.abs(date1.getTime() - date2.getTime()) <= timeStep * 60 * 1000;
+    } // ====================================================================
+    // FORMATTERS.
+    // ====================================================================
+
+    /**
+     * Formats a date/time to the given format and returns the formatted string.
+     *
+     * @param {Date} date a JavaScript Date object to format.
+     * @param {String} format the wanted format.
+     * @param {Object} texts Optional: the localized texts object to override the vue-cal one in this._texts.
+     *                       This becomes useful when showing multiple instances with different languages,
+     *                       like in the documentation page.
+     * @return {String} the formatted date.
+     */
+
+  }, {
+    key: "formatDate",
+    value: function formatDate(date) {
+      var _this = this;
+
+      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD';
+      var texts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      if (!texts) texts = this._texts;
+      if (!format) format = 'YYYY-MM-DD'; // Allows passing null for default format.
+
+      if (format === 'YYYY-MM-DD') return this.formatDateLite(date); // Reinit the date and time object on each function call.
+
+      _dateObject = {};
+      _timeObject = {}; // Each keyword is a function to load the dateObject or timeObject on demand: no wasted resource.
+
+      var dateObj = {
+        YYYY: function YYYY() {
+          return _this._hydrateDateObject(date, texts).YYYY;
+        },
+        YY: function YY() {
+          return _this._hydrateDateObject(date, texts).YY();
+        },
+        M: function M() {
+          return _this._hydrateDateObject(date, texts).M;
+        },
+        MM: function MM() {
+          return _this._hydrateDateObject(date, texts).MM();
+        },
+        MMM: function MMM() {
+          return _this._hydrateDateObject(date, texts).MMM();
+        },
+        MMMM: function MMMM() {
+          return _this._hydrateDateObject(date, texts).MMMM();
+        },
+        MMMMG: function MMMMG() {
+          return _this._hydrateDateObject(date, texts).MMMMG();
+        },
+        D: function D() {
+          return _this._hydrateDateObject(date, texts).D;
+        },
+        DD: function DD() {
+          return _this._hydrateDateObject(date, texts).DD();
+        },
+        S: function S() {
+          return _this._hydrateDateObject(date, texts).S();
+        },
+        d: function d() {
+          return _this._hydrateDateObject(date, texts).d;
+        },
+        dd: function dd() {
+          return _this._hydrateDateObject(date, texts).dd();
+        },
+        ddd: function ddd() {
+          return _this._hydrateDateObject(date, texts).ddd();
+        },
+        dddd: function dddd() {
+          return _this._hydrateDateObject(date, texts).dddd();
+        },
+        HH: function HH() {
+          return _this._hydrateTimeObject(date, texts).HH;
+        },
+        H: function H() {
+          return _this._hydrateTimeObject(date, texts).H;
+        },
+        hh: function hh() {
+          return _this._hydrateTimeObject(date, texts).hh;
+        },
+        h: function h() {
+          return _this._hydrateTimeObject(date, texts).h;
+        },
+        am: function am() {
+          return _this._hydrateTimeObject(date, texts).am;
+        },
+        AM: function AM() {
+          return _this._hydrateTimeObject(date, texts).AM;
+        },
+        mm: function mm() {
+          return _this._hydrateTimeObject(date, texts).mm;
+        },
+        m: function m() {
+          return _this._hydrateTimeObject(date, texts).m;
+        }
+      };
+      return format.replace(/(\{[a-zA-Z]+\}|[a-zA-Z]+)/g, function (m, contents) {
+        var result = dateObj[contents.replace(/\{|\}/g, '')];
+        return result !== undefined ? result() : contents;
+      });
+    } // More performant function to convert a Date to `YYYY-MM-DD` formatted string only.
+
+  }, {
+    key: "formatDateLite",
+    value: function formatDateLite(date) {
+      var m = date.getMonth() + 1;
+      var d = date.getDate();
+      return "".concat(date.getFullYear(), "-").concat(m < 10 ? '0' : '').concat(m, "-").concat(d < 10 ? '0' : '').concat(d);
+    }
+    /**
+     * Formats a time (from Date or number of mins) to the given format and returns the formatted string.
+     *
+     * @param {Date | Number} date a JavaScript Date object or a time in minutes.
+     * @param {String} format the wanted format.
+     * @param {Object} texts Optional: the localized texts object to override the vue-cal one in this._texts.
+     *                       This becomes useful when showing multiple instances with different languages,
+     *                       like in the documentation page.
+     * @param {Boolean} round if time is 23:59:59, rounds up to 24:00 for formatting only.
+     * @return {String} the formatted time.
+     */
+
+  }, {
+    key: "formatTime",
+    value: function formatTime(date) {
+      var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'HH:mm';
+      var texts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var round = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      var shouldRound = false;
+
+      if (round) {
+        var _ref = [date.getHours(), date.getMinutes(), date.getSeconds()],
+            h = _ref[0],
+            m = _ref[1],
+            s = _ref[2];
+        if (h + m + s === 23 + 59 + 59) shouldRound = true;
+      }
+
+      if (date instanceof Date && format === 'HH:mm') return shouldRound ? '24:00' : this.formatTimeLite(date);
+      _timeObject = {}; // Reinit the time object on each function call.
+
+      if (!texts) texts = this._texts;
+
+      var timeObj = this._hydrateTimeObject(date, texts);
+
+      var formatted = format.replace(/(\{[a-zA-Z]+\}|[a-zA-Z]+)/g, function (m, contents) {
+        var result = timeObj[contents.replace(/\{|\}/g, '')];
+        return result !== undefined ? result : contents;
+      }); // Round 23:59:59 to 24:00. For 12-hour format there is nothing to replace: as both are 12am.
+      // Also don't return `24:00` straight away as the user format may be different.
+
+      return shouldRound ? formatted.replace('23:59', '24:00') : formatted;
+    }
+    /**
+     * Formats a time to 'HH:mm' from a Date and returns the formatted string.
+     *
+     * @param {Date} date a JavaScript Date object to format.
+     * @return {String} the formatted time.
+     */
+
+  }, {
+    key: "formatTimeLite",
+    value: function formatTimeLite(date) {
+      var h = date.getHours();
+      var m = date.getMinutes();
+      return "".concat((h < 10 ? '0' : '') + h, ":").concat((m < 10 ? '0' : '') + m);
+    }
+  }, {
+    key: "_nth",
+    value: function _nth(d) {
+      if (d > 3 && d < 21) return 'th';
+
+      switch (d % 10) {
+        case 1:
+          return 'st';
+
+        case 2:
+          return 'nd';
+
+        case 3:
+          return 'rd';
+
+        default:
+          return 'th';
+      }
+    }
+  }, {
+    key: "_hydrateDateObject",
+    value: function _hydrateDateObject(date, texts) {
+      var _this2 = this;
+
+      if (_dateObject.D) return _dateObject;
+      var YYYY = date.getFullYear();
+      var M = date.getMonth() + 1;
+      var D = date.getDate();
+      var day = date.getDay(); // Day of the week.
+
+      var dayNumber = (day - 1 + 7) % 7; // Day of the week. 0 to 6 with 6 = Sunday.
+      // Some of this props are functions, to only calculate on demand.
+
+      _dateObject = {
+        // Year.
+        YYYY: YYYY,
+        // 2019.
+        YY: function YY() {
+          return YYYY.toString().substring(2);
+        },
+        // 19.
+        // Month.
+        M: M,
+        // 1 to 12.
+        MM: function MM() {
+          return (M < 10 ? '0' : '') + M;
+        },
+        // 01 to 12.
+        MMM: function MMM() {
+          return texts.months[M - 1].substring(0, 3);
+        },
+        // Jan to Dec.
+        MMMM: function MMMM() {
+          return texts.months[M - 1];
+        },
+        // January to December.
+        MMMMG: function MMMMG() {
+          return (texts.monthsGenitive || texts.months)[M - 1];
+        },
+        // January to December in genitive form (Greek...)
+        // Day.
+        D: D,
+        // 1 to 31.
+        DD: function DD() {
+          return (D < 10 ? '0' : '') + D;
+        },
+        // 01 to 31.
+        S: function S() {
+          return _this2._nth(D);
+        },
+        // st, nd, rd, th.
+        // Day of the week.
+        d: dayNumber + 1,
+        // 1 to 7 with 7 = Sunday.
+        dd: function dd() {
+          return texts.weekDays[dayNumber][0];
+        },
+        // M to S.
+        ddd: function ddd() {
+          return texts.weekDays[dayNumber].substr(0, 3);
+        },
+        // Mon to Sun.
+        dddd: function dddd() {
+          return texts.weekDays[dayNumber];
+        } // Monday to Sunday.
+
+      };
+      return _dateObject;
+    }
+  }, {
+    key: "_hydrateTimeObject",
+    value: function _hydrateTimeObject(date, texts) {
+      if (_timeObject.am) return _timeObject;
+      var H, m;
+
+      if (date instanceof Date) {
+        H = date.getHours();
+        m = date.getMinutes();
+      } else {
+        H = Math.floor(date / 60);
+        m = Math.floor(date % 60);
+      }
+
+      var h = H % 12 ? H % 12 : 12;
+      var am = (texts || {
+        am: 'am',
+        pm: 'pm'
+      })[H === 24 || H < 12 ? 'am' : 'pm'];
+      _timeObject = {
+        H: H,
+        h: h,
+        HH: (H < 10 ? '0' : '') + H,
+        hh: (h < 10 ? '0' : '') + h,
+        am: am,
+        AM: am.toUpperCase(),
+        m: m,
+        mm: (m < 10 ? '0' : '') + m
+      };
+      return _timeObject;
+    } // ====================================================================
+
+  }]);
+
+  return DateUtils;
+}();
+
+
+// CONCATENATED MODULE: ./src/vue-cal/utils/cell.js
+
+
+
+
+/**
+ * Cell Utils.
+ *
+ * Waiting for VS Code to support JavaScript private fields.
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+ * Meantime keep `_` for private.
+ */
+var minutesInADay = 24 * 60;
+
+var cell_CellUtils = function CellUtils(vuecal) {
+  var _this = this;
+
+  Object(classCallCheck["a" /* default */])(this, CellUtils);
+
+  Object(defineProperty["a" /* default */])(this, "_vuecal", null);
+
+  Object(defineProperty["a" /* default */])(this, "selectCell", function () {
+    var force = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var date = arguments.length > 1 ? arguments[1] : undefined;
+    var split = arguments.length > 2 ? arguments[2] : undefined;
+
+    // Cell-click event returns a date and time at cursor position.
+    _this._vuecal.$emit('cell-click', split ? {
+      date: date,
+      split: split
+    } : date); // Switch to narrower view.
+
+
+    if (_this._vuecal.clickToNavigate || force) _this._vuecal.switchToNarrowerView(); // Handle double click manually for touch devices.
+    else if (_this._vuecal.dblclickToNavigate && 'ontouchstart' in window) {
+        _this._vuecal.domEvents.dblTapACell.taps++;
+        setTimeout(function () {
+          return _this._vuecal.domEvents.dblTapACell.taps = 0;
+        }, _this._vuecal.domEvents.dblTapACell.timeout);
+
+        if (_this._vuecal.domEvents.dblTapACell.taps >= 2) {
+          _this._vuecal.domEvents.dblTapACell.taps = 0;
+
+          _this._vuecal.switchToNarrowerView();
+
+          _this._vuecal.$emit('cell-dblclick', split ? {
+            date: date,
+            split: split
+          } : date);
+        }
+      }
+  });
+
+  Object(defineProperty["a" /* default */])(this, "keyPressEnterCell", function (date, split) {
+    // Cell-key-press-enter event returns a date and time at cursor position.
+    _this._vuecal.$emit('cell-keypress-enter', split ? {
+      date: date,
+      split: split
+    } : date); // Switch to narrower view.
+
+
+    _this._vuecal.switchToNarrowerView();
+  });
+
+  Object(defineProperty["a" /* default */])(this, "getPosition", function (e) {
+    var _this$_vuecal$$refs$c = _this._vuecal.$refs.cells.getBoundingClientRect(),
+        left = _this$_vuecal$$refs$c.left,
+        top = _this$_vuecal$$refs$c.top;
+
+    var _ref = 'ontouchstart' in window && e.touches ? e.touches[0] : e,
+        clientX = _ref.clientX,
+        clientY = _ref.clientY;
+
+    return {
+      x: clientX - left,
+      y: clientY - top
+    };
+  });
+
+  Object(defineProperty["a" /* default */])(this, "minutesAtCursor", function (e) {
+    var minutes = 0;
+    var cursorCoords = {
+      x: 0,
+      y: 0
+    };
+    var _this$_vuecal$$props = _this._vuecal.$props,
+        timeStep = _this$_vuecal$$props.timeStep,
+        timeCellHeight = _this$_vuecal$$props.timeCellHeight,
+        timeFrom = _this$_vuecal$$props.timeFrom;
+    if (typeof e === 'number') minutes = e;else if (_typeof(e) === 'object') {
+      cursorCoords = _this.getPosition(e);
+      minutes = Math.round(cursorCoords.y * timeStep / parseInt(timeCellHeight) + timeFrom);
+    }
+    return {
+      minutes: Math.max(Math.min(minutes, minutesInADay), 0),
+      cursorCoords: cursorCoords
+    };
+  });
+
+  this._vuecal = vuecal;
+}
+/**
+ * Select a cell and go to narrower view on double click or single click according to vuecalProps option.
+ *
+ * @param {Boolean} force Force switching to narrower view.
+ * @param {Date} date The selected cell date at the exact time where it was clicked (through cursor coords).
+ * @param {Integer} split The selected cell split if any.
+ */
+;
+
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find-index.js
+var es_array_find_index = __webpack_require__("c740");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
+var es_array_splice = __webpack_require__("a434");
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.set.js
+var es_set = __webpack_require__("6062");
+
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+
+// CONCATENATED MODULE: ./src/vue-cal/utils/event.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Events Utils.
+ *
+ * Waiting for VS Code to support JavaScript private fields.
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Class_fields
+ * Meantime keep `_` for private.
+ */
+
+var defaultEventDuration = 2; // In hours.
+
+var event_minutesInADay = 24 * 60; // Don't do the maths every time.
+
+var event_ud; // Event overlaps: only for the current view, recreated on view change.
+
+var _cellOverlaps, _comparisonArray; // This is an approximation, it will not work with DLS time.
+// const approxDayMilliseconds = minutesInADay * 60 * 1000
+// This is an approximate minimum we can get in a year. Purposely stay bellow 365 but close.
+// const minYearMilliseconds = 364 * approxDayMilliseconds // Don't do the maths every time.
+
+
+var event_EventUtils = /*#__PURE__*/function () {
+  function EventUtils(vuecal, dateUtils) {
+    Object(classCallCheck["a" /* default */])(this, EventUtils);
+
+    Object(defineProperty["a" /* default */])(this, "_vuecal", null);
+
+    Object(defineProperty["a" /* default */])(this, "eventDefaults", {
+      _eid: null,
+      start: '',
+      // Externally given formatted date & time or Date object.
+      startTimeMinutes: 0,
+      end: '',
+      // Externally given formatted date & time or Date object.
+      endTimeMinutes: 0,
+      title: '',
+      content: '',
+      background: false,
+      allDay: false,
+      segments: null,
+      repeat: null,
+      daysCount: 1,
+      deletable: true,
+      deleting: false,
+      titleEditable: true,
+      resizable: true,
+      resizing: false,
+      draggable: true,
+      dragging: false,
+      draggingStatic: false,
+      // Controls the CSS class of the static clone while dragging.
+      focused: false,
+      class: ''
+    });
+
+    this._vuecal = vuecal;
+    event_ud = dateUtils;
+  }
+  /**
+   * Create an event at the given date and time, and allow overriding
+   * event attributes through the eventOptions object.
+   *
+   * @param {Date | String} dateTime The date and time of the new event start.
+   * @param {Number} duration the event duration in minutes.
+   * @param {Object} eventOptions some options to override the `eventDefaults` - optional.
+   */
+
+
+  Object(createClass["a" /* default */])(EventUtils, [{
+    key: "createAnEvent",
+    value: function createAnEvent(dateTime, duration, eventOptions) {
+      var _this = this;
+
+      if (typeof dateTime === 'string') dateTime = event_ud.stringToDate(dateTime);
+      if (!(dateTime instanceof Date)) return false;
+      var startTimeMinutes = event_ud.dateToMinutes(dateTime);
+      duration = duration * 1 || defaultEventDuration * 60;
+      var endTimeMinutes = startTimeMinutes + duration;
+      var end = event_ud.addMinutes(new Date(dateTime), duration); // Automatically add the required endTimeMinutes when passing an end.
+
+      if (eventOptions.end) {
+        if (typeof eventOptions.end === 'string') eventOptions.end = event_ud.stringToDate(eventOptions.end);
+        eventOptions.endTimeMinutes = event_ud.dateToMinutes(eventOptions.end);
+      }
+
+      var event = Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, this.eventDefaults), {}, {
+        _eid: "".concat(this._vuecal._uid, "_").concat(this._vuecal.eventIdIncrement++),
+        start: dateTime,
+        startTimeMinutes: startTimeMinutes,
+        end: end,
+        endTimeMinutes: endTimeMinutes,
+        segments: null
+      }, eventOptions); // If the onEventCreate() function is given as a parameter to vue-cal:
+      // 1. give it access to the created event & the deleteAnEvent() function.
+      // 2. Prevent creation of the event if this function returns false.
+
+
+      if (typeof this._vuecal.onEventCreate === 'function') {
+        if (!this._vuecal.onEventCreate(event, function () {
+          return _this.deleteAnEvent(event);
+        })) return;
+      } // Check if event is a multiple day event and update days count.
+
+
+      if (event.startDateF !== event.endDateF) {
+        event.daysCount = event_ud.countDays(event.start, event.end);
+      } // Add event to the mutableEvents array.
+
+
+      this._vuecal.mutableEvents.push(event); // Add the new event to the current view.
+      // The event may have been edited on the fly to become a multiple-day event,
+      // the method addEventsToView makes sure the segments are created.
+
+
+      this._vuecal.addEventsToView([event]);
+
+      this._vuecal.emitWithEvent('event-create', event);
+
+      this._vuecal.$emit('event-change', {
+        event: this._vuecal.cleanupEvent(event),
+        originalEvent: null
+      });
+
+      return event;
+    }
+    /**
+     * Add an event segment (= day) to a multiple-day event.
+     *
+     * @param {Object} e the multiple-day event to add segment in.
+     */
+
+  }, {
+    key: "addEventSegment",
+    value: function addEventSegment(e) {
+      // If event was previously single-day, event.segments = null,
+      // so first create the first segment (first day).
+      if (!e.segments) {
+        external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(e, 'segments', {});
+        external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(e.segments, event_ud.formatDateLite(e.start), {
+          start: e.start,
+          startTimeMinutes: e.startTimeMinutes,
+          endTimeMinutes: event_minutesInADay,
+          isFirstDay: true,
+          isLastDay: false
+        });
+      } // Modify the last segment - which will not stay the last one after this function.
+
+
+      var previousSegment = e.segments[event_ud.formatDateLite(e.end)]; // previousSegment might not exist when dragging too fast, prevent errors.
+
+      if (previousSegment) {
+        previousSegment.isLastDay = false;
+        previousSegment.endTimeMinutes = event_minutesInADay;
+      } else {// @todo: when moving fast might lose the previousSegment.
+        // Trying to update it would then result in an error, but do nothing would create a visual bug.
+      } // Create the new last segment.
+
+
+      var start = event_ud.addDays(e.end, 1);
+      var formattedDate = event_ud.formatDateLite(start);
+      start.setHours(0, 0, 0, 0);
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(e.segments, formattedDate, {
+        start: start,
+        startTimeMinutes: 0,
+        endTimeMinutes: e.endTimeMinutes,
+        isFirstDay: false,
+        isLastDay: true
+      });
+      e.end = event_ud.addMinutes(start, e.endTimeMinutes);
+      e.daysCount = Object.keys(e.segments).length;
+      return formattedDate;
+    }
+    /**
+     * Remove an event segment (= day) from a multiple-day event.
+     *
+     * @param {Object} e the multiple-day event to remove segments from.
+     */
+
+  }, {
+    key: "removeEventSegment",
+    value: function removeEventSegment(e) {
+      var segmentsCount = Object.keys(e.segments).length;
+      if (segmentsCount <= 1) return event_ud.formatDateLite(e.end); // Remove the last segment.
+
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.delete(e.segments, event_ud.formatDateLite(e.end));
+      segmentsCount--;
+      var end = event_ud.subtractDays(e.end, 1);
+      var formattedDate = event_ud.formatDateLite(end);
+      var previousSegment = e.segments[formattedDate]; // If no more segments, reset the segments attribute to null.
+
+      if (!segmentsCount) e.segments = null; // previousSegment might not exist when dragging too fast, prevent errors.
+      else if (previousSegment) {
+          // Modify the new last segment.
+          previousSegment.isLastDay = true;
+          previousSegment.endTimeMinutes = e.endTimeMinutes;
+        } else {// @todo: when moving fast might lose the previousSegment.
+          // Trying to update it would then result in an error, but do nothing would create a visual bug.
+        }
+      e.daysCount = segmentsCount || 1;
+      e.end = end;
+      return formattedDate;
+    }
+    /**
+     * Create 1 segment per day of the given event, but only within the current view.
+     * (It won't create segments for all the days in view that are not in the event!)
+     *
+     * An event segment is a piece of event per day that contains more day-specific data.
+     *
+     * @param {Object} e the multiple-day event to create segments for.
+     * @param {Date} viewStartDate the starting date of the view.
+     * @param {Date} viewEndDate the ending date of the view.
+     */
+
+  }, {
+    key: "createEventSegments",
+    value: function createEventSegments(e, viewStartDate, viewEndDate) {
+      var viewStartTimestamp = viewStartDate.getTime();
+      var viewEndTimestamp = viewEndDate.getTime();
+      var eventStart = e.start.getTime();
+      var eventEnd = e.end.getTime();
+      var repeatedEventStartFound = false;
+      var timestamp, end, eventStartAtMidnight; // @todo: I don't think we still need that:
+      // Removing 1 sec when ending at 00:00, so that we don't create a segment for nothing on last day.
+
+      if (!e.end.getHours() && !e.end.getMinutes()) eventEnd -= 1000;
+      external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(e, 'segments', {}); // The goal is to create 1 segment per day in the event, but only within the current view.
+
+      if (!e.repeat) {
+        // Simple case first.
+        timestamp = Math.max(viewStartTimestamp, eventStart);
+        end = Math.min(viewEndTimestamp, eventEnd);
+      } else {
+        // Start at the beginning of the range, and end at soonest between `repeat.until` if any or range end.
+        // This range will most likely be too large (e.g. whole week) and we need to narrow it
+        // down in the while loop bellow.
+        // We must not create unused segments, it would break the render or result in weird behaviors.
+        timestamp = viewStartTimestamp;
+        end = Math.min(viewEndTimestamp, e.repeat.until ? event_ud.stringToDate(e.repeat.until).getTime() : viewEndTimestamp);
+      }
+
+      while (timestamp <= end) {
+        var createSegment = false; // Be careful not to simply add 24 hours!
+        // In case of DLS, that would cause the event to never end and browser to hang.
+        // So use `addDays(1)` instead.
+
+        var nextMidnight = event_ud.addDays(new Date(timestamp), 1).setHours(0, 0, 0, 0);
+        var isFirstDay = void 0,
+            isLastDay = void 0,
+            start = void 0,
+            formattedDate = void 0;
+
+        if (e.repeat) {
+          var tmpDate = new Date(timestamp);
+          var tmpDateFormatted = event_ud.formatDateLite(tmpDate); // If the current day in loop is a known date of the repeated event (in `e.occurrences`),
+          // then we found the first day of the event repetition, now update the `eventStart` and
+          // the end of the loop at current day + event days count.
+
+          if (repeatedEventStartFound || e.occurrences && e.occurrences[tmpDateFormatted]) {
+            if (!repeatedEventStartFound) {
+              eventStart = e.occurrences[tmpDateFormatted].start;
+              eventStartAtMidnight = new Date(eventStart).setHours(0, 0, 0, 0);
+              eventEnd = e.occurrences[tmpDateFormatted].end;
+            }
+
+            repeatedEventStartFound = true;
+            createSegment = true;
+          }
+
+          isFirstDay = timestamp === eventStartAtMidnight;
+          isLastDay = tmpDateFormatted === event_ud.formatDateLite(new Date(eventEnd));
+          start = new Date(isFirstDay ? eventStart : timestamp);
+          formattedDate = event_ud.formatDateLite(start); // We want to find any potential other repetition of event in same range.
+
+          if (isLastDay) repeatedEventStartFound = false;
+        } else {
+          createSegment = true;
+          isFirstDay = timestamp === eventStart;
+          isLastDay = end === eventEnd && nextMidnight > end;
+          start = isFirstDay ? e.start : new Date(timestamp);
+          formattedDate = event_ud.formatDateLite(isFirstDay ? e.start : start);
+        }
+
+        if (createSegment) {
+          external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(e.segments, formattedDate, {
+            start: start,
+            startTimeMinutes: isFirstDay ? e.startTimeMinutes : 0,
+            endTimeMinutes: isLastDay ? e.endTimeMinutes : event_minutesInADay,
+            isFirstDay: isFirstDay,
+            isLastDay: isLastDay
+          });
+        }
+
+        timestamp = nextMidnight;
+      }
+
+      return e;
+    }
+    /**
+     * Delete an event.
+     *
+     * @param {Object} event the calendar event to delete.
+     */
+
+  }, {
+    key: "deleteAnEvent",
+    value: function deleteAnEvent(event) {
+      this._vuecal.emitWithEvent('event-delete', event); // Delete the event globally.
+
+
+      this._vuecal.mutableEvents = this._vuecal.mutableEvents.filter(function (e) {
+        return e._eid !== event._eid;
+      }); // Delete the event from the current view.
+      // checkCellOverlappingEvents() will be re-run automatically from the cell computed events.
+
+      this._vuecal.view.events = this._vuecal.view.events.filter(function (e) {
+        return e._eid !== event._eid;
+      });
+    } // EVENT OVERLAPS.
+    // ===================================================================
+    // Will recalculate all the overlaps of the current cell OR split.
+    // cellEvents will contain only the current split events if in a split.
+
+  }, {
+    key: "checkCellOverlappingEvents",
+    value: function checkCellOverlappingEvents(cellEvents, options) {
+      var _this2 = this;
+
+      _comparisonArray = cellEvents.slice(0);
+      _cellOverlaps = {}; // Can't filter background events before calling this function otherwise
+      // when an event is changed to background it would not update its previous overlaps.
+
+      cellEvents.forEach(function (e) {
+        // For performance, never compare the current event in the next loops.
+        // The array is smaller and smaller as we loop.
+        _comparisonArray.shift();
+
+        if (!_cellOverlaps[e._eid]) external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_cellOverlaps, e._eid, {
+          overlaps: [],
+          start: e.start,
+          position: 0
+        });
+        _cellOverlaps[e._eid].position = 0;
+
+        _comparisonArray.forEach(function (e2) {
+          if (!_cellOverlaps[e2._eid]) external_commonjs_vue_commonjs2_vue_root_Vue_default.a.set(_cellOverlaps, e2._eid, {
+            overlaps: [],
+            start: e2.start,
+            position: 0
+          });
+
+          var eventIsInRange = _this2.eventInRange(e2, e.start, e.end);
+
+          var eventsInSameTimeStep = options.overlapsPerTimeStep ? event_ud.datesInSameTimeStep(e.start, e2.start, options.timeStep) : 1; // Add to the overlaps array if overlapping.
+
+          if (!e.background && !e.allDay && !e2.background && !e2.allDay && eventIsInRange && eventsInSameTimeStep) {
+            _cellOverlaps[e._eid].overlaps.push(e2._eid);
+
+            _cellOverlaps[e._eid].overlaps = _toConsumableArray(new Set(_cellOverlaps[e._eid].overlaps)); // Dedupe, most performant way.
+
+            _cellOverlaps[e2._eid].overlaps.push(e._eid);
+
+            _cellOverlaps[e2._eid].overlaps = _toConsumableArray(new Set(_cellOverlaps[e2._eid].overlaps)); // Dedupe, most performant way.
+
+            _cellOverlaps[e2._eid].position++;
+          } // Remove from the overlaps array if not overlapping or if 1 of the 2 events is background or all-day long.
+          else {
+              var pos1, pos2;
+              if ((pos1 = (_cellOverlaps[e._eid] || {
+                overlaps: []
+              }).overlaps.indexOf(e2._eid)) > -1) _cellOverlaps[e._eid].overlaps.splice(pos1, 1);
+              if ((pos2 = (_cellOverlaps[e2._eid] || {
+                overlaps: []
+              }).overlaps.indexOf(e._eid)) > -1) _cellOverlaps[e2._eid].overlaps.splice(pos2, 1);
+              _cellOverlaps[e2._eid].position--;
+            }
+        });
+      }); // Overlaps streak is the longest horizontal set of simultaneous events.
+      // This is determining the width of events in a streak.
+      // e.g. 3 overlapping events in a cell:
+      //  ___   ___
+      // | 1 | |_2_|  1 overlaps 2 & 3; 2 & 3 don't overlap;
+      // |   |  ___   => streak = 2; each width = 50% not 33%.
+      // |___| |_3_|
+
+      var longestStreak = 0;
+
+      var _loop = function _loop(id) {
+        var item = _cellOverlaps[id]; // Calculate the position of each event in current streak (determines the CSS left property).
+
+        var overlapsRow = item.overlaps.map(function (id2) {
+          return {
+            id: id2,
+            start: _cellOverlaps[id2].start
+          };
+        });
+        overlapsRow.push({
+          id: id,
+          start: item.start
+        });
+        overlapsRow.sort(function (a, b) {
+          return a.start < b.start ? -1 : a.start > b.start ? 1 : a.id > b.id ? -1 : 1;
+        });
+        item.position = overlapsRow.findIndex(function (e) {
+          return e.id === id;
+        });
+        longestStreak = Math.max(_this2.getOverlapsStreak(item, _cellOverlaps), longestStreak);
+      };
+
+      for (var id in _cellOverlaps) {
+        _loop(id);
+      }
+
+      return [_cellOverlaps, longestStreak];
+    }
+    /**
+     * Overlaps streak is the longest horizontal set of simultaneous events.
+     * This is determining the width of each events in this streak.
+     * E.g. 3 overlapping events [1, 2, 3]; 1 overlaps 2 & 3; 2 & 3 don't overlap;
+     *      => streak = 2; each width = 50% not 33%.
+     *
+     * @param {Object} event The current event we are checking among all the events of the current cell.
+     * @param {Object} cellOverlaps An indexed array of all the events overlaps for the current cell.
+     * @return {Number} The number of simultaneous event for this event.
+     */
+
+  }, {
+    key: "getOverlapsStreak",
+    value: function getOverlapsStreak(event) {
+      var cellOverlaps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var streak = event.overlaps.length + 1;
+      var removeFromStreak = [];
+      event.overlaps.forEach(function (id) {
+        if (!removeFromStreak.includes(id)) {
+          var overlapsWithoutSelf = event.overlaps.filter(function (id2) {
+            return id2 !== id;
+          });
+          overlapsWithoutSelf.forEach(function (id3) {
+            if (!cellOverlaps[id3].overlaps.includes(id)) removeFromStreak.push(id3);
+          });
+        }
+      });
+      removeFromStreak = _toConsumableArray(new Set(removeFromStreak)); // Dedupe, most performant way.
+
+      streak -= removeFromStreak.length;
+      return streak;
+    }
+    /**
+     * Tells whether an event is in a given date range, even partially.
+     *
+     * @param {Object} event The event to test.
+     * @param {Date} start The start of range date object.
+     * @param {Date} end The end of range date object.
+     * @return {Boolean} true if in range, even partially.
+     */
+
+  }, {
+    key: "eventInRange",
+    value: function eventInRange(event, start, end) {
+      // Check if all-day or timeless event (if date but no time there won't be a `:` in event.start).
+      if (event.allDay || !this._vuecal.time) {
+        // Get the date and discard the time if any, then check it's within the date range.
+        var _startTimestamp = new Date(event.start).setHours(0, 0, 0, 0);
+
+        var _endTimestamp = new Date(event.end).setHours(23, 59, 0, 0);
+
+        return _endTimestamp >= new Date(start).setHours(0, 0, 0, 0) && _startTimestamp <= new Date(end).setHours(0, 0, 0, 0);
+      }
+
+      var startTimestamp = event.start.getTime();
+      var endTimestamp = event.end.getTime();
+      return startTimestamp < end.getTime() && endTimestamp > start.getTime();
+    }
+  }]);
+
+  return EventUtils;
+}();
+
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/header.vue?vue&type=template&id=760d6e75&lang=pug&
+var headervue_type_template_id_760d6e75_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__header"},[(!_vm.options.hideViewSelector)?_c('div',{staticClass:"vuecal__flex vuecal__menu",attrs:{"role":"tablist","aria-label":"Calendar views navigation"}},_vm._l((_vm.viewProps.views),function(v,id){return (v.enabled)?_c('button',{staticClass:"vuecal__view-btn",class:{ 'vuecal__view-btn--active': _vm.view.id === id, 'vuecal__view-btn--highlighted': _vm.highlightedControl === id },attrs:{"type":"button","aria-label":((v.label) + " view")},on:{"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, id, _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, id, _vm.$data)},"click":function($event){return _vm.switchView(id, null, true)}}},[_vm._v(_vm._s(v.label))]):_vm._e()}),0):_vm._e(),(!_vm.options.hideTitleBar)?_c('div',{staticClass:"vuecal__title-bar"},[_c('button',{staticClass:"vuecal__arrow vuecal__arrow--prev",class:{ 'vuecal__arrow--highlighted': _vm.highlightedControl === 'previous' },attrs:{"type":"button","aria-label":("Previous " + (_vm.view.id))},on:{"click":_vm.previous,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'previous', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'previous', _vm.$data)}}},[_vm._t("arrow-prev")],2),_c('div',{staticClass:"vuecal__flex vuecal__title",attrs:{"grow":""}},[_c(_vm.options.transitions ? 'transition' : 'div',{tag:"component",attrs:{"name":("slide-fade--" + _vm.transitionDirection)}},[_c(_vm.broaderView ? 'button' : 'span',{key:("" + (_vm.view.id) + (_vm.view.startDate.toString())),tag:"component",attrs:{"type":!!_vm.broaderView && 'button',"aria-label":!!_vm.broaderView && ("Go to " + _vm.broaderView + " view")},on:{"click":function($event){!!_vm.broaderView && _vm.switchToBroaderView()}}},[_vm._t("title")],2)],1)],1),(_vm.options.todayButton)?_c('button',{staticClass:"vuecal__today-btn",class:{ 'vuecal__today-btn--highlighted': _vm.highlightedControl === 'today' },attrs:{"type":"button","aria-label":"Today"},on:{"click":_vm.goToToday,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'today', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'today', _vm.$data)}}},[_vm._t("today-button")],2):_vm._e(),_c('button',{staticClass:"vuecal__arrow vuecal__arrow--next",class:{ 'vuecal__arrow--highlighted': _vm.highlightedControl === 'next' },attrs:{"type":"button","aria-label":("Next " + (_vm.view.id))},on:{"click":_vm.next,"dragenter":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragEnter($event, 'next', _vm.$data)},"dragleave":function($event){_vm.editEvents.drag && _vm.dnd && _vm.dnd.viewSelectorDragLeave($event, 'next', _vm.$data)}}},[_vm._t("arrow-next")],2)]):_vm._e(),(_vm.viewProps.weekDaysInHeader)?_c('weekdays-headings',{attrs:{"week-days":_vm.weekDays,"transition-direction":_vm.transitionDirection,"switch-to-narrower-view":_vm.switchToNarrowerView},scopedSlots:_vm._u([{key:"weekday-heading",fn:function(ref){
+var heading = ref.heading;
+var view = ref.view;
+return [_vm._t("weekday-heading",null,{"heading":heading,"view":view})]}},{key:"split-label",fn:function(ref){
+var split = ref.split;
+return [_vm._t("split-label",null,{"split":split,"view":_vm.view})]}}],null,true)}):_vm._e(),_c('transition',{attrs:{"name":("slide-fade--" + _vm.transitionDirection)}},[(_vm.showDaySplits)?_c('div',{staticClass:"vuecal__flex vuecal__split-days-headers"},_vm._l((_vm.daySplits),function(split,i){return _c('div',{key:i,staticClass:"day-split-header",class:split.class || false},[_vm._t("split-label",[_vm._v(_vm._s(split.label))],{"split":split,"view":_vm.view.id})],2)}),0):_vm._e()])],1)}
+var headervue_type_template_id_760d6e75_lang_pug_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/header.vue?vue&type=template&id=760d6e75&lang=pug&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/weekdays-headings.vue?vue&type=template&id=6662afd4&lang=pug&
+var weekdays_headingsvue_type_template_id_6662afd4_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal__weekdays-headings"},_vm._l((_vm.headings),function(heading,i){return (!heading.hide)?_c('div',{key:i,staticClass:"vuecal__flex vuecal__heading",class:{ today: heading.today, clickable: _vm.cellHeadingsClickable },style:(_vm.weekdayCellStyles),on:{"click":function($event){_vm.view.id === 'week' && _vm.selectCell(heading.date, $event)},"dblclick":function($event){_vm.view.id === 'week' && _vm.vuecal.dblclickToNavigate && _vm.switchToNarrowerView()}}},[_c('transition',{attrs:{"name":("slide-fade--" + _vm.transitionDirection),"appear":_vm.vuecal.transitions}},[_c('div',{key:_vm.vuecal.transitions ? (i + "-" + (heading.dayOfMonth)) : false,staticClass:"vuecal__flex",attrs:{"column":""}},[_c('div',{staticClass:"vuecal__flex weekday-label",attrs:{"grow":""}},[_vm._t("weekday-heading",[_c('span',{staticClass:"full"},[_vm._v(_vm._s(heading.full))]),_c('span',{staticClass:"small"},[_vm._v(_vm._s(heading.small))]),_c('span',{staticClass:"xsmall"},[_vm._v(_vm._s(heading.xsmall))]),(heading.dayOfMonth)?_c('span',[_vm._v(" "+_vm._s(heading.dayOfMonth))]):_vm._e()],{"heading":_vm.cleanupHeading(heading),"view":_vm.view})],2),(_vm.vuecal.hasSplits && _vm.vuecal.stickySplitLabels)?_c('div',{staticClass:"vuecal__flex vuecal__split-days-headers",attrs:{"grow":""}},_vm._l((_vm.vuecal.daySplits),function(split,i){return _c('div',{key:i,staticClass:"day-split-header",class:split.class || false},[_vm._t("split-label",[_vm._v(_vm._s(split.label))],{"split":split,"view":_vm.view})],2)}),0):_vm._e()])])],1):_vm._e()}),0)}
+var weekdays_headingsvue_type_template_id_6662afd4_lang_pug_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/weekdays-headings.vue?vue&type=template&id=6662afd4&lang=pug&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/weekdays-headings.vue?vue&type=script&lang=js&
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var weekdays_headingsvue_type_script_lang_js_ = ({
+  inject: ['vuecal', 'utils', 'view'],
+  props: {
+    transitionDirection: {
+      type: String,
+      default: 'right'
+    },
+    weekDays: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    switchToNarrowerView: {
+      type: Function,
+      default: function _default() {}
+    }
+  },
+  methods: {
+    selectCell: function selectCell(date, DOMEvent) {
+      if (date.getTime() !== this.view.selectedDate.getTime()) {
+        this.view.selectedDate = date;
+      }
+
+      this.utils.cell.selectCell(false, date, DOMEvent);
+    },
+    cleanupHeading: function cleanupHeading(heading) {
+      return Object(objectSpread2["a" /* default */])({
+        label: heading.full,
+        date: heading.date
+      }, heading.today ? {
+        today: heading.today
+      } : {});
+    }
+  },
+  computed: {
+    headings: function headings() {
+      var _this = this;
+
+      if (!['month', 'week'].includes(this.view.id)) return [];
+      var todayFound = false;
+      var headings = this.weekDays.map(function (cell, i) {
+        var date = _this.utils.date.addDays(_this.view.startDate, i);
+
+        return Object(objectSpread2["a" /* default */])({
+          hide: cell.hide,
+          full: cell.label,
+          // If defined in i18n file, weekDaysShort overrides default truncation of
+          // week days when does not fit on screen or with small/xsmall options.
+          small: cell.short || cell.label.substr(0, 3),
+          xsmall: cell.short || cell.label.substr(0, 1)
+        }, _this.view.id === 'week' ? {
+          dayOfMonth: date.getDate(),
+          date: date,
+          today: !todayFound && _this.utils.date.isToday(date) && !todayFound++
+        } : {});
+      });
+      return headings;
+    },
+    cellWidth: function cellWidth() {
+      return 100 / (7 - this.weekDays.reduce(function (total, day) {
+        return total + day.hide;
+      }, 0));
+    },
+    weekdayCellStyles: function weekdayCellStyles() {
+      return Object(objectSpread2["a" /* default */])({}, this.vuecal.hideWeekdays.length ? {
+        width: "".concat(this.cellWidth, "%")
+      } : {});
+    },
+    cellHeadingsClickable: function cellHeadingsClickable() {
+      return this.view.id === 'week' && (this.vuecal.clickToNavigate || this.vuecal.dblclickToNavigate);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/weekdays-headings.vue?vue&type=script&lang=js&
+ /* harmony default export */ var vue_cal_weekdays_headingsvue_type_script_lang_js_ = (weekdays_headingsvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/vue-cal/weekdays-headings.vue?vue&type=style&index=0&lang=scss&
+var weekdays_headingsvue_type_style_index_0_lang_scss_ = __webpack_require__("9735");
+
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/vue-cal/weekdays-headings.vue
+
+
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  vue_cal_weekdays_headingsvue_type_script_lang_js_,
+  weekdays_headingsvue_type_template_id_6662afd4_lang_pug_render,
+  weekdays_headingsvue_type_template_id_6662afd4_lang_pug_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var weekdays_headings = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/header.vue?vue&type=script&lang=js&
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var headervue_type_script_lang_js_ = ({
+  inject: ['vuecal', 'previous', 'next', 'switchView', 'updateSelectedDate', 'modules', 'view'],
+  components: {
+    WeekdaysHeadings: weekdays_headings
+  },
+  props: {
+    // Vuecal main component options (props).
+    options: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    editEvents: {
+      type: Object,
+      required: true
+    },
+    hasSplits: {
+      type: [Boolean, Number],
+      default: false
+    },
+    daySplits: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    viewProps: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    weekDays: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    switchToNarrowerView: {
+      type: Function,
+      default: function _default() {}
+    }
+  },
+  data: function data() {
+    return {
+      highlightedControl: null
+    };
+  },
+  methods: {
+    goToToday: function goToToday() {
+      // Last midnight.
+      this.updateSelectedDate(new Date(new Date().setHours(0, 0, 0, 0)));
+    },
+    switchToBroaderView: function switchToBroaderView() {
+      this.transitionDirection = 'left';
+      if (this.broaderView) this.switchView(this.broaderView);
+    }
+  },
+  computed: {
+    transitionDirection: {
+      get: function get() {
+        return this.vuecal.transitionDirection;
+      },
+      set: function set(direction) {
+        this.vuecal.transitionDirection = direction;
+      }
+    },
+    broaderView: function broaderView() {
+      var enabledViews = this.vuecal.enabledViews;
+      return enabledViews[enabledViews.indexOf(this.view.id) - 1];
+    },
+    showDaySplits: function showDaySplits() {
+      return this.view.id === 'day' && this.hasSplits && this.options.stickySplitLabels && !this.options.minSplitWidth;
+    },
+    // Drag & drop module.
+    dnd: function dnd() {
+      return this.modules.dnd;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/header.vue?vue&type=script&lang=js&
+ /* harmony default export */ var vue_cal_headervue_type_script_lang_js_ = (headervue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/vue-cal/header.vue?vue&type=style&index=0&lang=scss&
+var headervue_type_style_index_0_lang_scss_ = __webpack_require__("dc34");
+
+// CONCATENATED MODULE: ./src/vue-cal/header.vue
+
+
+
+
+
+
+/* normalize component */
+
+var header_component = normalizeComponent(
+  vue_cal_headervue_type_script_lang_js_,
+  headervue_type_template_id_760d6e75_lang_pug_render,
+  headervue_type_template_id_760d6e75_lang_pug_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var header = (header_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/all-day-bar.vue?vue&type=template&id=20856694&lang=pug&
+var all_day_barvue_type_template_id_20856694_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__flex vuecal__all-day",style:(_vm.cellOrSplitMinWidth && { height: _vm.height })},[(!_vm.cellOrSplitMinWidth)?_c('div',{staticClass:"vuecal__all-day-text",staticStyle:{"width":"3em"}},[_c('span',[_vm._v(_vm._s(_vm.label))])]):_vm._e(),_c('div',{staticClass:"vuecal__flex vuecal__cells",class:((_vm.view.id) + "-view"),style:(_vm.cellOrSplitMinWidth ? ("min-width: " + _vm.cellOrSplitMinWidth + "px") : ''),attrs:{"grow":""}},_vm._l((_vm.cells),function(cell,i){return _c('vuecal-cell',{key:i,attrs:{"options":_vm.options,"edit-events":_vm.editEvents,"data":cell,"all-day":true,"cell-width":_vm.options.hideWeekdays.length && (_vm.vuecal.isWeekView || _vm.vuecal.isMonthView) && _vm.vuecal.cellWidth,"min-timestamp":_vm.options.minTimestamp,"max-timestamp":_vm.options.maxTimestamp,"cell-splits":_vm.daySplits},scopedSlots:_vm._u([{key:"event",fn:function(ref){
+var event = ref.event;
+var view = ref.view;
+return [_vm._t("event",null,{"view":view,"event":event})]}}],null,true)})}),1)])}
+var all_day_barvue_type_template_id_20856694_lang_pug_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/all-day-bar.vue?vue&type=template&id=20856694&lang=pug&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/cell.vue?vue&type=template&id=403926a8&lang=pug&
+var cellvue_type_template_id_403926a8_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition-group',{staticClass:"vuecal__cell",class:_vm.cellClasses,style:(_vm.cellStyles),attrs:{"name":("slide-fade--" + _vm.transitionDirection),"tag":"div","appear":_vm.options.transitions}},[_vm._l(((_vm.splitsCount ? _vm.splits : 1)),function(split,i){return _c('div',{key:_vm.options.transitions ? ((_vm.view.id) + "-" + (_vm.data.content) + "-" + i) : i,staticClass:"vuecal__flex vuecal__cell-content",class:_vm.splitsCount && _vm.splitClasses(split),attrs:{"data-split":_vm.splitsCount ? split.id : false,"column":"","tabindex":"0","aria-label":_vm.data.content},on:{"focus":function($event){return _vm.onCellFocus($event)},"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.onCellkeyPressEnter($event)},"touchstart":function($event){!_vm.isDisabled && _vm.onCellTouchStart($event, _vm.splitsCount ? split.id : null)},"mousedown":function($event){!_vm.isDisabled && _vm.onCellMouseDown($event, _vm.splitsCount ? split.id : null)},"click":function($event){!_vm.isDisabled && _vm.onCellClick($event)},"dblclick":function($event){!_vm.isDisabled && _vm.onCellDblClick($event)},"contextmenu":function($event){!_vm.isDisabled && _vm.options.cellContextmenu && _vm.onCellContextMenu($event)},"dragenter":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragEnter($event, _vm.$data, _vm.data.startDate)},"dragover":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragOver($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)},"dragleave":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragLeave($event, _vm.$data, _vm.data.startDate)},"drop":function($event){!_vm.isDisabled && _vm.editEvents.drag && _vm.dnd && _vm.dnd.cellDragDrop($event, _vm.$data, _vm.data.startDate, _vm.splitsCount ? split.id : null)}}},[(_vm.isWeekOrDayView && !_vm.allDay && _vm.specialHours.from !== null)?_c('div',{staticClass:"vuecal__special-hours",class:("vuecal__special-hours--day" + (_vm.specialHours.day) + " " + (_vm.specialHours.class)),style:(("height: " + (_vm.specialHours.height) + "px;top: " + (_vm.specialHours.top) + "px"))}):_vm._e(),_vm._t("cell-content",null,{"events":_vm.events,"selectCell":function ($event) { return _vm.selectCell($event, true); },"split":_vm.splitsCount ? split : false}),(_vm.eventsCount && (_vm.isWeekOrDayView || (_vm.view.id === 'month' && _vm.options.eventsOnMonthView)))?_c('div',{staticClass:"vuecal__cell-events"},_vm._l(((_vm.splitsCount ? split.events : _vm.events)),function(event,j){return _c('event',{key:j,attrs:{"cell-formatted-date":_vm.data.formattedDate,"event":event,"all-day":_vm.allDay,"cell-events":_vm.splitsCount ? split.events : _vm.events,"overlaps":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).overlaps,"event-position":((_vm.splitsCount ? split.overlaps[event._eid] : _vm.cellOverlaps[event._eid]) || []).position,"overlaps-streak":_vm.splitsCount ? split.overlapsStreak : _vm.cellOverlapsStreak},scopedSlots:_vm._u([{key:"event",fn:function(ref){
+var event = ref.event;
+var view = ref.view;
+return [_vm._t("event",null,{"view":view,"event":event})]}}],null,true)})}),1):_vm._e()],2)}),(_vm.timelineVisible)?_c('div',{key:_vm.options.transitions ? ((_vm.view.id) + "-now-line") : 'now-line',staticClass:"vuecal__now-line",style:(("top: " + _vm.todaysTimePosition + "px")),attrs:{"title":_vm.utils.date.formatTime(_vm.vuecal.now)}}):_vm._e()],2)}
+var cellvue_type_template_id_403926a8_lang_pug_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/cell.vue?vue&type=template&id=403926a8&lang=pug&
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
+
+
+
+
+
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js
+
+
+
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"62984130-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/event.vue?vue&type=template&id=cdf79fc4&lang=pug&
+var eventvue_type_template_id_cdf79fc4_lang_pug_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vuecal__event",class:_vm.eventClasses,style:(_vm.eventStyles),attrs:{"tabindex":"0","draggable":_vm.draggable},on:{"focus":_vm.focusEvent,"keypress":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }$event.stopPropagation();return _vm.onEnterKeypress($event)},"mouseenter":_vm.onMouseEnter,"mouseleave":_vm.onMouseLeave,"touchstart":function($event){$event.stopPropagation();return _vm.onTouchStart($event)},"mousedown":function($event){_vm.onMouseDown($event) /* Don't stop mousedown propagation. See in onMouseDown(). */},"mouseup":_vm.onMouseUp,"touchend":_vm.onMouseUp,"touchmove":_vm.onTouchMove,"dblclick":_vm.onDblClick,"dragstart":function($event){_vm.draggable && _vm.onDragStart($event)},"dragend":function($event){_vm.draggable && _vm.onDragEnd()}}},[(_vm.vuecal.editEvents.delete && _vm.event.deletable)?_c('div',{staticClass:"vuecal__event-delete",on:{"click":function($event){$event.stopPropagation();return _vm.deleteEvent($event)},"touchstart":function($event){$event.stopPropagation();return _vm.touchDeleteEvent($event)}}},[_vm._v(_vm._s(_vm.vuecal.texts.deleteEvent))]):_vm._e(),_vm._t("event",null,{"event":_vm.event,"view":_vm.view.id}),(_vm.resizable)?_c('div',{staticClass:"vuecal__event-resize-handle",attrs:{"contenteditable":"false"},on:{"mousedown":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onResizeHandleMouseDown($event)},"touchstart":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onResizeHandleMouseDown($event)}}}):_vm._e()],2)}
+var eventvue_type_template_id_cdf79fc4_lang_pug_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/vue-cal/event.vue?vue&type=template&id=cdf79fc4&lang=pug&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/event.vue?vue&type=script&lang=js&
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var eventvue_type_script_lang_js_ = ({
+  inject: ['vuecal', 'utils', 'modules', 'view', 'domEvents', 'editEvents'],
+  props: {
+    cellFormattedDate: {
+      type: String,
+      default: ''
+    },
+    event: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    cellEvents: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    overlaps: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    // If multiple simultaneous events, the events are placed from left to right from the
+    // one starting first to the last. (See utils/event.js > checkCellOverlappingEvents)
+    eventPosition: {
+      type: Number,
+      default: 0
+    },
+    overlapsStreak: {
+      type: Number,
+      default: 0
+    },
+    allDay: {
+      type: Boolean,
+      default: false
+    } // Is the event displayed in the all-day bar.
+
+  },
+  data: function data() {
+    return {
+      // Event touch detection with 30px threshold.
+      touch: {
+        dragThreshold: 30,
+        // px.
+        startX: 0,
+        startY: 0,
+        // Detect if the event touch start + touch end was a drag or a tap.
+        // If it was a drag, don't call the event-click handler.
+        dragged: false
+      }
+    };
+  },
+  methods: {
+    /**
+     * On event mousedown.
+     * Do not prevent propagation to trigger cell mousedown which highlights the cell if not highlighted.
+     */
+    onMouseDown: function onMouseDown(e) {
+      var _this = this;
+
+      var touch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      // Prevent a double mouse down on touch devices.
+      if ('ontouchstart' in window && !touch) return false;
+      var _this$domEvents = this.domEvents,
+          clickHoldAnEvent = _this$domEvents.clickHoldAnEvent,
+          focusAnEvent = _this$domEvents.focusAnEvent,
+          resizeAnEvent = _this$domEvents.resizeAnEvent,
+          dragAnEvent = _this$domEvents.dragAnEvent; // If the delete button is already out and event is on focus then delete event.
+      // Return true so the event-click function (if any) is not called.
+
+      if (focusAnEvent._eid === this.event._eid && clickHoldAnEvent._eid === this.event._eid) {
+        return true;
+      } // Focus the clicked event.
+
+
+      this.focusEvent();
+      clickHoldAnEvent._eid = null; // Reinit click hold on each click.
+      // Show event delete button.
+
+      if (this.vuecal.editEvents.delete && this.event.deletable) {
+        clickHoldAnEvent.timeoutId = setTimeout(function () {
+          if (!resizeAnEvent._eid && !dragAnEvent._eid) {
+            clickHoldAnEvent._eid = _this.event._eid;
+            _this.event.deleting = true;
+          }
+        }, clickHoldAnEvent.timeout);
+      }
+    },
+
+    /**
+     * The mouseup handler is global (whole document) and initialized in index.vue on mounted.
+     * It handles the mouseup on cell, events, and everything.
+     * All mouseup on event, should be put there to avoid conflicts with other cases.
+     * This function is also called on touchend on the event.
+     */
+    onMouseUp: function onMouseUp(e) {
+      // Don't allow mouseup to be fired on different event than mousedown for the onEventClick function.
+      if (this.domEvents.focusAnEvent._eid === this.event._eid && !this.touch.dragged) {
+        // This is used in the global mouseup handler.
+        this.domEvents.focusAnEvent.mousedUp = true;
+      }
+
+      this.touch.dragged = false; // After the touchend happens, reset the dragged flag.
+    },
+    onMouseEnter: function onMouseEnter(e) {
+      e.preventDefault();
+      this.vuecal.emitWithEvent('event-mouse-enter', this.event);
+    },
+    onMouseLeave: function onMouseLeave(e) {
+      e.preventDefault();
+      this.vuecal.emitWithEvent('event-mouse-leave', this.event);
+    },
+    // Detect if user taps on an event or drags it. If dragging, don't fire the event-click handler (if any).
+    onTouchMove: function onTouchMove(e) {
+      // Skip the maths if there is no event click handler.
+      if (typeof this.vuecal.onEventClick !== 'function') return;
+      var _e$touches$ = e.touches[0],
+          clientX = _e$touches$.clientX,
+          clientY = _e$touches$.clientY;
+      var _this$touch = this.touch,
+          startX = _this$touch.startX,
+          startY = _this$touch.startY,
+          dragThreshold = _this$touch.dragThreshold;
+
+      if (Math.abs(clientX - startX) > dragThreshold || Math.abs(clientY - startY) > dragThreshold) {
+        this.touch.dragged = true;
+      }
+    },
+    onTouchStart: function onTouchStart(e) {
+      this.touch.startX = e.touches[0].clientX;
+      this.touch.startY = e.touches[0].clientY;
+      this.onMouseDown(e, true);
+    },
+    onEnterKeypress: function onEnterKeypress(e) {
+      if (typeof this.vuecal.onEventClick === 'function') return this.vuecal.onEventClick(this.event, e);
+    },
+    onDblClick: function onDblClick(e) {
+      if (typeof this.vuecal.onEventDblclick === 'function') return this.vuecal.onEventDblclick(this.event, e);
+    },
+    onDragStart: function onDragStart(e) {
+      this.dnd && this.dnd.eventDragStart(e, this.event);
+    },
+    onDragEnd: function onDragEnd() {
+      this.dnd && this.dnd.eventDragEnd(this.event);
+    },
+    onResizeHandleMouseDown: function onResizeHandleMouseDown() {
+      this.focusEvent();
+      this.domEvents.dragAnEvent._eid = null;
+      this.domEvents.resizeAnEvent = Object.assign(this.domEvents.resizeAnEvent, {
+        _eid: this.event._eid,
+        start: (this.segment || this.event).start,
+        split: this.event.split || null,
+        segment: !!this.segment && this.utils.date.formatDateLite(this.segment.start),
+        originalEnd: new Date((this.segment || this.event).end),
+        originalEndTimeMinutes: this.event.endTimeMinutes
+      });
+      this.event.resizing = true;
+    },
+    deleteEvent: function deleteEvent() {
+      var touch = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      // Prevent a double mouse down on touch devices.
+      if ('ontouchstart' in window && !touch) return false;
+      this.utils.event.deleteAnEvent(this.event);
+    },
+    touchDeleteEvent: function touchDeleteEvent(event) {
+      this.deleteEvent(true);
+    },
+    cancelDeleteEvent: function cancelDeleteEvent() {
+      this.event.deleting = false;
+    },
+    focusEvent: function focusEvent() {
+      var focusAnEvent = this.domEvents.focusAnEvent;
+      var focusedEvent = focusAnEvent._eid; // If event is already focus cancel refocusing.
+
+      if (focusedEvent === this.event._eid) return; // Unfocus previous event if any.
+      else if (focusedEvent) {
+          var event = this.view.events.find(function (e) {
+            return e._eid === focusedEvent;
+          });
+          if (event) event.focused = false;
+        } // Cancel delete on previous event if any.
+
+      this.vuecal.cancelDelete();
+      this.vuecal.emitWithEvent('event-focus', this.event);
+      focusAnEvent._eid = this.event._eid;
+      this.event.focused = true;
+    }
+  },
+  computed: {
+    eventDimensions: function eventDimensions() {
+      var _ref = this.segment || this.event,
+          startTimeMinutes = _ref.startTimeMinutes,
+          endTimeMinutes = _ref.endTimeMinutes; // Top of event.
+
+
+      var minutesFromTop = startTimeMinutes - this.vuecal.timeFrom;
+      var top = Math.max(Math.round(minutesFromTop * this.vuecal.timeCellHeight / this.vuecal.timeStep), 0); // Bottom of event.
+
+      minutesFromTop = Math.min(endTimeMinutes, this.vuecal.timeTo) - this.vuecal.timeFrom;
+      var bottom = Math.round(minutesFromTop * this.vuecal.timeCellHeight / this.vuecal.timeStep);
+      var height = Math.max(bottom - top, 5); // Min height is 5px.
+
+      return {
+        top: top,
+        height: height
+      };
+    },
+    eventStyles: function eventStyles() {
+      if (this.event.allDay || !this.vuecal.time || !this.event.endTimeMinutes || this.view.id === 'month' || this.allDay) return {};
+      var width = 100 / Math.min(this.overlaps.length + 1, this.overlapsStreak);
+      var left = 100 / (this.overlaps.length + 1) * this.eventPosition;
+
+      if (this.vuecal.minEventWidth && width < this.vuecal.minEventWidth) {
+        width = this.vuecal.minEventWidth;
+        left = (100 - this.vuecal.minEventWidth) / this.overlaps.length * this.eventPosition;
+      }
+
+      var _this$eventDimensions = this.eventDimensions,
+          top = _this$eventDimensions.top,
+          height = _this$eventDimensions.height;
+      return {
+        top: "".concat(top, "px"),
+        height: "".concat(height, "px"),
+        width: "".concat(width, "%"),
+        left: this.event.left && "".concat(this.event.left, "px") || "".concat(left, "%")
+      };
+    },
+    // Don't rely on global variables otherwise whenever it would change all the events would be redrawn.
+    eventClasses: function eventClasses() {
+      var _ref3;
+
+      var _ref2 = this.segment || {},
+          isFirstDay = _ref2.isFirstDay,
+          isLastDay = _ref2.isLastDay;
+
+      return _ref3 = {}, Object(defineProperty["a" /* default */])(_ref3, this.event.class, !!this.event.class), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--focus', this.event.focused), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--resizing', this.event.resizing), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--background', this.event.background), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--deletable', this.event.deleting), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--all-day', this.event.allDay), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--dragging', !this.event.draggingStatic && this.event.dragging), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--static', this.event.dragging && this.event.draggingStatic), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__event--multiple-days', !!this.segment), Object(defineProperty["a" /* default */])(_ref3, 'event-start', this.segment && isFirstDay && !isLastDay), Object(defineProperty["a" /* default */])(_ref3, 'event-middle', this.segment && !isFirstDay && !isLastDay), Object(defineProperty["a" /* default */])(_ref3, 'event-end', this.segment && isLastDay && !isFirstDay), _ref3;
+    },
+    // When multiple-day events, a segment is a portion of event spanning on 1 day.
+    segment: function segment() {
+      return this.event.segments && this.event.segments[this.cellFormattedDate] || null;
+    },
+    draggable: function draggable() {
+      var _this$event = this.event,
+          draggable = _this$event.draggable,
+          background = _this$event.background,
+          daysCount = _this$event.daysCount;
+      return this.vuecal.editEvents.drag && draggable && !background && daysCount === 1;
+    },
+    resizable: function resizable() {
+      var _this$vuecal = this.vuecal,
+          editEvents = _this$vuecal.editEvents,
+          time = _this$vuecal.time;
+      return editEvents.resize && this.event.resizable && time && !this.allDay && (!this.segment || this.segment && this.segment.isLastDay) && this.view.id !== 'month';
+    },
+    // Drag & drop module.
+    dnd: function dnd() {
+      return this.modules.dnd;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/event.vue?vue&type=script&lang=js&
+ /* harmony default export */ var vue_cal_eventvue_type_script_lang_js_ = (eventvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/vue-cal/event.vue?vue&type=style&index=0&lang=scss&
+var eventvue_type_style_index_0_lang_scss_ = __webpack_require__("61f2");
+
+// CONCATENATED MODULE: ./src/vue-cal/event.vue
+
+
+
+
+
+
+/* normalize component */
+
+var event_component = normalizeComponent(
+  vue_cal_eventvue_type_script_lang_js_,
+  eventvue_type_template_id_cdf79fc4_lang_pug_render,
+  eventvue_type_template_id_cdf79fc4_lang_pug_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var vue_cal_event = (event_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/cell.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var cellvue_type_script_lang_js_ = ({
+  inject: ['vuecal', 'utils', 'modules', 'view', 'domEvents'],
+  components: {
+    Event: vue_cal_event
+  },
+  props: {
+    // Vue-cal main component options (props).
+    options: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    editEvents: {
+      type: Object,
+      required: true
+    },
+    data: {
+      type: Object,
+      required: true
+    },
+    cellSplits: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    minTimestamp: {
+      type: [Number, null],
+      default: null
+    },
+    maxTimestamp: {
+      type: [Number, null],
+      default: null
+    },
+    cellWidth: {
+      type: [Number, Boolean],
+      default: false
+    },
+    allDay: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      cellOverlaps: {},
+      cellOverlapsStreak: 1,
+      // Largest amount of simultaneous events in cell.
+      // On mouse down, save the time at cursor so it can be reused on cell focus event
+      // where there is no cursor coords.
+      timeAtCursor: null,
+      highlighted: false,
+      // On event drag over.
+      highlightedSplit: null
+    };
+  },
+  methods: {
+    getSplitAtCursor: function getSplitAtCursor(_ref) {
+      var target = _ref.target;
+      var targetIsSplit = target.classList.contains('vuecal__cell-split');
+      var split = targetIsSplit ? target : this.vuecal.findAncestor(target, 'vuecal__cell-split');
+
+      if (split) {
+        split = split.attributes['data-split'].value; // Convert to a numeric value if split id is a number.
+
+        if (parseInt(split).toString() === split.toString()) split = parseInt(split);
+      }
+
+      return split || null;
+    },
+    splitClasses: function splitClasses(split) {
+      return Object(defineProperty["a" /* default */])({
+        'vuecal__cell-split': true,
+        'vuecal__cell-split--highlighted': this.highlightedSplit === split.id
+      }, split.class, !!split.class);
+    },
+    checkCellOverlappingEvents: function checkCellOverlappingEvents() {
+      // If splits, checkCellOverlappingEvents() is called from within computed splits.
+      if (this.options.time && this.eventsCount && !this.splitsCount) {
+        if (this.eventsCount === 1) {
+          this.cellOverlaps = [];
+          this.cellOverlapsStreak = 1;
+        } // If only 1 event remains re-init the overlaps.
+        else {
+            var _this$utils$event$che = this.utils.event.checkCellOverlappingEvents(this.events, this.options);
+
+            var _this$utils$event$che2 = _slicedToArray(_this$utils$event$che, 2);
+
+            this.cellOverlaps = _this$utils$event$che2[0];
+            this.cellOverlapsStreak = _this$utils$event$che2[1];
+          }
+      }
+    },
+    isDOMElementAnEvent: function isDOMElementAnEvent(el) {
+      return this.vuecal.isDOMElementAnEvent(el);
+    },
+
+    /**
+     * Select a cell and go to narrower view on double click or single click according to vuecalProps option.
+     */
+    selectCell: function selectCell(DOMEvent) {
+      var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      // If splitting days, also return the clicked split on cell click when emitting event.
+      var split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null;
+      this.utils.cell.selectCell(force, this.timeAtCursor, split);
+      this.timeAtCursor = null;
+    },
+    onCellkeyPressEnter: function onCellkeyPressEnter(DOMEvent) {
+      if (!this.isSelected) this.onCellFocus(DOMEvent); // If splitting days, also return the clicked split on cell keypress when emitting event.
+
+      var split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null;
+      this.utils.cell.keyPressEnterCell(this.timeAtCursor, split);
+      this.timeAtCursor = null;
+    },
+
+    /**
+     * On cell focus, from tab key or from mousedown, highlight the cell and emit
+     * the cell-focus event with the date of the cell start when focusing from tab or
+     * the date & time at cursor if click/touch.
+     */
+    onCellFocus: function onCellFocus(DOMEvent) {
+      if (!this.isSelected) {
+        this.isSelected = this.data.startDate; // Highlight the cell.
+        // If splitting days, also return the clicked split on cell focus when emitting event.
+
+        var split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null; // Cell-focus event returns the cell start date (at midnight) if triggered from tab key,
+        // or cursor coords time if clicked.
+
+        var date = this.timeAtCursor || this.data.startDate;
+        this.vuecal.$emit('cell-focus', split ? {
+          date: date,
+          split: split
+        } : date);
+      }
+    },
+    onCellMouseDown: function onCellMouseDown(DOMEvent) {
+      var split = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var touch = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      // Prevent a double mouse down on touch devices.
+      if ('ontouchstart' in window && !touch) return false;
+      if (!this.isSelected) this.onCellFocus(DOMEvent);
+      var _this$domEvents = this.domEvents,
+          clickHoldACell = _this$domEvents.clickHoldACell,
+          focusAnEvent = _this$domEvents.focusAnEvent; // Reinit the click trigger on each mousedown.
+      // In some cases we explicitly set this flag to prevent the click event to trigger,
+      // and cancel event creation.
+
+      this.domEvents.cancelClickEventCreation = false; // Also reinit this var on each mousedown.
+
+      clickHoldACell.eventCreated = false;
+      this.timeAtCursor = new Date(this.data.startDate);
+
+      var _this$vuecal$minutesA = this.vuecal.minutesAtCursor(DOMEvent),
+          minutes = _this$vuecal$minutesA.minutes,
+          y = _this$vuecal$minutesA.cursorCoords.y;
+
+      this.timeAtCursor.setMinutes(minutes);
+      var mouseDownOnEvent = this.isDOMElementAnEvent(DOMEvent.target); // Unfocus an event if any is focused and clicking on cell outside of an event.
+
+      if (!mouseDownOnEvent && focusAnEvent._eid) {
+        (this.view.events.find(function (e) {
+          return e._eid === focusAnEvent._eid;
+        }) || {}).focused = false;
+      } // Only if event creation is allowed and mousedown is on a cell (not on event).
+
+
+      if (this.editEvents.create && !mouseDownOnEvent) this.setUpEventCreation(DOMEvent, y);
+    },
+    setUpEventCreation: function setUpEventCreation(DOMEvent, startCursorY) {
+      // If dragToCreateEvent is true, start the event creation from dragging
+      // only on week and day views (doesn't make sense on month view).
+      if (this.options.dragToCreateEvent && ['week', 'day'].includes(this.view.id)) {
+        var dragCreateAnEvent = this.domEvents.dragCreateAnEvent;
+        dragCreateAnEvent.startCursorY = startCursorY; // If splitting days, store the clicked split to create an event in it from the global
+        // mousemove handler in index.vue.
+
+        dragCreateAnEvent.split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null; // Save the time at cursor on initial mousedown.
+
+        dragCreateAnEvent.start = this.timeAtCursor; // If snapToTime, set the start to the closest intervaled number.
+
+        if (this.options.snapToTime) {
+          var timeMinutes = this.timeAtCursor.getHours() * 60 + this.timeAtCursor.getMinutes();
+          var plusHalfSnapTime = timeMinutes + this.options.snapToTime / 2;
+          timeMinutes = plusHalfSnapTime - plusHalfSnapTime % this.options.snapToTime;
+          dragCreateAnEvent.start.setHours(0, timeMinutes, 0, 0);
+        }
+      } // If the cellClickHold option is true and not mousedown on an event, click & hold to create an event.
+      else if (this.options.cellClickHold && ['month', 'week', 'day'].includes(this.view.id)) {
+          this.setUpCellHoldTimer(DOMEvent);
+        }
+    },
+    // When click & holding a cell, and if allowed, set a timeout to create an event (can be cancelled).
+    setUpCellHoldTimer: function setUpCellHoldTimer(DOMEvent) {
+      var _this = this;
+
+      var clickHoldACell = this.domEvents.clickHoldACell;
+      clickHoldACell.cellId = "".concat(this.vuecal._uid, "_").concat(this.data.formattedDate); // If splitting days, store the clicked split to create an event in it from the global
+      // mousemove handler in index.vue.
+
+      clickHoldACell.split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null;
+      clickHoldACell.timeoutId = setTimeout(function () {
+        if (clickHoldACell.cellId && !_this.domEvents.cancelClickEventCreation) {
+          var _this$utils$event$cre = _this.utils.event.createAnEvent(_this.timeAtCursor, null, clickHoldACell.split ? {
+            split: clickHoldACell.split
+          } : {}),
+              _eid = _this$utils$event$cre._eid;
+
+          clickHoldACell.eventCreated = _eid;
+        }
+      }, clickHoldACell.timeout);
+    },
+    onCellTouchStart: function onCellTouchStart(DOMEvent) {
+      var split = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      // If not mousedown on an event.
+      this.onCellMouseDown(DOMEvent, split, true);
+    },
+    onCellClick: function onCellClick(DOMEvent) {
+      if (!this.isDOMElementAnEvent(DOMEvent.target)) this.selectCell(DOMEvent);
+    },
+    onCellDblClick: function onCellDblClick(DOMEvent) {
+      var date = new Date(this.data.startDate);
+      date.setMinutes(this.vuecal.minutesAtCursor(DOMEvent).minutes); // If splitting days, also return the clicked split on cell dblclick when emitting event.
+
+      var split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null;
+      this.vuecal.$emit('cell-dblclick', split ? {
+        date: date,
+        split: split
+      } : date);
+      if (this.options.dblclickToNavigate) this.vuecal.switchToNarrowerView();
+    },
+    onCellContextMenu: function onCellContextMenu(DOMEvent) {
+      DOMEvent.stopPropagation();
+      DOMEvent.preventDefault();
+      var date = new Date(this.data.startDate);
+
+      var _this$vuecal$minutesA2 = this.vuecal.minutesAtCursor(DOMEvent),
+          cursorCoords = _this$vuecal$minutesA2.cursorCoords,
+          minutes = _this$vuecal$minutesA2.minutes;
+
+      date.setMinutes(minutes); // If splitting days, also return the clicked split on cell contextmenu when emitting event.
+
+      var split = this.splitsCount ? this.getSplitAtCursor(DOMEvent) : null;
+      this.vuecal.$emit('cell-contextmenu', Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({
+        date: date
+      }, cursorCoords), split || {}), {}, {
+        e: DOMEvent
+      }));
+    }
+  },
+  computed: {
+    // Drag & drop module.
+    dnd: function dnd() {
+      return this.modules.dnd;
+    },
+    nowInMinutes: function nowInMinutes() {
+      return this.utils.date.dateToMinutes(this.vuecal.now);
+    },
+    isBeforeMinDate: function isBeforeMinDate() {
+      return this.minTimestamp !== null && this.minTimestamp > this.data.endDate.getTime();
+    },
+    isAfterMaxDate: function isAfterMaxDate() {
+      return this.maxTimestamp && this.maxTimestamp < this.data.startDate.getTime();
+    },
+    // Is the current cell disabled or not.
+    isDisabled: function isDisabled() {
+      var disableDays = this.options.disableDays;
+      if (disableDays.length && disableDays.includes(this.data.formattedDate)) return true;
+      return this.isBeforeMinDate || this.isAfterMaxDate;
+    },
+    // Is the current cell selected or not.
+    isSelected: {
+      get: function get() {
+        var selected = false;
+        var selectedDate = this.view.selectedDate;
+
+        if (this.view.id === 'years') {
+          selected = selectedDate.getFullYear() === this.data.startDate.getFullYear();
+        } else if (this.view.id === 'year') {
+          selected = selectedDate.getFullYear() === this.data.startDate.getFullYear() && selectedDate.getMonth() === this.data.startDate.getMonth();
+        } else selected = selectedDate.getTime() === this.data.startDate.getTime();
+
+        return selected;
+      },
+      set: function set(date) {
+        this.view.selectedDate = date;
+      }
+    },
+    // Cache result for performance.
+    isWeekOrDayView: function isWeekOrDayView() {
+      return ['week', 'day'].includes(this.view.id);
+    },
+    transitionDirection: function transitionDirection() {
+      return this.vuecal.transitionDirection;
+    },
+    specialHours: function specialHours() {
+      var _this$data$specialHou = this.data.specialHours,
+          from = _this$data$specialHou.from,
+          to = _this$data$specialHou.to;
+      from = Math.max(from, this.options.timeFrom);
+      to = Math.min(to, this.options.timeTo);
+      return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, this.data.specialHours), {}, {
+        height: (to - from) * this.timeScale,
+        top: (from - this.options.timeFrom) * this.timeScale
+      });
+    },
+    events: function events() {
+      var _this2 = this;
+
+      var _this$data = this.data,
+          cellStart = _this$data.startDate,
+          cellEnd = _this$data.endDate;
+      var events = []; // Calculate events on month/week/day views or years/year if eventsCountOnYearView.
+
+      if (!(['years', 'year'].includes(this.view.id) && !this.options.eventsCountOnYearView)) {
+        // Means that when vuecal.view.events changes all the cells will be looking up new value. :/
+        // Also clone array to prevent modifying original.
+        events = this.view.events.slice(0);
+
+        if (this.view.id === 'month') {
+          var _events;
+
+          (_events = events).push.apply(_events, _toConsumableArray(this.view.outOfScopeEvents));
+        } // Only keep events in cell time range.
+
+
+        events = events.filter(function (e) {
+          return _this2.utils.event.eventInRange(e, cellStart, cellEnd);
+        });
+        if (this.options.showAllDayEvents && this.view.id !== 'month') events = events.filter(function (e) {
+          return !!e.allDay === _this2.allDay;
+        }); // From events in view, filter the ones that are out of `time-from`-`time-to` range in this cell.
+
+        if (this.options.time && this.isWeekOrDayView && !this.allDay) {
+          var _this$options = this.options,
+              timeFrom = _this$options.timeFrom,
+              timeTo = _this$options.timeTo;
+          events = events.filter(function (e) {
+            var segment = e.daysCount > 1 && e.segments[_this2.data.formattedDate] || {};
+            var singleDayInRange = e.daysCount === 1 && e.startTimeMinutes < timeTo && e.endTimeMinutes > timeFrom;
+            var multipleDayInRange = e.daysCount > 1 && segment.startTimeMinutes < timeTo && segment.endTimeMinutes > timeFrom;
+            var recurrMultDayInRange = false; // e.daysCount > 1 && e.repeat && recurringEventInRange(e, cellStart, cellEnd)
+
+            return e.allDay || singleDayInRange || multipleDayInRange || recurrMultDayInRange;
+          });
+        } // Position events with time in the timeline when there is a timeline and not in allDay slot.
+
+
+        if (this.options.time && this.isWeekOrDayView && !(this.options.showAllDayEvents && this.allDay)) {
+          // Sort events in chronological order.
+          events.sort(function (a, b) {
+            return a.start < b.start ? -1 : 1;
+          });
+        } // If splits, checkCellOverlappingEvents() is called from within computed splits.
+
+
+        if (!this.cellSplits.length) this.$nextTick(this.checkCellOverlappingEvents);
+      }
+
+      return events;
+    },
+    eventsCount: function eventsCount() {
+      return this.events.length;
+    },
+    splits: function splits() {
+      var _this3 = this;
+
+      return this.cellSplits.map(function (item, i) {
+        var events = _this3.events.filter(function (e) {
+          return e.split === item.id;
+        });
+
+        var _this3$utils$event$ch = _this3.utils.event.checkCellOverlappingEvents(events.filter(function (e) {
+          return !e.background && !e.allDay;
+        }), _this3.options),
+            _this3$utils$event$ch2 = _slicedToArray(_this3$utils$event$ch, 2),
+            overlaps = _this3$utils$event$ch2[0],
+            streak = _this3$utils$event$ch2[1];
+
+        return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, item), {}, {
+          overlaps: overlaps,
+          overlapsStreak: streak,
+          events: events
+        });
+      });
+    },
+    splitsCount: function splitsCount() {
+      return this.splits.length;
+    },
+    cellClasses: function cellClasses() {
+      var _ref3;
+
+      return _ref3 = {}, Object(defineProperty["a" /* default */])(_ref3, this.data.class, !!this.data.class), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--current', this.data.current), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--today', this.data.today), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--out-of-scope', this.data.outOfScope), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--before-min', this.isDisabled && this.isBeforeMinDate), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--after-max', this.isDisabled && this.isAfterMaxDate), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--disabled', this.isDisabled), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--selected', this.isSelected), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--highlighted', this.highlighted), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--has-splits', this.splitsCount), Object(defineProperty["a" /* default */])(_ref3, 'vuecal__cell--has-events', this.eventsCount), _ref3;
+    },
+    cellStyles: function cellStyles() {
+      return Object(objectSpread2["a" /* default */])({}, this.cellWidth ? {
+        width: "".concat(this.cellWidth, "%")
+      } : {});
+    },
+    timelineVisible: function timelineVisible() {
+      var _this$options2 = this.options,
+          time = _this$options2.time,
+          timeTo = _this$options2.timeTo;
+      return this.data.today && this.isWeekOrDayView && time && !this.allDay && this.nowInMinutes <= timeTo;
+    },
+    todaysTimePosition: function todaysTimePosition() {
+      // Skip the Maths if not relevant.
+      if (!this.data.today || !this.options.time) return;
+      var minutesFromTop = this.nowInMinutes - this.options.timeFrom;
+      return Math.round(minutesFromTop * this.timeScale);
+    },
+    timeScale: function timeScale() {
+      return this.options.timeCellHeight / this.options.timeStep;
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/cell.vue?vue&type=script&lang=js&
+ /* harmony default export */ var vue_cal_cellvue_type_script_lang_js_ = (cellvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/vue-cal/cell.vue?vue&type=style&index=0&lang=scss&
+var cellvue_type_style_index_0_lang_scss_ = __webpack_require__("95dd");
+
+// CONCATENATED MODULE: ./src/vue-cal/cell.vue
+
+
+
+
+
+
+/* normalize component */
+
+var cell_component = normalizeComponent(
+  vue_cal_cellvue_type_script_lang_js_,
+  cellvue_type_template_id_403926a8_lang_pug_render,
+  cellvue_type_template_id_403926a8_lang_pug_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var vue_cal_cell = (cell_component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/all-day-bar.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var all_day_barvue_type_script_lang_js_ = ({
+  inject: ['vuecal', 'view', 'editEvents'],
+  components: {
+    'vuecal-cell': vue_cal_cell
+  },
+  props: {
+    // Vue-cal main component options (props).
+    options: {
+      type: Object,
+      required: true
+    },
+    cells: {
+      type: Array,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    daySplits: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    shortEvents: {
+      type: Boolean,
+      default: true
+    },
+    height: {
+      type: String,
+      default: ''
+    },
+    cellOrSplitMinWidth: {
+      type: Number,
+      default: null
+    }
+  },
+  computed: {
+    hasCellOrSplitWidth: function hasCellOrSplitWidth() {
+      return !!(this.options.minCellWidth || this.daySplits.length && this.options.minSplitWidth);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/all-day-bar.vue?vue&type=script&lang=js&
+ /* harmony default export */ var vue_cal_all_day_barvue_type_script_lang_js_ = (all_day_barvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/vue-cal/all-day-bar.vue
+
+
+
+
+
+/* normalize component */
+
+var all_day_bar_component = normalizeComponent(
+  vue_cal_all_day_barvue_type_script_lang_js_,
+  all_day_barvue_type_template_id_20856694_lang_pug_render,
+  all_day_barvue_type_template_id_20856694_lang_pug_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var all_day_bar = (all_day_bar_component.exports);
+// EXTERNAL MODULE: ./src/vue-cal/styles.scss
+var styles = __webpack_require__("1332");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/vue-cal/index.vue?vue&type=script&lang=js&
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+var vue_calvue_type_script_lang_js_minutesInADay = 24 * 60; // Don't do the maths every time.
+
+var textsDefaults = {
+  weekDays: Array(7).fill(''),
+  weekDaysShort: [],
+  months: Array(12).fill(''),
+  years: '',
+  year: '',
+  month: '',
+  week: '',
+  day: '',
+  today: '',
+  noEvent: '',
+  allDay: '',
+  deleteEvent: '',
+  createEvent: '',
+  dateFormat: 'dddd MMMM D, YYYY',
+  am: 'am',
+  pm: 'pm'
+};
+var validViews = ['years', 'year', 'month', 'week', 'day']; // Only 1 instance of DateUtils for all the instances of Vue Cal, created when first importing the Vue Cal lib.
+// The dateUtils does not need to be dependent of Vue Cal instance, it only needs localized texts when ready.
+// This becomes a problem when showing multiple instances of Vue Cal with different locales like in the
+// documentation page. So the texts are overridable through a the `updateDateTexts` function.
+
+var vue_calvue_type_script_lang_js_dateUtils = new date_DateUtils(textsDefaults); // Do this ASAP for date prototypes.
+
+/* harmony default export */ var vue_calvue_type_script_lang_js_ = ({
+  name: 'vue-cal',
+  components: {
+    'vuecal-cell': vue_cal_cell,
+    'vuecal-header': header,
+    WeekdaysHeadings: weekdays_headings,
+    AllDayBar: all_day_bar
+  },
+  // By Vue design, passing props loses the reactivity unless it's a method or reactive OBJECT.
+  provide: function provide() {
+    return {
+      vuecal: this,
+      utils: this.utils,
+      modules: this.modules,
+      // Methods.
+      previous: this.previous,
+      next: this.next,
+      switchView: this.switchView,
+      updateSelectedDate: this.updateSelectedDate,
+      editEvents: this.editEvents,
+      // Objects.
+      view: this.view,
+      domEvents: this.domEvents
+    };
+  },
+  props: {
+    activeView: {
+      type: String,
+      default: 'week'
+    },
+    // Only used if there are daySplits with minSplitWidth, to add the same height top spacer on time column.
+    allDayBarHeight: {
+      type: [String, Number],
+      default: '25px'
+    },
+    cellClickHold: {
+      type: Boolean,
+      default: true
+    },
+    cellContextmenu: {
+      type: Boolean,
+      default: false
+    },
+    clickToNavigate: {
+      type: Boolean,
+      default: false
+    },
+    dblclickToNavigate: {
+      type: Boolean,
+      default: true
+    },
+    disableDatePrototypes: {
+      type: Boolean,
+      default: false
+    },
+    disableDays: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    disableViews: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    dragToCreateEvent: {
+      type: Boolean,
+      default: true
+    },
+    // Start a drag creation after dragging a certain amount of pixels.
+    // This prevents drag creation by mistake when you want to navigate.
+    dragToCreateThreshold: {
+      type: Number,
+      default: 15
+    },
+    editableEvents: {
+      type: [Boolean, Object],
+      default: false
+    },
+    events: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    eventsCountOnYearView: {
+      type: Boolean,
+      default: false
+    },
+    eventsOnMonthView: {
+      type: [Boolean, String],
+      default: false
+    },
+    hideBody: {
+      type: Boolean,
+      default: false
+    },
+    hideTitleBar: {
+      type: Boolean,
+      default: false
+    },
+    hideViewSelector: {
+      type: Boolean,
+      default: false
+    },
+    hideWeekdays: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    hideWeekends: {
+      type: Boolean,
+      default: false
+    },
+    locale: {
+      type: [String, Object],
+      default: 'en'
+    },
+    maxDate: {
+      type: [String, Date],
+      default: ''
+    },
+    minCellWidth: {
+      type: Number,
+      default: 0
+    },
+    minDate: {
+      type: [String, Date],
+      default: ''
+    },
+    minEventWidth: {
+      type: Number,
+      default: 0
+    },
+    minSplitWidth: {
+      type: Number,
+      default: 0
+    },
+    onEventClick: {
+      type: [Function, null],
+      default: null
+    },
+    onEventCreate: {
+      type: [Function, null],
+      default: null
+    },
+    onEventDblclick: {
+      type: [Function, null],
+      default: null
+    },
+    overlapsPerTimeStep: {
+      type: Boolean,
+      default: false
+    },
+    resizeX: {
+      type: Boolean,
+      default: false
+    },
+    selectedDate: {
+      type: [String, Date],
+      default: ''
+    },
+    showAllDayEvents: {
+      type: [Boolean, String],
+      default: false
+    },
+    showWeekNumbers: {
+      type: [Boolean, String],
+      default: false
+    },
+    snapToTime: {
+      type: Number,
+      default: 0
+    },
+    small: {
+      type: Boolean,
+      default: false
+    },
+    specialHours: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    splitDays: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    },
+    startWeekOnSunday: {
+      type: Boolean,
+      default: false
+    },
+    stickySplitLabels: {
+      type: Boolean,
+      default: false
+    },
+    time: {
+      type: Boolean,
+      default: true
+    },
+    timeCellHeight: {
+      type: Number,
+      default: 40
+    },
+    // In pixels.
+    timeFormat: {
+      type: String,
+      default: ''
+    },
+    timeFrom: {
+      type: Number,
+      default: 0
+    },
+    // In minutes.
+    timeStep: {
+      type: Number,
+      default: 60
+    },
+    // In minutes.
+    timeTo: {
+      type: Number,
+      default: vue_calvue_type_script_lang_js_minutesInADay
+    },
+    // In minutes.
+    todayButton: {
+      type: Boolean,
+      default: false
+    },
+    transitions: {
+      type: Boolean,
+      default: true
+    },
+    twelveHour: {
+      type: Boolean,
+      default: false
+    },
+    watchRealTime: {
+      type: Boolean,
+      default: false
+    },
+    // Expensive, so only trigger on demand.
+    xsmall: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      ready: false,
+      // Is vue-cal ready.
+      // Make texts reactive before a locale is loaded.
+      texts: Object(objectSpread2["a" /* default */])({}, textsDefaults),
+      utils: {
+        // Remove prototypes ASAP if the user wants so.
+        date: (this.disableDatePrototypes ? vue_calvue_type_script_lang_js_dateUtils.removePrototypes() : false) || vue_calvue_type_script_lang_js_dateUtils,
+        cell: null,
+        // Note: Destructuring class method loses the `this` context and Vue Cal becomes inaccessible
+        // from the event utils function. Don't do:
+        // const { eventInRange, createEventSegments } = this.utils.event
+        event: null
+      },
+      modules: {
+        dnd: null
+      },
+      // At any time this object will be filled with current view, visible events and selected date.
+      view: {
+        id: '',
+        title: '',
+        startDate: null,
+        endDate: null,
+        firstCellDate: null,
+        lastCellDate: null,
+        selectedDate: null,
+        // All the events are stored in the mutableEvents array, but subset of visible ones are passed
+        // Into the current view for fast lookup and manipulation.
+        events: []
+      },
+      eventIdIncrement: 1,
+      // Internal unique id.
+      // Preset at now date on load, but updated every minute if watchRealTime,
+      // or updated at least on each cells rerender, in order to keep Today's date accurate.
+      now: new Date(),
+      // Useful when watchRealTime = true, 2 timeouts: 1 to snap to round minutes, then 1 every minute.
+      timeTickerIds: [null, null],
+      // All the possible events/cells interractions:
+      // e.g. focus, click, click & hold, resize, drag & drop (coming).
+      domEvents: {
+        resizeAnEvent: {
+          _eid: null,
+          // Only one at a time.
+          start: null,
+          split: null,
+          segment: null,
+          originalEndTimeMinutes: 0,
+          originalEnd: null,
+          end: null,
+          startCell: null,
+          endCell: null
+        },
+        dragAnEvent: {
+          // Only one at a time, only needed for vuecal dragging-event class.
+          _eid: null
+        },
+        dragCreateAnEvent: {
+          startCursorY: null,
+          start: null,
+          // The cell date where we start the drag.
+          split: null,
+          event: null
+        },
+        focusAnEvent: {
+          _eid: null,
+          // Only one at a time.
+          // Useful to detect a full click (mousedown + mouseup on same event).
+          // E.g. Only call onEventClick function (if any) on full click.
+          mousedUp: false
+        },
+        clickHoldAnEvent: {
+          _eid: null,
+          // Only one at a time.
+          timeout: 1200,
+          // Hold for 1.2s to delete an event.
+          timeoutId: null
+        },
+        dblTapACell: {
+          taps: 0,
+          timeout: 500 // Allowed latency between first and second click.
+
+        },
+        clickHoldACell: {
+          cellId: null,
+          split: null,
+          timeout: 1200,
+          // Hold for 1.2s to create an event.
+          timeoutId: null,
+          eventCreated: false
+        },
+        // A single click can trigger event creation if the user decides so.
+        // But prevent this to happen on click & hold, on event click and on resize event.
+        cancelClickEventCreation: false
+      },
+      // The events source of truth.
+      // An array of mutable events updated each time given external events array changes.
+      mutableEvents: [],
+      // Transition when switching view. left when going toward the past, right when going toward future.
+      transitionDirection: 'right'
+    };
+  },
+  methods: {
+    /**
+     * Only import locale on demand to keep a small library weight.
+     *
+     * @param {String|Object} locale the language user whishes to have on vue-cal.
+     */
+    loadLocale: function loadLocale(locale) {
+      var _this = this;
+
+      if (_typeof(this.locale) === 'object') {
+        this.texts = Object.assign({}, textsDefaults, locale);
+        this.utils.date.updateTexts(this.texts);
+        return;
+      }
+
+      if (this.locale === 'en') this.texts = Object.assign({}, textsDefaults, __webpack_require__("0a96"));else {
+        // Template litteral `./i18n/${locale}` still crashes eslint...
+        // https://github.com/babel/babel-eslint/issues/681#issuecomment-595591823
+        __webpack_require__("4a53")("./" + locale).then(function (response) {
+          _this.texts = Object.assign({}, textsDefaults, response.default);
+
+          _this.utils.date.updateTexts(_this.texts);
+        });
+      }
+    },
+
+    /**
+     * Only import drag and drop module on demand to keep a small library weight.
+     */
+    loadDragAndDrop: function loadDragAndDrop() {
+      var _this2 = this;
+
+      __webpack_require__.e(/* import() | drag-and-drop */ 39).then(__webpack_require__.bind(null, "a691f")).then(function (response) {
+        var DragAndDrop = response.DragAndDrop;
+        _this2.modules.dnd = new DragAndDrop(_this2);
+      }) // eslint-disable-next-line no-console
+      .catch(function () {
+        return console.warn('Vue Cal: Missing drag & drop module.');
+      });
+    },
+
+    /**
+     * Checks that the given view is in the array of valid views or use 'week' otherwise.
+     * Then check the view is enabled or use the first enabled view instead.
+     * Raises error and warning if needed.
+     *
+     * @param {String} view The view to validate.
+     * @return {String} a valid view.
+     */
+    validateView: function validateView(view) {
+      if (!validViews.includes(view)) {
+        // eslint-disable-next-line no-console
+        console.error("Vue Cal: invalid view parameter provided: \"".concat(view, "\".\nA valid view must be one of: ").concat(validViews.join(', '), "."));
+        view = 'week';
+      }
+
+      if (!this.enabledViews.includes(view)) {
+        // eslint-disable-next-line no-console
+        console.warn("Vue Cal: the provided view \"".concat(view, "\" is disabled. Using the \"").concat(this.enabledViews[0], "\" view instead."));
+        view = this.enabledViews[0];
+      }
+
+      return view;
+    },
+
+    /**
+     * On click/dblclick of a cell go to a narrower view if available.
+     * E.g. Click on month cell takes you to week view if not hidden, otherwise on day view if not hidden.
+     *
+     * @param {String | Date} date A starting date for the view, if none, fallbacks to the selected date,
+     *                             If also empty fallbacks to the current view start date.
+     */
+    switchToNarrowerView: function switchToNarrowerView() {
+      var date = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      this.transitionDirection = 'right';
+      var view = this.enabledViews[this.enabledViews.indexOf(this.view.id) + 1];
+      if (view) this.switchView(view, date);
+    },
+
+    /**
+     * Switches to the specified view on view selector click, or programmatically form external call (via $refs).
+     * If a date is given, it will be selected and if the view does not contain it, it will go to that date.
+     *
+     * @param {String} view the view to go to. Among `years`, `year`, `month`, `week`, `day`.
+     * @param {String | Date} date A starting date for the view, if none, fallbacks to the selected date,
+     *                             If also empty fallbacks to the current view start date.
+     * @param {Boolean} fromViewSelector to know if the caller is the built-in view selector.
+     */
+    switchView: function switchView(view) {
+      var date = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var fromViewSelector = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      view = this.validateView(view);
+      var ud = this.utils.date; // This is user to prevent firing the custom event twice when syncing activeView.
+
+      var viewDateBeforeChange = this.view.startDate && this.view.startDate.getTime();
+
+      if (this.transitions && fromViewSelector) {
+        if (this.view.id === view) return;
+        var views = this.enabledViews;
+        this.transitionDirection = views.indexOf(this.view.id) > views.indexOf(view) ? 'left' : 'right';
+      }
+
+      var oldView = this.view.id;
+      this.view.events = [];
+      this.view.id = view;
+      this.view.firstCellDate = null; // For month view, if filling cells before 1st of month.
+
+      this.view.lastCellDate = null; // For month view, if filling cells after current month.
+
+      if (!date) date = this.view.selectedDate || this.view.startDate;
+
+      switch (view) {
+        case 'years':
+          {
+            // Always fill first cell with a multiple of 25 years, E.g. year 2000, or 2025.
+            this.view.startDate = new Date(Math.floor(date.getFullYear() / 25) * 25 || 2000, 0, 1);
+            this.view.endDate = new Date(this.view.startDate.getFullYear() + 25, 0, 1);
+            this.view.endDate.setSeconds(-1); // End at 23:59:59.
+
+            break;
+          }
+
+        case 'year':
+          {
+            this.view.startDate = new Date(date.getFullYear(), 0, 1);
+            this.view.endDate = new Date(date.getFullYear() + 1, 0, 1);
+            this.view.endDate.setSeconds(-1); // End at 23:59:59.
+
+            break;
+          }
+
+        case 'month':
+          {
+            this.view.startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+            this.view.endDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+            this.view.endDate.setSeconds(-1); // End at 23:59:59.
+            // If the first day of the month is not a FirstDayOfWeek (Monday or Sunday), prepend missing days to the days array.
+
+            var startDate = new Date(this.view.startDate);
+
+            if (startDate.getDay() !== (this.startWeekOnSunday ? 0 : 1)) {
+              startDate = ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnSunday);
+            } // Used in viewCells computed array & returned in emitted events.
+
+
+            this.view.firstCellDate = startDate;
+            this.view.lastCellDate = ud.addDays(startDate, 41);
+            this.view.lastCellDate.setHours(23, 59, 59, 0);
+
+            if (this.hideWeekends) {
+              // Remove first weekend from firstCellDate if hide-weekends.
+              if ([0, 6].includes(this.view.firstCellDate.getDay())) {
+                var daysToAdd = this.view.firstCellDate.getDay() === 6 && !this.startWeekOnSunday ? 2 : 1;
+                this.view.firstCellDate = ud.addDays(this.view.firstCellDate, daysToAdd);
+              } // Remove first weekend from startDate if hide-weekends.
+
+
+              if ([0, 6].includes(this.view.startDate.getDay())) {
+                var _daysToAdd = this.view.startDate.getDay() === 6 ? 2 : 1;
+
+                this.view.startDate = ud.addDays(this.view.startDate, _daysToAdd);
+              } // Remove last weekend from lastCellDate if hide-weekends.
+
+
+              if ([0, 6].includes(this.view.lastCellDate.getDay())) {
+                var daysToSubtract = this.view.lastCellDate.getDay() === 0 && !this.startWeekOnSunday ? 2 : 1;
+                this.view.lastCellDate = ud.subtractDays(this.view.lastCellDate, daysToSubtract);
+              } // Remove last weekend from endDate if hide-weekends.
+
+
+              if ([0, 6].includes(this.view.endDate.getDay())) {
+                var _daysToSubtract = this.view.endDate.getDay() === 0 ? 2 : 1;
+
+                this.view.endDate = ud.subtractDays(this.view.endDate, _daysToSubtract);
+              }
+            }
+
+            break;
+          }
+
+        case 'week':
+          {
+            date = ud.getPreviousFirstDayOfWeek(date, this.startWeekOnSunday);
+            var weekDaysCount = this.hideWeekends ? 5 : 7;
+            this.view.startDate = this.hideWeekends && this.startWeekOnSunday ? ud.addDays(date, 1) : date;
+            this.view.startDate.setHours(0, 0, 0, 0);
+            this.view.endDate = ud.addDays(date, weekDaysCount);
+            this.view.endDate.setSeconds(-1); // End at 23:59:59.
+
+            break;
+          }
+
+        case 'day':
+          {
+            this.view.startDate = date;
+            this.view.startDate.setHours(0, 0, 0, 0);
+            this.view.endDate = new Date(date);
+            this.view.endDate.setHours(23, 59, 59, 0); // End at 23:59:59.
+
+            break;
+          }
+      }
+
+      this.addEventsToView(); // Prevent firing the `view-change` event twice (if using .sync).
+
+      var viewDate = this.view.startDate && this.view.startDate.getTime();
+      if (oldView === view && viewDate === viewDateBeforeChange) return; // Emit events to outside of Vue Cal and update the activeView (if using .sync).
+
+      this.$emit('update:activeView', view);
+
+      if (this.ready) {
+        var _startDate = this.view.startDate;
+
+        var params = Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({
+          view: view,
+          startDate: _startDate,
+          endDate: this.view.endDate
+        }, this.isMonthView ? {
+          firstCellDate: this.view.firstCellDate,
+          lastCellDate: this.view.lastCellDate,
+          outOfScopeEvents: this.view.outOfScopeEvents.map(this.cleanupEvent)
+        } : {}), {}, {
+          events: this.view.events.map(this.cleanupEvent)
+        }, this.isWeekView ? {
+          week: ud.getWeek(this.startWeekOnSunday ? ud.addDays(_startDate, 1) : _startDate)
+        } : {});
+
+        this.$emit('view-change', params);
+      }
+    },
+
+    /**
+     * Shorthand function for external call (via $refs).
+     */
+    previous: function previous() {
+      this.previousNext(false);
+    },
+
+    /**
+     * Shorthand function for external call (via $refs).
+     */
+    next: function next() {
+      this.previousNext();
+    },
+
+    /**
+     * On click on previous or next arrow, update the calendar visible date range.
+     *
+     * @param {Boolean} next
+     */
+    previousNext: function previousNext() {
+      var next = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      var ud = this.utils.date;
+      this.transitionDirection = next ? 'right' : 'left';
+      var modifier = next ? 1 : -1;
+      var firstCellDate = null;
+      var _this$view = this.view,
+          startDate = _this$view.startDate,
+          viewId = _this$view.id;
+
+      switch (viewId) {
+        case 'years':
+          firstCellDate = new Date(startDate.getFullYear() + 25 * modifier, 0, 1);
+          break;
+
+        case 'year':
+          firstCellDate = new Date(startDate.getFullYear() + 1 * modifier, 1, 1);
+          break;
+
+        case 'month':
+          firstCellDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1 * modifier, 1);
+          break;
+
+        case 'week':
+          firstCellDate = ud[next ? 'addDays' : 'subtractDays'](ud.getPreviousFirstDayOfWeek(startDate, this.startWeekOnSunday), 7);
+          break;
+
+        case 'day':
+          firstCellDate = ud[next ? 'addDays' : 'subtractDays'](startDate, 1);
+          break;
+      }
+
+      if (firstCellDate) this.switchView(viewId, firstCellDate);
+    },
+
+    /**
+     * Add events (subset from mutableEvents) to the current view (in `this.view.events`).
+     * This is done for performance, so that all the cells have a quick lookup of only what's needed.
+     *
+     * @param {Array} events
+     */
+    addEventsToView: function addEventsToView() {
+      var _this$view$events,
+          _this3 = this;
+
+      var events = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var ue = this.utils.event;
+      var _this$view2 = this.view,
+          startDate = _this$view2.startDate,
+          endDate = _this$view2.endDate,
+          firstCellDate = _this$view2.firstCellDate,
+          lastCellDate = _this$view2.lastCellDate; // Clear the current view if not explicitely giving an array of events to add.
+
+      if (!events.length) this.view.events = []; // @todo: remove the code that explicitely updates this.mutableEvents (e.g on event resize).
+      // as we are already mutating the event from mutableEvents.
+
+      events = events.length ? events : _toConsumableArray(this.mutableEvents); // In no event or if on years/year view and eventsCountOnYearView is false
+      // then don't add events to view.
+
+      if (!events || this.isYearsOrYearView && !this.eventsCountOnYearView) return; // First remove the events that are not in view.
+      // Keep the unfiltered array of events for outOfScopeEvents bellow.
+
+      var filteredEvents = events.filter(function (e) {
+        return ue.eventInRange(e, startDate, endDate);
+      }); // For each multiple-day event and only if needed, create its segments (= days) for rendering in the view.
+      // If we don't display the event on month view (eventsOnMonthView = false) then don't create segments.
+
+      if (!this.isYearsOrYearView && !(this.isMonthView && !this.eventsOnMonthView)) {
+        filteredEvents = filteredEvents.map(function (e) {
+          return e.daysCount > 1 ? ue.createEventSegments(e, firstCellDate || startDate, lastCellDate || endDate) : e;
+        });
+      }
+
+      (_this$view$events = this.view.events).push.apply(_this$view$events, _toConsumableArray(filteredEvents));
+
+      if (this.isMonthView) {
+        // Save out of scope events into the view object separated from the array of in-scope events.
+        this.view.outOfScopeEvents = [];
+        events.forEach(function (e) {
+          if (ue.eventInRange(e, firstCellDate, startDate) || ue.eventInRange(e, endDate, lastCellDate)) {
+            // Only add events to the view.outOfScopeEvents array if not already in view.events
+            // (multiple-day events case).
+            if (!_this3.view.events.some(function (e2) {
+              return e2._eid === e._eid;
+            })) _this3.view.outOfScopeEvents.push(e);
+          }
+        });
+      }
+    },
+
+    /**
+     * find a DOM ancestor of a given DOM node `el` matching given class name.
+     *
+     * @param {Object} el a DOM node to find ancestor from.
+     * @param {String} Class the CSS class name of the ancestor.
+     * @return {Object} The matched DOM node or null if no match.
+     */
+    findAncestor: function findAncestor(el, Class) {
+      while ((el = el.parentElement) && !el.classList.contains(Class)) {}
+
+      return el;
+    },
+
+    /**
+     * Tells whether a clicked DOM node is or is within a calendar event.
+     *
+     * @param {Object} el a DOM node to check if event.
+     * @return {Boolean} true if the given DOM node is - or is in - an event.
+     */
+    isDOMElementAnEvent: function isDOMElementAnEvent(el) {
+      return el.classList.contains('vuecal__event') || this.findAncestor(el, 'vuecal__event');
+    },
+
+    /**
+     * Capture mousemove anywhere in the page.
+     * If resizing an event was started earlier, this will update event end.
+     * If resizing was not started, this method is calculation is avoided with a premature return.
+     * Notes: Event resizing is started in cell component (onMouseDown) but place onMouseMove & onMouseUp
+     *        handlers in the single-instance parent for performance.
+     *
+     * @param {Object} e the native DOM event object.
+     */
+    onMouseMove: function onMouseMove(e) {
+      var _this$domEvents = this.domEvents,
+          resizeAnEvent = _this$domEvents.resizeAnEvent,
+          dragAnEvent = _this$domEvents.dragAnEvent,
+          dragCreateAnEvent = _this$domEvents.dragCreateAnEvent;
+      if (resizeAnEvent._eid === null && dragAnEvent._eid === null && !dragCreateAnEvent.start) return;
+      e.preventDefault();
+      if (resizeAnEvent._eid) this.eventResizing(e);else if (this.dragToCreateEvent && dragCreateAnEvent.start) this.eventDragCreation(e);
+    },
+
+    /**
+     * Capture mouseup anywhere in the page, not only on a cell or event.
+     * Then end up any resize, drag & drop, click & hold or event or cell.
+     * Notes: Mouseup can never cancel a click with preventDefault or stopPropagation,
+     *        But it always happens before the click event.
+     *
+     * @param {Object} e the native DOM event object.
+     */
+    onMouseUp: function onMouseUp(e) {
+      var _this$domEvents2 = this.domEvents,
+          focusAnEvent = _this$domEvents2.focusAnEvent,
+          resizeAnEvent = _this$domEvents2.resizeAnEvent,
+          clickHoldAnEvent = _this$domEvents2.clickHoldAnEvent,
+          clickHoldACell = _this$domEvents2.clickHoldACell,
+          dragCreateAnEvent = _this$domEvents2.dragCreateAnEvent;
+      var isClickHoldingEvent = clickHoldAnEvent._eid;
+      var wasResizing = resizeAnEvent._eid;
+      var hasResized = false;
+      var dragCreatedEvent = dragCreateAnEvent.event,
+          dragCreateStarted = dragCreateAnEvent.start;
+      var mouseUpOnEvent = this.isDOMElementAnEvent(e.target);
+      var eventClicked = focusAnEvent.mousedUp; // If has mousedown & mouseup on the same event.
+
+      focusAnEvent.mousedUp = false; // Reinit the variable for next mouseup.
+
+      if (mouseUpOnEvent) this.domEvents.cancelClickEventCreation = true; // Skip the rest if an event was created successfully.
+
+      if (clickHoldACell.eventCreated) return; // On event resize end, emit event if duration has changed.
+
+      if (wasResizing) {
+        var originalEnd = resizeAnEvent.originalEnd,
+            originalEndTimeMinutes = resizeAnEvent.originalEndTimeMinutes,
+            endTimeMinutes = resizeAnEvent.endTimeMinutes;
+        var event = this.view.events.find(function (e) {
+          return e._eid === resizeAnEvent._eid;
+        }); // If end time is different than original, consider as resized.
+
+        hasResized = endTimeMinutes && endTimeMinutes !== originalEndTimeMinutes; // When resizing the endTime changes but the day may change too when resizing horizontally.
+        // So compare timestamps instead of only endTimeMinutes.
+
+        if (event && event.end.getTime() !== originalEnd.getTime()) {
+          // Update the modified event in the mutable events array.
+          var mutableEvent = this.mutableEvents.find(function (e) {
+            return e._eid === resizeAnEvent._eid;
+          });
+          mutableEvent.endTimeMinutes = event.endTimeMinutes;
+          mutableEvent.end = event.end;
+          var cleanEvent = this.cleanupEvent(event);
+
+          var originalEvent = Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, this.cleanupEvent(event)), {}, {
+            end: originalEnd,
+            endTimeMinutes: event.originalEndTimeMinutes
+          });
+
+          this.$emit('event-duration-change', {
+            event: cleanEvent,
+            oldDate: resizeAnEvent.originalEnd,
+            originalEvent: originalEvent
+          });
+          this.$emit('event-change', {
+            event: cleanEvent,
+            originalEvent: originalEvent
+          });
+        }
+
+        if (event) event.resizing = false;
+        resizeAnEvent._eid = null;
+        resizeAnEvent.start = null;
+        resizeAnEvent.split = null;
+        resizeAnEvent.segment = null;
+        resizeAnEvent.originalEndTimeMinutes = null;
+        resizeAnEvent.originalEnd = null;
+        resizeAnEvent.endTimeMinutes = null;
+        resizeAnEvent.startCell = null;
+        resizeAnEvent.endCell = null;
+      } else if (dragCreateStarted) {
+        // The drag create might be started but not completed due to threshold never reached.
+        if (dragCreatedEvent) {
+          this.emitWithEvent('event-drag-create', dragCreatedEvent);
+          dragCreateAnEvent.event.resizing = false; // Remove the CSS resizing class.
+        } // End the drag creation process.
+
+
+        dragCreateAnEvent.start = null;
+        dragCreateAnEvent.split = null;
+        dragCreateAnEvent.event = null;
+      } // If not mouse up on an event, unfocus any event except if just dragged.
+
+
+      if (!mouseUpOnEvent && !wasResizing) this.unfocusEvent(); // Prevent showing delete button if click and hold was not long enough.
+      // Click & hold timeout is initiated in onMouseDown() in event component.
+
+      if (clickHoldAnEvent.timeoutId && !isClickHoldingEvent) {
+        clearTimeout(clickHoldAnEvent.timeoutId);
+        clickHoldAnEvent.timeoutId = null;
+      } // Prevent creating an event if click and hold was not long enough.
+
+
+      if (clickHoldACell.timeoutId) {
+        clearTimeout(clickHoldACell.timeoutId);
+        clickHoldACell.timeoutId = null;
+      } // On event click (mousedown + mouseup on the same event), call the onEventClick function if exists
+      // and if not dragging handle or deleting event.
+
+
+      var eventClickHandler = typeof this.onEventClick === 'function';
+
+      if (eventClicked && !hasResized && !isClickHoldingEvent && !dragCreatedEvent && eventClickHandler) {
+        var _event = this.view.events.find(function (e) {
+          return e._eid === focusAnEvent._eid;
+        }); // If not found, the event may be in the outOfScope array.
+
+
+        if (!_event && this.isMonthView) _event = this.view.outOfScopeEvents.find(function (e) {
+          return e._eid === focusAnEvent._eid;
+        });
+        return _event && this.onEventClick(_event, e);
+      }
+    },
+
+    /**
+     * Capture `escape` keypress when delete button is visible, and cancel deletion.
+     *
+     * @param {Object} e the native DOM event object.
+     */
+    onKeyUp: function onKeyUp(e) {
+      if (e.keyCode === 27) this.cancelDelete(); // Escape key.
+    },
+
+    /**
+     * On mousemove while resising an event.
+     *
+     * @param {Object} e the native DOM event object.
+     */
+    eventResizing: function eventResizing(e) {
+      var resizeAnEvent = this.domEvents.resizeAnEvent;
+      var event = this.view.events.find(function (e) {
+        return e._eid === resizeAnEvent._eid;
+      }) || {
+        segments: {}
+      };
+
+      var _this$minutesAtCursor = this.minutesAtCursor(e),
+          minutes = _this$minutesAtCursor.minutes,
+          cursorCoords = _this$minutesAtCursor.cursorCoords;
+
+      var segment = event.segments && event.segments[resizeAnEvent.segment]; // Destructuring class method loses the `this` context.
+      // const { formatDateLite, countDays } = this.utils.date
+
+      var _this$utils = this.utils,
+          ud = _this$utils.date,
+          ue = _this$utils.event; // Prevent reducing event duration to less than 1 min so it does not disappear.
+
+      var newEndTimeMins = Math.max(minutes, this.timeFrom + 1, (segment || event).startTimeMinutes + 1);
+      event.endTimeMinutes = resizeAnEvent.endTimeMinutes = newEndTimeMins; // On resize, snap to time (e.g. 0, 15, 30, 45) if the option is on.
+
+      if (this.snapToTime) {
+        var plusHalfSnapTime = event.endTimeMinutes + this.snapToTime / 2;
+        event.endTimeMinutes = plusHalfSnapTime - plusHalfSnapTime % this.snapToTime;
+      }
+
+      if (segment) segment.endTimeMinutes = event.endTimeMinutes; // Remove 1 second if time is 24:00.
+
+      event.end.setHours(0, event.endTimeMinutes, event.endTimeMinutes === vue_calvue_type_script_lang_js_minutesInADay ? -1 : 0, 0); // Resize events horizontally if resize-x is enabled (add/remove segments).
+
+      if (this.resizeX && this.isWeekView) {
+        event.daysCount = ud.countDays(event.start, event.end);
+        var cells = this.$refs.cells;
+        var cellWidth = cells.offsetWidth / cells.childElementCount;
+        var endCell = Math.floor(cursorCoords.x / cellWidth);
+        if (resizeAnEvent.startCell === null) resizeAnEvent.startCell = endCell - (event.daysCount - 1);
+
+        if (resizeAnEvent.endCell !== endCell) {
+          resizeAnEvent.endCell = endCell;
+          var newEnd = ud.addDays(event.start, endCell - resizeAnEvent.startCell); // Don't accept 0 and negative values.
+
+          var newDaysCount = Math.max(ud.countDays(event.start, newEnd), 1);
+
+          if (newDaysCount !== event.daysCount) {
+            // Check that all segments are up to date.
+            var lastSegmentFormattedDate = null;
+            if (newDaysCount > event.daysCount) lastSegmentFormattedDate = ue.addEventSegment(event);else lastSegmentFormattedDate = ue.removeEventSegment(event);
+            resizeAnEvent.segment = lastSegmentFormattedDate;
+            event.endTimeMinutes += 0.001; // Force updating the current event.
+          }
+        }
+      } // Emit event while resizing, so it has to be fast.
+
+
+      this.$emit('event-resizing', {
+        _eid: event._eid,
+        end: event.end,
+        endTimeMinutes: event.endTimeMinutes
+      });
+    },
+
+    /**
+     * On mousemove while dragging to create an event.
+     *
+     * @param {Object} e the native DOM event object.
+     */
+    eventDragCreation: function eventDragCreation(e) {
+      var dragCreateAnEvent = this.domEvents.dragCreateAnEvent;
+      var start = dragCreateAnEvent.start,
+          startCursorY = dragCreateAnEvent.startCursorY,
+          split = dragCreateAnEvent.split;
+      var timeAtCursor = new Date(start);
+
+      var _this$minutesAtCursor2 = this.minutesAtCursor(e),
+          minutes = _this$minutesAtCursor2.minutes,
+          y = _this$minutesAtCursor2.cursorCoords.y; // Don't show anything until the threshold is reached.
+
+
+      if (!dragCreateAnEvent.event && Math.abs(startCursorY - y) < this.dragToCreateThreshold) return; // Create an event once, on the first pixel move after threshold is reached.
+
+      if (!dragCreateAnEvent.event) {
+        // Start the event with a 1 min duration, this will change as we are dragging.
+        dragCreateAnEvent.event = this.utils.event.createAnEvent(start, 1, {
+          split: split
+        }); // The event creation can be cancelled if user has a onEventCreate function
+        // (called from createAnEvent()). If cancelled, cancel the dragCreation.
+
+        if (!dragCreateAnEvent.event) {
+          dragCreateAnEvent.start = null;
+          dragCreateAnEvent.split = null;
+          dragCreateAnEvent.event = null;
+          return;
+        }
+
+        dragCreateAnEvent.event.resizing = true; // Trigger the CSS class.
+      } // If the event already exists change its start and end.
+      else {
+          // Remove 1 second if time is 24:00.
+          timeAtCursor.setHours(0, minutes, minutes === vue_calvue_type_script_lang_js_minutesInADay ? -1 : 0, 0); // If snapToTime, set the `timeAtCursor` to the closest intervaled number.
+
+          if (this.snapToTime) {
+            var timeMinutes = timeAtCursor.getHours() * 60 + timeAtCursor.getMinutes();
+            var plusHalfSnapTime = timeMinutes + this.snapToTime / 2;
+            timeMinutes = plusHalfSnapTime - plusHalfSnapTime % this.snapToTime;
+            timeAtCursor.setHours(0, timeMinutes, 0, 0);
+          } // If dragging the bottom of the event.
+
+
+          var dragFromBottom = start < timeAtCursor;
+          var event = dragCreateAnEvent.event;
+          event.start = dragFromBottom ? start : timeAtCursor;
+          event.end = dragFromBottom ? timeAtCursor : start;
+          event.startTimeMinutes = event.start.getHours() * 60 + event.start.getMinutes();
+          event.endTimeMinutes = event.end.getHours() * 60 + event.end.getMinutes();
+        }
+    },
+
+    /**
+     * Unfocus an event (e.g. when clicking outside of focused event).
+     */
+    unfocusEvent: function unfocusEvent() {
+      var _this$domEvents3 = this.domEvents,
+          focusAnEvent = _this$domEvents3.focusAnEvent,
+          clickHoldAnEvent = _this$domEvents3.clickHoldAnEvent;
+      var event = this.view.events.find(function (e) {
+        return e._eid === (focusAnEvent._eid || clickHoldAnEvent._eid);
+      });
+      focusAnEvent._eid = null; // Cancel event focus.
+
+      clickHoldAnEvent._eid = null; // Hide delete button.
+
+      if (event) {
+        event.focused = false;
+        event.deleting = false;
+      }
+    },
+
+    /**
+     * Cancel an event deletion (e.g. when clicking outside of visible delete button).
+     */
+    cancelDelete: function cancelDelete() {
+      var clickHoldAnEvent = this.domEvents.clickHoldAnEvent;
+
+      if (clickHoldAnEvent._eid) {
+        var event = this.view.events.find(function (e) {
+          return e._eid === clickHoldAnEvent._eid;
+        });
+        if (event) event.deleting = false;
+        clickHoldAnEvent._eid = null;
+        clickHoldAnEvent.timeoutId = null;
+      }
+    },
+
+    /**
+     * After editing an event title (if `this.editable`), save the new string into the event object
+     * and emit event to the outside world.
+     *
+     * @param {Object} e the native DOM event object.
+     * @param {Object} event the vue-cal event object.
+     */
+    onEventTitleBlur: function onEventTitleBlur(e, event) {
+      // If no change cancel action.
+      if (event.title === e.target.innerHTML) return;
+      var oldTitle = event.title;
+      event.title = e.target.innerHTML;
+      var cleanEvent = this.cleanupEvent(event);
+      this.$emit('event-title-change', {
+        event: cleanEvent,
+        oldTitle: oldTitle
+      });
+      this.$emit('event-change', {
+        event: cleanEvent,
+        originalEvent: Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, cleanEvent), {}, {
+          title: oldTitle
+        })
+      });
+    },
+
+    /**
+     * The `mutableEvents` array of events is the source of truth.
+     * It is first populated from the `events` prop and every time the `events` prop changes.
+     * When the user updates an event through interractions, the event gets updated here.
+     * Notes: mutableEvents couldn't be a computed variable based on this.events, because we add
+     *        items to the array. (Cannot mutate props)
+     */
+    updateMutableEvents: function updateMutableEvents() {
+      var _this4 = this;
+
+      // Destructuring class method loses the `this` context.
+      // const { formatDateLite, stringToDate, dateToMinutes, countDays } = this.utils.date
+      var ud = this.utils.date;
+      this.mutableEvents = []; // For each event of the `events` prop, prepare the event for vue-cal:
+      // Populate missing keys: start, startDate, startTimeMinutes, end, endTimeMinutes, daysCount.
+      // Lots of these variables may look redundant but are here for performance as a cached result of calculation. :)
+
+      this.events.forEach(function (event) {
+        // `event.start` accepts a Date object, or a formatted string, but always convert to Date.
+        var start = typeof event.start === 'string' ? ud.stringToDate(event.start) : event.start;
+        var startDateF = ud.formatDateLite(start);
+        var startTimeMinutes = ud.dateToMinutes(start); // `event.end` accepts a Date object or a formatted string, but always convert to Date.
+
+        var end = null; // Safari does not convert new Date(YYYY-MM-DD 24:00) to a valid date. #340.
+
+        if (typeof event.end === 'string' && event.end.includes('24:00')) {
+          end = new Date(event.end.replace(' 24:00', ''));
+          end.setHours(23, 59, 59, 0); // Sets to the same day at 23.59.59.
+        } else end = typeof event.end === 'string' ? ud.stringToDate(event.end) : event.end;
+
+        var endDateF = ud.formatDateLite(end);
+        var endTimeMinutes = ud.dateToMinutes(end); // Correct the common practice to end at 00:00 or 24:00 to count a full day.
+
+        if (!endTimeMinutes || endTimeMinutes === vue_calvue_type_script_lang_js_minutesInADay) {
+          // This also applies on timeless events, all-day events & multiple-day events.
+          if (!_this4.time || typeof event.end === 'string' && event.end.length === 10) {
+            end.setHours(23, 59, 59, 0); // Sets to the same day at 23.59.59.
+          } else end.setSeconds(end.getSeconds() - 1); // Sets to the previous day at 23.59.59.
+
+
+          endDateF = ud.formatDateLite(end);
+          endTimeMinutes = vue_calvue_type_script_lang_js_minutesInADay;
+        }
+
+        var multipleDays = startDateF !== endDateF;
+        event = Object.assign(Object(objectSpread2["a" /* default */])({}, _this4.utils.event.eventDefaults), event, {
+          // Keep the event ids scoped to this calendar instance.
+          _eid: "".concat(_this4._uid, "_").concat(_this4.eventIdIncrement++),
+          segments: multipleDays ? {} : null,
+          start: start,
+          startTimeMinutes: startTimeMinutes,
+          end: end,
+          endTimeMinutes: endTimeMinutes,
+          daysCount: multipleDays ? ud.countDays(start, end) : 1,
+          class: event.class
+        });
+
+        _this4.mutableEvents.push(event);
+      });
+    },
+
+    /**
+     * Get the number of minutes from the top to the mouse cursor.
+     *
+     * @param {Object} e the native DOM event object.
+     * @return {Object} containing { minutes: {Number}, cursorCoords: { x: {Number}, y: {Number} } }
+     */
+    minutesAtCursor: function minutesAtCursor(e) {
+      return this.utils.cell.minutesAtCursor(e);
+    },
+
+    /**
+     * Creates a new event in vue-cal memory (in the mutableEvents array) starting at the given date & time.
+     * Proxy method to allow call from cell click & hold or external call (via $refs).
+     * Notes: Event duration is by default 2 hours. You can override the event end through eventOptions.
+     *
+     * @param {String | Date} dateTime date & time at which the event will start.
+     * @param {Number} duration the event duration in minutes.
+     * @param {Object} eventOptions an object of options to override the event creation defaults.
+     *                              (can be any key allowed in an event object)
+     * @return {Object} the created event.
+     */
+    createEvent: function createEvent(dateTime, duration) {
+      var eventOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      return this.utils.event.createAnEvent(dateTime, duration, eventOptions);
+    },
+
+    /**
+     * Remove all the vue-cal private vars from the event (before returning it through $emit()).
+     *
+     * @param {Object} event the event object to cleanup.
+     */
+    cleanupEvent: function cleanupEvent(event) {
+      event = Object(objectSpread2["a" /* default */])({}, event); // Delete vue-cal specific props instead of returning a set of props so user
+      // can place whatever they want inside an event and see it returned.
+
+      var discardProps = ['segments', 'deletable', 'deleting', 'titleEditable', 'resizable', 'resizing', 'draggable', 'dragging', 'draggingStatic', 'focused'];
+      discardProps.forEach(function (prop) {
+        if (prop in event) delete event[prop];
+      });
+      if (!event.repeat) delete event.repeat; // If empty we don't need it.
+
+      return event;
+    },
+
+    /**
+     * Emits an event (custom DOM event) to the outside world.
+     * This event has an event name and a clean calendar event as a parameter.
+     *
+     * @param {String} eventName the name of the custom emitted event (e.g. `event-focus`).
+     * @param {Object} event the event to return to the outside world.
+     */
+    emitWithEvent: function emitWithEvent(eventName, event) {
+      this.$emit(eventName, this.cleanupEvent(event));
+    },
+
+    /**
+     * Update the selected date:
+     * - on created, from given selectedDate prop
+     * - on click/dblClick of another cell
+     * - from external call (via $refs)
+     * - when the given selectedDate prop changes.
+     * If date is not in the view, the view will change to show it.
+     *
+     * @param {String | Date} date The date to select.
+     */
+    updateSelectedDate: function updateSelectedDate(date) {
+      if (date && typeof date === 'string') date = this.utils.date.stringToDate(date);else date = new Date(date); // Clone to keep original untouched.
+
+      if (date && date instanceof Date) {
+        var selectedDate = this.view.selectedDate;
+        if (selectedDate) this.transitionDirection = selectedDate.getTime() > date.getTime() ? 'left' : 'right'; // Select the day at midnight in order to allow fetching events on whole day.
+        // Setting milliseconds to 0 is critical as well for timestamp comparison.
+
+        date.setHours(0, 0, 0, 0);
+        if (!selectedDate || selectedDate.getTime() !== date.getTime()) this.view.selectedDate = date;
+        this.switchView(this.view.id);
+      }
+    },
+
+    /**
+     * Double checks the week number is correct. Read bellow to understand!
+     * this is a wrapper around the `getWeek()` function for performance:
+     * As this is called multiple times from the template and cannot be in computed since there is
+     * a parameter, this wrapper function avoids the `getWeek()` function call 5 times out of 6
+     * using the computed `firstCellDateWeekNumber`.
+     *
+     * Reason why:
+     * Getting the week number is not that straightforward as there might be a 53rd week in the year.
+     * Whenever the year starts on a Thursday or any leap year starting on a Wednesday, this week will be 53.
+     *
+     * @param {Number} weekFromFirstCell Number from 0 to 6.
+     */
+    getWeekNumber: function getWeekNumber(weekFromFirstCell) {
+      var ud = this.utils.date;
+      var firstCellWeekNumber = this.firstCellDateWeekNumber;
+      var currentWeekNumber = firstCellWeekNumber + weekFromFirstCell;
+      var modifier = this.startWeekOnSunday ? 1 : 0;
+
+      if (currentWeekNumber > 52) {
+        return ud.getWeek(ud.addDays(this.view.firstCellDate, 7 * weekFromFirstCell + modifier));
+      } else return currentWeekNumber;
+    },
+
+    /**
+     * Only if watchRealTime is true.
+     * Pull the current time from user machine every minute to keep vue-cal accurate even when idle.
+     * This will redraw the now line every minute and ensure that Today's date is always accurate.
+     */
+    timeTick: function timeTick() {
+      // Updating `now` will re-trigger the computed `todaysTimePosition` in cell.vue.
+      this.now = new Date();
+      this.timeTickerIds[1] = setTimeout(this.timeTick, 60 * 1000); // Every minute.
+    },
+
+    /**
+     * Updates the localized texts in use in the Date prototypes. (E.g. new Date().format())
+     * Callable from outside of Vue Cal.
+     */
+    updateDateTexts: function updateDateTexts() {
+      this.utils.date.updateTexts(this.texts);
+    },
+
+    /**
+     * On Windows devices, the .vuecal__bg's vertical scrollbar takes space and pushes the content.
+     * This function will also push the weekdays-headings and all-day bar to have them properly aligned.
+     * The calculated style will be placed in the docment head in a style tag so it's only done once
+     * (the scrollbar width never changes).
+     * Ref. https://github.com/antoniandre/vue-cal/issues/221
+     */
+    alignWithScrollbar: function alignWithScrollbar() {
+      // If already done from another instance, exit.
+      if (document.getElementById('vuecal-align-with-scrollbar')) return;
+      var bg = this.$refs.vuecal.getElementsByClassName('vuecal__scrollbar-check')[0];
+      var scrollbarWidth = bg.offsetWidth - bg.children[0].offsetWidth; // Only add a style tag once and if a scrollbar width is detected.
+
+      if (scrollbarWidth) {
+        var style = document.createElement('style');
+        style.id = 'vuecal-align-with-scrollbar';
+        style.type = 'text/css';
+        style.innerHTML = ".vuecal__weekdays-headings,.vuecal__all-day {padding-right: ".concat(scrollbarWidth, "px}");
+        document.head.appendChild(style);
+      }
+    },
+
+    /**
+     * Tells wether there are events in the given cell or split and returns a Boolean.
+     * This function simplifies the template.
+     *
+     * @param {Array} events The cell events.
+     * @param {Object|Boolean} split The current split object if any or false.
+     * @return {Boolean} true if there are events, false otherwise.
+     */
+    cellOrSplitHasEvents: function cellOrSplitHasEvents(events) {
+      var split = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      return events.length && (!split && events.length || split && events.some(function (e) {
+        return e.split === split.id;
+      }));
+    }
+  },
+  created: function created() {
+    this.utils.cell = new cell_CellUtils(this);
+    this.utils.event = new event_EventUtils(this, this.utils.date);
+    this.loadLocale(this.locale);
+    if (this.editEvents.drag) this.loadDragAndDrop(); // Init the array of events, then keep listening for changes in watcher.
+
+    this.updateMutableEvents(this.events);
+    this.view.id = this.currentView;
+    if (this.selectedDate) this.updateSelectedDate(this.selectedDate);else {
+      this.view.selectedDate = new Date();
+      this.switchView(this.currentView);
+    } // Timers are expensive, this should only trigger on demand.
+
+    if (this.time && this.watchRealTime) {
+      // Snap the time ticker on sharp minutes (when seconds = 0), so that we can set
+      // the time ticker interval to 60 seconds and spare some function calls.
+      this.timeTickerIds[0] = setTimeout(this.timeTick, (60 - this.now.getSeconds()) * 1000);
+    }
+  },
+  mounted: function mounted() {
+    var ud = this.utils.date;
+    var hasTouch = ('ontouchstart' in window);
+    var _this$editEvents = this.editEvents,
+        resize = _this$editEvents.resize,
+        drag = _this$editEvents.drag,
+        create = _this$editEvents.create,
+        deletable = _this$editEvents.delete,
+        title = _this$editEvents.title;
+    var hasEventClickHandler = this.onEventClick && typeof this.onEventClick === 'function'; // If event is editable in any way add a mouseup event handler.
+
+    if (resize || drag || create || deletable || title || hasEventClickHandler) {
+      window.addEventListener(hasTouch ? 'touchend' : 'mouseup', this.onMouseUp);
+    }
+
+    if (resize || drag || create && this.dragToCreateEvent) {
+      window.addEventListener(hasTouch ? 'touchmove' : 'mousemove', this.onMouseMove, {
+        passive: false
+      });
+    }
+
+    if (title) window.addEventListener('keyup', this.onKeyUp); // Disable context menu on touch devices on the whole vue-cal instance.
+
+    if (hasTouch) {
+      this.$refs.vuecal.oncontextmenu = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      };
+    } // https://github.com/antoniandre/vue-cal/issues/221
+
+
+    if (!this.hideBody) this.alignWithScrollbar(); // Emit the `ready` event with useful parameters.
+
+    var startDate = this.view.startDate;
+
+    var params = Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({
+      view: this.view.id,
+      startDate: startDate,
+      endDate: this.view.endDate
+    }, this.isMonthView ? {
+      firstCellDate: this.view.firstCellDate,
+      lastCellDate: this.view.lastCellDate
+    } : {}), {}, {
+      events: this.view.events.map(this.cleanupEvent)
+    }, this.isWeekView ? {
+      week: ud.getWeek(this.startWeekOnSunday ? ud.addDays(startDate, 1) : startDate)
+    } : {});
+
+    this.$emit('ready', params);
+    this.ready = true;
+  },
+  beforeDestroy: function beforeDestroy() {
+    var hasTouch = ('ontouchstart' in window);
+    window.removeEventListener(hasTouch ? 'touchmove' : 'mousemove', this.onMouseMove, {
+      passive: false
+    });
+    window.removeEventListener(hasTouch ? 'touchend' : 'mouseup', this.onMouseUp);
+    window.removeEventListener('keyup', this.onKeyUp); // Don't keep the ticking running if unused.
+
+    if (this.timeTickerIds[0]) clearTimeout(this.timeTickerIds[0]);
+    if (this.timeTickerIds[1]) clearTimeout(this.timeTickerIds[1]);
+    this.timeTickerIds = [null, null];
+  },
+  computed: {
+    editEvents: function editEvents() {
+      if (this.editableEvents && _typeof(this.editableEvents) === 'object') {
+        return {
+          title: !!this.editableEvents.title,
+          drag: !!this.editableEvents.drag,
+          resize: !!this.editableEvents.resize,
+          create: !!this.editableEvents.create,
+          delete: !!this.editableEvents.delete
+        };
+      }
+
+      return {
+        title: !!this.editableEvents,
+        drag: !!this.editableEvents,
+        resize: !!this.editableEvents,
+        create: !!this.editableEvents,
+        delete: !!this.editableEvents
+      };
+    },
+    views: function views() {
+      return {
+        years: {
+          label: this.texts.years,
+          enabled: !this.disableViews.includes('years')
+        },
+        year: {
+          label: this.texts.year,
+          enabled: !this.disableViews.includes('year')
+        },
+        month: {
+          label: this.texts.month,
+          enabled: !this.disableViews.includes('month')
+        },
+        week: {
+          label: this.texts.week,
+          enabled: !this.disableViews.includes('week')
+        },
+        day: {
+          label: this.texts.day,
+          enabled: !this.disableViews.includes('day')
+        }
+      };
+    },
+    currentView: function currentView() {
+      return this.validateView(this.activeView);
+    },
+    enabledViews: function enabledViews() {
+      var _this5 = this;
+
+      return Object.keys(this.views).filter(function (view) {
+        return _this5.views[view].enabled;
+      });
+    },
+    hasTimeColumn: function hasTimeColumn() {
+      return this.time && this.isWeekOrDayView;
+    },
+    isShortMonthView: function isShortMonthView() {
+      return this.isMonthView && this.eventsOnMonthView === 'short';
+    },
+    firstCellDateWeekNumber: function firstCellDateWeekNumber() {
+      var ud = this.utils.date;
+      var date = this.view.firstCellDate;
+      return ud.getWeek(this.startWeekOnSunday ? ud.addDays(date, 1) : date);
+    },
+    // For week & day views.
+    timeCells: function timeCells() {
+      var timeCells = [];
+
+      for (var i = this.timeFrom, max = this.timeTo; i < max; i += this.timeStep) {
+        timeCells.push({
+          hours: Math.floor(i / 60),
+          minutes: i % 60,
+          label: this.utils.date.formatTime(i, this.TimeFormat),
+          // The texts (3rd param) are given on Vue Cal init.
+          value: i
+        });
+      }
+
+      return timeCells;
+    },
+    TimeFormat: function TimeFormat() {
+      return this.timeFormat || (this.twelveHour ? 'h:mm{am}' : 'HH:mm');
+    },
+    // Filter out the day splits that are hidden.
+    daySplits: function daySplits() {
+      return (this.splitDays.filter(function (item) {
+        return !item.hide;
+      }) || []).map(function (item, i) {
+        return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, item), {}, {
+          id: item.id || i + 1
+        });
+      }) // Make sure there's always an id.
+      ;
+    },
+    // Whether the current view has days splits.
+    hasSplits: function hasSplits() {
+      return this.daySplits.length && this.isWeekOrDayView;
+    },
+    hasShortEvents: function hasShortEvents() {
+      return this.showAllDayEvents === 'short';
+    },
+    // Returns the min cell width or the min split width if any.
+    cellOrSplitMinWidth: function cellOrSplitMinWidth() {
+      var minWidth = null;
+      if (this.hasSplits && this.minSplitWidth) minWidth = this.visibleDaysCount * this.minSplitWidth * this.daySplits.length;else if (this.minCellWidth && this.isWeekView) minWidth = this.visibleDaysCount * this.minCellWidth;
+      return minWidth;
+    },
+    allDayBar: function allDayBar() {
+      var height = this.allDayBarHeight || null;
+      if (height && !isNaN(height)) height += 'px';
+      return {
+        cells: this.viewCells,
+        options: this.$props,
+        label: this.texts.allDay,
+        shortEvents: this.hasShortEvents,
+        daySplits: this.hasSplits && this.daySplits || [],
+        cellOrSplitMinWidth: this.cellOrSplitMinWidth,
+        height: height
+      };
+    },
+    minTimestamp: function minTimestamp() {
+      var date = null;
+      if (this.minDate && typeof this.minDate === 'string') date = this.utils.date.stringToDate(this.minDate);else if (this.minDate && this.minDate instanceof Date) date = this.minDate;
+      return date ? date.getTime() : null;
+    },
+    maxTimestamp: function maxTimestamp() {
+      var date = null;
+      if (this.maxDate && typeof this.maxDate === 'string') date = this.utils.date.stringToDate(this.maxDate);else if (this.maxDate && this.minDate instanceof Date) date = this.maxDate;
+      return date ? date.getTime() : null;
+    },
+    weekDays: function weekDays() {
+      var _this6 = this;
+
+      var _this$texts = this.texts,
+          weekDays = _this$texts.weekDays,
+          _this$texts$weekDaysS = _this$texts.weekDaysShort,
+          weekDaysShort = _this$texts$weekDaysS === void 0 ? [] : _this$texts$weekDaysS; // Do not modify original for next instances.
+
+      weekDays = weekDays.slice(0).map(function (day, i) {
+        return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({
+          label: day
+        }, weekDaysShort.length ? {
+          short: weekDaysShort[i]
+        } : {}), {}, {
+          hide: _this6.hideWeekends && i >= 5 || _this6.hideWeekdays.length && _this6.hideWeekdays.includes(i + 1)
+        });
+      });
+      if (this.startWeekOnSunday) weekDays.unshift(weekDays.pop());
+      return weekDays;
+    },
+    weekDaysInHeader: function weekDaysInHeader() {
+      return this.isMonthView || // hasSplits check is important here in case the user toggles the splits but keep minSplitWidth.
+      this.isWeekView && !this.minCellWidth && !(this.hasSplits && this.minSplitWidth);
+    },
+    months: function months() {
+      return this.texts.months.map(function (month) {
+        return {
+          label: month
+        };
+      });
+    },
+    // Prepare the special hours object once for all at root level and not in cell.
+    specialDayHours: function specialDayHours() {
+      var _this7 = this;
+
+      return Array(7).fill('').map(function (cell, i) {
+        var _ref = _this7.specialHours[i + 1] || {},
+            from = _ref.from,
+            to = _ref.to,
+            Class = _ref.class;
+
+        return {
+          day: i + 1,
+          from: ![null, undefined].includes(from) ? from * 1 : null,
+          to: ![null, undefined].includes(to) ? to * 1 : null,
+          class: Class || ''
+        };
+      });
+    },
+    viewTitle: function viewTitle() {
+      var ud = this.utils.date;
+      var title = '';
+      var date = this.view.startDate;
+      var year = date.getFullYear();
+      var month = date.getMonth();
+
+      switch (this.view.id) {
+        case 'years':
+          {
+            title = this.texts.years;
+            break;
+          }
+
+        case 'year':
+          {
+            title = year;
+            break;
+          }
+
+        case 'month':
+          {
+            title = "".concat(this.months[month].label, " ").concat(year);
+            break;
+          }
+
+        case 'week':
+          {
+            var lastDayOfWeek = this.view.endDate; // Might be another day than Sunday, if hiding days.
+
+            var y1 = date.getFullYear();
+            var m1 = this.texts.months[date.getMonth()];
+            if (this.xsmall) m1 = m1.substring(0, 3);
+            var formattedMonthYear = "".concat(m1, " ").concat(y1); // If week is not ending in the same month it started in.
+
+            if (lastDayOfWeek.getMonth() !== date.getMonth()) {
+              var y2 = lastDayOfWeek.getFullYear();
+              var m2 = this.texts.months[lastDayOfWeek.getMonth()];
+              if (this.xsmall) m2 = m2.substring(0, 3);
+              if (y1 === y2) formattedMonthYear = "".concat(m1, " - ").concat(m2, " ").concat(y1);else {
+                if (this.small) formattedMonthYear = "".concat(m1.substring(0, 3), " ").concat(y1, " - ").concat(m2.substring(0, 3), " ").concat(y2);else formattedMonthYear = "".concat(m1, " ").concat(y1, " - ").concat(m2, " ").concat(y2);
+              }
+            }
+
+            title = "".concat(this.texts.week, " ").concat(ud.getWeek(this.startWeekOnSunday ? ud.addDays(date, 1) : date), " (").concat(formattedMonthYear, ")");
+            break;
+          }
+
+        case 'day':
+          {
+            title = this.utils.date.formatDate(date, this.texts.dateFormat, this.texts);
+            break;
+          }
+      }
+
+      return title;
+    },
+    viewCells: function viewCells() {
+      var _this8 = this;
+
+      var ud = this.utils.date;
+      var cells = [];
+      var fromYear = null;
+      var todayFound = false; // If watchRealTime = true, a time ticker will keep updating this.now every minute.
+      // If watchRealTime = false - and by default - update this.now value each time we rerender the cells
+      // so we keep Today's date always accurate at a minimum cost and maximum performance.
+      // eslint-disable-next-line
+
+      if (!this.watchRealTime) this.now = new Date();
+      var now = this.now;
+
+      switch (this.view.id) {
+        case 'years':
+          {
+            fromYear = this.view.startDate.getFullYear();
+            cells = Array.apply(null, Array(25)).map(function (cell, i) {
+              var startDate = new Date(fromYear + i, 0, 1);
+              var endDate = new Date(fromYear + i + 1, 0, 1);
+              endDate.setSeconds(-1); // End at 23:59:59.
+
+              return {
+                startDate: startDate,
+                formattedDate: ud.formatDateLite(startDate),
+                endDate: endDate,
+                content: fromYear + i,
+                current: fromYear + i === now.getFullYear()
+              };
+            });
+            break;
+          }
+
+        case 'year':
+          {
+            fromYear = this.view.startDate.getFullYear();
+            cells = Array.apply(null, Array(12)).map(function (cell, i) {
+              var startDate = new Date(fromYear, i, 1);
+              var endDate = new Date(fromYear, i + 1, 1);
+              endDate.setSeconds(-1); // End at 23:59:59.
+
+              return {
+                startDate: startDate,
+                formattedDate: ud.formatDateLite(startDate),
+                endDate: endDate,
+                content: _this8.xsmall ? _this8.months[i].label.substr(0, 3) : _this8.months[i].label,
+                current: i === now.getMonth() && fromYear === now.getFullYear()
+              };
+            });
+            break;
+          }
+
+        case 'month':
+          {
+            var month = this.view.startDate.getMonth();
+            var firstCellDate = new Date(this.view.firstCellDate);
+            todayFound = false; // Create 42 cells (6 rows x 7 days) and populate them with days.
+
+            cells = Array.apply(null, Array(42)).map(function (cell, i) {
+              var startDate = ud.addDays(firstCellDate, i);
+              var endDate = new Date(startDate);
+              endDate.setHours(23, 59, 59, 0); // End at 23:59:59.
+              // To increase performance skip checking isToday if today already found.
+
+              var isToday = !todayFound && ud.isToday(startDate) && !todayFound++;
+              return {
+                startDate: startDate,
+                formattedDate: ud.formatDateLite(startDate),
+                endDate: endDate,
+                content: startDate.getDate(),
+                today: isToday,
+                outOfScope: startDate.getMonth() !== month,
+                class: "vuecal__cell--day".concat(startDate.getDay() || 7)
+              };
+            });
+
+            if (this.hideWeekends || this.hideWeekdays.length) {
+              cells = cells.filter(function (cell) {
+                var day = cell.startDate.getDay() || 7; // Put Sunday at position 7 instead of 0.
+
+                return !(_this8.hideWeekends && day >= 6 || _this8.hideWeekdays.length && _this8.hideWeekdays.includes(day));
+              });
+            }
+
+            break;
+          }
+
+        case 'week':
+          {
+            todayFound = false;
+            var firstDayOfWeek = this.view.startDate;
+            var weekDays = this.weekDays;
+            cells = weekDays.map(function (cell, i) {
+              var startDate = ud.addDays(firstDayOfWeek, i);
+              var endDate = new Date(startDate);
+              endDate.setHours(23, 59, 59, 0); // End at 23:59:59.
+
+              var dayOfWeek = (startDate.getDay() || 7) - 1; // Day of the week from 0 to 6 with 6 = Sunday.
+
+              return {
+                startDate: startDate,
+                formattedDate: ud.formatDateLite(startDate),
+                endDate: endDate,
+                // To increase performance skip checking isToday if today already found.
+                today: !todayFound && ud.isToday(startDate) && !todayFound++,
+                specialHours: _this8.specialDayHours[dayOfWeek]
+              };
+            }).filter(function (cell, i) {
+              return !weekDays[i].hide;
+            });
+            break;
+          }
+
+        case 'day':
+          {
+            var startDate = this.view.startDate;
+            var endDate = new Date(this.view.startDate);
+            endDate.setHours(23, 59, 59, 0); // End at 23:59:59.
+
+            var dayOfWeek = (startDate.getDay() || 7) - 1; // Day of the week from 0 to 6 with 6 = Sunday.
+
+            cells = [{
+              startDate: startDate,
+              formattedDate: ud.formatDateLite(startDate),
+              endDate: endDate,
+              today: ud.isToday(startDate),
+              specialHours: this.specialDayHours[dayOfWeek]
+            }];
+            break;
+          }
+      }
+
+      return cells;
+    },
+    // Only when hiding weekdays on month and week views.
+    visibleDaysCount: function visibleDaysCount() {
+      if (this.isDayView) return 1;
+      return 7 - this.weekDays.reduce(function (total, day) {
+        return total + day.hide;
+      }, 0);
+    },
+    cellWidth: function cellWidth() {
+      return 100 / this.visibleDaysCount;
+    },
+    cssClasses: function cssClasses() {
+      var _ref2;
+
+      var _this$domEvents4 = this.domEvents,
+          resizeAnEvent = _this$domEvents4.resizeAnEvent,
+          dragAnEvent = _this$domEvents4.dragAnEvent,
+          dragCreateAnEvent = _this$domEvents4.dragCreateAnEvent;
+      return _ref2 = {}, Object(defineProperty["a" /* default */])(_ref2, "vuecal--".concat(this.view.id, "-view"), true), Object(defineProperty["a" /* default */])(_ref2, "vuecal--".concat(this.locale), this.locale), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--no-time', !this.time), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--view-with-time', this.hasTimeColumn), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--week-numbers', this.showWeekNumbers && this.isMonthView), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--twelve-hour', this.twelveHour), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--click-to-navigate', this.clickToNavigate), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--hide-weekends', this.hideWeekends), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--split-days', this.hasSplits), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--sticky-split-labels', this.hasSplits && this.stickySplitLabels), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--overflow-x', this.minCellWidth && this.isWeekView || this.hasSplits && this.minSplitWidth), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--small', this.small), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--xsmall', this.xsmall), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--resizing-event', resizeAnEvent._eid), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--drag-creating-event', dragCreateAnEvent.event), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--dragging-event', dragAnEvent._eid), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--events-on-month-view', this.eventsOnMonthView), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--short-events', this.isMonthView && this.eventsOnMonthView === 'short'), Object(defineProperty["a" /* default */])(_ref2, 'vuecal--has-touch', typeof window !== 'undefined' && 'ontouchstart' in window), _ref2;
+    },
+    isYearsOrYearView: function isYearsOrYearView() {
+      return ['years', 'year'].includes(this.view.id);
+    },
+    isYearsView: function isYearsView() {
+      return this.view.id === 'years';
+    },
+    isYearView: function isYearView() {
+      return this.view.id === 'year';
+    },
+    isMonthView: function isMonthView() {
+      return this.view.id === 'month';
+    },
+    isWeekOrDayView: function isWeekOrDayView() {
+      return ['week', 'day'].includes(this.view.id);
+    },
+    isWeekView: function isWeekView() {
+      return this.view.id === 'week';
+    },
+    isDayView: function isDayView() {
+      return this.view.id === 'day';
+    }
+  },
+  watch: {
+    events: {
+      // To be able to detect an event attribute change, it has to be first initialized with a value.
+      handler: function handler(events, oldEvents) {
+        this.updateMutableEvents(events);
+        this.addEventsToView();
+      },
+      deep: true
+    },
+    locale: function locale(_locale) {
+      this.loadLocale(_locale);
+    },
+    selectedDate: function selectedDate(date) {
+      this.updateSelectedDate(date);
+    },
+    activeView: function activeView(newVal) {
+      this.switchView(newVal);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/vue-cal/index.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_vue_calvue_type_script_lang_js_ = (vue_calvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/vue-cal/index.vue
+
+
+
+
+
+/* normalize component */
+
+var vue_cal_component = normalizeComponent(
+  src_vue_calvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var vue_cal = (vue_cal_component.exports);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (vue_cal);
+
+
+
+/***/ }),
+
+/***/ "fb6a":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var isObject = __webpack_require__("861d");
+var isArray = __webpack_require__("e8b5");
+var toAbsoluteIndex = __webpack_require__("23cb");
+var toLength = __webpack_require__("50c4");
+var toIndexedObject = __webpack_require__("fc6a");
+var createProperty = __webpack_require__("8418");
+var wellKnownSymbol = __webpack_require__("b622");
+var arrayMethodHasSpeciesSupport = __webpack_require__("1dde");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
+var USES_TO_LENGTH = arrayMethodUsesToLength('slice', { ACCESSORS: true, 0: 0, 1: 2 });
+
+var SPECIES = wellKnownSymbol('species');
+var nativeSlice = [].slice;
+var max = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = toLength(O.length);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return nativeSlice.call(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
+
+
+/***/ }),
+
+/***/ "fc6a":
+/***/ (function(module, exports, __webpack_require__) {
+
+// toObject with fallback for non-array-like ES3 strings
+var IndexedObject = __webpack_require__("44ad");
+var requireObjectCoercible = __webpack_require__("1d80");
+
+module.exports = function (it) {
+  return IndexedObject(requireObjectCoercible(it));
+};
+
+
+/***/ }),
+
+/***/ "fdbc":
+/***/ (function(module, exports) {
+
+// iterable DOM collections
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+module.exports = {
+  CSSRuleList: 0,
+  CSSStyleDeclaration: 0,
+  CSSValueList: 0,
+  ClientRectList: 0,
+  DOMRectList: 0,
+  DOMStringList: 0,
+  DOMTokenList: 1,
+  DataTransferItemList: 0,
+  FileList: 0,
+  HTMLAllCollection: 0,
+  HTMLCollection: 0,
+  HTMLFormElement: 0,
+  HTMLSelectElement: 0,
+  MediaList: 0,
+  MimeTypeArray: 0,
+  NamedNodeMap: 0,
+  NodeList: 1,
+  PaintRequestList: 0,
+  Plugin: 0,
+  PluginArray: 0,
+  SVGLengthList: 0,
+  SVGNumberList: 0,
+  SVGPathSegList: 0,
+  SVGPointList: 0,
+  SVGStringList: 0,
+  SVGTransformList: 0,
+  SourceBufferList: 0,
+  StyleSheetList: 0,
+  TextTrackCueList: 0,
+  TextTrackList: 0,
+  TouchList: 0
+};
+
+
+/***/ }),
+
+/***/ "fdbf":
+/***/ (function(module, exports, __webpack_require__) {
+
+var NATIVE_SYMBOL = __webpack_require__("4930");
+
+module.exports = NATIVE_SYMBOL
+  // eslint-disable-next-line no-undef
+  && !Symbol.sham
+  // eslint-disable-next-line no-undef
+  && typeof Symbol.iterator == 'symbol';
+
+
+/***/ })
+
+/******/ })["default"];
+
+/***/ }),
+
+/***/ "./node_modules/vue-cal/dist/vuecal.css":
+/*!**********************************************!*\
+  !*** ./node_modules/vue-cal/dist/vuecal.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./vuecal.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-cal/dist/vuecal.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -30717,7 +42089,7 @@ var render = function() {
                     "span",
                     {
                       staticClass:
-                        "ml-2 mt-2 text-xs font-semibold text-gray-600 uppercase"
+                        "ml-2 text-xs font-semibold text-gray-600 uppercase"
                     },
                     [_vm._v("Default for future aws")]
                   )
@@ -31650,6 +43022,812 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-4" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-6" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-6",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.updateDefaultTask(_vm.defaultTaskId)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "name" }
+                },
+                [_vm._v("Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.default_tasks.default_task.name,
+                    expression: "$store.state.default_tasks.default_task.name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "name", type: "text", name: "name", required: "" },
+                domProps: {
+                  value: _vm.$store.state.default_tasks.default_task.name
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.default_tasks.default_task,
+                      "name",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "sort_order" }
+                },
+                [_vm._v("Sort Order")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value:
+                      _vm.$store.state.default_tasks.default_task.sort_order,
+                    expression:
+                      "$store.state.default_tasks.default_task.sort_order"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "sort_order",
+                  type: "number",
+                  name: "sort_order",
+                  required: ""
+                },
+                domProps: {
+                  value: _vm.$store.state.default_tasks.default_task.sort_order
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.default_tasks.default_task,
+                      "sort_order",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "status" }
+                },
+                [_vm._v("Status")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "relative" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value:
+                          _vm.$store.state.default_tasks.default_task.status,
+                        expression:
+                          "$store.state.default_tasks.default_task.status"
+                      }
+                    ],
+                    staticClass:
+                      "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                    attrs: { name: "status", id: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.$store.state.default_tasks.default_task,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("active")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("inactive")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-4 w-4",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "notes" }
+                },
+                [_vm._v("Notes")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.default_tasks.default_task.notes,
+                    expression: "$store.state.default_tasks.default_task.notes"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "notes", name: "notes", required: "" },
+                domProps: {
+                  value: _vm.$store.state.default_tasks.default_task.notes
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.default_tasks.default_task,
+                      "notes",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+            },
+            [_vm._v("\n              Update\n          ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-700 hover:shadow-none",
+          attrs: { type: "submit" },
+          on: {
+            click: function($event) {
+              return _vm.deleteDefaultTask(_vm.defaultTaskId)
+            }
+          }
+        },
+        [_vm._v("\n        Delete\n      ")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", [
+      _c(
+        "button",
+        {
+          staticClass:
+            "w-1/12 mx-1 py-3 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none",
+          on: { click: _vm.createDefaultTask }
+        },
+        [_vm._v("\n          Add New\n      ")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-col" }, [
+      _c("div", { staticClass: "-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+              },
+              [
+                _c(
+                  "table",
+                  { staticClass: "min-w-full divide-y divide-gray-200" },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      { staticClass: "bg-white divide-y divide-gray-200" },
+                      _vm._l(
+                        _vm.$store.state.default_tasks.default_tasks,
+                        function(default_task) {
+                          return _c("tr", { key: default_task.id }, [
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-nowrap" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "flex items-center" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "flex-shrink-0 h-10 w-10"
+                                      },
+                                      [
+                                        _c(
+                                          "p",
+                                          {
+                                            staticClass:
+                                              "text-center mx-1 text-gray-500  w-10 h-10 justify-center p-2 text-sm font-semibold"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                  " +
+                                                _vm._s(default_task.name) +
+                                                "\n                              "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-nowrap" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "text-sm text-gray-900" },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(default_task.sort_order) +
+                                        "\n                      "
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-nowrap" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "px-2 inline-flex text-xs leading-5 font-semibold text-gray-600"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(default_task.status) +
+                                        "\n                      "
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-nowrap" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "px-2 inline-flex text-xs leading-5 font-semibold text-gray-600"
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(default_task.notes) +
+                                        "\n                      "
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass:
+                                  "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "text-gray-700 hover:text-gray-800",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.getDefaultTask(
+                                          default_task.id
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Edit")]
+                                )
+                              ]
+                            )
+                          ])
+                        }
+                      ),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "bg-gray-50" }, [
+      _c("tr", [
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Name \n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Sort Order\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Status\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Notes\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "relative px-6 py-3", attrs: { scope: "col" } },
+          [_c("span", { staticClass: "sr-only" }, [_vm._v("Edit")])]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-4" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-6" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-6",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.createDefaultTask($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "name" }
+                },
+                [_vm._v("Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.default_task.name,
+                    expression: "default_task.name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "name", type: "text", name: "name", required: "" },
+                domProps: { value: _vm.default_task.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.default_task, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "sort_order" }
+                },
+                [_vm._v("Sort Order")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.default_task.sort_order,
+                    expression: "default_task.sort_order"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "sort_order",
+                  type: "number",
+                  name: "sort_order",
+                  required: ""
+                },
+                domProps: { value: _vm.default_task.sort_order },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.default_task,
+                      "sort_order",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "status" }
+                },
+                [_vm._v("Status")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "relative" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.default_task.status,
+                        expression: "default_task.status"
+                      }
+                    ],
+                    staticClass:
+                      "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                    attrs: { name: "status", id: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.default_task,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("Active")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Inactive")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-4 w-4",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "notes" }
+                },
+                [_vm._v("Notes")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.default_task.notes,
+                    expression: "default_task.notes"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "notes", name: "notes", required: "" },
+                domProps: { value: _vm.default_task.notes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.default_task, "notes", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+            },
+            [_vm._v("\n              Save\n          ")]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/footer/Footer.vue?vue&type=template&id=22837618&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/footer/Footer.vue?vue&type=template&id=22837618& ***!
@@ -31917,7 +44095,66 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "hidden sm:block sm:ml-6" }, [
+                _c(
+                  "div",
+                  { staticClass: "flex space-x-4" },
+                  [
+                    _vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
+                            attrs: { to: { name: "home" } }
+                          },
+                          [_vm._v("\n                Home\n            ")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
+                            attrs: { to: { name: "plan" } }
+                          },
+                          [_vm._v("\n                Plan\n            ")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
+                            attrs: { to: { name: "default-tasks" } }
+                          },
+                          [
+                            _vm._v(
+                              "\n                Default Tasks\n            "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium",
+                            attrs: { to: { name: "workers" } }
+                          },
+                          [_vm._v("\n                Workers\n            ")]
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ])
             ]
           ),
           _vm._v(" "),
@@ -31927,18 +44164,10 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hidden sm:block sm:ml-6" }, [
-      _c("div", { staticClass: "flex space-x-4" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -32018,10 +44247,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4&":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4& ***!
-  \****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98& ***!
+  \************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -32033,7 +44262,75 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    test route\n")])
+  return _c(
+    "div",
+    [
+      _c("vue-cal", {
+        attrs: {
+          "selected-date": "2020-12-11",
+          "time-from": 8 * 60,
+          "time-step": 30,
+          "time-to": 17 * 60,
+          "disable-views": ["years", "year", "month"],
+          "active-view": "day",
+          "editable-events": "",
+          "hide-weekends": "",
+          twelveHour: _vm.twelveHour,
+          hideTitleBar: _vm.hideTitleBar,
+          dragToCreateEvent: _vm.dragToCreateEvent,
+          events: _vm.week_tasks,
+          "split-days": _vm.workers,
+          "sticky-split-labels": _vm.stickySplitLabels,
+          "min-cell-width": _vm.minCellWidth,
+          "min-split-width": _vm.minSplitWidth
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "event",
+            fn: function(ref) {
+              var event = ref.event
+              return [
+                _c("div", {
+                  staticClass: "vuecal__event-title",
+                  domProps: { innerHTML: _vm._s(event.title) }
+                }),
+                _vm._v(" "),
+                _c("p", [
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.openModal(event.task_id)
+                        }
+                      }
+                    },
+                    [_vm._v("Edit")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("small", { staticClass: "vuecal__event-time" }, [
+                  _c("strong", [_vm._v("Event start:")]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(_vm._s(event.start.formatTime("h O'clock")))
+                  ]),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("strong", [_vm._v("Event end:")]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(_vm._s(event.end.formatTime("h O'clock")))
+                  ])
+                ])
+              ]
+            }
+          }
+        ])
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -32453,6 +44750,680 @@ var staticRenderFns = [
         ])
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-4" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-6" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-6",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.createWorker($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "first_name" }
+                },
+                [_vm._v("First Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.worker.first_name,
+                    expression: "worker.first_name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "first_name",
+                  type: "text",
+                  name: "first_name",
+                  required: ""
+                },
+                domProps: { value: _vm.worker.first_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.worker, "first_name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "last_name" }
+                },
+                [_vm._v("Last Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.worker.last_name,
+                    expression: "worker.last_name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "last_name",
+                  type: "text",
+                  name: "last_name",
+                  required: ""
+                },
+                domProps: { value: _vm.worker.last_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.worker, "last_name", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "number" }
+                },
+                [_vm._v("Number")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.worker.number,
+                    expression: "worker.number"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "number",
+                  type: "text",
+                  name: "number",
+                  required: ""
+                },
+                domProps: { value: _vm.worker.number },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.worker, "number", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "notes" }
+                },
+                [_vm._v("Notes")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.worker.notes,
+                    expression: "worker.notes"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "notes", name: "notes", required: "" },
+                domProps: { value: _vm.worker.notes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.worker, "notes", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+            },
+            [_vm._v("\n              Save\n          ")]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-4" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "py-6" }, [
+      _c(
+        "form",
+        {
+          staticClass: "mt-6",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.updateWorker(_vm.workerId)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "first_name" }
+                },
+                [_vm._v("First Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.workers.worker.first_name,
+                    expression: "$store.state.workers.worker.first_name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "first_name",
+                  type: "text",
+                  name: "first_name",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.workers.worker.first_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.workers.worker,
+                      "first_name",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "last_name" }
+                },
+                [_vm._v("Last Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.workers.worker.last_name,
+                    expression: "$store.state.workers.worker.last_name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "last_name",
+                  type: "text",
+                  name: "last_name",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.workers.worker.last_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.workers.worker,
+                      "last_name",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "number" }
+                },
+                [_vm._v("Number")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.workers.worker.number,
+                    expression: "$store.state.workers.worker.number"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "number",
+                  type: "text",
+                  name: "number",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.workers.worker.number },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.workers.worker,
+                      "number",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "notes" }
+                },
+                [_vm._v("Notes")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.workers.worker.notes,
+                    expression: "$store.state.workers.worker.notes"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { id: "notes", name: "notes", required: "" },
+                domProps: { value: _vm.$store.state.workers.worker.notes },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.workers.worker,
+                      "notes",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass:
+                "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+            },
+            [_vm._v("\n              update\n          ")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass:
+            "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-700 hover:shadow-none",
+          attrs: { type: "submit" },
+          on: {
+            click: function($event) {
+              return _vm.deleteWorker(_vm.workerId)
+            }
+          }
+        },
+        [_vm._v("\n          Delete\n      ")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {}, [
+    _c("div", [
+      _c(
+        "button",
+        {
+          staticClass:
+            "w-1/12 mx-1 py-3 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none",
+          on: { click: _vm.createWorker }
+        },
+        [_vm._v("\n          Add New\n      ")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex flex-col" }, [
+      _c("div", { staticClass: "-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
+              },
+              [
+                _c(
+                  "table",
+                  { staticClass: "min-w-full divide-y divide-gray-200" },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      { staticClass: "bg-white divide-y divide-gray-200" },
+                      _vm._l(_vm.$store.state.workers.workers, function(
+                        worker
+                      ) {
+                        return _c("tr", { key: worker.id }, [
+                          _c(
+                            "td",
+                            { staticClass: "px-6 py-4 whitespace-nowrap" },
+                            [
+                              _c("div", { staticClass: "flex items-center" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "flex-shrink-0 h-10 w-10" },
+                                  [
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass:
+                                          "text-center mx-1 rounded-full bg-gray-500 text-white  w-10 h-10 justify-center p-2 text-sm font-semibold"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                  " +
+                                            _vm._s(worker.initials) +
+                                            " \n                              "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            { staticClass: "px-6 py-4 whitespace-nowrap" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "text-sm text-gray-900" },
+                                [_vm._v(_vm._s(worker.name))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            { staticClass: "px-6 py-4 whitespace-nowrap" },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "px-2 inline-flex text-xs leading-5 font-semibold text-gray-600"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(worker.number) +
+                                      "\n                      "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "text-gray-700 hover:text-gray-800",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.getWorker(worker.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              )
+                            ]
+                          )
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "bg-gray-50" }, [
+      _c("tr", [
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Initials \n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Name\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass:
+              "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+            attrs: { scope: "col" }
+          },
+          [_vm._v("\n                      Number\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          { staticClass: "relative px-6 py-3", attrs: { scope: "col" } },
+          [_c("span", { staticClass: "sr-only" }, [_vm._v("Edit")])]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -56960,6 +69931,213 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/default_tasks/DefaultTaskModal.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTaskModal.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DefaultTaskModal.vue?vue&type=template&id=745f9131& */ "./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131&");
+/* harmony import */ var _DefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DefaultTaskModal.vue?vue&type=script&lang=js& */ "./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/default_tasks/DefaultTaskModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultTaskModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultTaskModal.vue?vue&type=template&id=745f9131& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTaskModal.vue?vue&type=template&id=745f9131&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTaskModal_vue_vue_type_template_id_745f9131___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/DefaultTasks.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTasks.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DefaultTasks.vue?vue&type=template&id=e3b76bd2& */ "./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2&");
+/* harmony import */ var _DefaultTasks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DefaultTasks.vue?vue&type=script&lang=js& */ "./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DefaultTasks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/default_tasks/DefaultTasks.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTasks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultTasks.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTasks_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultTasks.vue?vue&type=template&id=e3b76bd2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/DefaultTasks.vue?vue&type=template&id=e3b76bd2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultTasks_vue_vue_type_template_id_e3b76bd2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/default_tasks/NewDefaultTaskModal.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d& */ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d&");
+/* harmony import */ var _NewDefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewDefaultTaskModal.vue?vue&type=script&lang=js& */ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewDefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/default_tasks/NewDefaultTaskModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewDefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewDefaultTaskModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewDefaultTaskModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/default_tasks/NewDefaultTaskModal.vue?vue&type=template&id=2f8feb4d&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewDefaultTaskModal_vue_vue_type_template_id_2f8feb4d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/footer/Footer.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/footer/Footer.vue ***!
@@ -57236,18 +70414,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/partials/Test.vue":
-/*!***************************************************!*\
-  !*** ./resources/js/components/partials/Test.vue ***!
-  \***************************************************/
+/***/ "./resources/js/components/plan/Plan.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/plan/Plan.vue ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Test.vue?vue&type=template&id=6847b9d4& */ "./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4&");
-/* harmony import */ var _Test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Test.vue?vue&type=script&lang=js& */ "./resources/js/components/partials/Test.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plan.vue?vue&type=template&id=b73bfd98& */ "./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98&");
+/* harmony import */ var _Plan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Plan.vue?vue&type=script&lang=js& */ "./resources/js/components/plan/Plan.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Plan.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -57255,10 +70435,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Plan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -57268,38 +70448,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/partials/Test.vue"
+component.options.__file = "resources/js/components/plan/Plan.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/partials/Test.vue?vue&type=script&lang=js&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/components/partials/Test.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************/
+/***/ "./resources/js/components/plan/Plan.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/plan/Plan.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Test.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/partials/Test.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Plan.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Plan.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98& ***!
+  \******************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Test.vue?vue&type=template&id=6847b9d4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/partials/Test.vue?vue&type=template&id=6847b9d4&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Plan.vue?vue&type=template&id=b73bfd98& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/Plan.vue?vue&type=template&id=b73bfd98&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Test_vue_vue_type_template_id_6847b9d4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -57374,6 +70570,213 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/workers/NewWorkerModal.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/workers/NewWorkerModal.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewWorkerModal.vue?vue&type=template&id=536d8054& */ "./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054&");
+/* harmony import */ var _NewWorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewWorkerModal.vue?vue&type=script&lang=js& */ "./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewWorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/workers/NewWorkerModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewWorkerModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/NewWorkerModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewWorkerModal.vue?vue&type=template&id=536d8054& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/NewWorkerModal.vue?vue&type=template&id=536d8054&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewWorkerModal_vue_vue_type_template_id_536d8054___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/WorkerModal.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/workers/WorkerModal.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WorkerModal.vue?vue&type=template&id=d8907a4c& */ "./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c&");
+/* harmony import */ var _WorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WorkerModal.vue?vue&type=script&lang=js& */ "./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _WorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/workers/WorkerModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./WorkerModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/WorkerModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkerModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./WorkerModal.vue?vue&type=template&id=d8907a4c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/WorkerModal.vue?vue&type=template&id=d8907a4c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WorkerModal_vue_vue_type_template_id_d8907a4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/Workers.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/workers/Workers.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Workers.vue?vue&type=template&id=b8bc8f80& */ "./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80&");
+/* harmony import */ var _Workers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Workers.vue?vue&type=script&lang=js& */ "./resources/js/components/workers/Workers.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Workers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/workers/Workers.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/Workers.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/workers/Workers.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Workers.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/Workers.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Workers_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Workers.vue?vue&type=template&id=b8bc8f80& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/workers/Workers.vue?vue&type=template&id=b8bc8f80&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Workers_vue_vue_type_template_id_b8bc8f80___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -57387,11 +70790,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
-/* harmony import */ var _components_partials_Test_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/partials/Test.vue */ "./resources/js/components/partials/Test.vue");
-/* harmony import */ var _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/auth/Login.vue */ "./resources/js/components/auth/Login.vue");
-/* harmony import */ var _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/auth/Register.vue */ "./resources/js/components/auth/Register.vue");
-/* harmony import */ var _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/profile/Profile.vue */ "./resources/js/components/profile/Profile.vue");
-/* harmony import */ var _components_partials_NotFound_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/partials/NotFound.vue */ "./resources/js/components/partials/NotFound.vue");
+/* harmony import */ var _components_workers_Workers_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/workers/Workers.vue */ "./resources/js/components/workers/Workers.vue");
+/* harmony import */ var _components_default_tasks_DefaultTasks_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/default_tasks/DefaultTasks.vue */ "./resources/js/components/default_tasks/DefaultTasks.vue");
+/* harmony import */ var _components_plan_Plan_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/plan/Plan.vue */ "./resources/js/components/plan/Plan.vue");
+/* harmony import */ var _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/auth/Login.vue */ "./resources/js/components/auth/Login.vue");
+/* harmony import */ var _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/auth/Register.vue */ "./resources/js/components/auth/Register.vue");
+/* harmony import */ var _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/profile/Profile.vue */ "./resources/js/components/profile/Profile.vue");
+/* harmony import */ var _components_partials_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/partials/NotFound.vue */ "./resources/js/components/partials/NotFound.vue");
+
+
 
 
 
@@ -57413,24 +70820,42 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   }, {
     path: '/login',
     name: 'login',
-    component: _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/register',
     name: 'register',
-    component: _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {
     path: '/profile',
     name: 'profile',
-    component: _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _components_profile_Profile_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
     meta: {
       requiresAuth: true
     }
   }, {
-    path: '/test',
-    component: _components_partials_Test_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    path: '/workers',
+    name: 'workers',
+    component: _components_workers_Workers_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      requiresAuth: true
+    }
+  }, {
+    path: '/default-tasks',
+    name: 'default-tasks',
+    component: _components_default_tasks_DefaultTasks_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      requiresAuth: true
+    }
+  }, {
+    path: '/plan',
+    name: 'plan',
+    component: _components_plan_Plan_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    metha: {
+      requiresAuth: true
+    }
   }, {
     path: '*',
-    component: _components_partials_NotFound_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_partials_NotFound_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
   }]
 }));
 
@@ -57531,6 +70956,97 @@ var actions = {
 
 /***/ }),
 
+/***/ "./resources/js/store/default_tasks/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/store/default_tasks/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var state = {
+  default_tasks: [],
+  default_task: {}
+};
+var getters = {};
+var mutations = {
+  SET_DEFAULT_TASKS: function SET_DEFAULT_TASKS(state, default_tasks) {
+    state.default_tasks = default_tasks;
+  },
+  SET_DEFAULT_TASK: function SET_DEFAULT_TASK(state, default_task) {
+    state.default_task = default_task;
+  }
+};
+var actions = {
+  getDefaultTasks: function getDefaultTasks(context) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/default-tasks").then(function (response) {
+      // console.log(response)
+      context.commit('SET_DEFAULT_TASKS', response.data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  createDefaultTask: function createDefaultTask(context, default_task) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/default-tasks", {
+      default_task: default_task
+    }).then(function () {
+      context.commit('SET_DEFAULT_TASKS', default_task);
+    })["finally"](function () {
+      context.dispatch('getDefaultTasks');
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  getDefaultTask: function getDefaultTask(context, _ref) {
+    var id = _ref.id;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/default-task/".concat(id)).then(function (response) {
+      // console.log(response);
+      context.commit('SET_DEFAULT_TASK', response.data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  updateDefaultTask: function updateDefaultTask(context, default_task) {
+    // console.log(task.task.id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("api/default-task/".concat(default_task.default_task.id), {
+      default_task: default_task
+    }).then(function () {
+      context.commit('SET_DEFAULT_TASK', default_task);
+    })["catch"](function (error) {
+      console.log(error);
+    })["finally"](function () {
+      context.dispatch('getDefaultTasks');
+    });
+  },
+  deleteDefaultTask: function deleteDefaultTask(context, _ref2) {
+    var id = _ref2.id;
+    // console.log(id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("api/default-task/".concat(id)).then(function () {// context.commit('SET_TASK', task);
+    })["catch"](function (error) {
+      console.log(error);
+    })["finally"](function () {
+      context.dispatch('getDefaultTasks');
+    });
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/index.js":
 /*!*************************************!*\
   !*** ./resources/js/store/index.js ***!
@@ -57547,6 +71063,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./shared/index */ "./resources/js/store/shared/index.js");
 /* harmony import */ var _aw_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./aw/index */ "./resources/js/store/aw/index.js");
 /* harmony import */ var _workers_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./workers/index */ "./resources/js/store/workers/index.js");
+/* harmony import */ var _default_tasks_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./default_tasks/index */ "./resources/js/store/default_tasks/index.js");
+
 
 
 
@@ -57559,6 +71077,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_0__
     user: _user_index__WEBPACK_IMPORTED_MODULE_2__["default"],
     aw: _aw_index__WEBPACK_IMPORTED_MODULE_4__["default"],
     workers: _workers_index__WEBPACK_IMPORTED_MODULE_5__["default"],
+    default_tasks: _default_tasks_index__WEBPACK_IMPORTED_MODULE_6__["default"],
     shared: _shared_index__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 }));
@@ -57714,7 +71233,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var state = {
-  workers: []
+  workers: [],
+  worker: {}
 };
 var getters = {// getTaskById(state, id) {
   //     return state.aws.find(task => task.id === id)
@@ -57723,15 +71243,64 @@ var getters = {// getTaskById(state, id) {
 var mutations = {
   SET_WORKERS: function SET_WORKERS(state, workers) {
     state.workers = workers;
+  },
+  SET_WORKER: function SET_WORKER(state, worker) {
+    state.worker = worker;
   }
 };
 var actions = {
+  getWorker: function getWorker(context, _ref) {
+    var id = _ref.id;
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/worker/".concat(id)).then(function (response) {
+      // console.log(response);
+      context.commit('SET_WORKER', response.data);
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
   getWorkers: function getWorkers(context) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/workers").then(function (response) {
       context.commit('SET_WORKERS', response.data.data);
     })["catch"](function (error) {
       console.log(error);
+    });
+  },
+  createWorker: function createWorker(context, worker) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/workers", {
+      worker: worker
+    }).then(function () {
+      context.commit('SET_WORKER', worker);
+    })["finally"](function () {
+      context.dispatch('getWorkers');
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  deleteWorker: function deleteWorker(context, _ref2) {
+    var id = _ref2.id;
+    // console.log(id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("api/worker/".concat(id)).then(function () {// context.commit('SET_TASK', task);
+    })["catch"](function (error) {
+      console.log(error);
+    })["finally"](function () {
+      context.dispatch('getWorkers');
+    });
+  },
+  updateWorker: function updateWorker(context, worker) {
+    // console.log(task.task.id);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("api/worker/".concat(worker.worker.id), {
+      worker: worker
+    }).then(function () {
+      context.commit('SET_WORKER', worker);
+    })["catch"](function (error) {
+      console.log(error);
+    })["finally"](function () {
+      context.dispatch('getWorkers');
     });
   }
 };

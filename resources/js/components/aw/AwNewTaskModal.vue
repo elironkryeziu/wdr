@@ -48,7 +48,7 @@
                     <div class="flex justify-between gap-3">
                         <span class="w-1/2">
                         <label class="inline-flex items-center mt-3">
-                            <input type="checkbox" v-model="task.isDefault" class="form-checkbox h-5 w-5 text-gray-600"><span class="ml-2 mt-2 text-xs font-semibold text-gray-600 uppercase">Default for future aws</span>
+                            <input type="checkbox" v-model="task.isDefault" class="form-checkbox h-5 w-5 text-gray-600"><span class="ml-2 text-xs font-semibold text-gray-600 uppercase">Default for future aws</span>
                         </label>
                         </span>
                     </div>

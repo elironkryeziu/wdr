@@ -31,11 +31,13 @@ class WorkerController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request;
+
         $worker = Worker::create([
-            'number' => $request->numer,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'notes' => $request->notes
+            'number' => $request->worker['worker']['number'],
+            'first_name' => $request->worker['worker']['first_name'],
+            'last_name' => $request->worker['worker']['last_name'],
+            'notes' => $request->worker['worker']['notes']
         ]);
 
         return $worker;
@@ -64,7 +66,17 @@ class WorkerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $worker = Worker::find($id);
+
+        $worker->update([
+            'number' => $request->worker['worker']['number'],
+            'first_name' => $request->worker['worker']['first_name'],
+            'last_name' => $request->worker['worker']['last_name'],
+            'notes' => $request->worker['worker']['notes']
+        ]);
+
+        return $worker;
     }
 
     /**
