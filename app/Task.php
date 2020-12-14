@@ -35,4 +35,19 @@ class Task extends Model
     {
         return substr($this->date . " " . $this->finish, 0, -3);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+        Task::saving(function ($model) {
+            if($model->status == 'K')
+            {
+                $model->closed = true;
+            } else 
+            {
+                $model->closed = false;
+            }
+        });
+
+    }
 }

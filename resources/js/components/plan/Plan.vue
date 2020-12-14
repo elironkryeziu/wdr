@@ -1,23 +1,23 @@
 <template>
 <div>
-  <vue-cal selected-date="2020-12-11"
-          :time-from="8 * 60"
+  <vue-cal selected-date="2020-12-14"
+          :time-from="6 * 60"
           :time-step="30"
-          :time-to="17 * 60"
+          :time-to="18 * 60"
           :disable-views="['years', 'year', 'month']"
           active-view="day"
-          editable-events
           hide-weekends
+          editable-events
           :twelveHour = "twelveHour"
           :hideTitleBar = "hideTitleBar"
-          :dragToCreateEvent = "dragToCreateEvent"
           :events="week_tasks"
           :split-days="workers"
           :sticky-split-labels="stickySplitLabels"
           :min-cell-width="minCellWidth"
-          :min-split-width="minSplitWidth">
+          :min-split-width="minSplitWidth"
+          @event-create="createEvent($event)">
 
-          <template v-slot:event="{ event }">
+          <template class="py-6" v-slot:event="{ event }">
           <div class="vuecal__event-title" v-html="event.title" />
           <p>
           <button @click="openModal(event.task_id)">Edit</button>
@@ -35,77 +35,55 @@
 <script>
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
+import axios from 'axios'
 export default {
     components: { VueCal },
     data: () => ({
       stickySplitLabels: true,
       hideTitleBar: true,
-      dragToCreateEvent: false,
       twelveHour: true,
       minCellWidth: 400,
       minSplitWidth: 0,
-      workers: [
-        { id: 1, label: 'Worker 1' },
-        { id: 2, label: 'Worker 2' },
-        { id: 3, label: 'Worker 3' },
-        { id: 4, label: 'Worker 4' },
-        { id: 5, label: 'Worker 5' }
-    ],
-    week_tasks: [
-       {
-        "task_id": 3,
-        "start": "2020-12-07 10:30",
-        "end": "2020-12-07 11:00",
-        "title": "Stretching",
-        "class": "sport",
-        "split": 2
-      },
-      {
-          "task_id": 5,
-          "start": "2020-12-09 08:00",
-          "end": "2020-12-09 10:00",
-          "title": "Collecting",
-          "class": "sport",
-          "split": 2
-      },
-      {
-          "task_id": 5,
-          "start": "2020-12-09 08:00",
-          "end": "2020-12-09 10:00",
-          "title": "Collecting",
-          "class": "health",
-          "split": 1
-      },
-      {
-          "task_id": 8,
-          "start": "2020-12-09 08:00",
-          "end": "2020-12-09 11:00",
-          "title": "Preparing documents",
-          "class": "sport",
-          "split": 2
-      },
-      {
-          "task_id": 1,
-          "start": "2020-12-07 08:00",
-          "end": "2020-12-07 09:30",
-          "title": "Collecting",
-          "class": "health",
-          "split": 1
-      },
-      {
-          "task_id": 1,
-          "start": "2020-12-07 08:00",
-          "end": "2020-12-07 09:30",
-          "title": "Collecting",
-          "class": "sport",
-          "split": 2
-      }
-    ]
+      workers: [],
+      week_tasks: []
 }),
+created() {
+  this.getWorkers()
+  this.getTasks()
+
+},
 methods: {
   openModal(id)
   {
     console.log(id);
+  },
+  getWorkers()
+  {
+    axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
+
+        axios.get(`api/plan-workers`)
+        .then((response) => {
+          this.workers = response.data
+        }).catch(error => { console.log(error)
+        })
+  },
+  getTasks()
+  {
+    axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
+
+        axios.get(`api/week-tasks`)
+        .then((response) => {
+          console.log(response.data)
+          this.week_tasks = response.data
+        }).catch(error => { console.log(error)
+        })
+
+  },
+  createEvent(event)
+  {
+    console.log(event)
   }
 }
 

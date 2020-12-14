@@ -46,6 +46,7 @@ Route::delete('/pause/{id}', 'PauseController@destroy');
 
 //Plans
 Route::get('/plans', 'PlanController@index');
+Route::get('/plan-workers', 'PlanController@workers');
 Route::get('/plan/{id}', 'PlanController@show');
 Route::put('/plan/{id}', 'PlanController@update');
 

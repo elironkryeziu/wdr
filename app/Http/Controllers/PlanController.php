@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Plan;
+use App\Worker;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -19,6 +20,20 @@ class PlanController extends Controller
         $plans = Plan::all();
 
         return $plans;
+    }
+
+    public function workers()
+    {
+        //
+        $workers = Worker::all();
+
+        return $workers->map(function ($worker) {
+            return [
+                'id' => $worker->id,
+                'label' => $worker->fullName,
+                'hide' => false,
+            ];
+        });
     }
 
     /**

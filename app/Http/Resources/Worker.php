@@ -16,8 +16,8 @@ class Worker extends JsonResource
     {
         return [
             'id' => $this->id,
-            'initials' => substr($this->first_name, 0, 1).substr($this->last_name, 0, 1),
-            'name' => $this->first_name. ' '.$this->last_name,
+            'initials' => $this->initials,
+            'name' => $this->fullName,
             'number' => $this->number,
         ];
     }
