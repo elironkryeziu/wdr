@@ -1,33 +1,112 @@
 <template>
 <div>
+  <div class="py-4 flex ">
+    <div class="border w-1/2 border-gray-300 shadow">
+      <p class="text-gray-400 pl-2">Choose workers you want to hide:</p>
+      <div class="flex flex-wrap">
+        <div class="pl-2" v-for="worker in $store.state.plan.plan_workers" :key="worker.id">
+          <input type="checkbox" v-model="worker.hide">
+          <span class="text-gray-400">{{ worker.label }}</span>
+        </div>
+         <button @click="checkWorkers" class="w-1/4 text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+            Hide All
+          </button>
+          <button @click="uncheckWorkers" class="w-1/4 text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-800 hover:shadow-none">
+            Unhide All
+          </button>
+      </div>
+    </div>
+    <form class="pl-4">
+      <label class="text-gray-400">Choose day:</label>
+      <vc-date-picker 
+            v-model="day" 
+            :first-day-of-week="2"
+            :masks="{ title: 'MMMM YYYY', L: 'DD-MM-YYYY' }"
+            color="gray"
+            >
+          <template v-slot="{ inputValue, inputEvents }">
+            <input
+              class="bg-white border border-gray-300 text-gray-500 px-2 py-1 rounded"
+              :value="inputValue"
+              v-on="inputEvents"
+            />
+          </template>
+      </vc-date-picker>
+     <span  class="pl-4">
+        <button class="py-1 px-4 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+          Search
+        </button>
+     </span>
+    </form>
+    <div>
+<!-- 
+    <button class="py-1 px-4 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+          Add task
+        </button> -->
+    </div>
+  </div>
   <vue-cal selected-date="2020-12-14"
-          :time-from="6 * 60"
-          :time-step="30"
-          :time-to="18 * 60"
-          :disable-views="['years', 'year', 'month']"
-          active-view="day"
-          hide-weekends
-          editable-events
-          :twelveHour = "twelveHour"
-          :hideTitleBar = "hideTitleBar"
-          :events="week_tasks"
-          :split-days="workers"
-          :sticky-split-labels="stickySplitLabels"
-          :min-cell-width="minCellWidth"
-          :min-split-width="minSplitWidth"
-          @event-create="createEvent($event)">
+    :time-from="6 * 60"
+    :time-step="30"
+    :time-to="18 * 60"
+    :disable-views="['years', 'year', 'month']"
+    active-view="day"
+    hide-weekends
+    :twelveHour = "twelveHour"
+    :hideTitleBar = "hideTitleBar"
+    :events="$store.state.plan.week_tasks"
+    :split-days="$store.state.plan.plan_workers"
+    :sticky-split-labels="stickySplitLabels"
+    :min-cell-width="minCellWidth"
+    :min-split-width="minSplitWidth"
+    @event-create="createEvent($event)">
 
-          <template class="py-6" v-slot:event="{ event }">
-          <div class="vuecal__event-title" v-html="event.title" />
-          <p>
+    <template class="" v-slot:event="{ event }">
+      <div class="px-2">
+        <div class="flex justify-between">
+          <div class="vuecal__event-title text-gray-600 font-semibold text-left" v-html="event.title" >
+          </div>
+          <div class="text-sm">
+            <button @click="openModal(event.task_id)">
+              <i class="far fa-edit text-gray-600 hover:text-gray-800"></i>
+            </button>
+            <span>
+              <button @click="deleteTask(event.task_id)">
+                <i class="far fa-trash-alt text-gray-600 hover:text-gray-800"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+        <!-- <p>
           <button @click="openModal(event.task_id)">Edit</button>
+          710/HC/20/AW
+          CLIENT: FATLUM GJINOFCI
+          LOADING DATE: 14/12/2020
+          COLI: 40
+          LED: 5
+          DIF: 35
+          AW - WM: 0
+        </p> -->
+        <div class="text-xs text-left">
+          <!-- <p class="text-gray-500">{{ event.status }}</p> -->
+          <p v-if="event.status == 'P'" class="float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold">
+            {{ event.status }} 
           </p>
-          <small class="vuecal__event-time">
-            <!-- Using Vue Cal injected Date prototypes -->
-            <strong>Event start:</strong> <span>{{ event.start.formatTime("h O'clock") }}</span><br/>
-            <strong>Event end:</strong> <span>{{ event.end.formatTime("h O'clock") }}</span>
-          </small>
-        </template>
+          <p v-if="event.status == '0'" class="float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs">
+            {{ event.status }}
+          </p>
+          <p v-if="event.status == 'K'" class="float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs">
+            {{ event.status }}
+          </p>
+          <p class="text-gray-500">{{ event.aw_name }}</p>
+          <p class="text-gray-500">CLIENT: {{ event.client }}</p>
+          <p class="text-gray-500">COLI: {{ event.coli }} | AW-WM: {{ event.aw_minus_wm }}</p>
+          <div class="text-gray-500 pt-2">
+            <span>{{ event.start | timeformat }} - {{ event.end | timeformat }}</span>
+          </div>
+        </div>
+      </div>
+    </template>
   </vue-cal>
 </div>
 </template>
@@ -36,57 +115,68 @@
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import axios from 'axios'
+import AwTaskModal from '../aw/AwTaskModal.vue';
+
 export default {
-    components: { VueCal },
+    components: { VueCal, AwTaskModal },
     data: () => ({
+      day: new Date(),
       stickySplitLabels: true,
       hideTitleBar: true,
       twelveHour: true,
       minCellWidth: 400,
       minSplitWidth: 0,
-      workers: [],
-      week_tasks: []
+      // workers: [],
+      // week_tasks: []
 }),
 created() {
-  this.getWorkers()
-  this.getTasks()
 
 },
+mounted() {
+  this.$store.dispatch('getPlanWorkers');
+  this.$store.dispatch('getWeekTasks');
+},
 methods: {
-  openModal(id)
-  {
+  openModal(id) {
     console.log(id);
+    // console.log('editing')
+    this.$modal.show(AwTaskModal, 
+      {
+        id: id 
+      }, 
+      { 
+        name: "task-modal",
+        height: 'auto',
+        clickToClose: false,
+        draggable: true
+      })
   },
-  getWorkers()
-  {
-    axios.defaults.headers.common["Authorization"] =
-          "Bearer " + localStorage.getItem("access_token");
-
-        axios.get(`api/plan-workers`)
-        .then((response) => {
-          this.workers = response.data
-        }).catch(error => { console.log(error)
-        })
-  },
-  getTasks()
-  {
-    axios.defaults.headers.common["Authorization"] =
-          "Bearer " + localStorage.getItem("access_token");
-
-        axios.get(`api/week-tasks`)
-        .then((response) => {
-          console.log(response.data)
-          this.week_tasks = response.data
-        }).catch(error => { console.log(error)
-        })
-
+  deleteTask(id) {
+    if(confirm("Do you really want to delete?")){
+      this.$store.dispatch('deleteTask',{
+        id: id
+      });
+      this.$modal.hide('task-modal');
+      }
+    },
+    checkWorkers() 
+    {
+      this.$store.state.plan.plan_workers.map((worker)=>{
+        worker.hide = true
+      })
+    },
+    uncheckWorkers() 
+    {
+      this.$store.state.plan.plan_workers.map((worker)=>{
+        worker.hide = false
+      })
+    }
   },
   createEvent(event)
   {
     console.log(event)
-  }
-}
-
+  },
+  
 }
 </script>
 

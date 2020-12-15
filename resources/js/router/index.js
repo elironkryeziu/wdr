@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Main from '../components/Main.vue'
 import Workers from '../components/workers/Workers.vue'
 import DefaultTasks from '../components/default_tasks/DefaultTasks.vue';
+import UsualTasks from '../components/usual_tasks/UsualTasks.vue';
 import Plan from '../components/plan/Plan.vue';
 import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
@@ -58,10 +59,18 @@ export default new VueRouter({
             }
         },
         {
+            path: '/usual-tasks',
+            name: 'usual-tasks',
+            component: UsualTasks,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
             path: '/plan',
             name: 'plan',
             component: Plan,
-            metha: {
+            meta: {
                 requiresAuth: true
             }
         },

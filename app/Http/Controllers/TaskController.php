@@ -31,7 +31,8 @@ class TaskController extends Controller
     {
         $tasks = DB::table('task_worker')
             ->join('tasks', 'tasks.id', '=', 'task_worker.task_id')
-            ->select('task_worker.worker_id','tasks.id', 'tasks.name', 'tasks.date','tasks.start','tasks.finish')
+            ->join('aws', 'aws.id', '=', 'tasks.aw_id')
+            ->select('task_worker.worker_id','tasks.id', 'tasks.name', 'tasks.status', 'tasks.date','tasks.start','tasks.finish','aws.name as aw_name','aws.client','aws.coli','aws.wm_quantity')
             ->where('tasks.date','>=',now()->startOfWeek())
             ->where('tasks.date','<=',now()->endOfWeek())
             ->get();
@@ -43,13 +44,15 @@ class TaskController extends Controller
                 'start' => substr($task->date . " " . $task->start, 0, -3),
                 'end' => substr($task->date . " " . $task->finish, 0, -3),
                 'title' => $task->name,
+                'status' => $task->status,
                 'class' => $task->worker_id % 2 == 0 ? 'sport' : 'health',
                 'split' => $task->worker_id,
+                'aw_name' => $task->aw_name,
+                'client' => $task->client,
+                'coli' => $task->coli,
+                'aw_minus_wm' => $task->coli - $task->wm_quantity
             ];
-        });
-
-        
-        
+        });   
     }
 
     /**

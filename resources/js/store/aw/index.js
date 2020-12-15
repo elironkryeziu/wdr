@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const state = {
     aws: [],
     task: {}
@@ -53,6 +52,7 @@ const actions = {
         }).catch(error => { console.log(error)
         }).finally(()=>{
             context.dispatch('getAws');
+            context.dispatch('getWeekTasks');
         })
 
     },
@@ -80,6 +80,7 @@ const actions = {
         }).catch(error => { console.log(error)
         }).finally(()=>{
             context.dispatch('getAws');
+            context.dispatch('getWeekTasks');
         })
 
     },

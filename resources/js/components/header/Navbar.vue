@@ -51,6 +51,9 @@
                 <router-link v-if="loggedIn" :to="{ name: 'plan'}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     Plan
                 </router-link>
+                <router-link v-if="loggedIn" :to="{ name: 'usual-tasks'}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    Tasks
+                </router-link>
                 <router-link v-if="loggedIn" :to="{ name: 'default-tasks'}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     Default Tasks
                 </router-link>

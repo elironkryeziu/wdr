@@ -32,6 +32,7 @@ class PlanController extends Controller
                 'id' => $worker->id,
                 'label' => $worker->fullName,
                 'hide' => false,
+                'class' => $worker->id % 2 == 0 ? 'mom' : 'dad',
             ];
         });
     }

@@ -20,13 +20,13 @@
             <div class="">
                 <span class="">
                     <label for="number" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Number</label>
-                    <input id="number" type="text" v-model="worker.number" name="number" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                    <input id="number" type="text" v-model="worker.number" name="number" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" />
                 </span>
             </div>
             <div class="">
                 <span class="">
                     <label for="notes" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Notes</label>
-                    <textarea id="notes"  v-model="worker.notes" name="notes" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required>
+                    <textarea id="notes"  v-model="worker.notes" name="notes" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
                     </textarea>
                 </span>
             </div>
