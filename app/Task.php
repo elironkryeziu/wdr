@@ -50,4 +50,9 @@ class Task extends Model
         });
 
     }
+
+    public function scopeUsual($query)
+    {
+        return $query->whereNull('aw_id')->where('closed',false);
+    }
 }

@@ -17,6 +17,7 @@ class CreateUsualTasksTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('monthly')->default(0);
+            $table->integer('month_day')->nullable();
             $table->boolean('monday')->default(0);
             $table->boolean('tuesday')->default(0);
             $table->boolean('wednesday')->default(0);

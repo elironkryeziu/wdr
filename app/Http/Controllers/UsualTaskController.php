@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use App\UsualTask;
 use Illuminate\Http\Request;
+use App\Http\Resources\UsualTask as UsualTaskResource;
+use App\Http\Resources\DailyTask;
+use App\Http\Resources\WeeklyTask;
+use App\Http\Resources\MonthlyTask;
 
 class UsualTaskController extends Controller
 {
@@ -16,9 +21,17 @@ class UsualTaskController extends Controller
     public function index()
     {
         //
-        $usual_tasks = UsualTask::all();
+        $usual_tasks = Task::Usual()->get();
+        $daily_tasks = UsualTask::Daily()->get();
+        $weekly_tasks = UsualTask::Weekly()->get();
+        $monthly_tasks = UsualTask::Monthly()->get();
 
-        return $usual_tasks;
+        return [
+            'usual_tasks' => UsualTaskResource::collection($usual_tasks),
+            'daily_tasks' => DailyTask::collection($daily_tasks),
+            'weekly_tasks' => WeeklyTask::collection($weekly_tasks),
+            'monthly_tasks' => MonthlyTask::collection($monthly_tasks),
+        ];
     }
 
     /**
@@ -32,15 +45,23 @@ class UsualTaskController extends Controller
         //
         $usual_task = UsualTask::create([
             'name' => $request->name,
-            'monthly' => $request->monthly,
-            'monday' => $request->monday,
-            'tuesday' => $request->tuesday,
-            'wednesday' => $request->wednesday,
-            'thursday' => $request->thursday,
-            'friday' => $request->friday,
             'notes' => $request->notes,
             'created_by' => $request->user()->id
         ]);
+
+        if ($request->monthly) 
+        {
+            $usual_task->monthly = $request->monthly;
+            $usual_task->month_day = $request->month_day;
+        } else 
+        {
+            $usual_task->monday = $request->monday;
+            $usual_task->tuesday = $request->tuesday;
+            $usual_task->wednesday = $request->wednesday;
+            $usual_task->thursday = $request->thursday;
+            $usual_task->friday = $request->friday;
+        }
+        $usual_task->update();
 
         return $usual_task;
     }
@@ -56,7 +77,19 @@ class UsualTaskController extends Controller
         //
         $usual_task = UsualTask::find($id);
 
-        return $usual_task;
+        switch ($usual_task->type) {
+            case "daily":
+                return new DailyTask($usual_task);
+              break;
+            case "weekly":
+                return new WeeklyTask($usual_task);
+              break;
+            case "monthly":
+                return new MonthlyTask($usual_task);
+              break;
+            default:
+              return null;
+          }
     }
 
     /**
