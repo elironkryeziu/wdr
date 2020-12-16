@@ -16,6 +16,8 @@ class CreateUsualTasksTable extends Migration
         Schema::create('usual_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->time('start')->nullable();
+            $table->time('finish')->nullable();
             $table->boolean('monthly')->default(0);
             $table->integer('month_day')->nullable();
             $table->boolean('monday')->default(0);

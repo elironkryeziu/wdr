@@ -63,23 +63,33 @@ class UsualTask extends Model
         $days = Array();
         if ($this->monday)
             {
-                array_push($days,"Monday");
+                $day['id'] = 0;
+                $day['name'] = "Monday";
+                array_push($days,$day);
             }
         if ($this->tuesday)
             {
-                array_push($days,"Tuesday");
+                $day['id'] = 1;
+                $day['name'] = "Tuesday";
+                array_push($days,$day);
             }
         if ($this->wednesday)
             {
-                array_push($days,"Wednesday");
+                $day['id'] = 2;
+                $day['name'] = "Wednesday";
+                array_push($days,$day);
             }
         if ($this->thursday)
             {
-                array_push($days,"Thursday");
+                $day['id'] = 3;
+                $day['name'] = "Thursday";
+                array_push($days,$day);
             }
         if ($this->friday)
             {
-                array_push($days,"Friday");
+                $day['id'] = 4;
+                $day['name'] = "Friday";
+                array_push($days,$day);
             }
 
         return $days;

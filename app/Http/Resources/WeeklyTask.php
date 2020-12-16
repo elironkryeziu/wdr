@@ -21,6 +21,8 @@ class WeeklyTask extends JsonResource
             'name' => $this->name,
             'days' => $this->days,
             'status' => $this->status,
+            'start' => $this->start,
+            'finish' => $this->finish,
             'workers' => WorkerResource::collection($this->workers)
         ];
     }

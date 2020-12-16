@@ -126,7 +126,6 @@ export default {
             this.$modal.hide('add-usual-task-modal');
         },
         calculate() {
-            // console.log('test')
             let start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
             let finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
             this.diffTime = Math.abs(finish - start);

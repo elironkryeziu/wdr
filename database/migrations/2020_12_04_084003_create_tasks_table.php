@@ -24,7 +24,8 @@ class CreateTasksTable extends Migration
             $table->boolean('closed')->default(0);
             $table->date('date');
             $table->boolean('show_in_plan')->default(1);
-            $table->string('style');
+            $table->boolean('daily')->default(0);
+            $table->string('style')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
 
             $table->timestamps();

@@ -3,6 +3,8 @@ import axios from 'axios'
 const state = {
     usual_tasks: [],
     usual_task:{},
+    daily_tasks_tomorrow: [],
+    daily_task_tomorrow:{},
     daily_tasks: [],
     daily_task: {},
     weekly_tasks: [],
@@ -31,6 +33,13 @@ const mutations = {
         state.daily_task = daily_task;      
     },
 
+    SET_DAILY_TASKS_TOMORROW(state, daily_tasks_tomorrow) {
+        state.daily_tasks_tomorrow = daily_tasks_tomorrow;      
+    },
+    SET_DAILY_TASK_TOMORROW(state, daily_task_tomorrow) {
+        state.daily_task_tomorrow = daily_task_tomorrow;      
+    },
+
     SET_WEEKLY_TASKS(state, weekly_tasks) {
         state.weekly_tasks = weekly_tasks;
     },
@@ -55,9 +64,9 @@ const actions = {
           "Bearer " + localStorage.getItem("access_token");
   
         axios.get(`api/usual-tasks`).then(response => {
-            console.log(response.data);
             context.commit('SET_USUAL_TASKS', response.data.usual_tasks)
             context.commit('SET_DAILY_TASKS', response.data.daily_tasks)
+            context.commit('SET_DAILY_TASKS_TOMORROW', response.data.daily_tasks_tomorrow)
             context.commit('SET_WEEKLY_TASKS', response.data.weekly_tasks)
             context.commit('SET_MONTHLY_TASKS', response.data.monthly_tasks)
         })
@@ -80,33 +89,28 @@ const actions = {
     //     .catch(error => { console.log(error) })
     // },
 
-    getUsualTask(context, {id}) {
+    getUsualTask(context, {id,type}) {
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + localStorage.getItem("access_token");
 
-        axios.get(`api/usual-task/${id}`).then(response => {
-            // console.log(response.data.data.type);
-            
-            context.commit('SET_TYPE', response.data.data.type);
-            if(response.data.data.type == 'daily') 
+        axios.get(`api/usual-task/${type}/${id}`).then(response => {
+
+            if(type == 'daily') 
             {
-                context.commit('SET_USUAL_TASK', response.data.data);
+                context.commit('SET_DAILY_TASK', response.data.data);
             } 
-            else if(response.data.data.type == 'weekly') 
+            else if(type == 'weekly') 
             {
-                context.commit('SET_WEEKLY_TASKS', response.data.data);
+                context.commit('SET_WEEKLY_TASK', response.data.data);
             } 
-            else if(response.data.data.type == 'monthly')
+            else if(type == 'monthly')
             {
-                context.commit('SET_MONTHLY_TASKS', response.data.data);
+                context.commit('SET_MONTHLY_TASK', response.data.data);
             } 
             else 
             {
-                
+                context.commit('SET_USUAL_TASK', response.data.data);
             }
-            // context.commit('SET_DAILY_TASK', response.data.daily_tasks)
-            // context.commit('SET_WEEKLY_TASK', response.data.weekly_tasks)
-            // context.commit('SET_MONTHLY_TASK', response.data.monthly_tasks)
         })
         .catch(error => { console.log(error) })
     },

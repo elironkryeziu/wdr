@@ -60,7 +60,7 @@ Route::delete('/task/{id}', 'TaskController@destroy');
 
 //Usual Tasks
 Route::get('/usual-tasks', 'UsualTaskController@index');
-Route::get('/usual-task/{id}', 'UsualTaskController@show');
+Route::get('/usual-task/{type}/{id}', 'UsualTaskController@show');
 Route::post('/usual-tasks', 'UsualTaskController@store');
 Route::put('/usual-task/{id}', 'UsualTaskController@update');
 Route::delete('/usual-tasks/{id}', 'UsualTaskController@destroy');

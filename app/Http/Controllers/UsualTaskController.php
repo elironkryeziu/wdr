@@ -23,6 +23,7 @@ class UsualTaskController extends Controller
         //
         return [
             'usual_tasks' => UsualTaskResource::collection(Task::Usual()->get()),
+            'daily_tasks_tomorrow' => UsualTaskResource::collection(Task::Daily()->get()),
             'daily_tasks' => DailyTask::collection(UsualTask::Daily()->get()),
             'weekly_tasks' => WeeklyTask::collection(UsualTask::Weekly()->get()),
             'monthly_tasks' => MonthlyTask::collection(UsualTask::Monthly()->get()),
@@ -67,11 +68,17 @@ class UsualTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($type,$id)
     {
         //
-        switch ($usual_task->type) 
+        switch ($type) 
         {
+            case "usual":
+                return new UsualTaskResource(Task::find($id));
+              break;
+            case "usual_daily":
+                return new UsualTaskResource(Task::find($id));
+              break;
             case "daily":
                 return new DailyTask(UsualTask::find($id));
               break;

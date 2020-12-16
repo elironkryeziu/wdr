@@ -53,6 +53,11 @@ class Task extends Model
 
     public function scopeUsual($query)
     {
-        return $query->whereNull('aw_id')->where('closed',false);
+        return $query->whereNull('aw_id')->where('closed',false)->where('daily',false);
+    }
+
+    public function scopeDaily($query)
+    {
+        return $query->whereNull('aw_id')->where('closed',false)->where('daily',true);
     }
 }

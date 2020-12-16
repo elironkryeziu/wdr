@@ -20,6 +20,8 @@ class MonthlyTask extends JsonResource
             'name' => $this->name,
             'day_of_month' => $this->month_day,
             'status' => $this->status,
+            'start' => $this->start,
+            'finish' => $this->finish,
             'workers' => WorkerResource::collection($this->workers)
         ];
     }

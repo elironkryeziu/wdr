@@ -3824,453 +3824,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js");
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// import Multiselect from 'vue-multiselect'
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    id: Number
-  },
-  components: {// Multiselect,
-  },
-  data: function data() {
-    return {
-      taskId: this.$props.id
-    };
-  },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
-  },
-  mounted: function mounted() {
-    if (this.$store.state.workers.workers.length <= 0) {
-      this.$store.dispatch('getWorkers');
-    }
-
-    this.getTask(id);
-  },
-  methods: {
-    updateTask: function updateTask() {
-      this.$store.dispatch('createUsualTask', {
-        task: this.task
-      });
-      this.$modal.hide('add-usual-task-modal');
-    },
-    getTask: function getTask(id) {
-      this.$store.dispatch('getUsualTask', {
-        id: this.taskId
-      });
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js");
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// import Multiselect from 'vue-multiselect'
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    id: Number
-  },
-  components: {// Multiselect,
-  },
-  data: function data() {
-    return {
-      taskId: this.$props.id
-    };
-  },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
-  },
-  mounted: function mounted() {
-    if (this.$store.state.workers.workers.length <= 0) {
-      this.$store.dispatch('getWorkers');
-    }
-
-    this.getTask(id);
-  },
-  methods: {
-    createUsualTask: function createUsualTask() {
-      this.$store.dispatch('createUsualTask', {
-        task: this.task
-      });
-      this.$modal.hide('add-usual-task-modal');
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
-    },
-    getTask: function getTask(id) {
-      this.$store.dispatch('getUsualTask', {
-        id: this.taskId
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js");
-/* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_moment__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// import Multiselect from 'vue-multiselect'
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    id: Number
-  },
-  components: {// Multiselect,
-  },
-  data: function data() {
-    return {
-      taskId: this.$props.id
-    };
-  },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
-  },
-  mounted: function mounted() {
-    if (this.$store.state.workers.workers.length <= 0) {
-      this.$store.dispatch('getWorkers');
-    }
-
-    this.getTask(id);
-  },
-  methods: {
-    createUsualTask: function createUsualTask() {
-      this.$store.dispatch('createUsualTask', {
-        task: this.task
-      });
-      this.$modal.hide('add-usual-task-modal');
-    },
-    getTask: function getTask(id) {
-      this.$store.dispatch('getUsualTask', {
-        id: this.taskId
-      });
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/MonthlyTask.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/MonthlyTask.vue?vue&type=script&lang=js& ***!
@@ -4483,64 +4036,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4557,7 +4052,25 @@ __webpack_require__.r(__webpack_exports__);
     Task: _Task__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      types: [{
+        id: 0,
+        name: ""
+      }, {
+        id: 1,
+        name: "Usual task"
+      }, {
+        id: 2,
+        name: "Daily task"
+      }, {
+        id: 3,
+        name: "Weekly task"
+      }, {
+        id: 4,
+        name: "Monthly task"
+      }],
+      type: 0
+    };
   },
   methods: {
     hide: function hide() {
@@ -4797,7 +4310,6 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.hide('add-usual-task-modal');
     },
     calculate: function calculate() {
-      // console.log('test')
       var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
       var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
       this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
@@ -4818,12 +4330,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Tab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tab */ "./resources/js/components/usual_tasks/Tab.vue");
-/* harmony import */ var _Tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tabs */ "./resources/js/components/usual_tasks/Tabs.vue");
-/* harmony import */ var _EditDailyTask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditDailyTask */ "./resources/js/components/usual_tasks/EditDailyTask.vue");
-/* harmony import */ var _EditWeeklyTask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditWeeklyTask */ "./resources/js/components/usual_tasks/EditWeeklyTask.vue");
-/* harmony import */ var _EditMonthlyTask__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditMonthlyTask */ "./resources/js/components/usual_tasks/EditMonthlyTask.vue");
-/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Task */ "./resources/js/components/usual_tasks/Task.vue");
+/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Task */ "./resources/js/components/usual_tasks/Task.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -4929,28 +4440,221 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Task: _Task__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default.a
+  },
   props: {
-    id: Number
+    id: Number,
+    type: String
   },
   data: function data() {
-    return {};
+    return {
+      taskId: this.$props.id,
+      taskType: this.$props.type,
+      value: [],
+      days: [{
+        id: 0,
+        name: 'Monday'
+      }, {
+        id: 1,
+        name: 'Tuesday'
+      }, {
+        id: 2,
+        name: 'Wednesday'
+      }, {
+        id: 3,
+        name: 'Thursday'
+      }, {
+        id: 4,
+        name: 'Friday'
+      }],
+      start: '',
+      finish: '',
+      diffTime: 0
+    };
   },
-  components: {
-    Tab: _Tab__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Tabs: _Tabs__WEBPACK_IMPORTED_MODULE_1__["default"],
-    EditDailyTask: _EditDailyTask__WEBPACK_IMPORTED_MODULE_2__["default"],
-    EditWeeklyTask: _EditWeeklyTask__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Task: _Task__WEBPACK_IMPORTED_MODULE_5__["default"],
-    EditMonthlyTask: _EditMonthlyTask__WEBPACK_IMPORTED_MODULE_4__["default"]
+  watch: {// startTime: function(newValue, oldValue) {
+    //     this.calculate()
+    // },
+    // finishTime: function(newValue, oldValue) {
+    //     this.calculate()
+    // }    
   },
-  mounted: function mounted() {// this.getTask(this.taskId)
+  mounted: function mounted() {
+    // console.log(this.$props.type)
+    this.getTask(this.taskId);
+
+    if (this.$store.state.workers.workers.length <= 0) {
+      this.$store.dispatch('getWorkers');
+    } // switch (this.taskType) {
+    //     case 'usual':
+    //         this.start = this.$store.state.usual_task.start;
+    //         this.finish = this.$store.state.usual_task.finish;
+    //         break;
+    //     case 'usual_daily':
+    //         this.start = this.$store.state.usual_tasks.daily_task_tomorrow.start;
+    //         this.finish = this.$store.state.usual_tasks.daily_task_tomorrow.finish;
+    //         break;
+    //     case 'daily':
+    //         this.start = this. $store.state.usual_tasks.daily_task.start;
+    //         this.finish = this.$store.state.usual_tasks.daily_task.finish;
+    //         break;
+    //     case 'weekly':
+    //         this.start = this.$store.state.usual_tasks.weekly_task.start;
+    //         this.finish = this.$store.state.usual_tasks.weekly_task.finish;
+    //         break;
+    //     case 'monthly':
+    //         this.start = this.$store.state.usual_tasks.monthly_task.start;
+    //         this.finish = this.$store.state.usual_tasks.monthly_task.finish;
+    //         break;
+    //     default:
+    //         break;
+    // }
+    // this.calculate()
+
   },
   methods: {
     hide: function hide() {
@@ -4958,7 +4662,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     getTask: function getTask(id) {
       this.$store.dispatch('getUsualTask', {
-        id: this.taskId
+        id: this.taskId,
+        type: this.taskType
       });
     }
   }
@@ -4975,10 +4680,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuedraggable */ "./node_modules/vuedraggable/dist/vuedraggable.umd.js");
-/* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuedraggable__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
-/* harmony import */ var _UsualTaskModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UsualTaskModal */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
+/* harmony import */ var _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
+/* harmony import */ var _UsualTaskModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsualTaskModal */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
 //
 //
 //
@@ -5042,21 +4745,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a,
-    NewUsualTaskModal: _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"],
-    UsualTaskModal: _UsualTaskModal__WEBPACK_IMPORTED_MODULE_2__["default"]
+    NewUsualTaskModal: _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__["default"],
+    UsualTaskModal: _UsualTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {};
@@ -5099,77 +4793,19 @@ __webpack_require__.r(__webpack_exports__);
     this.$store.dispatch('getUsualTasks');
   },
   methods: {
-    insertItem: function insertItem() {
-      var self = this;
-      var no = 0;
-
-      if (self.items.concat().length > 0) {
-        no = Math.max.apply(null, self.items.concat().map(function (item) {
-          return item.no;
-        })) + 1;
-        self.newNo = self.newNo < no ? no : self.newNo;
-      }
-
-      if (self.items2.concat().length > 0) {
-        no = Math.max.apply(null, self.items2.concat().map(function (item) {
-          return item.no;
-        })) + 1;
-        self.newNo = self.newNo < no ? no : self.newNo;
-      }
-
-      if (self.items3.concat().length > 0) {
-        no = Math.max.apply(null, self.items3.concat().map(function (item) {
-          return item.no;
-        })) + 1;
-        self.newNo = self.newNo < no ? no : self.newNo;
-      }
-
-      if (self.items4.concat().length > 0) {
-        no = Math.max.apply(null, self.items4.concat().map(function (item) {
-          return item.no;
-        })) + 1;
-        self.newNo = self.newNo < no ? no : self.newNo;
-      }
-
-      this.items.push({
-        no: this.newNo,
-        name: 'New item' + this.newNo,
-        categoryNo: '5'
-      });
-    },
-    deleteItem: function deleteItem(item, index, group) {
-      switch (group) {
-        case '':
-          var ITEMS = this.items;
-          break;
-
-        case '2':
-          var ITEMS = this.items2;
-          break;
-
-        case '3':
-          var ITEMS = this.items3;
-          break;
-
-        case '4':
-          var ITEMS = this.items4;
-          break;
-      }
-
-      ITEMS.splice(index, 1);
-    },
     addUsualTask: function addUsualTask() {
-      this.$modal.show(_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"], {}, {
+      this.$modal.show(_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
         name: "add-usual-task-modal",
         height: 'auto',
         clickToClose: false,
         draggable: true
       });
     },
-    getUsualTask: function getUsualTask(id) {
-      // console.log(id);
-      this.$modal.show(_UsualTaskModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        id: id
+    getUsualTask: function getUsualTask(id, type) {
+      // console.log(type);
+      this.$modal.show(_UsualTaskModal__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        id: id,
+        type: type
       }, {
         name: "usual-task-modal",
         height: 'auto',
@@ -47211,438 +46847,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a& ***!
-  \****************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "py-6 px-2" }, [
-    _c("p", [_vm._v("Edit Daily task")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "mt-6",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.updateTask($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
-          },
-          [_vm._v("\n            Update\n        ")]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "w-1/2" }, [
-      _c(
-        "label",
-        {
-          staticClass: "block text-xs font-semibold text-gray-600 uppercase",
-          attrs: { for: "first_name" }
-        },
-        [_vm._v("Name")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: {
-          id: "first_name",
-          type: "text",
-          name: "first_name",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: { name: "status", id: "" }
-      },
-      [
-        _c("option", [_vm._v("K")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("P")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("0")])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2&":
-/*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2& ***!
-  \******************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "py-6 px-2" }, [
-    _c("p", [_vm._v("Edit Monthly task")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "mt-6",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.updateTask($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
-          },
-          [_vm._v("\n            Update\n        ")]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "w-1/2" }, [
-      _c(
-        "label",
-        {
-          staticClass: "block text-xs font-semibold text-gray-600 uppercase",
-          attrs: { for: "first_name" }
-        },
-        [_vm._v("Name")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: {
-          id: "first_name",
-          type: "text",
-          name: "first_name",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: { name: "status", id: "" }
-      },
-      [
-        _c("option", [_vm._v("K")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("P")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("0")])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "py-6 px-2" }, [
-    _c("p", [_vm._v("Edit Weekly task")]),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "mt-6",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.updateTask($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w-1/3 float-right py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
-          },
-          [_vm._v("\n            Update\n        ")]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "w-1/2" }, [
-      _c(
-        "label",
-        {
-          staticClass: "block text-xs font-semibold text-gray-600 uppercase",
-          attrs: { for: "first_name" }
-        },
-        [_vm._v("Name")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: {
-          id: "first_name",
-          type: "text",
-          name: "first_name",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass:
-          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-        attrs: { name: "status", id: "" }
-      },
-      [
-        _c("option", [_vm._v("K")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("P")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("0")])
-      ]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/MonthlyTask.vue?vue&type=template&id=56b3d899&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/usual_tasks/MonthlyTask.vue?vue&type=template&id=56b3d899& ***!
@@ -48053,39 +47257,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("div", { staticClass: "float-right" }, [
-        _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
-          _c("i", {
-            staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
-          })
-        ])
-      ]),
-      _vm._v(" "),
+  return _c("div", {}, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "px-2 py-2" }, [
       _c(
-        "tabs",
-        [
-          _c(
-            "tab",
-            { attrs: { name: "Task", selected: true } },
-            [_c("Task")],
-            1
-          ),
-          _vm._v(" "),
-          _c("tab", { attrs: { name: "Daily Task" } }, [_c("DailyTask")], 1),
-          _vm._v(" "),
-          _c("tab", { attrs: { name: "Weekly Task" } }, [_c("WeeklyTask")], 1),
-          _vm._v(" "),
-          _c("tab", { attrs: { name: "Monthly Task" } }, [_c("MonthlyTask")], 1)
-        ],
-        1
-      )
-    ],
-    1
-  )
+        "label",
+        {
+          staticClass: "block text-xs font-semibold text-gray-600 uppercase",
+          attrs: { for: "task" }
+        },
+        [_vm._v("Choose Task?")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "relative" }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.type,
+                expression: "type"
+              }
+            ],
+            staticClass:
+              "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+            attrs: { name: "task", id: "" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.type = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          _vm._l(_vm.types, function(type) {
+            return _c(
+              "option",
+              { key: type.id, domProps: { value: type.id } },
+              [_vm._v(_vm._s(type.name))]
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "fill-current h-4 w-4",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  viewBox: "0 0 20 20"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  }
+                })
+              ]
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "px-2 py-2" }, [
+      _vm.type == 0
+        ? _c("div", [_c("p")])
+        : _vm.type == 1
+        ? _c("div", [_c("Task")], 1)
+        : _vm.type == 2
+        ? _c("div", [_c("DailyTask")], 1)
+        : _vm.type == 3
+        ? _c("div", [_c("WeeklyTask")], 1)
+        : _vm.type == 4
+        ? _c("div", [_c("MonthlyTask")], 1)
+        : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48611,72 +47886,910 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("div", { staticClass: "float-right" }, [
-        _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
-          _c("i", {
-            staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
-          })
+  return _c("div", {}, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.taskType === "daily"
+      ? _c("div", [_vm._v("\n      A\n  ")])
+      : _vm.taskType === "weekly"
+      ? _c("div", [
+          _c("div", { staticClass: "px-2 pt-2" }, [
+            _c(
+              "form",
+              {
+                staticClass: "mt-6",
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.updateTask(_vm.taskId)
+                  }
+                }
+              },
+              [
+                _c("div", {}, [
+                  _c("span", {}, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "name" }
+                      },
+                      [_vm._v("Task Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$store.state.usual_tasks.weekly_task.name,
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.name"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: {
+                        id: "name",
+                        type: "text",
+                        name: "name",
+                        required: ""
+                      },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.weekly_task.name
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.weekly_task,
+                            "name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-between gap-3" }, [
+                  _c("span", { staticClass: "w-1/2" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "start" }
+                      },
+                      [_vm._v("Start")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$store.state.usual_tasks.weekly_task.start,
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.start"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: {
+                        id: "start",
+                        type: "time",
+                        name: "start",
+                        required: ""
+                      },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.weekly_task.start
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.weekly_task,
+                            "start",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "w-1/2" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "finish" }
+                      },
+                      [_vm._v("Finish")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value:
+                            _vm.$store.state.usual_tasks.weekly_task.finish,
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.finish"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: {
+                        id: "finish",
+                        type: "time",
+                        name: "finish",
+                        required: ""
+                      },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.weekly_task.finish
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.weekly_task,
+                            "finish",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
+                  },
+                  [
+                    _vm._v(
+                      "\n                  Duration: " +
+                        _vm._s(
+                          _vm._f("duration")(
+                            _vm.$store.state.usual_tasks.weekly_task.start,
+                            _vm.$store.state.usual_tasks.weekly_task.finish
+                          )
+                        ) +
+                        "\n              "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "pt-6" },
+                  [
+                    _vm._l(
+                      _vm.$store.state.usual_tasks.weekly_task.workers,
+                      function(worker) {
+                        return _c(
+                          "div",
+                          {
+                            key: worker.id,
+                            staticClass: "py-1 float-right inline-block"
+                          },
+                          [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                          " +
+                                    _vm._s(worker.initials) +
+                                    " \n                      "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "workers" }
+                      },
+                      [_vm._v("Workers")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "multiselect",
+                      {
+                        staticClass:
+                          "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                        attrs: {
+                          options: _vm.$store.state.workers.workers,
+                          multiple: true,
+                          "group-select": true,
+                          "close-on-select": false,
+                          "clear-on-select": false,
+                          "preserve-search": true,
+                          showLabels: true,
+                          preselectFirst: false,
+                          allowEmpty: true,
+                          showNoResults: true,
+                          placeholder: "Choose Workers",
+                          label: "name",
+                          "track-by": "name",
+                          "preselect-first": true
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "selection",
+                            fn: function(ref) {
+                              var values = ref.values
+                              var isOpen = ref.isOpen
+                              return [
+                                values.length && !isOpen
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "multiselect__single" },
+                                      [
+                                        _vm._v(
+                                          "\n                      " +
+                                            _vm._s(values.length) +
+                                            " options selected\n                  "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
+                            }
+                          }
+                        ]),
+                        model: {
+                          value:
+                            _vm.$store.state.usual_tasks.weekly_task.workers,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.$store.state.usual_tasks.weekly_task,
+                              "workers",
+                              $$v
+                            )
+                          },
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.workers"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c("template", { slot: "noResult" }, [
+                          _vm._v(
+                            "\n                  No Workers\n              "
+                          )
+                        ])
+                      ],
+                      2
+                    )
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "py-2" },
+                  [
+                    _vm._l(
+                      _vm.$store.state.usual_tasks.weekly_task.days,
+                      function(day) {
+                        return _c(
+                          "div",
+                          {
+                            key: day.id,
+                            staticClass: "py-1 float-right inline-block"
+                          },
+                          [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                          " +
+                                    _vm._s(day.name.substring(0, 2)) +
+                                    " \n                      "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "days" }
+                      },
+                      [_vm._v("Days")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "multiselect",
+                      {
+                        staticClass:
+                          "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                        attrs: {
+                          options: _vm.days,
+                          multiple: true,
+                          "group-select": true,
+                          "close-on-select": false,
+                          "clear-on-select": false,
+                          "preserve-search": true,
+                          showLabels: true,
+                          preselectFirst: false,
+                          allowEmpty: true,
+                          showNoResults: true,
+                          placeholder: "Choose Days",
+                          label: "name",
+                          "track-by": "name",
+                          "preselect-first": true
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "selection",
+                            fn: function(ref) {
+                              var values = ref.values
+                              var isOpen = ref.isOpen
+                              return [
+                                values.length && !isOpen
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "multiselect__single" },
+                                      [
+                                        _vm._v(
+                                          "\n                              " +
+                                            _vm._s(values.length) +
+                                            " options selected\n                          "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
+                            }
+                          }
+                        ]),
+                        model: {
+                          value: _vm.$store.state.usual_tasks.weekly_task.days,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.$store.state.usual_tasks.weekly_task,
+                              "days",
+                              $$v
+                            )
+                          },
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.days"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c("template", { slot: "noResult" }, [
+                          _vm._v(
+                            "\n                          No Days\n                      "
+                          )
+                        ])
+                      ],
+                      2
+                    )
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+                  },
+                  [_vm._v("\n                  Save\n              ")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-700 hover:shadow-none",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    return _vm.deleteTask(_vm.taskId)
+                  }
+                }
+              },
+              [_vm._v("\n              Delete\n          ")]
+            )
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "tabs",
-        [
-          _c(
-            "tab",
-            { attrs: { name: "Task" } },
-            [_c("Task", { attrs: { id: _vm.id } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab",
-            {
-              attrs: {
-                name: "Daily Task",
-                selected:
-                  _vm.$store.state.usual_tasks.type == "daily" ? true : false
-              }
-            },
-            [_c("EditDailyTask", { attrs: { id: _vm.id } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab",
-            {
-              attrs: {
-                name: "Weekly Task",
-                selected:
-                  _vm.$store.state.usual_tasks.type == "weekly" ? true : false
-              }
-            },
-            [_c("EditWeeklyTask", { attrs: { id: _vm.id } })],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "tab",
-            {
-              attrs: {
-                name: "Monthly Task",
-                selected:
-                  _vm.$store.state.usual_tasks.type == "monthly" ? true : false
-              }
-            },
-            [_c("EditMonthlyTask", { attrs: { id: _vm.id } })],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
+      : _vm.taskType === "monthly"
+      ? _c("div", [_vm._v("\n      C\n  ")])
+      : _c("div", [
+          _c("div", [
+            _c("div", { staticClass: "px-2 pt-2" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "mt-6",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updateTask(_vm.taskId)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "flex justify-between gap-3" }, [
+                    _c("span", { staticClass: "w-1/2" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "block text-xs font-semibold text-gray-600 uppercase",
+                          attrs: { for: "name" }
+                        },
+                        [_vm._v("Task Name")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$store.state.usual_tasks.usual_task.name,
+                            expression:
+                              "$store.state.usual_tasks.usual_task.name"
+                          }
+                        ],
+                        staticClass:
+                          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                        attrs: {
+                          id: "name",
+                          type: "text",
+                          name: "name",
+                          required: ""
+                        },
+                        domProps: {
+                          value: _vm.$store.state.usual_tasks.usual_task.name
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$store.state.usual_tasks.usual_task,
+                              "name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "w-1/2" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "block text-xs font-semibold text-gray-600 uppercase",
+                          attrs: { for: "status" }
+                        },
+                        [_vm._v("Status")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "relative" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.$store.state.usual_tasks.usual_task
+                                    .status,
+                                expression:
+                                  "$store.state.usual_tasks.usual_task.status"
+                              }
+                            ],
+                            staticClass:
+                              "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                            attrs: { name: "status", id: "" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.$store.state.usual_tasks.usual_task,
+                                  "status",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("option", [_vm._v("K")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("P")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("0")])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "fill-current h-4 w-4",
+                                attrs: {
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  viewBox: "0 0 20 20"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex justify-between gap-3" }, [
+                    _c("span", { staticClass: "w-1/2" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                          attrs: { for: "start" }
+                        },
+                        [_vm._v("Start")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.$store.state.usual_tasks.usual_task.start,
+                            expression:
+                              "$store.state.usual_tasks.usual_task.start"
+                          }
+                        ],
+                        staticClass:
+                          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                        attrs: {
+                          id: "start",
+                          type: "time",
+                          name: "start",
+                          required: ""
+                        },
+                        domProps: {
+                          value: _vm.$store.state.usual_tasks.usual_task.start
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$store.state.usual_tasks.usual_task,
+                              "start",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "w-1/2" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                          attrs: { for: "finish" }
+                        },
+                        [_vm._v("Finish")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.$store.state.usual_tasks.usual_task.finish,
+                            expression:
+                              "$store.state.usual_tasks.usual_task.finish"
+                          }
+                        ],
+                        staticClass:
+                          "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                        attrs: {
+                          id: "finish",
+                          type: "time",
+                          name: "finish",
+                          required: ""
+                        },
+                        domProps: {
+                          value: _vm.$store.state.usual_tasks.usual_task.finish
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$store.state.usual_tasks.usual_task,
+                              "finish",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
+                    },
+                    [
+                      _vm._v(
+                        "\n                      Duration: " +
+                          _vm._s(
+                            _vm._f("duration")(
+                              _vm.$store.state.usual_tasks.usual_task.start,
+                              _vm.$store.state.usual_tasks.usual_task.finish
+                            )
+                          ) +
+                          "\n                  "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                      attrs: { for: "day" }
+                    },
+                    [_vm._v("Date")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$store.state.usual_tasks.usual_task.date,
+                        expression: "$store.state.usual_tasks.usual_task.date"
+                      }
+                    ],
+                    staticClass:
+                      "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                    attrs: {
+                      id: "day",
+                      type: "date",
+                      name: "date",
+                      required: ""
+                    },
+                    domProps: {
+                      value: _vm.$store.state.usual_tasks.usual_task.date
+                    },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.$store.state.usual_tasks.usual_task,
+                          "date",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._l(
+                    _vm.$store.state.usual_tasks.usual_task.workers,
+                    function(worker) {
+                      return _c(
+                        "div",
+                        {
+                          key: worker.id,
+                          staticClass: "py-1 float-right inline-block"
+                        },
+                        [
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                            },
+                            [
+                              _vm._v(
+                                "\n                          " +
+                                  _vm._s(worker.initials) +
+                                  " \n                      "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    }
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                      attrs: { for: "workers" }
+                    },
+                    [_vm._v("Workers")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "multiselect",
+                    {
+                      staticClass:
+                        "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                      attrs: {
+                        options: _vm.$store.state.workers.workers,
+                        multiple: true,
+                        "group-select": true,
+                        "close-on-select": false,
+                        "clear-on-select": false,
+                        "preserve-search": true,
+                        showLabels: true,
+                        preselectFirst: false,
+                        allowEmpty: true,
+                        showNoResults: true,
+                        placeholder: "Choose Workers",
+                        label: "name",
+                        "track-by": "name",
+                        "preselect-first": true
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "selection",
+                          fn: function(ref) {
+                            var values = ref.values
+                            var isOpen = ref.isOpen
+                            return [
+                              values.length && !isOpen
+                                ? _c(
+                                    "span",
+                                    { staticClass: "multiselect__single" },
+                                    [
+                                      _vm._v(
+                                        "\n                      " +
+                                          _vm._s(values.length) +
+                                          " options selected\n                  "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]
+                          }
+                        }
+                      ]),
+                      model: {
+                        value: _vm.$store.state.usual_tasks.usual_task.workers,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.usual_task,
+                            "workers",
+                            $$v
+                          )
+                        },
+                        expression:
+                          "$store.state.usual_tasks.usual_task.workers"
+                      }
+                    },
+                    [
+                      _vm._v(" "),
+                      _c("template", { slot: "noResult" }, [
+                        _vm._v(
+                          "\n                      No Workers\n                  "
+                        )
+                      ])
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
+                    },
+                    [_vm._v("\n                      Save\n                  ")]
+                  )
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "w-1/4 float-right mx-1 py-3 my-3 mt-6 font-medium tracking-widest text-white uppercase bg-red-500 shadow-lg focus:outline-none hover:bg-red-700 hover:shadow-none",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteTask(_vm.taskId)
+                    }
+                  }
+                },
+                [_vm._v("\n                  Delete\n              ")]
+              )
+            ])
+          ])
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48714,10 +48827,10 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex flex-wrap " }, [
+      _c("div", { staticClass: "flex" }, [
         _c(
           "div",
-          { staticClass: "w-64  rounded bg-gray-300  mx-6 shadow-md" },
+          { staticClass: "w-1/6 my-4  rounded bg-gray-300  mx-6 shadow-md" },
           [
             _c(
               "p",
@@ -48731,113 +48844,132 @@ var render = function() {
             _c(
               "ul",
               { staticClass: "list-group drag p10" },
-              [
-                _c(
-                  "draggable",
+              _vm._l(_vm.$store.state.usual_tasks.usual_tasks, function(
+                usual_task
+              ) {
+                return _c(
+                  "li",
                   {
-                    staticClass: "dragArea",
-                    attrs: { options: { group: "ITEMS" } },
-                    model: {
-                      value: _vm.myList,
-                      callback: function($$v) {
-                        _vm.myList = $$v
-                      },
-                      expression: "myList"
+                    key: usual_task.id,
+                    staticClass:
+                      "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        return _vm.getUsualTask(usual_task.id, "usual")
+                      }
                     }
                   },
-                  _vm._l(_vm.$store.state.usual_tasks.usual_tasks, function(
-                    usual_task
-                  ) {
-                    return _c(
-                      "li",
-                      {
-                        key: usual_task.id,
-                        staticClass:
-                          "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
-                        on: {
-                          click: function($event) {
-                            return _vm.getUsualTask(usual_task.id)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                           " +
-                            _vm._s(usual_task.name) +
-                            "\n                        "
-                        )
-                      ]
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(usual_task.name) +
+                        "\n                    "
                     )
-                  }),
-                  0
+                  ]
                 )
-              ],
-              1
+              }),
+              0
             )
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "w-64 rounded bg-gray-300  mx-6 shadow-md" }, [
-          _c(
-            "p",
-            {
-              staticClass:
-                "text-center text-lg font-semibold text text-gray-700"
-            },
-            [_vm._v("Daily tasks")]
-          ),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "list-group drag p10" },
-            [
-              _c(
-                "draggable",
-                {
-                  staticClass: "dragArea",
-                  attrs: { options: { group: "ITEMS" } },
-                  model: {
-                    value: _vm.myList2,
-                    callback: function($$v) {
-                      _vm.myList2 = $$v
-                    },
-                    expression: "myList2"
-                  }
-                },
-                _vm._l(_vm.$store.state.usual_tasks.daily_tasks, function(
-                  daily_task
-                ) {
+        _c(
+          "div",
+          { staticClass: "w-1/6 my-4 rounded bg-gray-300  mx-6 shadow-md" },
+          [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "text-center text-lg font-semibold text text-gray-700"
+              },
+              [_vm._v("Daily Tasks for tomorrow")]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "list-group drag p10" },
+              _vm._l(
+                _vm.$store.state.usual_tasks.daily_tasks_tomorrow,
+                function(daily_task_tomorrow) {
                   return _c(
                     "li",
                     {
-                      key: daily_task.id,
+                      key: daily_task_tomorrow.id,
                       staticClass:
                         "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
                       on: {
                         click: function($event) {
-                          return _vm.getUsualTask(daily_task.id)
+                          return _vm.getUsualTask(
+                            daily_task_tomorrow.id,
+                            "usual_daily"
+                          )
                         }
                       }
                     },
                     [
                       _vm._v(
-                        "\n                            " +
-                          _vm._s(daily_task.name) +
-                          "\n                        "
+                        "\n                        " +
+                          _vm._s(daily_task_tomorrow.name) +
+                          "\n                    "
                       )
                     ]
                   )
-                }),
-                0
-              )
-            ],
-            1
-          )
-        ]),
+                }
+              ),
+              0
+            )
+          ]
+        ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "w-64  rounded bg-gray-300  mx-6 shadow-md" },
+          { staticClass: "w-1/6 my-4 rounded bg-gray-300  mx-6 shadow-md" },
+          [
+            _c(
+              "p",
+              {
+                staticClass:
+                  "text-center text-lg font-semibold text text-gray-700"
+              },
+              [_vm._v("Daily tasks")]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "list-group drag p10" },
+              _vm._l(_vm.$store.state.usual_tasks.daily_tasks, function(
+                daily_task
+              ) {
+                return _c(
+                  "li",
+                  {
+                    key: daily_task.id,
+                    staticClass:
+                      "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        return _vm.getUsualTask(daily_task.id, daily_task.type)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(daily_task.name) +
+                        "\n                    "
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w-1/6 my-4 rounded bg-gray-300  mx-6 shadow-md" },
           [
             _c(
               "p",
@@ -48851,72 +48983,55 @@ var render = function() {
             _c(
               "ul",
               { staticClass: "list-group drag p10" },
-              [
-                _c(
-                  "draggable",
+              _vm._l(_vm.$store.state.usual_tasks.weekly_tasks, function(
+                weekly_task
+              ) {
+                return _c(
+                  "li",
                   {
-                    staticClass: "dragArea",
-                    attrs: { options: { group: "ITEMS" } },
-                    model: {
-                      value: _vm.myList3,
-                      callback: function($$v) {
-                        _vm.myList3 = $$v
-                      },
-                      expression: "myList3"
+                    key: weekly_task.id,
+                    staticClass:
+                      "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        return _vm.getUsualTask(
+                          weekly_task.id,
+                          weekly_task.type
+                        )
+                      }
                     }
                   },
-                  _vm._l(_vm.$store.state.usual_tasks.weekly_tasks, function(
-                    weekly_task
-                  ) {
-                    return _c(
-                      "li",
-                      {
-                        key: weekly_task.id,
-                        staticClass:
-                          "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
-                        on: {
-                          click: function($event) {
-                            return _vm.getUsualTask(weekly_task.id)
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(weekly_task.name) +
-                            "\n                            "
-                        ),
-                        _vm._l(weekly_task.days, function(day) {
-                          return _c(
-                            "div",
-                            {
-                              key: day.id,
-                              staticClass: "text-xs flex flex-wrap"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                " +
-                                  _vm._s(day) +
-                                  "\n                            "
-                              )
-                            ]
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(weekly_task.name) +
+                        "\n                        "
+                    ),
+                    _vm._l(weekly_task.days, function(day) {
+                      return _c(
+                        "div",
+                        { key: day.id, staticClass: "text-xs flex flex-wrap" },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(day.name) +
+                              "\n                        "
                           )
-                        })
-                      ],
-                      2
-                    )
-                  }),
-                  0
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
-              ],
-              1
+              }),
+              0
             )
           ]
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "w-64  rounded bg-gray-300  mx-6 shadow-md" },
+          { staticClass: "w-1/6 my-4 rounded bg-gray-300  mx-6 shadow-md" },
           [
             _c(
               "p",
@@ -48930,46 +49045,32 @@ var render = function() {
             _c(
               "ul",
               { staticClass: "list-group drag p10" },
-              [
-                _c(
-                  "draggable",
+              _vm._l(_vm.$store.state.usual_tasks.monthly_tasks, function(
+                monthly_task
+              ) {
+                return _c(
+                  "li",
                   {
-                    staticClass: "dragArea",
-                    attrs: { options: { group: "ITEMS" } },
-                    model: {
-                      value: _vm.myList4,
-                      callback: function($$v) {
-                        _vm.myList4 = $$v
-                      },
-                      expression: "myList4"
+                    key: monthly_task.id,
+                    staticClass:
+                      "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        return _vm.getUsualTask(
+                          monthly_task.id,
+                          monthly_task.type
+                        )
+                      }
                     }
                   },
-                  _vm._l(_vm.$store.state.usual_tasks.monthly_tasks, function(
-                    monthly_task
-                  ) {
-                    return _c(
-                      "li",
-                      {
-                        key: monthly_task.id,
-                        staticClass:
-                          "p-4 mb-3 bg-white shadow rounded-lg cursor-pointer",
-                        on: {
-                          click: function($event) {
-                            return _vm.getUsualTask(monthly_task.id)
-                          }
-                        }
-                      },
-                      [
-                        _c("p", [_vm._v(_vm._s(monthly_task.name))]),
-                        _vm._v(" "),
-                        _c("p", [_vm._v(_vm._s(monthly_task.day_of_month))])
-                      ]
-                    )
-                  }),
-                  0
+                  [
+                    _c("p", [_vm._v(_vm._s(monthly_task.name))]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(monthly_task.day_of_month))])
+                  ]
                 )
-              ],
-              1
+              }),
+              0
             )
           ]
         )
@@ -75250,213 +75351,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/usual_tasks/EditDailyTask.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditDailyTask.vue ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditDailyTask.vue?vue&type=template&id=1e11f60a& */ "./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a&");
-/* harmony import */ var _EditDailyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditDailyTask.vue?vue&type=script&lang=js& */ "./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditDailyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/usual_tasks/EditDailyTask.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDailyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditDailyTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDailyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a& ***!
-  \**********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditDailyTask.vue?vue&type=template&id=1e11f60a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditDailyTask.vue?vue&type=template&id=1e11f60a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditDailyTask_vue_vue_type_template_id_1e11f60a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditMonthlyTask.vue":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditMonthlyTask.vue ***!
-  \*****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2& */ "./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2&");
-/* harmony import */ var _EditMonthlyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditMonthlyTask.vue?vue&type=script&lang=js& */ "./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditMonthlyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/usual_tasks/EditMonthlyTask.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditMonthlyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditMonthlyTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditMonthlyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2& ***!
-  \************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditMonthlyTask.vue?vue&type=template&id=9bc8e4a2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditMonthlyTask_vue_vue_type_template_id_9bc8e4a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditWeeklyTask.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditWeeklyTask.vue ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditWeeklyTask.vue?vue&type=template&id=102be7b9& */ "./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9&");
-/* harmony import */ var _EditWeeklyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditWeeklyTask.vue?vue&type=script&lang=js& */ "./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _EditWeeklyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/usual_tasks/EditWeeklyTask.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWeeklyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditWeeklyTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWeeklyTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9& ***!
-  \***********************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditWeeklyTask.vue?vue&type=template&id=102be7b9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/usual_tasks/EditWeeklyTask.vue?vue&type=template&id=102be7b9&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWeeklyTask_vue_vue_type_template_id_102be7b9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/components/usual_tasks/MonthlyTask.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/usual_tasks/MonthlyTask.vue ***!
@@ -76770,6 +76664,8 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   usual_tasks: [],
   usual_task: {},
+  daily_tasks_tomorrow: [],
+  daily_task_tomorrow: {},
   daily_tasks: [],
   daily_task: {},
   weekly_tasks: [],
@@ -76792,6 +76688,12 @@ var mutations = {
   SET_DAILY_TASK: function SET_DAILY_TASK(state, daily_task) {
     state.daily_task = daily_task;
   },
+  SET_DAILY_TASKS_TOMORROW: function SET_DAILY_TASKS_TOMORROW(state, daily_tasks_tomorrow) {
+    state.daily_tasks_tomorrow = daily_tasks_tomorrow;
+  },
+  SET_DAILY_TASK_TOMORROW: function SET_DAILY_TASK_TOMORROW(state, daily_task_tomorrow) {
+    state.daily_task_tomorrow = daily_task_tomorrow;
+  },
   SET_WEEKLY_TASKS: function SET_WEEKLY_TASKS(state, weekly_tasks) {
     state.weekly_tasks = weekly_tasks;
   },
@@ -76812,9 +76714,9 @@ var actions = {
   getUsualTasks: function getUsualTasks(context) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/usual-tasks").then(function (response) {
-      console.log(response.data);
       context.commit('SET_USUAL_TASKS', response.data.usual_tasks);
       context.commit('SET_DAILY_TASKS', response.data.daily_tasks);
+      context.commit('SET_DAILY_TASKS_TOMORROW', response.data.daily_tasks_tomorrow);
       context.commit('SET_WEEKLY_TASKS', response.data.weekly_tasks);
       context.commit('SET_MONTHLY_TASKS', response.data.monthly_tasks);
     })["catch"](function (error) {
@@ -76836,22 +76738,19 @@ var actions = {
   //     .catch(error => { console.log(error) })
   // },
   getUsualTask: function getUsualTask(context, _ref) {
-    var id = _ref.id;
+    var id = _ref.id,
+        type = _ref.type;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/usual-task/".concat(id)).then(function (response) {
-      // console.log(response.data.data.type);
-      context.commit('SET_TYPE', response.data.data.type);
-
-      if (response.data.data.type == 'daily') {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/usual-task/".concat(type, "/").concat(id)).then(function (response) {
+      if (type == 'daily') {
+        context.commit('SET_DAILY_TASK', response.data.data);
+      } else if (type == 'weekly') {
+        context.commit('SET_WEEKLY_TASK', response.data.data);
+      } else if (type == 'monthly') {
+        context.commit('SET_MONTHLY_TASK', response.data.data);
+      } else {
         context.commit('SET_USUAL_TASK', response.data.data);
-      } else if (response.data.data.type == 'weekly') {
-        context.commit('SET_WEEKLY_TASKS', response.data.data);
-      } else if (response.data.data.type == 'monthly') {
-        context.commit('SET_MONTHLY_TASKS', response.data.data);
-      } else {} // context.commit('SET_DAILY_TASK', response.data.daily_tasks)
-      // context.commit('SET_WEEKLY_TASK', response.data.weekly_tasks)
-      // context.commit('SET_MONTHLY_TASK', response.data.monthly_tasks)
-
+      }
     })["catch"](function (error) {
       console.log(error);
     });
