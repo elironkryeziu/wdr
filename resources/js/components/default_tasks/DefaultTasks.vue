@@ -2,7 +2,7 @@
   <div class="">
     <!-- <p>{{ $store.state.default_tasks.default_tasks }}</p> -->
     <div>
-        <button @click="createDefaultTask"  class="w-1/12 mx-1 py-3 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+        <button @click="createDefaultTask"  class="lg:w-1/12 w-auto rounded-md mx-1 py-1 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
             Add New
         </button>
     </div>
@@ -13,7 +13,7 @@
             <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3 text-left text-xs flex-wrap font-medium text-gray-500 uppercase tracking-wider">
                         Name 
                     </th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

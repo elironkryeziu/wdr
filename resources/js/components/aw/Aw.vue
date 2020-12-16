@@ -1,6 +1,6 @@
 <template>
 <div class="lg:flex md:flex lg:flex-wrap md:flex-wrap">
-    <div v-for="aw in $store.state.aw.aws" :key="aw.id" class="lg:w-1/4 md:w-1/2 w-full justify-center font-sans py-4">
+    <div v-for="aw in $store.state.aw.aws" :key="aw.id" class="lg:w-1/4 md:w-1/2 w-full justify-center lg:px-0 px-12 font-sans py-4">
       <div class="rounded bg-gray-300 w-64 p-2 shadow-md">
         <div class="flex justify-between py-1">
           <div class="">

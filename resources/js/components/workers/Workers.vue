@@ -2,7 +2,7 @@
   <div class="">
     <!-- <p>{{ $store.state.workers.workers }}</p> -->
     <div>
-        <button @click="createWorker" class="w-1/12 mx-1 py-3 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+        <button @click="createWorker" class="lg:w-1/12 mx-1 rounded-md py-1 my-3 text-sm mt-6 font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
             Add New
         </button>
     </div>

@@ -1,22 +1,22 @@
 <template>
 <div>
-  <div class="py-4 flex ">
-    <div class="border w-1/2 border-gray-300 shadow">
+  <div class="py-4 lg:flex">
+    <div class="border lg:w-1/2 w-auto border-gray-300 shadow lg:mx-0 mx-4">
       <p class="text-gray-400 pl-2">Choose workers you want to hide:</p>
       <div class="flex flex-wrap">
         <div class="pl-2" v-for="worker in $store.state.plan.plan_workers" :key="worker.id">
           <input type="checkbox" v-model="worker.hide">
           <span class="text-gray-400">{{ worker.label }}</span>
         </div>
-         <button @click="checkWorkers" class="w-1/4 text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-            Hide All
-          </button>
-          <button @click="uncheckWorkers" class="w-1/4 text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-800 hover:shadow-none">
-            Unhide All
-          </button>
+        <button @click="checkWorkers" class="w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+          Hide All
+        </button>
+        <button @click="uncheckWorkers" class="w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-800 hover:shadow-none">
+          Unhide All
+        </button>
       </div>
     </div>
-    <form class="pl-4">
+    <form class="lg:pl-4 lg:mx-0 mx-4 lg:py-0 py-4">
       <label class="text-gray-400">Choose day:</label>
       <vc-date-picker 
             v-model="day" 
@@ -32,18 +32,17 @@
             />
           </template>
       </vc-date-picker>
-     <span  class="pl-4">
-        <button class="py-1 px-4 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+     <span class="lg:pl-4">
+        <button class="py-1 px-4 lg:my-0 my-2 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
           Search
         </button>
      </span>
     </form>
-    <div>
-<!-- 
-    <button class="py-1 px-4 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-          Add task
-        </button> -->
-    </div>
+  </div>
+  <div class="py-4">
+    <button class="py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+      Add Task
+    </button>
   </div>
   <vue-cal selected-date="2020-12-14"
     :time-from="6 * 60"

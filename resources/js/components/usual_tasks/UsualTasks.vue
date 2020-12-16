@@ -1,117 +1,87 @@
 <template>
     <div>
         <div class="" >
-          <div class="col-md-12 p20">
-              <button class="bg-blue-500" type="button" v-on:click="insertItem">Add item</button>
-          </div>
-          <div class="flex flex-wrap ">
-            <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
-                <ul class="list-group drag p10">
-                    <draggable class="dragArea"
-                            :options="{group:'ITEMS'}"
-                            v-model="myList">
-                        <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
-                            v-for="(item, index) in myList"
-                            :key="item.no">
-                            <span class="badge">No.{{item.no}}</span>
-                            <label>
-                                {{item.name}}
-                            </label>
-                            <p><span class="del" v-on:click="deleteItem(item, index, '')">Delete</span></p>
-                        </li>
-                    </draggable>
-                </ul>
+            <div class="col-md-12 p20">
+                <button @click="addUsualTask" class="py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                    Add Task
+                </button>
             </div>
-            <div class="w-64 rounded bg-gray-300  mx-6 shadow-md">
-                <ul class="list-group drag p10">
-                    <draggable class="dragArea"
+            <div class="flex flex-wrap ">
+                <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
+                    <p class="text-center text-lg font-semibold text text-gray-700">Tasks</p>
+                    <ul class="list-group drag p10">
+                        <draggable class="dragArea"
                                 :options="{group:'ITEMS'}"
-                                v-model="myList2">
-                        <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
-                            v-for="(item, index) in myList2"
-                            :key="item.no">
-                            <span class="badge">No.{{item.no}}</span>
-                            <label>
-                                {{item.name}}
-                            </label>
-                            <p><span class="del" v-on:click="deleteItem(item, index, '2')">Delete</span></p>
-                        </li>
-                    </draggable>
-                </ul>
+                                v-model="myList">
+                            <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
+                                v-for="usual_task in $store.state.usual_tasks.usual_tasks" :key="usual_task.id" @click="getUsualTask(usual_task.id)">
+                               {{ usual_task.name }}
+                            </li>
+                        </draggable>
+                    </ul>
+                </div>
+                <div class="w-64 rounded bg-gray-300  mx-6 shadow-md">
+                    <p class="text-center text-lg font-semibold text text-gray-700">Daily tasks</p>
+                    <ul class="list-group drag p10">
+                        <draggable class="dragArea"
+                                    :options="{group:'ITEMS'}"
+                                    v-model="myList2">
+                            <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
+                                v-for="daily_task in $store.state.usual_tasks.daily_tasks" :key="daily_task.id" @click="getUsualTask(daily_task.id)">
+                                {{ daily_task.name }}
+                            </li>
+                        </draggable>
+                    </ul>
+                </div>
+                <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
+                    <p class="text-center text-lg font-semibold text text-gray-700">Weekly tasks</p>
+                    <ul class="list-group drag p10">
+                        <draggable class="dragArea"
+                                    :options="{group:'ITEMS'}"
+                                    v-model="myList3">
+                            <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
+                                v-for="weekly_task in $store.state.usual_tasks.weekly_tasks" :key="weekly_task.id" @click="getUsualTask(weekly_task.id)">
+                                {{ weekly_task.name }}
+                                <div class="text-xs flex flex-wrap" v-for="day in weekly_task.days" :key="day.id">
+                                    {{ day }}
+                                </div>
+                            </li>
+                        </draggable>
+                    </ul>
+                </div>
+                <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
+                    <p class="text-center text-lg font-semibold text text-gray-700">Monthly tasks</p>
+                    <ul class="list-group drag p10">
+                        <draggable class="dragArea"
+                                    :options="{group:'ITEMS'}"
+                                    v-model="myList4">
+                            <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
+                                v-for="monthly_task in $store.state.usual_tasks.monthly_tasks" :key="monthly_task.id" @click="getUsualTask(monthly_task.id)">
+                                <p>{{ monthly_task.name }}</p>
+                                <p>{{ monthly_task.day_of_month }}</p>
+                            </li>
+                        </draggable>
+                    </ul>
+                </div>
             </div>
-            <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
-                <ul class="list-group drag p10">
-                    <draggable class="dragArea"
-                                :options="{group:'ITEMS'}"
-                                v-model="myList3">
-                        <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
-                            v-for="(item, index) in myList3"
-                            :key="item.no">
-                            <span class="badge">No.{{item.no}}</span>
-                            <label>
-                                {{item.name}}
-                            </label>
-                            <p><span class="del" v-on:click="deleteItem(item, index, '3')">Delete</span></p>
-                        </li>
-                    </draggable>
-                </ul>
-            </div>
-            <div class="w-64  rounded bg-gray-300  mx-6 shadow-md">
-                <ul class="list-group drag p10">
-                    <draggable class="dragArea"
-                                :options="{group:'ITEMS'}"
-                                v-model="myList4">
-                        <li class="p-4 mb-3 bg-white shadow rounded-lg cursor-pointer"
-                            v-for="(item, index) in myList4"
-                            :key="item.no">
-                            <span class="badge">No.{{item.no}}</span>
-                            <label>
-                                {{item.name}}
-                            </label>
-                            <p><span class="del" v-on:click="deleteItem(item, index, '4')">Delete</span></p>
-                        </li>
-                    </draggable>
-                </ul>
-            </div>
-          </div>
-    </div>
+        </div>
     </div>
 </template>
 
 <script>
 import Draggable from 'vuedraggable'
+import NewUsualTaskModal from './NewUsualTaskModal'
+import UsualTaskModal from './UsualTaskModal'
 
 export default {
     components: {
         Draggable,
+        NewUsualTaskModal,
+        UsualTaskModal
     },
     data() {
         return {
-            items:[
-              {no:1, name:'Item 1', categoryNo:'1'},
-              {no:5, name:'Item 2', categoryNo:'1'},
-              {no:9, name:'Item 3', categoryNo:'1'},
-              {no:10, name:'Item 4', categoryNo:'1'}
-        ],
-        items2:[
-            {no:2, name:'Item 5', categoryNo:'2'},
-            {no:6, name:'Item 6', categoryNo:'2'},
-            {no:11, name:'Item 7', categoryNo:'2'},
-            {no:12, name:'Item 8', categoryNo:'2'}
-        ],
-        items3:[
-            {no:3, name:'Item 9', categoryNo:'3'},
-            {no:7, name:'Item 10', categoryNo:'3'},
-            {no:13, name:'Item 11', categoryNo:'3'},
-            {no:14, name:'Item 12', categoryNo:'3'},
-        ],
-        items4:[
-            {no:4, name:'Item 13', categoryNo:'4'},
-            {no:8, name:'Item 14', categoryNo:'4'},
-            {no:15, name:'Item 15', categoryNo:'4'},
-            {no:16, name:'Item 16', categoryNo:'4'},
-        ],
-        newNo: 0
+        
         }
     },
     computed: {
@@ -147,6 +117,9 @@ export default {
                 this.items4 = value;
             }
         }
+    },
+    mounted() {
+      this.$store.dispatch('getUsualTasks'); 
     },
     methods: {
         insertItem: function(){
@@ -200,6 +173,27 @@ export default {
 
             ITEMS.splice(index, 1);
         },
+        addUsualTask() {
+            this.$modal.show(NewUsualTaskModal, {},{ 
+                name: "add-usual-task-modal",
+                height: 'auto',
+                clickToClose: false,
+                draggable: true
+            });
+        },
+        getUsualTask(id) {
+            // console.log(id);
+            this.$modal.show(UsualTaskModal, 
+            {
+                id: id
+            },
+            { 
+                name: "usual-task-modal",
+                height: 'auto',
+                clickToClose: false,
+                draggable: true
+            });
+        }
     }
 }
 </script>
