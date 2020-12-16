@@ -16,16 +16,20 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('aw_id')->nullable();
+            $table->unsignedBigInteger('usual_task_id')->nullable();
             $table->string('name');
             $table->time('start')->nullable();
             $table->time('finish')->nullable();
             $table->char('status', 1)->nullable();
             $table->boolean('closed')->default(0);
             $table->date('date');
+            $table->boolean('show_in_plan')->default(1);
+            $table->string('style');
             $table->unsignedBigInteger('updated_by')->nullable();
 
             $table->timestamps();
             $table->foreign('aw_id')->references('id')->on('aws')->onDelete('cascade');
+            $table->foreign('usual_task_id')->references('id')->on('usual_tasks')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
         });
 

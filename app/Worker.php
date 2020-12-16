@@ -19,6 +19,11 @@ class Worker extends Model
         return $this->belongsToMany('App\Task','task_worker');
     }
 
+    public function usualtasks()
+    {
+        return $this->belongsToMany('App\UsualTask','usualtask_worker');
+    }
+
     public function getinitialsAttribute()
     {
         return substr($this->first_name, 0, 1).substr($this->last_name, 0, 1);

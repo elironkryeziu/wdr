@@ -9,6 +9,11 @@ class UsualTask extends Model
     //
     protected $guarded = [];
 
+    public function workers()
+    {
+        return $this->belongsToMany('App\Worker','usualtask_worker');
+    }
+
     public function getisDailyAttribute()
     {
         //
@@ -78,6 +83,13 @@ class UsualTask extends Model
             }
 
         return $days;
+    }
+
+    public function getstatusAttribute()
+    {
+        $referent_task = Task::where('usual_task_id',$this->id)->orderBy('id','desc')->first();
+
+        return $referent_task->status;
     }
 
     public function scopeMonthly($query)

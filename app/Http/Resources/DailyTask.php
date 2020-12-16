@@ -18,8 +18,8 @@ class DailyTask extends JsonResource
             'type' => 'daily',
             'id' => $this->id,
             'name' => $this->name,
-            // 'status' => $this->status, -ma vone
-            // 'workers' => WorkerResource::collection($this->workers)
+            'status' => $this->status,
+            'workers' => WorkerResource::collection($this->workers)
         ];
     }
 }

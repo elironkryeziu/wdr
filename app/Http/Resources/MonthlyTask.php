@@ -19,8 +19,8 @@ class MonthlyTask extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'day_of_month' => $this->month_day,
-            // 'status' => $this->status, -ma vone
-            // 'workers' => WorkerResource::collection($this->workers) -me ndreq relationship
+            'status' => $this->status,
+            'workers' => WorkerResource::collection($this->workers)
         ];
     }
 }

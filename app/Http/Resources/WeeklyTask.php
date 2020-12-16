@@ -20,8 +20,8 @@ class WeeklyTask extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'days' => $this->days,
-            // 'status' => $this->status, -ma vone
-            // 'workers' => WorkerResource::collection($this->workers) -me ndreq relationship
+            'status' => $this->status,
+            'workers' => WorkerResource::collection($this->workers)
         ];
     }
 }

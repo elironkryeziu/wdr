@@ -21,16 +21,11 @@ class UsualTaskController extends Controller
     public function index()
     {
         //
-        $usual_tasks = Task::Usual()->get();
-        $daily_tasks = UsualTask::Daily()->get();
-        $weekly_tasks = UsualTask::Weekly()->get();
-        $monthly_tasks = UsualTask::Monthly()->get();
-
         return [
-            'usual_tasks' => UsualTaskResource::collection($usual_tasks),
-            'daily_tasks' => DailyTask::collection($daily_tasks),
-            'weekly_tasks' => WeeklyTask::collection($weekly_tasks),
-            'monthly_tasks' => MonthlyTask::collection($monthly_tasks),
+            'usual_tasks' => UsualTaskResource::collection(Task::Usual()->get()),
+            'daily_tasks' => DailyTask::collection(UsualTask::Daily()->get()),
+            'weekly_tasks' => WeeklyTask::collection(UsualTask::Weekly()->get()),
+            'monthly_tasks' => MonthlyTask::collection(UsualTask::Monthly()->get()),
         ];
     }
 
@@ -75,21 +70,20 @@ class UsualTaskController extends Controller
     public function show($id)
     {
         //
-        $usual_task = UsualTask::find($id);
-
-        switch ($usual_task->type) {
+        switch ($usual_task->type) 
+        {
             case "daily":
-                return new DailyTask($usual_task);
+                return new DailyTask(UsualTask::find($id));
               break;
             case "weekly":
-                return new WeeklyTask($usual_task);
+                return new WeeklyTask(UsualTask::find($id));
               break;
             case "monthly":
-                return new MonthlyTask($usual_task);
+                return new MonthlyTask(UsualTask::find($id));
               break;
             default:
               return null;
-          }
+        }
     }
 
     /**
