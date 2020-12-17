@@ -73,21 +73,26 @@ const actions = {
         .catch(error => { console.log(error) })
     },
 
-    // createDefaultTask(context, default_task) {
-    //     axios.defaults.headers.common["Authorization"] =
-    //         "Bearer " + localStorage.getItem("access_token");
-    
-    //     axios.post(`api/default-tasks`, {
-    //         default_task: default_task
-    //     })
-    //     .then(() => {
-    //         context.commit('SET_DEFAULT_TASKS', default_task)
-    //     })
-    //     .finally(() => {
-    //         context.dispatch('getDefaultTasks');
-    //     })
-    //     .catch(error => { console.log(error) })
-    // },
+    createTask(context, task) {
+        axios.defaults.headers.common["Authorization"] =
+            "Bearer " + localStorage.getItem("access_token");
+        
+        // console.log(task);
+        axios.post(`api/usual-tasks`, {
+            task: task
+        })
+        .then(() => {
+            context.commit('SET_USUAL_TASKS', task);
+            context.commit('SET_DAILY_TASKS', task);
+            context.commit('SET_DAILY_TASKS_TOMORROW', task);
+            context.commit('SET_WEEKLY_TASKS', task);
+            context.commit('SET_MONTHLY_TASKS', task);
+        })
+        .finally(() => {
+            context.dispatch('getUsualTasks');
+        })
+        // .catch(error => { console.log(error) })
+    },
 
     getUsualTask(context, {id,type}) {
         axios.defaults.headers.common["Authorization"] =
@@ -115,23 +120,53 @@ const actions = {
         .catch(error => { console.log(error) })
     },
 
-    // updateDefaultTask(context, default_task) {
-    //     // console.log(task.task.id);
-    //     axios.defaults.headers.common["Authorization"] =
-    //       "Bearer " + localStorage.getItem("access_token");
+    updateUsualTask(context, task) {
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
 
-    //     axios.put(`api/default-task/${default_task.default_task.id}`, {
-    //         default_task: default_task            
-    //     })
-    //     .then(() => {
-    //         context.commit('SET_DEFAULT_TASK', default_task);
-    //     })
-    //     .catch(error => { console.log(error)
-    //     })
-    //     .finally(()=>{
-    //         context.dispatch('getDefaultTasks');
-    //     })
-    // },
+        // console.log(task.type);
+
+        if (task.type == 'usual_daily' || task.type == 'usual')
+        {
+            axios.put(`api/task/${task.task.id}`, {
+                task: task            
+            })
+            .then(() => {
+                context.commit('SET_USUAL_TASK', task);
+                context.commit('SET_DAILY_TASK', task);
+                context.commit('SET_DAILY_TASK_TOMORROW', task);
+                context.commit('SET_WEEKLY_TASK', task);
+                context.commit('SET_MONTHLY_TASK', task);
+            })
+            .catch(error => { console.log(error)
+            })
+            .finally(()=>{
+                context.dispatch('getUsualTasks');
+                context.dispatch('getWeekTasks');
+            })
+        } else 
+        {
+            // console.log(task)
+            axios.put(`api/usual-task/${task.task.id}`, {
+                task: task            
+            })
+            .then(() => {
+                // console.log(response)
+                context.commit('SET_USUAL_TASK', task);
+                context.commit('SET_DAILY_TASK', task);
+                context.commit('SET_DAILY_TASK_TOMORROW', task);
+                context.commit('SET_WEEKLY_TASK', task);
+                context.commit('SET_MONTHLY_TASK', task);
+            })
+            .catch(error => { console.log(error)
+            })
+            .finally(()=>{
+                context.dispatch('getUsualTasks');
+                context.dispatch('getWeekTasks');
+            })
+        }
+        
+},
     // deleteDefaultTask(context, {id}) {
     //     // console.log(id);
     //     axios.defaults.headers.common["Authorization"] =

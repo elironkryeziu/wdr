@@ -75,40 +75,6 @@ export default {
         
         }
     },
-    computed: {
-        myList: {
-            get() {
-                return this.items;
-            },
-            set(value) {
-                this.items = value;
-            }
-        },
-        myList2: {
-            get() {
-                return this.items2;
-            },
-            set(value) {
-                this.items2 = value;
-            }
-        },
-        myList3: {
-            get() {
-                return this.items3;
-            },
-            set(value) {
-                this.items3 = value;
-            }
-        },
-        myList4: {
-            get() {
-                return this.items4;
-            },
-            set(value) {
-                this.items4 = value;
-            }
-        }
-    },
     mounted() {
       this.$store.dispatch('getUsualTasks'); 
     },

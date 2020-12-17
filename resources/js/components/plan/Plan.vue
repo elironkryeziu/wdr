@@ -44,7 +44,7 @@
       Add Task
     </button>
   </div>
-  <vue-cal selected-date="2020-12-14"
+  <vue-cal :selected-date="day.toDateString()"
     :time-from="6 * 60"
     :time-step="30"
     :time-to="18 * 60"
@@ -66,7 +66,10 @@
           <div class="vuecal__event-title text-gray-600 font-semibold text-left" v-html="event.title" >
           </div>
           <div class="text-sm">
-            <button @click="openModal(event.task_id)">
+            <button v-if="event.aw_name" @click="openModal(event.task_id,false)">
+              <i class="far fa-edit text-gray-600 hover:text-gray-800"></i>
+            </button>
+            <button v-else @click="openModal(event.task_id,true)">
               <i class="far fa-edit text-gray-600 hover:text-gray-800"></i>
             </button>
             <span>
@@ -76,16 +79,6 @@
             </span>
           </div>
         </div>
-        <!-- <p>
-          <button @click="openModal(event.task_id)">Edit</button>
-          710/HC/20/AW
-          CLIENT: FATLUM GJINOFCI
-          LOADING DATE: 14/12/2020
-          COLI: 40
-          LED: 5
-          DIF: 35
-          AW - WM: 0
-        </p> -->
         <div class="text-xs text-left">
           <!-- <p class="text-gray-500">{{ event.status }}</p> -->
           <p v-if="event.status == 'P'" class="float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold">
@@ -97,9 +90,9 @@
           <p v-if="event.status == 'K'" class="float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs">
             {{ event.status }}
           </p>
-          <p class="text-gray-500">{{ event.aw_name }}</p>
-          <p class="text-gray-500">CLIENT: {{ event.client }}</p>
-          <p class="text-gray-500">COLI: {{ event.coli }} | AW-WM: {{ event.aw_minus_wm }}</p>
+          <p v-if="event.aw_name" class="text-gray-500">{{ event.aw_name }}</p>
+          <p v-if="event.client" class="text-gray-500">CLIENT: {{ event.client }}</p>
+          <p v-if="event.coli" class="text-gray-500">COLI: {{ event.coli }} | AW-WM: {{ event.aw_minus_wm }}</p>
           <div class="text-gray-500 pt-2">
             <span>{{ event.start | timeformat }} - {{ event.end | timeformat }}</span>
           </div>
@@ -115,9 +108,10 @@ import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import axios from 'axios'
 import AwTaskModal from '../aw/AwTaskModal.vue';
+import UsualTaskModal from '../usual_tasks/UsualTaskModal.vue';
 
 export default {
-    components: { VueCal, AwTaskModal },
+    components: { VueCal, AwTaskModal,UsualTaskModal },
     data: () => ({
       day: new Date(),
       stickySplitLabels: true,
@@ -136,19 +130,33 @@ mounted() {
   this.$store.dispatch('getWeekTasks');
 },
 methods: {
-  openModal(id) {
-    console.log(id);
-    // console.log('editing')
-    this.$modal.show(AwTaskModal, 
+  openModal(id,isUsual) {
+    if (isUsual)
+    {
+      this.$modal.show(UsualTaskModal, 
       {
-        id: id 
+        id: id,
+        type: 'usual'
       }, 
       { 
-        name: "task-modal",
+        name: "usual-task-modal",
         height: 'auto',
         clickToClose: false,
         draggable: true
       })
+    } else
+    {
+      this.$modal.show(AwTaskModal, 
+        {
+          id: id 
+        }, 
+        { 
+          name: "task-modal",
+          height: 'auto',
+          clickToClose: false,
+          draggable: true
+        })
+    }
   },
   deleteTask(id) {
     if(confirm("Do you really want to delete?")){

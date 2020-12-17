@@ -39,6 +39,8 @@ class UsualTaskController extends Controller
     public function store(Request $request)
     {
         //
+        return $request;
+        
         $usual_task = UsualTask::create([
             'name' => $request->name,
             'notes' => $request->notes,
@@ -102,7 +104,28 @@ class UsualTaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = UsualTask::find($id);
+        $type = $request->task['task']['type'];
+
+        $task->name = $request->task['task']['name'];
+        $task->start = $request->task['task']['start'];
+        $task->finish = $request->task['task']['finish'];
+
+        switch ($type) {
+            case "daily":
+
+              break;
+            case "weekly":
+
+              break;
+            case "monthly":
+                $task->monthly = 1;
+                $task->day_of_month = $request->task['task']['day_of_month'];
+              break;
+            default:
+          }
+
+
     }
 
     /**

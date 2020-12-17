@@ -71,8 +71,8 @@ Route::get('/worker/{id}', 'WorkerController@show');
 Route::post('/workers', 'WorkerController@store');
 Route::put('/worker/{id}', 'WorkerController@update');
 Route::delete('/worker/{id}', 'WorkerController@destroy');
-Route::put('/usual-task/{id}', 'WorkerController@update');
-Route::delete('/usual-tasks/{id}', 'WorkerController@destroy');
+Route::put('/worker/{id}', 'WorkerController@update');
+Route::delete('/worker/{id}', 'WorkerController@destroy');
 });
 
 

@@ -31,7 +31,7 @@ class TaskController extends Controller
     {
         $tasks = DB::table('task_worker')
             ->join('tasks', 'tasks.id', '=', 'task_worker.task_id')
-            ->join('aws', 'aws.id', '=', 'tasks.aw_id')
+            ->leftJoin('aws', 'aws.id', '=', 'tasks.aw_id')
             ->select('task_worker.worker_id','tasks.id', 'tasks.name', 'tasks.status', 'tasks.date','tasks.style','tasks.start','tasks.finish','aws.name as aw_name','aws.client','aws.coli','aws.wm_quantity')
             ->where('tasks.show_in_plan',true)
             ->where('tasks.date','>=',now()->startOfWeek())
@@ -65,11 +65,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        if (!$request->task['task']['isDefault'])
+        // return $request;
+        
+        if (!$request->task['task']['isDefault'] || !isset($request->task['task']['isDefault']))
         {
             //nese useri nuk e ka zgjedh default
             $task = Task::create([
-                'aw_id' => $request->task['id'],
+                'aw_id' => $request->task['id'] ?? null,
                 'name' => $request->task['task']['name'],
                 'start' => $request->task['task']['start'],
                 'finish' => $request->task['task']['finish'],

@@ -99,7 +99,13 @@ class UsualTask extends Model
     {
         $referent_task = Task::where('usual_task_id',$this->id)->orderBy('id','desc')->first();
 
-        return $referent_task->status;
+        if ($referent_task)
+        {
+            return $referent_task->status;
+        } else
+        {
+            return null;
+        }
     }
 
     public function scopeMonthly($query)
