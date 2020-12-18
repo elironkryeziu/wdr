@@ -5056,6 +5056,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50940,6 +50945,16 @@ var render = function() {
                       _vm._v("-\n                            "),
                       _c("span", { staticClass: "text-gray-700 text-xs" }, [
                         _vm._v(_vm._s(_vm._f("timeformat")(weekly_task.finish)))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500 text-xs" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(weekly_task.notes) +
+                            "\n                            "
+                        )
                       ])
                     ]),
                     _vm._v(" "),

@@ -133,6 +133,11 @@
                                 <span class="text-gray-700 text-xs">{{ weekly_task.start | timeformat }}</span>-
                                 <span class="text-gray-700 text-xs">{{ weekly_task.finish | timeformat }}</span>
                             </div>
+                            <div>
+                                <span class="text-gray-500 text-xs">
+                                    {{ weekly_task.notes }}
+                                </span>
+                            </div>
                             <div class="text-xs flex flex-wrap" v-for="day in weekly_task.days" :key="day.id">
                                 <p>
                                     {{ day.name }}

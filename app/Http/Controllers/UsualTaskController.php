@@ -167,34 +167,38 @@ class UsualTaskController extends Controller
         
         $type = $request->task['task']['type'];
 
-
+        $task->name = $request->task['task']['name'];
+        $task->status = $request->task['task']['status'];
+        $task->start = $request->task['task']['start'];
+        $task->finish = $request->task['task']['finish'];
+        $task->notes = $request->task['task']['notes'];
+      
         switch ($type) {
             case "daily":
-              $task->name = $request->task['task']['name'];
-              $task->status = $request->task['task']['status'];
-              $task->start = $request->task['task']['start'];
-              $task->finish = $request->task['task']['finish'];
-              $task->notes = $request->task['task']['notes'];
+              // $task->name = $request->task['task']['name'];
+              // $task->status = $request->task['task']['status'];
+              // $task->start = $request->task['task']['start'];
+              // $task->finish = $request->task['task']['finish'];
+              // $task->notes = $request->task['task']['notes'];
               $task->monday = 1;
               $task->tuesday = 1;
               $task->wednesday = 1;
               $task->thursday = 1;
               $task->friday = 1;
-
+              
               break;
             case "weekly":
-              $task->name = $request->task['task']['name'];
-              $task->status = $request->task['task']['status'];
-              $task->start = $request->task['task']['start'];
-              $task->finish = $request->task['task']['finish'];
-              $task->notes = $request->task['task']['notes'];
+              // $task->name = $request->task['task']['name'];
+              // $task->status = $request->task['task']['status'];
+              // $task->start = $request->task['task']['start'];
+              // $task->finish = $request->task['task']['finish'];
+              // $task->notes = $request->task['task']['notes'];
               $task->monday = isset($request->task['task']['monday']) ?? 0;
               $task->tuesday = isset($request->task['task']['tuesday']) ?? 0;
               $task->wednesday = isset($request->task['task']['wednesday']) ?? 0;
               $task->thursday = isset($request->task['task']['thursday']) ?? 0;
               $task->friday = isset($request->task['task']['friday']) ?? 0;
-              
-              return $task;
+              // return $task;
 
               break;
             case "monthly":

@@ -73,7 +73,7 @@ class TaskController extends Controller
             $task = Task::create([
                 'aw_id' => $request->task['id'] ?? null,
                 'name' => $request->task['task']['name'],
-                'notes' => $request->task['task']['notes'],
+                'notes' => $request->task['task']['notes'] ?? null,
                 'start' => $request->task['task']['start'],
                 'finish' => $request->task['task']['finish'],
                 'status' => $request->task['task']['status'],
