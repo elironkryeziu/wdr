@@ -18,6 +18,7 @@ class UsualTask extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'notes' => $this->notes,
             'start' => $this->start,
             'finish' => $this->finish,
             'status' => $this->status,

@@ -20,6 +20,7 @@ class MonthlyTask extends JsonResource
             'type' => 'monthly',
             'id' => $this->id,
             'name' => $this->name,
+            'notes' => $this->notes,
             'day_of_month' => $this->month_day,
             'status' => $this->status,
             'start' => $this->start,

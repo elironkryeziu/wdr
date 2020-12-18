@@ -38,28 +38,87 @@ class UsualTaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return $request;
+        // $request->task['task']['name']
+        // return $request;
         
         $usual_task = UsualTask::create([
-            'name' => $request->name,
-            'notes' => $request->notes,
+            'name' => $request->task['task']['name'],
+            'status' => $request->task['task']['status'],
+            'notes' => $request->task['task']['name'],
+            'start' => $request->task['task']['start'],
+            'finish' => $request->task['task']['finish'],
             'created_by' => $request->user()->id
         ]);
 
         if ($request->monthly) 
         {
-            $usual_task->monthly = $request->monthly;
-            $usual_task->month_day = $request->month_day;
-        } else 
+          $usual_task = UsualTask::create([
+            'name' => $request->task['task']['name'],
+            'status' => $request->task['task']['status'],
+            'notes' => $request->task['task']['name'],
+            'start' => $request->task['task']['start'],
+            'finish' => $request->task['task']['finish'],
+            'monthly' => 1,
+            'month_day' =>  $request->task['task']['month_day'],
+            // 'monday' => $request->task['task']['day']['monday'],
+            // 'tuesday' => $request->task['task']['day']['tuesday'],
+            // 'wednesday' => $request->task['task']['day']['wednesday'],
+            // 'thursday' => $request->task['task']['day']['thursday'],
+            // 'friday' => $request->task['task']['day']['friday'],
+            'created_by' => $request->user()->id
+        ]);
+            // $usual_task->monthly = 1;
+            // $usual_task->month_day = $request->task['task']['day_of_the_month'];
+            
+            return $usual_task;
+        } 
+        else if($request->weekly)
         {
-            $usual_task->monday = $request->monday;
-            $usual_task->tuesday = $request->tuesday;
-            $usual_task->wednesday = $request->wednesday;
-            $usual_task->thursday = $request->thursday;
-            $usual_task->friday = $request->friday;
+          return $request->task['task'];
+        //   $usual_task = UsualTask::create([
+        //     'name' => $request->task['task']['name'],
+        //     'status' => $request->task['task']['status'],
+        //     'notes' => $request->task['task']['name'],
+        //     'start' => $request->task['task']['start'],
+        //     'finish' => $request->task['task']['finish'],
+        //     'monday' => $request->task['task']['day']['monday'],
+        //     'tuesday' => $request->task['task']['day']['tuesday'],
+        //     'wednesday' => $request->task['task']['day']['wednesday'],
+        //     'thursday' => $request->task['task']['day']['thursday'],
+        //     'friday' => $request->task['task']['day']['friday'],
+        //     'created_by' => $request->user()->id
+        // ]);
+          
+
+          // $usual_task->monday = $request->monday;
+          // $usual_task->tuesday = $request->tuesday;
+          // $usual_task->wednesday = $request->wednesday;
+          // $usual_task->thursday = $request->thursday;
+          // $usual_task->friday = $request->friday;
         }
-        $usual_task->update();
+        else 
+        {
+          $usual_task = UsualTask::create([
+            'name' => $request->task['task']['name'],
+            'status' => $request->task['task']['status'],
+            'notes' => $request->task['task']['name'],
+            'start' => $request->task['task']['start'],
+            'finish' => $request->task['task']['finish'],
+            'monday' => 1,
+            'tuesday' => 1,
+            'wednesday' => 1,
+            'thursday' => 1,
+            'friday' => 1,
+            'created_by' => $request->user()->id
+          ]);
+
+          // $usual_task->monday = 1;
+          // $usual_task->tuesday = 1;
+          // $usual_task->wednesday = 1;
+          // $usual_task->thursday = 1;
+          // $usual_task->friday = 1;
+        }
+        // $usual_task->update();
 
         return $usual_task;
     }
@@ -105,17 +164,37 @@ class UsualTaskController extends Controller
     public function update(Request $request, $id)
     {
         $task = UsualTask::find($id);
+        
         $type = $request->task['task']['type'];
 
-        $task->name = $request->task['task']['name'];
-        $task->start = $request->task['task']['start'];
-        $task->finish = $request->task['task']['finish'];
 
         switch ($type) {
             case "daily":
+              $task->name = $request->task['task']['name'];
+              $task->status = $request->task['task']['status'];
+              $task->start = $request->task['task']['start'];
+              $task->finish = $request->task['task']['finish'];
+              $task->notes = $request->task['task']['notes'];
+              $task->monday = 1;
+              $task->tuesday = 1;
+              $task->wednesday = 1;
+              $task->thursday = 1;
+              $task->friday = 1;
 
               break;
             case "weekly":
+              $task->name = $request->task['task']['name'];
+              $task->status = $request->task['task']['status'];
+              $task->start = $request->task['task']['start'];
+              $task->finish = $request->task['task']['finish'];
+              $task->notes = $request->task['task']['notes'];
+              $task->monday = isset($request->task['task']['monday']) ?? 0;
+              $task->tuesday = isset($request->task['task']['tuesday']) ?? 0;
+              $task->wednesday = isset($request->task['task']['wednesday']) ?? 0;
+              $task->thursday = isset($request->task['task']['thursday']) ?? 0;
+              $task->friday = isset($request->task['task']['friday']) ?? 0;
+              
+              return $task;
 
               break;
             case "monthly":
@@ -125,7 +204,9 @@ class UsualTaskController extends Controller
             default:
           }
 
+          $task->update();
 
+          
     }
 
     /**

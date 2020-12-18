@@ -73,6 +73,7 @@ class TaskController extends Controller
             $task = Task::create([
                 'aw_id' => $request->task['id'] ?? null,
                 'name' => $request->task['task']['name'],
+                'notes' => $request->task['task']['notes'],
                 'start' => $request->task['task']['start'],
                 'finish' => $request->task['task']['finish'],
                 'status' => $request->task['task']['status'],
@@ -164,14 +165,32 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
-        $task->update([
-            'closed' => $request->task['task']['closed'],
-            'date' => $request->task['task']['date'],
-            'start' => $request->task['task']['start'],
-            'finish' => $request->task['task']['finish'],
-            'name' => $request->task['task']['name'],
-            'status' => $request->task['task']['status'],
-        ]);
+        
+        // return isset($task['task']['notes']);
+
+        if (!isset($request->task['task']['notes']))
+        {
+            $task->update([
+                'closed' => $request->task['task']['closed'],
+                'date' => $request->task['task']['date'],
+                'start' => $request->task['task']['start'],
+                'finish' => $request->task['task']['finish'],
+                'name' => $request->task['task']['name'],
+                'notes' => $request->task['task']['notes'] ?? null,
+                'status' => $request->task['task']['status'],
+            ]);
+        }
+        else {
+            $task->update([
+                'closed' => $request->task['task']['closed'],
+                'date' => $request->task['task']['date'],
+                'start' => $request->task['task']['start'],
+                'finish' => $request->task['task']['finish'],
+                'name' => $request->task['task']['name'],
+                'notes' => $request->task['task']['notes'] ?? null,
+                'status' => $request->task['task']['status'],
+            ]);
+        }
 
         $rqstWorkers = Array();
         $dbWorkers = DB::table('task_worker')

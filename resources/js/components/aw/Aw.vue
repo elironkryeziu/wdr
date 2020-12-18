@@ -7,7 +7,12 @@
             <h3 class="py-1 text-gray-700 font-semibold">{{aw.name }}</h3>
             <p class="text-xs text-gray-500 uppercase">Client: {{ aw.client }}</p>
             <p v-if="aw.tour_number" class="text-xs text-gray-500 uppercase"> {{ aw.tour_number }}</p>
-            <p class="text-xs text-gray-500 uppercase">Loading Date: {{ aw.loading_date | moment("DD/MM/YYYY") }}</p>
+            <p class="text-xs font-bold text-gray-900 uppercase">
+              Loading Date: 
+              <span class="">
+                {{ aw.loading_date | moment("DD/MM/YYYY") }}
+              </span> 
+            </p>
             <p class="text-xs text-gray-500 uppercase">Coli: {{ aw.coli }}</p>
             <p class="text-xs text-gray-500 uppercase">Led: {{ aw.led }}</p>
             <p class="text-xs text-gray-500 uppercase">Dif: {{ aw.dif }}</p>

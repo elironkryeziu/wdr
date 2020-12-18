@@ -2255,6 +2255,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3778,6 +3783,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3786,24 +3800,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      diffTime: '',
       task: {
         name: '',
+        notes: '',
         status: '',
         start: '',
         finish: '',
-        date: '',
+        // date: '',
         workers: []
       }
     };
-  },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
   },
   mounted: function mounted() {
     if (this.$store.state.workers.workers.length <= 0) {
@@ -3816,14 +3822,6 @@ __webpack_require__.r(__webpack_exports__);
         task: this.task
       });
       this.$modal.hide('add-usual-task-modal');
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
     }
   }
 });
@@ -3928,6 +3926,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3939,6 +3944,7 @@ __webpack_require__.r(__webpack_exports__);
       diffTime: '',
       task: {
         name: '',
+        notes: '',
         status: '',
         start: '',
         finish: '',
@@ -4278,6 +4284,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4293,6 +4306,7 @@ __webpack_require__.r(__webpack_exports__);
         finish: '',
         date: '',
         workers: [],
+        notes: '',
         isDefault: false
       }
     };
@@ -4303,8 +4317,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    createTask: function createTask() {
-      this.$store.dispatch('createTask', {
+    createUsualTask: function createUsualTask() {
+      this.$store.dispatch('createUsualTask', {
         task: this.task
       });
       this.$modal.hide('add-usual-task-modal');
@@ -4328,6 +4342,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4834,7 +4876,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
 
-      this.$modal.hide('usual-task-modal'); // console.log(this.$store.state.usual_tasks.usual_task);
+      this.$modal.hide('usual-task-modal'); // console.log(this.$store.state.usual_tasks.usual_task);  
     }
   }
 });
@@ -4852,6 +4894,105 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
 /* harmony import */ var _UsualTaskModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsualTaskModal */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4933,6 +5074,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.show(_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
         name: "add-usual-task-modal",
         height: 'auto',
+        scrollable: true,
         clickToClose: false,
         draggable: true
       });
@@ -4945,6 +5087,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: "usual-task-modal",
         height: 'auto',
+        scrollable: true,
         clickToClose: false,
         draggable: true
       });
@@ -5052,6 +5195,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5063,10 +5252,27 @@ __webpack_require__.r(__webpack_exports__);
       diffTime: '',
       task: {
         name: '',
+        notes: '',
         status: '',
         start: '',
         finish: '',
         date: '',
+        days: [{
+          id: 0,
+          name: 'Monday'
+        }, {
+          id: 1,
+          name: 'Tuesday'
+        }, {
+          id: 2,
+          name: 'Wednesday'
+        }, {
+          id: 3,
+          name: 'Thursday'
+        }, {
+          id: 4,
+          name: 'Friday'
+        }],
         workers: []
       }
     };
@@ -43326,12 +43532,26 @@ var render = function() {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("p", { staticClass: "text-xs text-gray-500 uppercase" }, [
-                    _vm._v(
-                      "Loading Date: " +
-                        _vm._s(_vm._f("moment")(aw.loading_date, "DD/MM/YYYY"))
-                    )
-                  ]),
+                  _c(
+                    "p",
+                    {
+                      staticClass: "text-xs font-bold text-gray-900 uppercase"
+                    },
+                    [
+                      _vm._v(
+                        "\r\n              Loading Date: \r\n              "
+                      ),
+                      _c("span", {}, [
+                        _vm._v(
+                          "\r\n                " +
+                            _vm._s(
+                              _vm._f("moment")(aw.loading_date, "DD/MM/YYYY")
+                            ) +
+                            "\r\n              "
+                        )
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-xs text-gray-500 uppercase" }, [
                     _vm._v("Coli: " + _vm._s(aw.coli))
@@ -44508,7 +44728,7 @@ var render = function() {
                   _c("span", { staticClass: "text-gray-700 text-xs" }, [
                     _vm._v(_vm._s(_vm._f("timeformat")(task.start)))
                   ]),
-                  _vm._v("-\n              "),
+                  _vm._v("-\n                  "),
                   _c("span", { staticClass: "text-gray-700 text-xs" }, [
                     _vm._v(_vm._s(_vm._f("timeformat")(task.finish)))
                   ])
@@ -44540,9 +44760,9 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                  " +
+                                "\n                      " +
                                   _vm._s(worker.initials) +
-                                  " \n                  "
+                                  " \n                      "
                               )
                             ]
                           )
@@ -46636,7 +46856,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.createTask($event)
+            return _vm.createUsualTask($event)
           }
         }
       },
@@ -46768,6 +46988,43 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", {}, [
+          _c("span", {}, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "notes" }
+              },
+              [_vm._v("Notes")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.task.notes,
+                  expression: "task.notes"
+                }
+              ],
+              staticClass:
+                "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+              attrs: { id: "notes", name: "notes" },
+              domProps: { value: _vm.task.notes },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.task, "notes", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "flex justify-between gap-3" }, [
           _c("span", { staticClass: "w-1/2" }, [
             _c(
@@ -46794,7 +47051,6 @@ var render = function() {
               attrs: { id: "start", type: "time", name: "start", required: "" },
               domProps: { value: _vm.task.start },
               on: {
-                keydown: _vm.calculate,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -46835,7 +47091,6 @@ var render = function() {
               },
               domProps: { value: _vm.task.finish },
               on: {
-                keydown: _vm.calculate,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -46847,7 +47102,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm.diffTime > 0
+        _vm.task.start
           ? _c(
               "label",
               {
@@ -46856,45 +47111,15 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "Duration: " +
-                    _vm._s(_vm._f("duration")(_vm.diffTime, "humanize"))
+                  "\n            Duration: " +
+                    _vm._s(
+                      _vm._f("duration")(_vm.task.start, _vm.task.finish)
+                    ) +
+                    "\n        "
                 )
               ]
             )
           : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass:
-              "block mt-2 text-xs font-semibold text-gray-600 uppercase",
-            attrs: { for: "day" }
-          },
-          [_vm._v("Date")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.task.date,
-              expression: "task.date"
-            }
-          ],
-          staticClass:
-            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-          attrs: { id: "day", type: "date", name: "date", required: "" },
-          domProps: { value: _vm.task.date },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.task, "date", $event.target.value)
-            }
-          }
-        }),
         _vm._v(" "),
         _vm._l(_vm.task.workers, function(worker) {
           return _c(
@@ -47031,7 +47256,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.createTask($event)
+            return _vm.createUsualTask($event)
           }
         }
       },
@@ -47163,6 +47388,43 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", {}, [
+          _c("span", {}, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "notes" }
+              },
+              [_vm._v("Notes")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.task.notes,
+                  expression: "task.notes"
+                }
+              ],
+              staticClass:
+                "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+              attrs: { id: "notes", name: "notes" },
+              domProps: { value: _vm.task.notes },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.task, "notes", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "flex justify-between gap-3" }, [
           _c("span", { staticClass: "w-1/2" }, [
             _c(
@@ -47265,7 +47527,7 @@ var render = function() {
               "block mt-2 text-xs font-semibold text-gray-600 uppercase",
             attrs: { for: "day" }
           },
-          [_vm._v("Date")]
+          [_vm._v("Day of the month")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -47279,7 +47541,7 @@ var render = function() {
           ],
           staticClass:
             "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-          attrs: { id: "day", type: "date", name: "date", required: "" },
+          attrs: { id: "day", type: "number", name: "day", required: "" },
           domProps: { value: _vm.task.date },
           on: {
             input: function($event) {
@@ -47660,7 +47922,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.createTask($event)
+            return _vm.createUsualTask($event)
           }
         }
       },
@@ -47789,6 +48051,43 @@ var render = function() {
                 ]
               )
             ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {}, [
+          _c("span", {}, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "notes" }
+              },
+              [_vm._v("Notes")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.task.notes,
+                  expression: "task.notes"
+                }
+              ],
+              staticClass:
+                "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+              attrs: { id: "notes", name: "notes" },
+              domProps: { value: _vm.task.notes },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.task, "notes", $event.target.value)
+                }
+              }
+            })
           ])
         ]),
         _vm._v(" "),
@@ -48057,7 +48356,7 @@ var render = function() {
     _vm._v(" "),
     _vm.taskType === "daily"
       ? _c("div", [
-          _c("div", { staticClass: "px-2 pt-2" }, [
+          _c("div", { staticClass: "px-2 pt-6" }, [
             _c(
               "form",
               {
@@ -48202,6 +48501,50 @@ var render = function() {
                         ]
                       )
                     ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c("span", {}, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "notes" }
+                      },
+                      [_vm._v("Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$store.state.usual_tasks.daily_task.notes,
+                          expression:
+                            "$store.state.usual_tasks.daily_task.notes"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: { id: "notes", name: "notes" },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.daily_task.notes
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.daily_task,
+                            "notes",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ])
                 ]),
                 _vm._v(" "),
@@ -48461,7 +48804,7 @@ var render = function() {
         ])
       : _vm.taskType === "weekly"
       ? _c("div", [
-          _c("div", { staticClass: "px-2 pt-2" }, [
+          _c("div", { staticClass: "px-2 pt-6" }, [
             _c(
               "form",
               {
@@ -48474,8 +48817,8 @@ var render = function() {
                 }
               },
               [
-                _c("div", {}, [
-                  _c("span", {}, [
+                _c("div", { staticClass: "flex justify-between gap-3" }, [
+                  _c("span", { staticClass: "w-1/2" }, [
                     _c(
                       "label",
                       {
@@ -48515,6 +48858,137 @@ var render = function() {
                           _vm.$set(
                             _vm.$store.state.usual_tasks.weekly_task,
                             "name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "w-1/2" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "status" }
+                      },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "relative" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.$store.state.usual_tasks.weekly_task.status,
+                              expression:
+                                "$store.state.usual_tasks.weekly_task.status"
+                            }
+                          ],
+                          staticClass:
+                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                          attrs: { name: "status", id: "" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$store.state.usual_tasks.weekly_task,
+                                "status",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [_vm._v("K")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("P")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("0")])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "fill-current h-4 w-4",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 20 20"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c("span", {}, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "notes" }
+                      },
+                      [_vm._v("Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$store.state.usual_tasks.weekly_task.notes,
+                          expression:
+                            "$store.state.usual_tasks.weekly_task.notes"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: { id: "notes", name: "notes" },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.weekly_task.notes
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.weekly_task,
+                            "notes",
                             $event.target.value
                           )
                         }
@@ -48900,7 +49374,7 @@ var render = function() {
         ])
       : _vm.taskType === "monthly"
       ? _c("div", [
-          _c("div", { staticClass: "px-2 pt-2" }, [
+          _c("div", { staticClass: "px-2 pt-6" }, [
             _c(
               "form",
               {
@@ -49050,6 +49524,51 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
+                _c("div", {}, [
+                  _c("span", {}, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "notes" }
+                      },
+                      [_vm._v("Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value:
+                            _vm.$store.state.usual_tasks.monthly_task.notes,
+                          expression:
+                            "$store.state.usual_tasks.monthly_task.notes"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: { id: "notes", name: "notes" },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.monthly_task.notes
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.monthly_task,
+                            "notes",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
                   _c("span", { staticClass: "w-1/2" }, [
                     _c(
@@ -49175,7 +49694,7 @@ var render = function() {
                       "block mt-2 text-xs font-semibold text-gray-600 uppercase",
                     attrs: { for: "day" }
                   },
-                  [_vm._v("Date")]
+                  [_vm._v("Day of the month")]
                 ),
                 _vm._v(" "),
                 _c("input", {
@@ -49183,20 +49702,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.$store.state.usual_tasks.monthly_task.date,
-                      expression: "$store.state.usual_tasks.monthly_task.date"
+                      value:
+                        _vm.$store.state.usual_tasks.monthly_task.day_of_month,
+                      expression:
+                        "$store.state.usual_tasks.monthly_task.day_of_month"
                     }
                   ],
                   staticClass:
                     "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
                   attrs: {
                     id: "day",
-                    type: "date",
-                    name: "date",
+                    type: "number",
+                    name: "day",
                     required: ""
                   },
                   domProps: {
-                    value: _vm.$store.state.usual_tasks.monthly_task.date
+                    value:
+                      _vm.$store.state.usual_tasks.monthly_task.day_of_month
                   },
                   on: {
                     input: function($event) {
@@ -49205,7 +49727,7 @@ var render = function() {
                       }
                       _vm.$set(
                         _vm.$store.state.usual_tasks.monthly_task,
-                        "date",
+                        "day_of_month",
                         $event.target.value
                       )
                     }
@@ -49347,7 +49869,7 @@ var render = function() {
           ])
         ])
       : _c("div", [
-          _c("div", { staticClass: "px-2 pt-2" }, [
+          _c("div", { staticClass: "px-2 pt-6" }, [
             _c(
               "form",
               {
@@ -49492,6 +50014,50 @@ var render = function() {
                         ]
                       )
                     ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c("span", {}, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "notes" }
+                      },
+                      [_vm._v("Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.$store.state.usual_tasks.usual_task.notes,
+                          expression:
+                            "$store.state.usual_tasks.usual_task.notes"
+                        }
+                      ],
+                      staticClass:
+                        "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                      attrs: { id: "notes", name: "notes" },
+                      domProps: {
+                        value: _vm.$store.state.usual_tasks.usual_task.notes
+                      },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.$store.state.usual_tasks.usual_task,
+                            "notes",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ])
                 ]),
                 _vm._v(" "),
@@ -49859,12 +50425,119 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(usual_task.name) +
-                        "\n                    "
-                    )
-                  ]
+                    _c("div", { staticClass: "flex items-center" }, [
+                      _c(
+                        "span",
+                        { staticClass: "text-gray-500 font-semibold" },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(usual_task.name) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      usual_task.status == "P"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(usual_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      usual_task.status == "0"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(usual_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      usual_task.status == "K"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(usual_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500 text-xs" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(usual_task.notes) +
+                            "\n                            "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(usual_task.start)))
+                      ]),
+                      _vm._v("-\n                            "),
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(usual_task.finish)))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(usual_task.workers, function(worker) {
+                      return _c(
+                        "div",
+                        {
+                          key: worker.id,
+                          staticClass: "py-1 worker inline-block"
+                        },
+                        [
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold",
+                              attrs: { "data-tooltip": worker.name }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(worker.initials) +
+                                  " \n                            "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               }),
               0
@@ -49907,12 +50580,127 @@ var render = function() {
                       }
                     },
                     [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(daily_task_tomorrow.name) +
-                          "\n                    "
-                      )
-                    ]
+                      _c("div", { staticClass: "flex items-center" }, [
+                        _c(
+                          "span",
+                          { staticClass: "text-gray-500 font-semibold" },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(daily_task_tomorrow.name) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        daily_task_tomorrow.status == "P"
+                          ? _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(daily_task_tomorrow.status) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        daily_task_tomorrow.status == "0"
+                          ? _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(daily_task_tomorrow.status) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        daily_task_tomorrow.status == "K"
+                          ? _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(daily_task_tomorrow.status) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("span", { staticClass: "text-gray-500 text-xs" }, [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(daily_task_tomorrow.notes) +
+                              "\n                            "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm._f("timeformat")(daily_task_tomorrow.start)
+                            )
+                          )
+                        ]),
+                        _vm._v("-\n                            "),
+                        _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm._f("timeformat")(daily_task_tomorrow.finish)
+                            )
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(daily_task_tomorrow.workers, function(worker) {
+                        return _c(
+                          "div",
+                          {
+                            key: worker.id,
+                            staticClass: "py-1 worker inline-block"
+                          },
+                          [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold",
+                                attrs: { "data-tooltip": worker.name }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(worker.initials) +
+                                    " \n                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   )
                 }
               ),
@@ -49953,11 +50741,90 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(daily_task.name) +
-                        "\n                    "
-                    )
+                    _c("div", { staticClass: "flex items-center" }, [
+                      _c(
+                        "span",
+                        { staticClass: "text-gray-500 font-semibold" },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(daily_task.name) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      daily_task.status == "P"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(daily_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      daily_task.status == "0"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(daily_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      daily_task.status == "K"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(daily_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(daily_task.start)))
+                      ]),
+                      _vm._v("-\n                            "),
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(daily_task.finish)))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500 text-xs" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(daily_task.notes) +
+                            "\n                            "
+                        )
+                      ])
+                    ])
                   ]
                 )
               }),
@@ -50001,21 +50868,93 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(weekly_task.name) +
-                        "\n                        "
-                    ),
+                    _c("div", { staticClass: "flex items-center" }, [
+                      _c(
+                        "span",
+                        { staticClass: "text-gray-500 font-semibold" },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(weekly_task.name) +
+                              "\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      weekly_task.status == "P"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-yellow-700 text-white  w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(weekly_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      weekly_task.status == "0"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-red-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(weekly_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      weekly_task.status == "K"
+                        ? _c(
+                            "p",
+                            {
+                              staticClass:
+                                "float-right text-right rounded-full p-2 m-1 bg-green-700 text-white font-semibold w-5 h-5 flex items-center justify-center text-xs"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(weekly_task.status) +
+                                  "\n                            "
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(weekly_task.start)))
+                      ]),
+                      _vm._v("-\n                            "),
+                      _c("span", { staticClass: "text-gray-700 text-xs" }, [
+                        _vm._v(_vm._s(_vm._f("timeformat")(weekly_task.finish)))
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _vm._l(weekly_task.days, function(day) {
                       return _c(
                         "div",
                         { key: day.id, staticClass: "text-xs flex flex-wrap" },
                         [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(day.name) +
-                              "\n                        "
-                          )
+                          _c("p", [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(day.name) +
+                                "\n                            "
+                            )
+                          ])
                         ]
                       )
                     })
@@ -50063,9 +51002,21 @@ var render = function() {
                     }
                   },
                   [
-                    _c("p", [_vm._v(_vm._s(monthly_task.name))]),
+                    _c("p", { staticClass: "text-gray-500 font-semibold" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(monthly_task.name) +
+                          "\n                        "
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(monthly_task.day_of_month))])
+                    _c("p", { staticClass: "text-gray-500 text-sm" }, [
+                      _vm._v(
+                        "\n                            Day:" +
+                          _vm._s(monthly_task.day_of_month) +
+                          "\n                        "
+                      )
+                    ])
                   ]
                 )
               }),
@@ -50109,7 +51060,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.createTask($event)
+            return _vm.createUsualTask($event)
           }
         }
       },
@@ -50241,6 +51192,43 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
+        _c("div", {}, [
+          _c("span", {}, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "notes" }
+              },
+              [_vm._v("Notes")]
+            ),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.task.notes,
+                  expression: "task.notes"
+                }
+              ],
+              staticClass:
+                "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+              attrs: { id: "notes", name: "notes" },
+              domProps: { value: _vm.task.notes },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.task, "notes", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "flex justify-between gap-3" }, [
           _c("span", { staticClass: "w-1/2" }, [
             _c(
@@ -50337,124 +51325,200 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c(
-          "label",
-          {
-            staticClass:
-              "block mt-2 text-xs font-semibold text-gray-600 uppercase",
-            attrs: { for: "day" }
-          },
-          [_vm._v("Date")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.task.date,
-              expression: "task.date"
-            }
-          ],
-          staticClass:
-            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-          attrs: { id: "day", type: "date", name: "date", required: "" },
-          domProps: { value: _vm.task.date },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.task, "date", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.task.workers, function(worker) {
-          return _c(
-            "div",
-            { key: worker.id, staticClass: "py-1 float-right inline-block" },
-            [
-              _c(
-                "p",
+          "div",
+          { staticClass: "pt-6" },
+          [
+            _vm._l(_vm.task.workers, function(worker) {
+              return _c(
+                "div",
                 {
-                  staticClass:
-                    "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                  key: worker.id,
+                  staticClass: "py-1 float-right inline-block"
                 },
                 [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(worker.initials) +
-                      " \n            "
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(worker.initials) +
+                          " \n                "
+                      )
+                    ]
                   )
                 ]
               )
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass:
-              "block mt-2 text-xs font-semibold text-gray-600 uppercase",
-            attrs: { for: "workers" }
-          },
-          [_vm._v("Workers")]
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "workers" }
+              },
+              [_vm._v("Workers")]
+            ),
+            _vm._v(" "),
+            _c(
+              "multiselect",
+              {
+                staticClass:
+                  "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                attrs: {
+                  options: _vm.$store.state.workers.workers,
+                  multiple: true,
+                  "group-select": true,
+                  "close-on-select": false,
+                  "clear-on-select": false,
+                  "preserve-search": true,
+                  showLabels: true,
+                  preselectFirst: false,
+                  allowEmpty: true,
+                  showNoResults: true,
+                  placeholder: "Choose Workers",
+                  label: "name",
+                  "track-by": "name",
+                  "preselect-first": true
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "selection",
+                    fn: function(ref) {
+                      var values = ref.values
+                      var isOpen = ref.isOpen
+                      return [
+                        values.length && !isOpen
+                          ? _c("span", { staticClass: "multiselect__single" }, [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(values.length) +
+                                  " options selected\n                    "
+                              )
+                            ])
+                          : _vm._e()
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.task.workers,
+                  callback: function($$v) {
+                    _vm.$set(_vm.task, "workers", $$v)
+                  },
+                  expression: "task.workers"
+                }
+              },
+              [
+                _vm._v(" "),
+                _c("template", { slot: "noResult" }, [
+                  _vm._v("\n                    No Workers\n                ")
+                ])
+              ],
+              2
+            )
+          ],
+          2
         ),
         _vm._v(" "),
         _c(
-          "multiselect",
-          {
-            staticClass: "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
-            attrs: {
-              options: _vm.$store.state.workers.workers,
-              multiple: true,
-              "group-select": true,
-              "close-on-select": false,
-              "clear-on-select": false,
-              "preserve-search": true,
-              showLabels: true,
-              preselectFirst: false,
-              allowEmpty: true,
-              showNoResults: true,
-              placeholder: "Choose Workers",
-              label: "name",
-              "track-by": "name",
-              "preselect-first": true
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "selection",
-                fn: function(ref) {
-                  var values = ref.values
-                  var isOpen = ref.isOpen
-                  return [
-                    values.length && !isOpen
-                      ? _c("span", { staticClass: "multiselect__single" }, [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(values.length) +
-                              " options selected\n                "
-                          )
-                        ])
-                      : _vm._e()
-                  ]
-                }
-              }
-            ]),
-            model: {
-              value: _vm.task.workers,
-              callback: function($$v) {
-                _vm.$set(_vm.task, "workers", $$v)
-              },
-              expression: "task.workers"
-            }
-          },
+          "div",
+          { staticClass: "py-2" },
           [
+            _vm._l(_vm.task.days, function(day) {
+              return _c(
+                "div",
+                { key: day.id, staticClass: "py-1 float-right inline-block" },
+                [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(day.name.substring(0, 2)) +
+                          " \n                "
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
             _vm._v(" "),
-            _c("template", { slot: "noResult" }, [
-              _vm._v("\n                No Workers\n            ")
-            ])
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "days" }
+              },
+              [_vm._v("Days")]
+            ),
+            _vm._v(" "),
+            _c(
+              "multiselect",
+              {
+                staticClass:
+                  "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                attrs: {
+                  options: _vm.task.days,
+                  multiple: true,
+                  "group-select": true,
+                  "close-on-select": false,
+                  "clear-on-select": false,
+                  "preserve-search": true,
+                  showLabels: true,
+                  preselectFirst: false,
+                  allowEmpty: true,
+                  showNoResults: true,
+                  placeholder: "Choose Days",
+                  label: "name",
+                  "track-by": "name",
+                  "preselect-first": true
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "selection",
+                    fn: function(ref) {
+                      var values = ref.values
+                      var isOpen = ref.isOpen
+                      return [
+                        values.length && !isOpen
+                          ? _c("span", { staticClass: "multiselect__single" }, [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(values.length) +
+                                  " options selected\n                    "
+                              )
+                            ])
+                          : _vm._e()
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.task.days,
+                  callback: function($$v) {
+                    _vm.$set(_vm.task, "days", $$v)
+                  },
+                  expression: "task.days"
+                }
+              },
+              [
+                _vm._v(" "),
+                _c("template", { slot: "noResult" }, [
+                  _vm._v("\n                    No Days\n                ")
+                ])
+              ],
+              2
+            )
           ],
           2
         ),
@@ -50467,8 +51531,7 @@ var render = function() {
           },
           [_vm._v("\n            Save\n        ")]
         )
-      ],
-      2
+      ]
     )
   ])
 }
@@ -77722,7 +78785,7 @@ var actions = {
       console.log(error);
     });
   },
-  createTask: function createTask(context, task) {
+  createUsualTask: function createUsualTask(context, task) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token"); // console.log(task);
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/usual-tasks", {

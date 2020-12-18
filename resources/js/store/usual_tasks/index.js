@@ -73,7 +73,7 @@ const actions = {
         .catch(error => { console.log(error) })
     },
 
-    createTask(context, task) {
+    createUsualTask(context, task) {
         axios.defaults.headers.common["Authorization"] =
             "Bearer " + localStorage.getItem("access_token");
         
@@ -144,7 +144,8 @@ const actions = {
                 context.dispatch('getUsualTasks');
                 context.dispatch('getWeekTasks');
             })
-        } else 
+        } 
+        else
         {
             // console.log(task)
             axios.put(`api/usual-task/${task.task.id}`, {
@@ -166,7 +167,7 @@ const actions = {
             })
         }
         
-},
+    },
     // deleteDefaultTask(context, {id}) {
     //     // console.log(id);
     //     axios.defaults.headers.common["Authorization"] =

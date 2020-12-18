@@ -1,7 +1,7 @@
 <template>
     <div class="py-6 px-2">
         <p>Task</p>
-        <form @submit.prevent="createTask" class="mt-6">
+        <form @submit.prevent="createUsualTask" class="mt-6">
             <div class="flex justify-between gap-3">
                 <span class="w-1/2">
                     <label for="first_name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
@@ -28,6 +28,13 @@
                             </svg>
                         </div>
                     </div>
+                </span>
+            </div>
+            <div class="">
+                <span class="">
+                    <label for="notes" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Notes</label>
+                    <textarea id="notes" v-model="task.notes" name="notes" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
+                    </textarea>
                 </span>
             </div>
              <div class="flex justify-between gap-3">
@@ -102,6 +109,7 @@ export default {
                 finish: '',
                 date: '',
                 workers: [],
+                notes: '',
                 isDefault: false
             }
         }
@@ -114,8 +122,8 @@ export default {
         }
     },
     methods: {
-        createTask() {
-            this.$store.dispatch('createTask', {
+        createUsualTask() {
+            this.$store.dispatch('createUsualTask', {
                 task: this.task
             })
             this.$modal.hide('add-usual-task-modal');

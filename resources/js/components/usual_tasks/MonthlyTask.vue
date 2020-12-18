@@ -1,7 +1,7 @@
 <template>
     <div class="py-6 px-2">
         <p>Monthly task</p>
-        <form @submit.prevent="createTask" class="mt-6">
+        <form @submit.prevent="createUsualTask" class="mt-6">
             <div class="flex justify-between gap-3">
                 <span class="w-1/2">
                     <label for="first_name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
@@ -30,6 +30,13 @@
                     </div>
                 </span>
             </div>
+            <div class="">
+                <span class="">
+                    <label for="notes" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Notes</label>
+                    <textarea id="notes" v-model="task.notes" name="notes" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner">
+                    </textarea>
+                </span>
+            </div>
              <div class="flex justify-between gap-3">
                 <span class="w-1/2">
                     <label for="start" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Start</label>
@@ -41,8 +48,8 @@
                 </span>
             </div>
             <label v-if="diffTime>0" class="float-right block mt-2 text-xs font-semibold text-gray-600 uppercase">Duration: {{ diffTime | duration('humanize') }}</label>
-            <label for="day" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date</label>
-            <input id="day" v-model="task.date" type="date" name="date" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+            <label for="day" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Day of the month</label>
+            <input id="day" v-model="task.date" type="number" name="day" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
             <div class="py-1 float-right inline-block" v-for="worker in task.workers" :key="worker.id">
                 <p class="text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
                     {{ worker.initials }} 
@@ -96,6 +103,7 @@ export default {
             diffTime: '',
             task: {
                 name: '',
+                notes: '',
                 status: '',
                 start: '',
                 finish: '',

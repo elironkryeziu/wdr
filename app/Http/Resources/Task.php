@@ -19,6 +19,7 @@ class Task extends JsonResource
             'id' => $this->id,
             'aw' => $this->aw->name,
             'name' => $this->name,
+            'notes' => $this->notes,
             'start' => $this->start,
             'finish' => $this->finish,
             'status' => $this->status,

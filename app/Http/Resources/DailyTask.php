@@ -20,6 +20,7 @@ class DailyTask extends JsonResource
             'type' => 'daily',
             'id' => $this->id,
             'name' => $this->name,
+            'notes' => $this->notes,
             'status' => $this->status,
             'start' => $this->start,
             'finish' => $this->finish,
