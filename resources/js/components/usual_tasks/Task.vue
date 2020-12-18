@@ -97,6 +97,9 @@ import Multiselect from 'vue-multiselect'
 import moment from 'vue-moment'
 
 export default {
+    props:{
+        typeName: String
+    },
     components: {
         Multiselect,
     },
@@ -110,8 +113,9 @@ export default {
                 date: '',
                 workers: [],
                 notes: '',
-                isDefault: false
-            }
+                isDefault: false,
+            },
+            type: this.$props.typeName
         }
     },
     
@@ -124,7 +128,8 @@ export default {
     methods: {
         createUsualTask() {
             this.$store.dispatch('createUsualTask', {
-                task: this.task
+                task: this.task,
+                type: this.type
             })
             this.$modal.hide('add-usual-task-modal');
         },

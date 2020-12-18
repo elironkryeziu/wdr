@@ -3,18 +3,14 @@
   <div class="py-4 lg:flex">
     <div class="border lg:w-1/2 w-auto border-gray-300 shadow lg:mx-0 mx-4">
       <p class="text-gray-400 pl-2">Choose workers you want to hide:</p>
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap pb-2">
         <div class="pl-2" v-for="worker in $store.state.plan.plan_workers" :key="worker.id">
-          <input type="checkbox" v-model="worker.hide">
+          <input v-if="!worker.hide" type="checkbox" @change="hideWorker(worker.id)" checked>
+          <input v-else type="checkbox" @change="hideWorker(worker.id)">
           <span class="text-gray-400">{{ worker.label }}</span>
         </div>
-        <button @click="checkWorkers" class="w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
-          Hide All
-        </button>
-        <button @click="uncheckWorkers" class="w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-800 hover:shadow-none">
-          Unhide All
-        </button>
       </div>
+      
     </div>
     <form class="lg:pl-4 lg:mx-0 mx-4 lg:py-0 py-4">
       <label class="text-gray-400">Choose day:</label>
@@ -40,7 +36,7 @@
     </form>
   </div>
   <div class="py-4">
-    <button class="py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+    <button @click="addUsualTask" class="py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
       Add Task
     </button>
   </div>
@@ -73,8 +69,8 @@
               <i class="far fa-edit text-gray-600 hover:text-gray-800"></i>
             </button>
             <span>
-              <button @click="deleteTask(event.task_id)">
-                <i class="far fa-trash-alt text-gray-600 hover:text-gray-800"></i>
+              <button @click="deleteTask(event.task_id,event.split)">
+                <i class="fas fa-times text-gray-600 hover:text-gray-800"></i>
               </button>
             </span>
           </div>
@@ -109,18 +105,17 @@ import 'vue-cal/dist/vuecal.css'
 import axios from 'axios'
 import AwTaskModal from '../aw/AwTaskModal.vue';
 import UsualTaskModal from '../usual_tasks/UsualTaskModal.vue';
+import NewUsualTaskModal from '../usual_tasks/NewUsualTaskModal'
 
 export default {
-    components: { VueCal, AwTaskModal,UsualTaskModal },
+    components: { VueCal, AwTaskModal, UsualTaskModal,NewUsualTaskModal  },
     data: () => ({
       day: new Date(),
       stickySplitLabels: true,
       hideTitleBar: true,
       twelveHour: true,
       minCellWidth: 400,
-      minSplitWidth: 0,
-      // workers: [],
-      // week_tasks: []
+      minSplitWidth: 0
 }),
 created() {
 
@@ -130,60 +125,72 @@ mounted() {
   this.$store.dispatch('getWeekTasks');
 },
 methods: {
-  openModal(id,isUsual) {
-    if (isUsual)
-    {
-      this.$modal.show(UsualTaskModal, 
+    openModal(id,isUsual) {
+      if (isUsual)
       {
-        id: id,
-        type: 'usual'
-      }, 
-      { 
-        name: "usual-task-modal",
-        height: 'auto',
-        clickToClose: false,
-        draggable: true
-      })
-    } else
-    {
-      this.$modal.show(AwTaskModal, 
+        this.$modal.show(UsualTaskModal, 
         {
-          id: id 
+          id: id,
+          type: 'usual'
         }, 
         { 
-          name: "task-modal",
+          name: "usual-task-modal",
           height: 'auto',
           clickToClose: false,
           draggable: true
         })
-    }
-  },
-  deleteTask(id) {
-    if(confirm("Do you really want to delete?")){
-      this.$store.dispatch('deleteTask',{
-        id: id
-      });
-      this.$modal.hide('task-modal');
+      } else
+      {
+        this.$modal.show(AwTaskModal, 
+          {
+            id: id 
+          }, 
+          { 
+            name: "task-modal",
+            height: 'auto',
+            clickToClose: false,
+            draggable: true
+          })
       }
     },
-    checkWorkers() 
+    deleteTask(id,worker_id) {
+      if(confirm("Do you really want to delete?")){
+        axios.defaults.headers.common["Authorization"] =
+            "Bearer " + localStorage.getItem("access_token");
+    
+        axios.post(`api/hide-from-plan/${id}`, {
+            worker_id: worker_id
+        })
+        .then(() => {
+            this.$store.dispatch('getWeekTasks');
+        })
+        this.$modal.hide('task-modal');
+        }
+    },
+    hideWorker(id)
     {
       this.$store.state.plan.plan_workers.map((worker)=>{
-        worker.hide = true
+        if (worker.id == id)
+        {
+          worker.hide = !worker.hide
+        }
       })
     },
-    uncheckWorkers() 
-    {
-      this.$store.state.plan.plan_workers.map((worker)=>{
-        worker.hide = false
-      })
-    }
+    addUsualTask() {
+      this.$modal.show(NewUsualTaskModal, {},{ 
+          name: "add-usual-task-modal",
+          height: 'auto',
+          scrollable: true,
+          clickToClose: false,
+          draggable: true
+      });
+    },
   },
-  createEvent(event)
-  {
-    console.log(event)
-  },
-  
+  // createEvent(event)
+  // {
+  //   console.log(event)
+  // },
+ 
 }
 </script>
 

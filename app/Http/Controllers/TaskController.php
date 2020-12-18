@@ -64,9 +64,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // return $request;
-        
+        //        
         if (!$request->task['task']['isDefault'] || !isset($request->task['task']['isDefault']))
         {
             //nese useri nuk e ka zgjedh default
@@ -152,6 +150,12 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         return new SingleTaskResource($task);
+    }
+
+    public function hideFromPlan(Request $request, $id)
+    {
+        //
+        DB::table('task_worker')->where('task_id',$id)->where('worker_id',$request->worker_id)->delete();
     }
 
     /**

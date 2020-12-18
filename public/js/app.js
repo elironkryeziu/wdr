@@ -3340,6 +3340,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _aw_AwTaskModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../aw/AwTaskModal.vue */ "./resources/js/components/aw/AwTaskModal.vue");
 /* harmony import */ var _usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../usual_tasks/UsualTaskModal.vue */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
+/* harmony import */ var _usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../usual_tasks/NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
 //
 //
 //
@@ -3441,10 +3442,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
+
 
 
 
@@ -3454,7 +3452,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VueCal: vue_cal__WEBPACK_IMPORTED_MODULE_0___default.a,
     AwTaskModal: _aw_AwTaskModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    UsualTaskModal: _usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    UsualTaskModal: _usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    NewUsualTaskModal: _usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: function data() {
     return {
@@ -3463,9 +3462,7 @@ __webpack_require__.r(__webpack_exports__);
       hideTitleBar: true,
       twelveHour: true,
       minCellWidth: 400,
-      minSplitWidth: 0 // workers: [],
-      // week_tasks: []
-
+      minSplitWidth: 0
     };
   },
   created: function created() {},
@@ -3496,28 +3493,40 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    deleteTask: function deleteTask(id) {
+    deleteTask: function deleteTask(id, worker_id) {
+      var _this = this;
+
       if (confirm("Do you really want to delete?")) {
-        this.$store.dispatch('deleteTask', {
-          id: id
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+        axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("api/hide-from-plan/".concat(id), {
+          worker_id: worker_id
+        }).then(function () {
+          _this.$store.dispatch('getWeekTasks');
         });
         this.$modal.hide('task-modal');
       }
     },
-    checkWorkers: function checkWorkers() {
+    hideWorker: function hideWorker(id) {
       this.$store.state.plan.plan_workers.map(function (worker) {
-        worker.hide = true;
+        if (worker.id == id) {
+          worker.hide = !worker.hide;
+        }
       });
     },
-    uncheckWorkers: function uncheckWorkers() {
-      this.$store.state.plan.plan_workers.map(function (worker) {
-        worker.hide = false;
+    addUsualTask: function addUsualTask() {
+      this.$modal.show(_usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__["default"], {}, {
+        name: "add-usual-task-modal",
+        height: 'auto',
+        scrollable: true,
+        clickToClose: false,
+        draggable: true
       });
     }
-  },
-  createEvent: function createEvent(event) {
-    console.log(event);
-  }
+  } // createEvent(event)
+  // {
+  //   console.log(event)
+  // },
+
 });
 
 /***/ }),
@@ -3795,6 +3804,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    typeName: String
+  },
   components: {
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
   },
@@ -3808,7 +3820,8 @@ __webpack_require__.r(__webpack_exports__);
         finish: '',
         // date: '',
         workers: []
-      }
+      },
+      type: this.$props.typeName
     };
   },
   mounted: function mounted() {
@@ -3819,7 +3832,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createUsualTask: function createUsualTask() {
       this.$store.dispatch('createUsualTask', {
-        task: this.task
+        task: this.task,
+        type: this.type
       });
       this.$modal.hide('add-usual-task-modal');
     }
@@ -3936,6 +3950,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    typeName: String
+  },
   components: {
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
   },
@@ -3950,7 +3967,8 @@ __webpack_require__.r(__webpack_exports__);
         finish: '',
         date: '',
         workers: []
-      }
+      },
+      type: this.$props.typeName
     };
   },
   watch: {
@@ -3969,7 +3987,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createUsualTask: function createUsualTask() {
       this.$store.dispatch('createUsualTask', {
-        task: this.task
+        task: this.task,
+        type: this.type
       });
       this.$modal.hide('add-usual-task-modal');
     },
@@ -4294,6 +4313,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    typeName: String
+  },
   components: {
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
   },
@@ -4308,7 +4330,8 @@ __webpack_require__.r(__webpack_exports__);
         workers: [],
         notes: '',
         isDefault: false
-      }
+      },
+      type: this.$props.typeName
     };
   },
   mounted: function mounted() {
@@ -4319,7 +4342,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createUsualTask: function createUsualTask() {
       this.$store.dispatch('createUsualTask', {
-        task: this.task
+        task: this.task,
+        type: this.type
       });
       this.$modal.hide('add-usual-task-modal');
     }
@@ -4342,93 +4366,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4877,6 +4814,16 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.$modal.hide('usual-task-modal'); // console.log(this.$store.state.usual_tasks.usual_task);  
+    },
+    deleteTask: function deleteTask(id) {
+      if (confirm("Do you really want to delete?")) {
+        this.$store.dispatch('deleteUsualTask', {
+          id: this.taskId,
+          type: this.taskType
+        }); // console.log(id);
+
+        this.$modal.hide('usual-task-modal');
+      }
     }
   }
 });
@@ -4894,6 +4841,26 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
 /* harmony import */ var _UsualTaskModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsualTaskModal */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5249,6 +5216,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    typeName: String
+  },
   components: {
     Multiselect: vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default.a
   },
@@ -5279,7 +5249,8 @@ __webpack_require__.r(__webpack_exports__);
           name: 'Friday'
         }],
         workers: []
-      }
+      },
+      type: this.$props.typeName
     };
   },
   watch: {
@@ -5298,7 +5269,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createUsualTask: function createUsualTask() {
       this.$store.dispatch('createUsualTask', {
-        task: this.task
+        task: this.task,
+        type: this.type
       });
       this.$modal.hide('add-usual-task-modal');
     },
@@ -46063,78 +46035,33 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "flex flex-wrap" },
-              [
-                _vm._l(_vm.$store.state.plan.plan_workers, function(worker) {
-                  return _c("div", { key: worker.id, staticClass: "pl-2" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: worker.hide,
-                          expression: "worker.hide"
-                        }
-                      ],
-                      attrs: { type: "checkbox" },
-                      domProps: {
-                        checked: Array.isArray(worker.hide)
-                          ? _vm._i(worker.hide, null) > -1
-                          : worker.hide
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = worker.hide,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = null,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(worker, "hide", $$a.concat([$$v]))
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  worker,
-                                  "hide",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(worker, "hide", $$c)
+              { staticClass: "flex flex-wrap pb-2" },
+              _vm._l(_vm.$store.state.plan.plan_workers, function(worker) {
+                return _c("div", { key: worker.id, staticClass: "pl-2" }, [
+                  !worker.hide
+                    ? _c("input", {
+                        attrs: { type: "checkbox", checked: "" },
+                        on: {
+                          change: function($event) {
+                            return _vm.hideWorker(worker.id)
                           }
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "text-gray-400" }, [
-                      _vm._v(_vm._s(worker.label))
-                    ])
+                      })
+                    : _c("input", {
+                        attrs: { type: "checkbox" },
+                        on: {
+                          change: function($event) {
+                            return _vm.hideWorker(worker.id)
+                          }
+                        }
+                      }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-gray-400" }, [
+                    _vm._v(_vm._s(worker.label))
                   ])
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none",
-                    on: { click: _vm.checkWorkers }
-                  },
-                  [_vm._v("\r\n          Hide All\r\n        ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "w-1/4 lg:inline block text-xs rounded font-semibold float-right mx-1 py-1 my-1 mt-3  text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-800 hover:shadow-none",
-                    on: { click: _vm.uncheckWorkers }
-                  },
-                  [_vm._v("\r\n          Unhide All\r\n        ")]
-                )
-              ],
-              2
+                ])
+              }),
+              0
             )
           ]
         ),
@@ -46190,7 +46117,17 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "py-4" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none",
+            on: { click: _vm.addUsualTask }
+          },
+          [_vm._v("\r\n      Add Task\r\n    ")]
+        )
+      ]),
       _vm._v(" "),
       _c("vue-cal", {
         attrs: {
@@ -46269,14 +46206,17 @@ var render = function() {
                           {
                             on: {
                               click: function($event) {
-                                return _vm.deleteTask(event.task_id)
+                                return _vm.deleteTask(
+                                  event.task_id,
+                                  event.split
+                                )
                               }
                             }
                           },
                           [
                             _c("i", {
                               staticClass:
-                                "far fa-trash-alt text-gray-600 hover:text-gray-800"
+                                "fas fa-times text-gray-600 hover:text-gray-800"
                             })
                           ]
                         )
@@ -46392,21 +46332,6 @@ var staticRenderFns = [
             "py-1 px-4 lg:my-0 my-2 rounded font-medium tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
         },
         [_vm._v("\r\n          Search\r\n        ")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "py-4" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "py-1 px-4 lg:my-0 my-2 rounded font-semibold text-sm tracking-widest text-white uppercase bg-gray-700 shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"
-        },
-        [_vm._v("\r\n      Add Task\r\n    ")]
       )
     ])
   }
@@ -46867,7 +46792,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _c("span", { staticClass: "w-1/2" }, [
+          _c("span", { staticClass: "w-full" }, [
             _c(
               "label",
               {
@@ -46905,91 +46830,6 @@ var render = function() {
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.task.status,
-                      expression: "task.status"
-                    }
-                  ],
-                  staticClass:
-                    "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                  attrs: { name: "status", id: "" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.task,
-                        "status",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", [_vm._v("K")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("P")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("0")])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
           ])
         ]),
         _vm._v(" "),
@@ -47267,7 +47107,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _c("span", { staticClass: "w-1/2" }, [
+          _c("span", { staticClass: "w-full" }, [
             _c(
               "label",
               {
@@ -47305,91 +47145,6 @@ var render = function() {
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.task.status,
-                      expression: "task.status"
-                    }
-                  ],
-                  staticClass:
-                    "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                  attrs: { name: "status", id: "" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.task,
-                        "status",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", [_vm._v("K")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("P")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("0")])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
           ])
         ]),
         _vm._v(" "),
@@ -47777,13 +47532,13 @@ var render = function() {
       _vm.type == 0
         ? _c("div", [_c("p")])
         : _vm.type == 1
-        ? _c("div", [_c("Task")], 1)
+        ? _c("div", [_c("Task", { attrs: { typeName: "usual" } })], 1)
         : _vm.type == 2
-        ? _c("div", [_c("DailyTask")], 1)
+        ? _c("div", [_c("DailyTask", { attrs: { typeName: "daily" } })], 1)
         : _vm.type == 3
-        ? _c("div", [_c("WeeklyTask")], 1)
+        ? _c("div", [_c("WeeklyTask", { attrs: { typeName: "weekly" } })], 1)
         : _vm.type == 4
-        ? _c("div", [_c("MonthlyTask")], 1)
+        ? _c("div", [_c("MonthlyTask", { attrs: { typeName: "monthly" } })], 1)
         : _vm._e()
     ])
   ])
@@ -48375,7 +48130,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
-                  _c("span", { staticClass: "w-1/2" }, [
+                  _c("span", { staticClass: "w-full" }, [
                     _c(
                       "label",
                       {
@@ -48419,93 +48174,6 @@ var render = function() {
                         }
                       }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "w-1/2" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass:
-                          "block text-xs font-semibold text-gray-600 uppercase",
-                        attrs: { for: "status" }
-                      },
-                      [_vm._v("Status")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "relative" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$store.state.usual_tasks.daily_task.status,
-                              expression:
-                                "$store.state.usual_tasks.daily_task.status"
-                            }
-                          ],
-                          staticClass:
-                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                          attrs: { name: "status", id: "" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$store.state.usual_tasks.daily_task,
-                                "status",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", [_vm._v("K")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("P")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("0")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current h-4 w-4",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 20 20"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -48823,7 +48491,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
-                  _c("span", { staticClass: "w-1/2" }, [
+                  _c("span", { staticClass: "w-full" }, [
                     _c(
                       "label",
                       {
@@ -48868,93 +48536,6 @@ var render = function() {
                         }
                       }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "w-1/2" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass:
-                          "block text-xs font-semibold text-gray-600 uppercase",
-                        attrs: { for: "status" }
-                      },
-                      [_vm._v("Status")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "relative" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$store.state.usual_tasks.weekly_task.status,
-                              expression:
-                                "$store.state.usual_tasks.weekly_task.status"
-                            }
-                          ],
-                          staticClass:
-                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                          attrs: { name: "status", id: "" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$store.state.usual_tasks.weekly_task,
-                                "status",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", [_vm._v("K")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("P")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("0")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current h-4 w-4",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 20 20"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -49393,7 +48974,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
-                  _c("span", { staticClass: "w-1/2" }, [
+                  _c("span", { staticClass: "w-full" }, [
                     _c(
                       "label",
                       {
@@ -49438,94 +49019,6 @@ var render = function() {
                         }
                       }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "w-1/2" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass:
-                          "block text-xs font-semibold text-gray-600 uppercase",
-                        attrs: { for: "status" }
-                      },
-                      [_vm._v("Status")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "relative" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$store.state.usual_tasks.monthly_task
-                                  .status,
-                              expression:
-                                "$store.state.usual_tasks.monthly_task.status"
-                            }
-                          ],
-                          staticClass:
-                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                          attrs: { name: "status", id: "" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$store.state.usual_tasks.monthly_task,
-                                "status",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", [_vm._v("K")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("P")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("0")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current h-4 w-4",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 20 20"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -49888,7 +49381,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
-                  _c("span", { staticClass: "w-1/2" }, [
+                  _c("span", { staticClass: "w-full" }, [
                     _c(
                       "label",
                       {
@@ -49932,93 +49425,6 @@ var render = function() {
                         }
                       }
                     })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "w-1/2" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass:
-                          "block text-xs font-semibold text-gray-600 uppercase",
-                        attrs: { for: "status" }
-                      },
-                      [_vm._v("Status")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "relative" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value:
-                                _vm.$store.state.usual_tasks.usual_task.status,
-                              expression:
-                                "$store.state.usual_tasks.usual_task.status"
-                            }
-                          ],
-                          staticClass:
-                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                          attrs: { name: "status", id: "" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.$store.state.usual_tasks.usual_task,
-                                "status",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", [_vm._v("K")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("P")]),
-                          _vm._v(" "),
-                          _c("option", [_vm._v("0")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "fill-current h-4 w-4",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                viewBox: "0 0 20 20"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -50829,8 +50235,36 @@ var render = function() {
                             "\n                            "
                         )
                       ])
-                    ])
-                  ]
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(daily_task.workers, function(worker) {
+                      return _c(
+                        "div",
+                        {
+                          key: worker.id,
+                          staticClass: "py-1 worker inline-block"
+                        },
+                        [
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold",
+                              attrs: { "data-tooltip": worker.name }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(worker.initials) +
+                                  " \n                            "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               }),
               0
@@ -50958,6 +50392,33 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
+                    _vm._l(weekly_task.workers, function(worker) {
+                      return _c(
+                        "div",
+                        {
+                          key: worker.id,
+                          staticClass: "py-1 worker inline-block"
+                        },
+                        [
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold",
+                              attrs: { "data-tooltip": worker.name }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(worker.initials) +
+                                  " \n                            "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
                     _vm._l(weekly_task.days, function(day) {
                       return _c(
                         "div",
@@ -51025,14 +50486,52 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
+                    _c("div", [
+                      _c("span", { staticClass: "text-gray-500 text-xs" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(monthly_task.notes) +
+                            "\n                            "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
                     _c("p", { staticClass: "text-gray-500 text-sm" }, [
                       _vm._v(
                         "\n                            Day:" +
                           _vm._s(monthly_task.day_of_month) +
                           "\n                        "
                       )
-                    ])
-                  ]
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(monthly_task.workers, function(worker) {
+                      return _c(
+                        "div",
+                        {
+                          key: worker.id,
+                          staticClass: "py-1 worker inline-block"
+                        },
+                        [
+                          _c(
+                            "p",
+                            {
+                              staticClass:
+                                "worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold",
+                              attrs: { "data-tooltip": worker.name }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(worker.initials) +
+                                  " \n                            "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
                 )
               }),
               0
@@ -51081,7 +50580,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "flex justify-between gap-3" }, [
-          _c("span", { staticClass: "w-1/2" }, [
+          _c("span", { staticClass: "w-full" }, [
             _c(
               "label",
               {
@@ -51119,91 +50618,6 @@ var render = function() {
                 }
               }
             })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "w-1/2" }, [
-            _c(
-              "label",
-              {
-                staticClass:
-                  "block text-xs font-semibold text-gray-600 uppercase",
-                attrs: { for: "status" }
-              },
-              [_vm._v("Status")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "relative" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.task.status,
-                      expression: "task.status"
-                    }
-                  ],
-                  staticClass:
-                    "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                  attrs: { name: "status", id: "" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.task,
-                        "status",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", [_vm._v("K")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("P")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("0")])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "fill-current h-4 w-4",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 20 20"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
           ])
         ]),
         _vm._v(" "),
@@ -78801,9 +78215,17 @@ var actions = {
     });
   },
   createUsualTask: function createUsualTask(context, task) {
+    var url;
+
+    if (task.type == 'usual') {
+      url = 'api/tasks';
+    } else {
+      url = 'api/usual-tasks';
+    }
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token"); // console.log(task);
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/usual-tasks", {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, {
       task: task
     }).then(function () {
       context.commit('SET_USUAL_TASKS', task);
@@ -78869,20 +78291,26 @@ var actions = {
         context.dispatch('getWeekTasks');
       });
     }
-  } // deleteDefaultTask(context, {id}) {
-  //     // console.log(id);
-  //     axios.defaults.headers.common["Authorization"] =
-  //       "Bearer " + localStorage.getItem("access_token");
-  //     axios.delete(`api/default-task/${id}`).then(() => {
-  //         // context.commit('SET_TASK', task);
-  //     })
-  //     .catch(error => { console.log(error)
-  //     })
-  //     .finally(()=>{
-  //         context.dispatch('getDefaultTasks');
-  //     })
-  // },
+  },
+  deleteUsualTask: function deleteUsualTask(context, _ref2) {
+    var id = _ref2.id,
+        type = _ref2.type;
+    // console.log(id);
+    var url;
 
+    if (type == 'usual') {
+      url = 'api/task';
+    } else {
+      url = 'api/usual-tasks';
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("access_token");
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("".concat(url, "/").concat(id)).then(function () {})["catch"](function (error) {
+      console.log(error);
+    })["finally"](function () {
+      context.dispatch('getUsualTasks');
+    });
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,

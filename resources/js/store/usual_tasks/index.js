@@ -74,11 +74,20 @@ const actions = {
     },
 
     createUsualTask(context, task) {
+        let url;
+        if (task.type == 'usual')
+        {
+            url = 'api/tasks'
+        } else
+        {
+            url = 'api/usual-tasks'
+        }
+
         axios.defaults.headers.common["Authorization"] =
             "Bearer " + localStorage.getItem("access_token");
         
         // console.log(task);
-        axios.post(`api/usual-tasks`, {
+        axios.post(url, {
             task: task
         })
         .then(() => {
@@ -168,20 +177,28 @@ const actions = {
         }
         
     },
-    // deleteDefaultTask(context, {id}) {
-    //     // console.log(id);
-    //     axios.defaults.headers.common["Authorization"] =
-    //       "Bearer " + localStorage.getItem("access_token");
+    deleteUsualTask(context, {id,type}) {
+        // console.log(id);
+        let url;
+        if (type == 'usual')
+        {
+            url = 'api/task'
+        } else
+        {
+            url = 'api/usual-tasks'
+        }
 
-    //     axios.delete(`api/default-task/${id}`).then(() => {
-    //         // context.commit('SET_TASK', task);
-    //     })
-    //     .catch(error => { console.log(error)
-    //     })
-    //     .finally(()=>{
-    //         context.dispatch('getDefaultTasks');
-    //     })
-    // },
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
+
+        axios.delete(`${url}/${id}`).then(() => {
+        })
+        .catch(error => { console.log(error)
+        })
+        .finally(()=>{
+            context.dispatch('getUsualTasks');
+        })
+    },
 };
 
 

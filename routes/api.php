@@ -55,6 +55,7 @@ Route::get('/tasks', 'TaskController@index');
 Route::get('/week-tasks', 'TaskController@week_tasks');
 Route::get('/task/{id}', 'TaskController@show');
 Route::post('/tasks', 'TaskController@store');
+Route::post('/hide-from-plan/{id}', 'TaskController@hideFromPlan');
 Route::put('/task/{id}', 'TaskController@update');
 Route::delete('/task/{id}', 'TaskController@destroy');
 

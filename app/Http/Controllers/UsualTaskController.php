@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Task;
 use App\UsualTask;
 use Illuminate\Http\Request;
-use App\Http\Resources\UsualTask as UsualTaskResource;
 use App\Http\Resources\DailyTask;
 use App\Http\Resources\WeeklyTask;
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\MonthlyTask;
+use App\Http\Resources\UsualTask as UsualTaskResource;
 
 class UsualTaskController extends Controller
 {
@@ -38,87 +39,44 @@ class UsualTaskController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->task['task']['name']
-        // return $request;
-        
         $usual_task = UsualTask::create([
             'name' => $request->task['task']['name'],
-            'status' => $request->task['task']['status'],
             'notes' => $request->task['task']['name'],
             'start' => $request->task['task']['start'],
             'finish' => $request->task['task']['finish'],
             'created_by' => $request->user()->id
         ]);
 
-        if ($request->monthly) 
+        if ($request->task['type'] == 'daily') 
         {
-          $usual_task = UsualTask::create([
-            'name' => $request->task['task']['name'],
-            'status' => $request->task['task']['status'],
-            'notes' => $request->task['task']['name'],
-            'start' => $request->task['task']['start'],
-            'finish' => $request->task['task']['finish'],
-            'monthly' => 1,
-            'month_day' =>  $request->task['task']['month_day'],
-            // 'monday' => $request->task['task']['day']['monday'],
-            // 'tuesday' => $request->task['task']['day']['tuesday'],
-            // 'wednesday' => $request->task['task']['day']['wednesday'],
-            // 'thursday' => $request->task['task']['day']['thursday'],
-            // 'friday' => $request->task['task']['day']['friday'],
-            'created_by' => $request->user()->id
-        ]);
-            // $usual_task->monthly = 1;
-            // $usual_task->month_day = $request->task['task']['day_of_the_month'];
-            
-            return $usual_task;
-        } 
-        else if($request->weekly)
+          $usual_task->monday = 1;
+          $usual_task->tuesday = 1;
+          $usual_task->wednesday = 1;
+          $usual_task->thursday = 1;
+          $usual_task->friday = 1;
+          $usual_task->monthly = 0;
+          $usual_task->month_day = null;
+        } else if ($request->task['type'] == 'weekly')
         {
-          return $request->task['task'];
-        //   $usual_task = UsualTask::create([
-        //     'name' => $request->task['task']['name'],
-        //     'status' => $request->task['task']['status'],
-        //     'notes' => $request->task['task']['name'],
-        //     'start' => $request->task['task']['start'],
-        //     'finish' => $request->task['task']['finish'],
-        //     'monday' => $request->task['task']['day']['monday'],
-        //     'tuesday' => $request->task['task']['day']['tuesday'],
-        //     'wednesday' => $request->task['task']['day']['wednesday'],
-        //     'thursday' => $request->task['task']['day']['thursday'],
-        //     'friday' => $request->task['task']['day']['friday'],
-        //     'created_by' => $request->user()->id
-        // ]);
-          
-
-          // $usual_task->monday = $request->monday;
-          // $usual_task->tuesday = $request->tuesday;
-          // $usual_task->wednesday = $request->wednesday;
-          // $usual_task->thursday = $request->thursday;
-          // $usual_task->friday = $request->friday;
+          foreach ($request->task['task']['days'] as $day) {
+            $d = strtolower($day['name']);
+            $usual_task->$d = 1;
+          }
+        } else if ($request->task['type'] == 'monthly')
+        {
+          $usual_task->monthly = 1;
+          $usual_task->month_day = $request->task['task']['date'];
         }
-        else 
-        {
-          $usual_task = UsualTask::create([
-            'name' => $request->task['task']['name'],
-            'status' => $request->task['task']['status'],
-            'notes' => $request->task['task']['name'],
-            'start' => $request->task['task']['start'],
-            'finish' => $request->task['task']['finish'],
-            'monday' => 1,
-            'tuesday' => 1,
-            'wednesday' => 1,
-            'thursday' => 1,
-            'friday' => 1,
-            'created_by' => $request->user()->id
-          ]);
+        $usual_task->update();
 
-          // $usual_task->monday = 1;
-          // $usual_task->tuesday = 1;
-          // $usual_task->wednesday = 1;
-          // $usual_task->thursday = 1;
-          // $usual_task->friday = 1;
-        }
-        // $usual_task->update();
+        foreach ($request->task['task']['workers'] as $worker)
+            {
+                DB::table('usualtask_worker')->insert([
+                    'usual_task_id' => $usual_task->id,
+                    'worker_id' => $worker['id'],
+                    'created_at' => now()
+                ]);
+            }
 
         return $usual_task;
     }
@@ -168,49 +126,73 @@ class UsualTaskController extends Controller
         $type = $request->task['task']['type'];
 
         $task->name = $request->task['task']['name'];
-        $task->status = $request->task['task']['status'];
         $task->start = $request->task['task']['start'];
         $task->finish = $request->task['task']['finish'];
         $task->notes = $request->task['task']['notes'];
       
+        $task->monthly = 0;
+        $task->month_day = null;
+        $task->monday = 0;
+        $task->tuesday = 0;
+        $task->wednesday = 0;
+        $task->thursday = 0;
+        $task->friday = 0;
+
         switch ($type) {
             case "daily":
-              // $task->name = $request->task['task']['name'];
-              // $task->status = $request->task['task']['status'];
-              // $task->start = $request->task['task']['start'];
-              // $task->finish = $request->task['task']['finish'];
-              // $task->notes = $request->task['task']['notes'];
               $task->monday = 1;
               $task->tuesday = 1;
               $task->wednesday = 1;
               $task->thursday = 1;
               $task->friday = 1;
-              
               break;
             case "weekly":
-              // $task->name = $request->task['task']['name'];
-              // $task->status = $request->task['task']['status'];
-              // $task->start = $request->task['task']['start'];
-              // $task->finish = $request->task['task']['finish'];
-              // $task->notes = $request->task['task']['notes'];
-              $task->monday = isset($request->task['task']['monday']) ?? 0;
-              $task->tuesday = isset($request->task['task']['tuesday']) ?? 0;
-              $task->wednesday = isset($request->task['task']['wednesday']) ?? 0;
-              $task->thursday = isset($request->task['task']['thursday']) ?? 0;
-              $task->friday = isset($request->task['task']['friday']) ?? 0;
-              // return $task;
-
+              foreach ($request->task['task']['days'] as $day) {
+                $d = strtolower($day['name']);
+                $task->$d = 1;
+              }
               break;
             case "monthly":
                 $task->monthly = 1;
-                $task->day_of_month = $request->task['task']['day_of_month'];
+                $task->month_day = $request->task['task']['day_of_month'];
               break;
             default:
           }
-
           $task->update();
 
-          
+
+        $rqstWorkers = Array();
+        $dbWorkers = DB::table('usualtask_worker')
+                        ->where('usual_task_id', $task->id)
+                        ->pluck('worker_id')
+                        ->toArray();
+
+        foreach ($request->task['task']['workers'] as $worker)
+        {
+            array_push($rqstWorkers,$worker['id']);
+        }
+
+        $toDelete = array_diff($dbWorkers,$rqstWorkers);
+        $toAdd = array_diff($rqstWorkers,$dbWorkers);
+        
+        foreach ($toDelete as $td)
+        {
+            DB::table('usualtask_worker')
+            ->where('usual_task_id', $task->id)
+            ->where('worker_id', $td)
+            ->delete();
+        }
+
+        foreach ($toAdd as $ta)
+        {
+            DB::table('usualtask_worker')->insert([
+                'usual_task_id' => $task->id,
+                'worker_id' => $ta,
+                'created_at' => now()
+            ]);
+        }
+
+        return $task;
     }
 
     /**

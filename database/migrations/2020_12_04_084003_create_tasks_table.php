@@ -21,6 +21,7 @@ class CreateTasksTable extends Migration
             $table->time('start')->nullable();
             $table->time('finish')->nullable();
             $table->char('status', 1)->nullable();
+            $table->text('notes')->nullable();
             $table->boolean('closed')->default(0);
             $table->date('date');
             $table->boolean('show_in_plan')->default(1);

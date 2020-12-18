@@ -107,6 +107,11 @@
                                     {{ daily_task.notes }}
                                 </span>
                             </div>
+                            <div class="py-1 worker inline-block" v-for="worker in daily_task.workers" :key="worker.id">
+                                <p :data-tooltip="worker.name" class="worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
+                                    {{ worker.initials }} 
+                                </p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -138,6 +143,11 @@
                                     {{ weekly_task.notes }}
                                 </span>
                             </div>
+                            <div class="py-1 worker inline-block" v-for="worker in weekly_task.workers" :key="worker.id">
+                                <p :data-tooltip="worker.name" class="worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
+                                    {{ worker.initials }} 
+                                </p>
+                            </div>
                             <div class="text-xs flex flex-wrap" v-for="day in weekly_task.days" :key="day.id">
                                 <p>
                                     {{ day.name }}
@@ -154,9 +164,19 @@
                             <p class="text-gray-500 font-semibold">
                                 {{ monthly_task.name }}
                             </p>
+                            <div>
+                                <span class="text-gray-500 text-xs">
+                                    {{ monthly_task.notes }}
+                                </span>
+                            </div>
                             <p class="text-gray-500 text-sm">
                                 Day:{{ monthly_task.day_of_month }}
                             </p>
+                            <div class="py-1 worker inline-block" v-for="worker in monthly_task.workers" :key="worker.id">
+                                <p :data-tooltip="worker.name" class="worker text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
+                                    {{ worker.initials }} 
+                                </p>
+                            </div>
                         </li>
                     </ul>
                 </div>

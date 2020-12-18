@@ -3,11 +3,11 @@
         <p>Weekly task</p>
         <form @submit.prevent="createUsualTask" class="mt-6">
             <div class="flex justify-between gap-3">
-                <span class="w-1/2">
+                <span class="w-full">
                     <label for="first_name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
                     <input id="first_name" type="text" name="first_name" v-model="task.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                 </span>
-                <span class="w-1/2">
+                <!-- <span class="w-1/2">
                     <label for="status" class="block text-xs font-semibold text-gray-600 uppercase">Status</label>
                     <div class="relative">
                         <select v-model="task.status" name="status" id="" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"   
@@ -28,7 +28,7 @@
                             </svg>
                         </div>
                     </div>
-                </span>
+                </span> -->
             </div>
             <div class="">
                 <span class="">
@@ -134,6 +134,9 @@ import Multiselect from 'vue-multiselect'
 import moment from 'vue-moment'
 
 export default {
+    props:{
+        typeName: String
+    },
     components: {
         Multiselect,
     },
@@ -154,8 +157,10 @@ export default {
                     { id:3, name:'Thursday' },
                     { id:4, name:'Friday' }
                 ],
-                workers: []
-            }
+                workers: [],
+
+            },
+            type: this.$props.typeName
         }
     },
     watch: {
@@ -175,7 +180,8 @@ export default {
     methods: {
         createUsualTask() {
             this.$store.dispatch('createUsualTask', {
-                task: this.task
+                task: this.task,
+                type: this.type
             })
             this.$modal.hide('add-usual-task-modal');
         },

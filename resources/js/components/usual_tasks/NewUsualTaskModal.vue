@@ -30,16 +30,16 @@
                 <p></p>
             </div>
             <div v-else-if="type == 1">
-                <Task />
+                <Task typeName="usual" />
             </div>
             <div v-else-if="type == 2">
-                <DailyTask />
+                <DailyTask typeName="daily" />
             </div>
             <div v-else-if="type == 3">
-                <WeeklyTask />
+                <WeeklyTask typeName="weekly" />
             </div>
             <div v-else-if="type == 4">
-                <MonthlyTask />
+                <MonthlyTask typeName="monthly" />
             </div>
         </div>
   </div>
@@ -87,7 +87,8 @@ export default {
                 name: "Monthly task"
                 },
             ],
-            type: 0
+            type: 0,
+
             
         }
     },
