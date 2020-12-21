@@ -67,24 +67,24 @@ export default {
         return {
             types: [
                 {
-                id: 0,
-                name: ""
+                    id: 0,
+                    name: ""
                 },
                 {
-                id: 1,
-                name: "Usual task"
+                    id: 1,
+                    name: "Usual task"
                 },
                 {
-                id: 2,
-                name: "Daily task"
+                    id: 2,
+                    name: "Daily task"
                 },
                 {
-                id: 3,
-                name: "Weekly task"
+                    id: 3,
+                    name: "Weekly task"
                 },
                 {
-                id: 4,
-                name: "Monthly task"
+                    id: 4,
+                    name: "Monthly task"
                 },
             ],
             type: 0,

@@ -2415,6 +2415,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2440,14 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
-  },
   mounted: function mounted() {
     if (this.awId) {
       this.$store.dispatch('getTask', {
@@ -2469,14 +2464,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     hide: function hide() {
       this.$modal.hide('add-task-modal');
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
     }
   }
 });
@@ -2496,6 +2483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -3341,6 +3329,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _aw_AwTaskModal_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../aw/AwTaskModal.vue */ "./resources/js/components/aw/AwTaskModal.vue");
 /* harmony import */ var _usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../usual_tasks/UsualTaskModal.vue */ "./resources/js/components/usual_tasks/UsualTaskModal.vue");
 /* harmony import */ var _usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../usual_tasks/NewUsualTaskModal */ "./resources/js/components/usual_tasks/NewUsualTaskModal.vue");
+/* harmony import */ var _PlanModalAwTask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PlanModalAwTask */ "./resources/js/components/plan/PlanModalAwTask.vue");
+/* harmony import */ var _PlanModalUsualTask__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PlanModalUsualTask */ "./resources/js/components/plan/PlanModalUsualTask.vue");
 //
 //
 //
@@ -3442,6 +3432,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
+
 
 
 
@@ -3453,7 +3446,9 @@ __webpack_require__.r(__webpack_exports__);
     VueCal: vue_cal__WEBPACK_IMPORTED_MODULE_0___default.a,
     AwTaskModal: _aw_AwTaskModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     UsualTaskModal: _usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    NewUsualTaskModal: _usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__["default"]
+    NewUsualTaskModal: _usual_tasks_NewUsualTaskModal__WEBPACK_IMPORTED_MODULE_5__["default"],
+    PlanModalAwTask: _PlanModalAwTask__WEBPACK_IMPORTED_MODULE_6__["default"],
+    PlanModalUsualTask: _PlanModalUsualTask__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   data: function data() {
     return {
@@ -3492,6 +3487,34 @@ __webpack_require__.r(__webpack_exports__);
           draggable: true
         });
       }
+
+      this.$modal.hide(_PlanModalAwTask__WEBPACK_IMPORTED_MODULE_6__["default"]);
+      this.$modal.hide(_PlanModalUsualTask__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    },
+    openModalTask: function openModalTask(id, aw_name) {
+      if (aw_name) {
+        this.$modal.show(_PlanModalAwTask__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          id: id
+        }, {
+          name: "aw-task-plan-modal",
+          height: 'auto',
+          clickToClose: false,
+          draggable: true
+        });
+      } else {
+        this.$modal.show(_PlanModalUsualTask__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          id: id,
+          type: 'usual'
+        }, {
+          name: "aw-usual-task-modal-plan",
+          height: 'auto',
+          clickToClose: false,
+          draggable: true
+        });
+      }
+
+      this.$modal.hide(_usual_tasks_UsualTaskModal_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+      this.$modal.hide(_aw_AwTaskModal_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
     },
     deleteTask: function deleteTask(id, worker_id) {
       var _this = this;
@@ -3527,6 +3550,223 @@ __webpack_require__.r(__webpack_exports__);
   //   console.log(event)
   // },
 
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: Number
+  },
+  data: function data() {
+    return {
+      taskId: this.$props.id
+    };
+  },
+  mounted: function mounted() {
+    this.getTask();
+  },
+  methods: {
+    hide: function hide() {
+      this.$modal.hide('aw-task-plan-modal');
+    },
+    getTask: function getTask() {
+      this.$store.dispatch('getTask', {
+        id: this.taskId
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: Number,
+    type: String
+  },
+  data: function data() {
+    return {
+      taskId: this.$props.id,
+      taskType: this.$props.type
+    };
+  },
+  mounted: function mounted() {
+    this.getTask();
+  },
+  methods: {
+    hide: function hide() {
+      this.$modal.hide('aw-usual-task-modal-plan');
+    },
+    getTask: function getTask() {
+      this.$store.dispatch('getUsualTask', {
+        id: this.taskId,
+        type: this.taskType
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3707,27 +3947,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-moment */ "./node_modules/vue-moment/dist/vue-moment.js");
 /* harmony import */ var vue_moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_moment__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -4310,6 +4529,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4366,6 +4586,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5193,26 +5440,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5232,34 +5459,27 @@ __webpack_require__.r(__webpack_exports__);
         start: '',
         finish: '',
         date: '',
-        days: [{
-          id: 0,
-          name: 'Monday'
-        }, {
-          id: 1,
-          name: 'Tuesday'
-        }, {
-          id: 2,
-          name: 'Wednesday'
-        }, {
-          id: 3,
-          name: 'Thursday'
-        }, {
-          id: 4,
-          name: 'Friday'
-        }],
+        days: [],
         workers: []
       },
+      workDays: [{
+        id: 0,
+        name: 'Monday'
+      }, {
+        id: 1,
+        name: 'Tuesday'
+      }, {
+        id: 2,
+        name: 'Wednesday'
+      }, {
+        id: 3,
+        name: 'Thursday'
+      }, {
+        id: 4,
+        name: 'Friday'
+      }],
       type: this.$props.typeName
     };
-  },
-  watch: {
-    startTime: function startTime(newValue, oldValue) {
-      this.calculate();
-    },
-    finishTime: function finishTime(newValue, oldValue) {
-      this.calculate();
-    }
   },
   mounted: function mounted() {
     if (this.$store.state.workers.workers.length <= 0) {
@@ -5273,14 +5493,6 @@ __webpack_require__.r(__webpack_exports__);
         type: this.type
       });
       this.$modal.hide('add-usual-task-modal');
-    },
-    calculate: function calculate() {
-      // console.log('test')
-      var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-      var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-      this.diffTime = Math.abs(finish - start); // this.diffTime = diffTime
-
-      console.log(this.diffTime);
     }
   }
 });
@@ -43864,15 +44076,9 @@ var render = function() {
                   ],
                   staticClass:
                     "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                  attrs: {
-                    id: "start",
-                    type: "time",
-                    name: "start",
-                    required: ""
-                  },
+                  attrs: { id: "start", type: "time", name: "start" },
                   domProps: { value: _vm.task.start },
                   on: {
-                    keydown: _vm.calculate,
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -43905,15 +44111,9 @@ var render = function() {
                   ],
                   staticClass:
                     "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
-                  attrs: {
-                    id: "finish",
-                    type: "time",
-                    name: "finish",
-                    required: ""
-                  },
+                  attrs: { id: "finish", type: "time", name: "finish" },
                   domProps: { value: _vm.task.finish },
                   on: {
-                    keydown: _vm.calculate,
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -43925,21 +44125,22 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm.diffTime > 0
-              ? _c(
-                  "label",
-                  {
-                    staticClass:
-                      "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
-                  },
-                  [
-                    _vm._v(
-                      "Duration: " +
-                        _vm._s(_vm._f("duration")(_vm.diffTime, "humanize"))
-                    )
-                  ]
+            _c(
+              "label",
+              {
+                staticClass:
+                  "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
+              },
+              [
+                _vm._v(
+                  "\n                    Duration: " +
+                    _vm._s(
+                      _vm._f("duration")(_vm.task.start, _vm.task.finish)
+                    ) +
+                    "\n                "
                 )
-              : _vm._e(),
+              ]
+            ),
             _vm._v(" "),
             _c(
               "label",
@@ -44018,6 +44219,7 @@ var render = function() {
                 attrs: {
                   options: _vm.$store.state.workers.workers,
                   multiple: true,
+                  "open-direction": "top",
                   "group-select": true,
                   "close-on-select": false,
                   "clear-on-select": false,
@@ -44493,6 +44695,7 @@ var render = function() {
                 attrs: {
                   options: _vm.$store.state.workers.workers,
                   multiple: true,
+                  "open-direction": "top",
                   "group-select": true,
                   "close-on-select": false,
                   "clear-on-select": false,
@@ -46157,12 +46360,17 @@ var render = function() {
             fn: function(ref) {
               var event = ref.event
               return [
-                _c("div", { staticClass: "px-2" }, [
+                _c("div", { staticClass: "px-2 cursor-pointer" }, [
                   _c("div", { staticClass: "flex justify-between" }, [
                     _c("div", {
                       staticClass:
                         "vuecal__event-title text-gray-600 font-semibold text-left",
-                      domProps: { innerHTML: _vm._s(event.title) }
+                      domProps: { innerHTML: _vm._s(event.title) },
+                      on: {
+                        click: function($event) {
+                          return _vm.openModalTask(event.task_id, event.aw_name)
+                        }
+                      }
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "text-sm" }, [
@@ -46336,6 +46544,809 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-4" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("h3", { staticClass: "py-1 text-gray-700 font-semibold" }, [
+        _vm._v(_vm._s(_vm.$store.state.aw.task.aw))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v("Client: " + _vm._s(_vm.$store.state.aw.task.aw_client))
+      ]),
+      _vm._v(" "),
+      _vm.$store.state.aw.task.aw_tour_number
+        ? _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+            _vm._v(
+              " \n            " +
+                _vm._s(_vm.$store.state.aw.task.aw_tour_number) +
+                "\n        "
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v(
+          "Loading Date: " +
+            _vm._s(_vm.$store.state.aw.task.aw_loading_date) +
+            " |"
+        )
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v("Coli: " + _vm._s(_vm.$store.state.aw.task.aw_coli) + " |")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v("Led: " + _vm._s(_vm.$store.state.aw.task.aw_led) + " |")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v("Dif: " + _vm._s(_vm.$store.state.aw.task.aw_dif) + " |")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-xs text-gray-500 uppercase" }, [
+        _vm._v(
+          "Aw - Wm: " + _vm._s(_vm.$store.state.aw.task.aw_wmk_not_collection)
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mt-6" },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "name" }
+                },
+                [_vm._v("Task Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.aw.task.name,
+                    expression: "$store.state.aw.task.name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "name",
+                  type: "text",
+                  name: "name",
+                  disabled: "",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.aw.task.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.aw.task,
+                      "name",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "status" }
+                },
+                [_vm._v("Status")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "relative" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$store.state.aw.task.status,
+                        expression: "$store.state.aw.task.status"
+                      }
+                    ],
+                    staticClass:
+                      "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                    attrs: { disabled: "", name: "status", id: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.$store.state.aw.task,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("K")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("P")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("0")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-4 w-4",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "start" }
+                },
+                [_vm._v("Start")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.aw.task.start,
+                    expression: "$store.state.aw.task.start"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "start",
+                  disabled: "",
+                  type: "time",
+                  name: "start",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.aw.task.start },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.aw.task,
+                      "start",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "finish" }
+                },
+                [_vm._v("Finish")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.aw.task.finish,
+                    expression: "$store.state.aw.task.finish"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "finish",
+                  disabled: "",
+                  type: "time",
+                  name: "finish",
+                  required: ""
+                },
+                domProps: { value: _vm.$store.state.aw.task.finish },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.aw.task,
+                      "finish",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
+            },
+            [
+              _vm._v(
+                "\n                Duration: " +
+                  _vm._s(
+                    _vm._f("duration")(
+                      _vm.$store.state.aw.task.start,
+                      _vm.$store.state.aw.task.finish
+                    )
+                  ) +
+                  "\n            "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+              attrs: { for: "day" }
+            },
+            [_vm._v("Date")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$store.state.aw.task.date,
+                expression: "$store.state.aw.task.date"
+              }
+            ],
+            staticClass:
+              "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+            attrs: {
+              disabled: "",
+              id: "day",
+              type: "date",
+              name: "date",
+              required: ""
+            },
+            domProps: { value: _vm.$store.state.aw.task.date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.$store.state.aw.task, "date", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.$store.state.aw.task.workers, function(worker) {
+            return _c(
+              "div",
+              { key: worker.id, staticClass: "py-1  inline-block" },
+              [
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(worker.initials) +
+                        " \n                "
+                    )
+                  ]
+                )
+              ]
+            )
+          })
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "px-2" }, [
+    _c("div", { staticClass: "float-right" }, [
+      _c("button", { staticClass: "py-2 px-2", on: { click: _vm.hide } }, [
+        _c("i", {
+          staticClass: "fas fa-times text-gray-700 outline-none text-2xl"
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: " pt-6" }, [
+      _c(
+        "div",
+        { staticClass: "mt-6" },
+        [
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "name" }
+                },
+                [_vm._v("Task Name")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.usual_tasks.usual_task.name,
+                    expression: "$store.state.usual_tasks.usual_task.name"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "name",
+                  disabled: "",
+                  type: "text",
+                  name: "name",
+                  required: ""
+                },
+                domProps: {
+                  value: _vm.$store.state.usual_tasks.usual_task.name
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.usual_tasks.usual_task,
+                      "name",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "status" }
+                },
+                [_vm._v("Status")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "relative" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.$store.state.usual_tasks.usual_task.status,
+                        expression: "$store.state.usual_tasks.usual_task.status"
+                      }
+                    ],
+                    staticClass:
+                      "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                    attrs: { disabled: "", name: "status", id: "" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.$store.state.usual_tasks.usual_task,
+                          "status",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("K")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("P")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("0")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "fill-current h-4 w-4",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 20 20"
+                        }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {}, [
+            _c("span", {}, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "notes" }
+                },
+                [_vm._v("Notes")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.usual_tasks.usual_task.notes,
+                    expression: "$store.state.usual_tasks.usual_task.notes"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: { disabled: "", id: "notes", name: "notes" },
+                domProps: {
+                  value: _vm.$store.state.usual_tasks.usual_task.notes
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.usual_tasks.usual_task,
+                      "notes",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex justify-between gap-3" }, [
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "start" }
+                },
+                [_vm._v("Start")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.usual_tasks.usual_task.start,
+                    expression: "$store.state.usual_tasks.usual_task.start"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "start",
+                  disabled: "",
+                  type: "time",
+                  name: "start",
+                  required: ""
+                },
+                domProps: {
+                  value: _vm.$store.state.usual_tasks.usual_task.start
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.usual_tasks.usual_task,
+                      "start",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w-1/2" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                  attrs: { for: "finish" }
+                },
+                [_vm._v("Finish")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.$store.state.usual_tasks.usual_task.finish,
+                    expression: "$store.state.usual_tasks.usual_task.finish"
+                  }
+                ],
+                staticClass:
+                  "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                attrs: {
+                  id: "finish",
+                  disabled: "",
+                  type: "time",
+                  name: "finish",
+                  required: ""
+                },
+                domProps: {
+                  value: _vm.$store.state.usual_tasks.usual_task.finish
+                },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.$store.state.usual_tasks.usual_task,
+                      "finish",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "float-right block mt-2 text-xs font-semibold text-gray-600 uppercase"
+            },
+            [
+              _vm._v(
+                "\n                Duration: " +
+                  _vm._s(
+                    _vm._f("duration")(
+                      _vm.$store.state.usual_tasks.usual_task.start,
+                      _vm.$store.state.usual_tasks.usual_task.finish
+                    )
+                  ) +
+                  "\n            "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass:
+                "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+              attrs: { for: "day" }
+            },
+            [_vm._v("Date")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.$store.state.usual_tasks.usual_task.date,
+                expression: "$store.state.usual_tasks.usual_task.date"
+              }
+            ],
+            staticClass:
+              "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+            attrs: {
+              id: "day",
+              disabled: "",
+              type: "date",
+              name: "date",
+              required: ""
+            },
+            domProps: { value: _vm.$store.state.usual_tasks.usual_task.date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.$store.state.usual_tasks.usual_task,
+                  "date",
+                  $event.target.value
+                )
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.$store.state.usual_tasks.usual_task.workers, function(
+            worker
+          ) {
+            return _c(
+              "div",
+              { key: worker.id, staticClass: "py-1 inline-block" },
+              [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "block mt-2 text-xs font-semibold text-gray-600 uppercase",
+                    attrs: { for: "workers" }
+                  },
+                  [_vm._v("Workers")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    staticClass:
+                      "text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold"
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(worker.initials) +
+                        " \n                "
+                    )
+                  ]
+                )
+              ]
+            )
+          })
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46990,70 +48001,79 @@ var render = function() {
         }),
         _vm._v(" "),
         _c(
-          "label",
-          {
-            staticClass:
-              "block mt-2 text-xs font-semibold text-gray-600 uppercase",
-            attrs: { for: "workers" }
-          },
-          [_vm._v("Workers")]
-        ),
-        _vm._v(" "),
-        _c(
-          "multiselect",
-          {
-            staticClass: "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
-            attrs: {
-              options: _vm.$store.state.workers.workers,
-              multiple: true,
-              "group-select": true,
-              "close-on-select": false,
-              "clear-on-select": false,
-              "preserve-search": true,
-              showLabels: true,
-              preselectFirst: false,
-              allowEmpty: true,
-              showNoResults: true,
-              placeholder: "Choose Workers",
-              label: "name",
-              "track-by": "name",
-              "preselect-first": true
-            },
-            scopedSlots: _vm._u([
-              {
-                key: "selection",
-                fn: function(ref) {
-                  var values = ref.values
-                  var isOpen = ref.isOpen
-                  return [
-                    values.length && !isOpen
-                      ? _c("span", { staticClass: "multiselect__single" }, [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(values.length) +
-                              " options selected\n                "
-                          )
-                        ])
-                      : _vm._e()
-                  ]
-                }
-              }
-            ]),
-            model: {
-              value: _vm.task.workers,
-              callback: function($$v) {
-                _vm.$set(_vm.task, "workers", $$v)
-              },
-              expression: "task.workers"
-            }
-          },
+          "div",
+          { staticClass: "mt-4" },
           [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block mt-4 text-xs font-semibold text-gray-600 uppercase",
+                attrs: { for: "workers" }
+              },
+              [_vm._v("Workers")]
+            ),
             _vm._v(" "),
-            _c("template", { slot: "noResult" }, [
-              _vm._v("\n                No Workers\n            ")
-            ])
+            _c(
+              "multiselect",
+              {
+                staticClass:
+                  "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
+                attrs: {
+                  options: _vm.$store.state.workers.workers,
+                  "open-direction": "top",
+                  multiple: true,
+                  "group-select": true,
+                  "close-on-select": false,
+                  "clear-on-select": false,
+                  "preserve-search": true,
+                  showLabels: true,
+                  preselectFirst: false,
+                  allowEmpty: true,
+                  showNoResults: true,
+                  placeholder: "Choose Workers",
+                  label: "name",
+                  "track-by": "name",
+                  "preselect-first": true
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "selection",
+                    fn: function(ref) {
+                      var values = ref.values
+                      var isOpen = ref.isOpen
+                      return [
+                        values.length && !isOpen
+                          ? _c("span", { staticClass: "multiselect__single" }, [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(values.length) +
+                                  " options selected\n                "
+                              )
+                            ])
+                          : _vm._e()
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.task.workers,
+                  callback: function($$v) {
+                    _vm.$set(_vm.task, "workers", $$v)
+                  },
+                  expression: "task.workers"
+                }
+              },
+              [
+                _vm._v(" "),
+                _c("template", { slot: "noResult" }, [
+                  _vm._v("\n                No Workers\n            ")
+                ])
+              ],
+              2
+            )
           ],
-          2
+          1
         ),
         _vm._v(" "),
         _c(
@@ -48020,6 +49040,7 @@ var render = function() {
             attrs: {
               options: _vm.$store.state.workers.workers,
               multiple: true,
+              "open-direction": "top",
               "group-select": true,
               "close-on-select": false,
               "clear-on-select": false,
@@ -48385,6 +49406,7 @@ var render = function() {
                       options: _vm.$store.state.workers.workers,
                       multiple: true,
                       "group-select": true,
+                      "open-direction": "top",
                       "close-on-select": false,
                       "clear-on-select": false,
                       "preserve-search": true,
@@ -48751,6 +49773,7 @@ var render = function() {
                         attrs: {
                           options: _vm.$store.state.workers.workers,
                           multiple: true,
+                          "open-direction": "top",
                           "group-select": true,
                           "close-on-select": false,
                           "clear-on-select": false,
@@ -48867,6 +49890,7 @@ var render = function() {
                         attrs: {
                           options: _vm.days,
                           multiple: true,
+                          "open-direction": "top",
                           "group-select": true,
                           "close-on-select": false,
                           "clear-on-select": false,
@@ -49279,6 +50303,7 @@ var render = function() {
                     attrs: {
                       options: _vm.$store.state.workers.workers,
                       multiple: true,
+                      "open-direction": "top",
                       "group-select": true,
                       "close-on-select": false,
                       "clear-on-select": false,
@@ -49381,7 +50406,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "flex justify-between gap-3" }, [
-                  _c("span", { staticClass: "w-full" }, [
+                  _c("span", { staticClass: "w-1/2" }, [
                     _c(
                       "label",
                       {
@@ -49425,6 +50450,93 @@ var render = function() {
                         }
                       }
                     })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "w-1/2" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "block text-xs font-semibold text-gray-600 uppercase",
+                        attrs: { for: "status" }
+                      },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "relative" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value:
+                                _vm.$store.state.usual_tasks.usual_task.status,
+                              expression:
+                                "$store.state.usual_tasks.usual_task.status"
+                            }
+                          ],
+                          staticClass:
+                            "block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner",
+                          attrs: { name: "status", id: "" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.$store.state.usual_tasks.usual_task,
+                                "status",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [_vm._v("K")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("P")]),
+                          _vm._v(" "),
+                          _c("option", [_vm._v("0")])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "fill-current h-4 w-4",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 20 20"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -49679,6 +50791,7 @@ var render = function() {
                     attrs: {
                       options: _vm.$store.state.workers.workers,
                       multiple: true,
+                      "open-direction": "top",
                       "group-select": true,
                       "close-on-select": false,
                       "clear-on-select": false,
@@ -50684,7 +51797,6 @@ var render = function() {
               attrs: { id: "start", type: "time", name: "start", required: "" },
               domProps: { value: _vm.task.start },
               on: {
-                keydown: _vm.calculate,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -50725,7 +51837,6 @@ var render = function() {
               },
               domProps: { value: _vm.task.finish },
               on: {
-                keydown: _vm.calculate,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -50737,7 +51848,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm.diffTime > 0
+        _vm.task.start
           ? _c(
               "label",
               {
@@ -50746,8 +51857,11 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "Duration: " +
-                    _vm._s(_vm._f("duration")(_vm.diffTime, "humanize"))
+                  "\n            Duration: " +
+                    _vm._s(
+                      _vm._f("duration")(_vm.task.start, _vm.task.finish)
+                    ) +
+                    "\n        "
                 )
               ]
             )
@@ -50801,7 +51915,9 @@ var render = function() {
                 attrs: {
                   options: _vm.$store.state.workers.workers,
                   multiple: true,
+                  "open-direction": "top",
                   "group-select": true,
+                  selected: false,
                   "close-on-select": false,
                   "clear-on-select": false,
                   "preserve-search": true,
@@ -50897,7 +52013,7 @@ var render = function() {
                 staticClass:
                   "block w-full text-gray-700 bg-gray-200 text-sm mb-2",
                 attrs: {
-                  options: _vm.task.days,
+                  options: _vm.workDays,
                   multiple: true,
                   "group-select": true,
                   "close-on-select": false,
@@ -76699,6 +77815,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Plan_vue_vue_type_template_id_b73bfd98___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalAwTask.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalAwTask.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlanModalAwTask.vue?vue&type=template&id=4d2feb78& */ "./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78&");
+/* harmony import */ var _PlanModalAwTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlanModalAwTask.vue?vue&type=script&lang=js& */ "./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlanModalAwTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/plan/PlanModalAwTask.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalAwTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlanModalAwTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalAwTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlanModalAwTask.vue?vue&type=template&id=4d2feb78& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalAwTask.vue?vue&type=template&id=4d2feb78&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalAwTask_vue_vue_type_template_id_4d2feb78___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalUsualTask.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalUsualTask.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlanModalUsualTask.vue?vue&type=template&id=af96b064& */ "./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064&");
+/* harmony import */ var _PlanModalUsualTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlanModalUsualTask.vue?vue&type=script&lang=js& */ "./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlanModalUsualTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/plan/PlanModalUsualTask.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalUsualTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlanModalUsualTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalUsualTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PlanModalUsualTask.vue?vue&type=template&id=af96b064& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/plan/PlanModalUsualTask.vue?vue&type=template&id=af96b064&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlanModalUsualTask_vue_vue_type_template_id_af96b064___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

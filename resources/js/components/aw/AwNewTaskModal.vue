@@ -55,17 +55,19 @@
                     <div class="flex justify-between gap-3">
                         <span class="w-1/2">
                             <label for="start" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Start</label>
-                            <input id="start" v-model="task.start" @keydown="calculate" type="time" name="start" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                            <input id="start" v-model="task.start" type="time" name="start" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" />
                         </span>
                         <span class="w-1/2">
                             <label for="finish" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Finish</label>
-                            <input id="finish" v-model="task.finish" @keydown="calculate" type="time" name="finish" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                            <input id="finish" v-model="task.finish" type="time" name="finish" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" />
                         </span>
                     </div>
-                    <label v-if="diffTime>0" class="float-right block mt-2 text-xs font-semibold text-gray-600 uppercase">Duration: {{ diffTime | duration('humanize') }}</label>
+                    <label class="float-right block mt-2 text-xs font-semibold text-gray-600 uppercase">
+                        Duration: {{ task.start | duration(task.finish) }}
+                    </label>
                     <label for="day" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Date</label>
                     <input id="day" v-model="task.date" type="date" name="date" 
-                            class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                            class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
                      <div class="py-1 float-right inline-block" v-for="worker in task.workers" :key="worker.id">
                         <p class="text-center mx-1 rounded-full bg-gray-500 text-white  w-5 h-5 justify-center text-xs font-semibold">
                             {{ worker.initials }} 
@@ -76,6 +78,7 @@
                         v-model="task.workers"
                         :options="$store.state.workers.workers"
                         :multiple="true"
+                        open-direction="top"
                         :group-select="true"
                         :close-on-select="false"
                         :clear-on-select="false"
@@ -137,14 +140,6 @@ export default {
             }
         }
     },
-    watch: {
-        startTime: function(newValue, oldValue) {
-            this.calculate()
-        },
-        finishTime: function(newValue, oldValue) {
-            this.calculate()
-        }    
-    },
     mounted() {
         if (this.awId)
         {
@@ -169,15 +164,6 @@ export default {
         hide () {
             this.$modal.hide('add-task-modal');
         },
-        calculate()
-        {
-            // console.log('test')
-            var start = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.start);
-            var finish = new Date(this.$store.state.aw.task.date + " " + this.$store.state.aw.task.finish);
-            this.diffTime = Math.abs(finish - start);
-            // this.diffTime = diffTime
-            console.log(this.diffTime);
-        }
     }
 }
 </script>

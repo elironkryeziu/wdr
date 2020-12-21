@@ -51,6 +51,7 @@
                     :options="$store.state.workers.workers"
                     :multiple="true"
                     :group-select="true"
+                    open-direction="top"
                     :close-on-select="false"
                     :clear-on-select="false"
                     :preserve-search="true"
@@ -128,6 +129,7 @@
                         v-model="$store.state.usual_tasks.weekly_task.workers"
                         :options="$store.state.workers.workers"
                         :multiple="true"
+                        open-direction="top"
                         :group-select="true"
                         :close-on-select="false"
                         :clear-on-select="false"
@@ -165,6 +167,7 @@
                         v-model="$store.state.usual_tasks.weekly_task.days"
                         :options="days"
                         :multiple="true"
+                        open-direction="top"
                         :group-select="true"
                         :close-on-select="false"
                         :clear-on-select="false"
@@ -244,6 +247,7 @@
                     v-model="$store.state.usual_tasks.monthly_task.workers"
                     :options="$store.state.workers.workers"
                     :multiple="true"
+                    open-direction="top"
                     :group-select="true"
                     :close-on-select="false"
                     :clear-on-select="false"
@@ -283,10 +287,32 @@
             <!-- <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal">please fill in your information to continue</span></h1> -->
             <form @submit.prevent="updateTask(taskId)" class="mt-6">
                 <div class="flex justify-between gap-3">
-                    <span class="w-full">
+                    <span class="w-1/2">
                         <label for="name" class="block text-xs font-semibold text-gray-600 uppercase">Task Name</label>
                         <input id="name" type="text" name="name" v-model="$store.state.usual_tasks.usual_task.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                     </span>
+                    <span class="w-1/2">
+                    <label for="status" class="block text-xs font-semibold text-gray-600 uppercase">Status</label>
+                    <div class="relative">
+                        <select v-model="$store.state.usual_tasks.usual_task.status" name="status" id="" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"   
+                        >
+                            <option>K</option>
+                            <option>P</option>
+                            <option>0</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                        >
+                            <svg
+                            class="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            >
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </div>
+                    </div>
+                </span>
                 </div>
                 <div class="">
                     <span class="">
@@ -321,6 +347,7 @@
                     v-model="$store.state.usual_tasks.usual_task.workers"
                     :options="$store.state.workers.workers"
                     :multiple="true"
+                    open-direction="top"
                     :group-select="true"
                     :close-on-select="false"
                     :clear-on-select="false"

@@ -70,6 +70,7 @@
                         v-model="$store.state.aw.task.workers"
                         :options="$store.state.workers.workers"
                         :multiple="true"
+                        open-direction="top"
                         :group-select="true"
                         :close-on-select="false"
                         :clear-on-select="false"

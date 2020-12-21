@@ -57,9 +57,10 @@
     @event-create="createEvent($event)">
 
     <template class="" v-slot:event="{ event }">
-      <div class="px-2">
+      <div class="px-2 cursor-pointer">
         <div class="flex justify-between">
-          <div class="vuecal__event-title text-gray-600 font-semibold text-left" v-html="event.title" >
+          <div @click="openModalTask(event.task_id,event.aw_name)" 
+              class="vuecal__event-title text-gray-600 font-semibold text-left" v-html="event.title" >
           </div>
           <div class="text-sm">
             <button v-if="event.aw_name" @click="openModal(event.task_id,false)">
@@ -105,10 +106,19 @@ import 'vue-cal/dist/vuecal.css'
 import axios from 'axios'
 import AwTaskModal from '../aw/AwTaskModal.vue';
 import UsualTaskModal from '../usual_tasks/UsualTaskModal.vue';
-import NewUsualTaskModal from '../usual_tasks/NewUsualTaskModal'
+import NewUsualTaskModal from '../usual_tasks/NewUsualTaskModal';
+import PlanModalAwTask from './PlanModalAwTask';
+import PlanModalUsualTask from './PlanModalUsualTask';
 
 export default {
-    components: { VueCal, AwTaskModal, UsualTaskModal,NewUsualTaskModal  },
+    components: { 
+      VueCal, 
+      AwTaskModal, 
+      UsualTaskModal, 
+      NewUsualTaskModal, 
+      PlanModalAwTask, 
+      PlanModalUsualTask 
+    },
     data: () => ({
       day: new Date(),
       stickySplitLabels: true,
@@ -152,7 +162,43 @@ methods: {
             draggable: true
           })
       }
+
+      this.$modal.hide(PlanModalAwTask);
+      this.$modal.hide(PlanModalUsualTask);
     },
+
+    openModalTask(id, aw_name) {
+      if(aw_name) {
+        this.$modal.show(PlanModalAwTask, 
+        {
+          id: id,
+        }, 
+        { 
+          name: "aw-task-plan-modal",
+          height: 'auto',
+          clickToClose: false,
+          draggable: true
+        })
+      }
+      else 
+      {
+        this.$modal.show(PlanModalUsualTask, 
+          {
+            id: id,
+            type: 'usual'
+          }, 
+          {
+            name: "aw-usual-task-modal-plan",
+            height: 'auto',
+            clickToClose: false,
+            draggable: true
+          })
+      }
+
+      this.$modal.hide(UsualTaskModal);
+      this.$modal.hide(AwTaskModal);
+    },
+
     deleteTask(id,worker_id) {
       if(confirm("Do you really want to delete?")){
         axios.defaults.headers.common["Authorization"] =
