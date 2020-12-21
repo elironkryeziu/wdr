@@ -26,11 +26,12 @@ class Worker extends Model
 
     public function getinitialsAttribute()
     {
-        return substr($this->first_name, 0, 1).substr($this->last_name, 0, 1);
+        return substr(iconv('utf-8', 'ascii//TRANSLIT', mb_convert_encoding($this->first_name, 'UTF-8', 'UTF-8')),0,1)
+        .substr(iconv('utf-8', 'ascii//TRANSLIT', mb_convert_encoding($this->last_name, 'UTF-8', 'UTF-8')),0,1);
     }
 
     public function getfullNameAttribute()
     {
-        return $this->first_name. ' '.$this->last_name;
+        return mb_convert_encoding($this->first_name, 'UTF-8', 'UTF-8').' '.mb_convert_encoding($this->last_name, 'UTF-8', 'UTF-8');
     }
 }
